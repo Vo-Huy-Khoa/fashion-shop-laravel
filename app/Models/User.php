@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    protected $table = "users";
     public function oder()
     {
         return $this->hasMany(Oder::class,'user_id','id');

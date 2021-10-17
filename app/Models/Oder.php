@@ -9,12 +9,12 @@ class Oder extends Model
 {
     use HasFactory;
     protected $table = "oders";
-    public function product()
+    public function products()
     {
         return $this-> belongsTo(product::class,'product_id','id');
     }
 
-    public function user()
+    public function users()
     {
         return $this-> belongsTo(User::class,'user_id','id');
     }
