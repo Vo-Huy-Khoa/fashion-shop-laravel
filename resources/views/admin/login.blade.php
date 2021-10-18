@@ -25,6 +25,11 @@
                       {{ session('login') }}
                   </div>
               @endif
+              @if (session('register'))
+              <div class="alert alert-success">
+                  {{ session('register') }}
+              </div>
+          @endif
                   @if (session('error'))
                   <div class="alert alert-danger">
                       {{ session('error') }}

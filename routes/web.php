@@ -39,7 +39,7 @@ Route::post('admin/register',[UserController::class,'postAdmin_register'])->name
 Route::middleware(['auth'])->group(function () {
 
     Route::prefix('admin')->group(function () {
-    Route::get('index',[UserController::class,'__construct'])->name('index');
+    Route::get('home',[UserController::class,'__construct'])->name('home');
     
     Route::prefix('users')->group(function () {
         Route::get('list',[UserController::class,'list'])->name('users_list');

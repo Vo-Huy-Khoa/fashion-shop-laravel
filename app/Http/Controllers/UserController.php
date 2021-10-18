@@ -54,7 +54,7 @@ class UserController extends Controller
         ];
         if (Auth::attempt($credentials,$remember)) {
             // Authentication passed...
-            return redirect('admin/index');
+            return redirect('admin/home');
         }
         else{
            return redirect()->back()->with('error','Đăng nhập thất bại!');
@@ -98,7 +98,7 @@ class UserController extends Controller
 
         $save = $user -> save();
         if ($save) {
-             return redirect('admin/register')->with('register','Bạn đã đăng ký thành công!');
+             return redirect('admin/login')->with('register','Bạn đã đăng ký thành công!');
          }else{
             return back()->with('errorregister','Bạn đã đăng ký thất bại!');
          }

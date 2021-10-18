@@ -35,10 +35,11 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Size</th>
+                                    <th>Color</th>
+                                    <th>Brand</th>
                                     <th>Unit Price</th>
                                     <th>Sale Price</th>
                                     <th>Comments</th>
-
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -50,6 +51,8 @@
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Size</th>
+                                    <th>Color</th>
+                                    <th>Brand</th>
                                     <th>Unit Price</th>
                                     <th>Sale Price</th>
                                     <th>Comments</th>
@@ -66,6 +69,8 @@
                                     <td>{{$products->name}}</td>
                                     <td>{{$products->description}}</td>
                                     <td>{{$products->size}}</td>
+                                    <td>{{$products->color}}</td>
+                                    <td>{{$products->brand}}</td>
                                     <td>{{$products->unit_price}}</td>
                                     <td>{{$products->sale_price}}</td>
                                     <td><a href="admin/comments/list/{{$products->id}}"><i></i>Comments</a></td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Product;
+use App\Models\Properties;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,8 +20,9 @@ public function list()
 
 public function add()
 {
+    $list_properties = Properties::all();
     $list_categories = Category::all();
-    return view('admin.products.add',['list_categories'=> $list_categories]);
+    return view('admin.products.add',['list_categories'=> $list_categories,'list_properties'=>$list_properties]);
 }
 
 public function postAdd(Request $request)
@@ -31,6 +33,7 @@ public function postAdd(Request $request)
     $products->name = $request->name;
     $products->description = $request->description;
     $products->size = $request->size;
+    $products->color = $request->color;
     $products->unit_price = $request->unit_price;
     $products->sale_price = $request->sale_price;
 

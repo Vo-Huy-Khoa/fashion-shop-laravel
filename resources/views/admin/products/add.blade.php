@@ -50,9 +50,34 @@
                                     id="sale_price" name="sale_price"> </div>
                         </div>
                         <div class="row py-2">
-                            <div class="col-md-6 pt-md-0 pt-3"> <label for="size">Size</label> <input type="tel"
-                                    class="bg-light form-control" placeholder="Enter Size..." id="size" name="size"> </div>
+                            <div class="col-md-6">
+                                <label for="size">Size</label>
+                                <select class="bg-light form-control" id="size" name="size" >
+                                    <?php $stt = 0 ?>
+                                    @foreach ($list_properties as $properties)
+                                        <option value="{{$stt++}}">{{$properties->size}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
+                            <div class="col-md-6">
+                                <label for="color">Color</label>
+                                <select class="bg-light form-control" id="color" name="color" >
+                                    <?php $stt = 0 ?>
+                                    @foreach ($list_properties as $properties)
+                                        <option value="{{$stt++}}">{{$properties->color}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="color">brand</label>
+                                <select class="bg-light form-control" id="brand" name="brand" >
+                                    <?php $stt = 0 ?>
+                                    @foreach ($list_properties as $properties)
+                                        <option value="{{$stt++}}">{{$properties->brand}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
                             <div class="col-md-6">
                                 <label for="description">Description</label>

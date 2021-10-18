@@ -20,10 +20,11 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->longText('description')->nullable();
             $table->string('size')->nullable();
+            $table->string('color')->nullable();
             $table->decimal('unit_price')->nullable();
             $table->decimal('sale_price')->nullable();
-            $table->tinyInteger('type')->nullable();
             $table->string('image')->nullable();
+            $table->tinyInteger('type')->nullable();
             $table->timestamps();
         });
     }
