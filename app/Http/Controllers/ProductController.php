@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -71,7 +72,18 @@ public function delete($id)
 {
     $products = Product::find($id);
     $products->delete();
-    return back()->with('delete','Bạn đã xóa thành công'.$products->name);
+    return back()->with('delete','Bạn đã xóa thành công sản phẩm '.$products->name);
 }
+
+
+public function delete_comments($id)
+{
+    $comments = Comment::find($id);
+    $comments->delete();
+    return back()->with('delete_comments','Bạn đã xóa thành công comment '.$comments->users->name);
+}
+
+
+
     
 }

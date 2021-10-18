@@ -30,7 +30,7 @@ class ClassifyController extends Controller
 
         $classify -> save();
 
-        return back()->with('add','Thêm thành công{{$classify->name}} ');
+        return back()->with('add','Thêm thành công '.$classify->name);
     }
 
     public function edit($id)
@@ -49,12 +49,14 @@ class ClassifyController extends Controller
 
         $classify -> save();
 
-        return back()->with('add','Sửa thành công{{$classify->name}} ');
+        return back()->with('edit','Sửa thành công '.$classify->name);
     }
 
     public function delete($id)
     {
         $classify = Classify::find($id);
         $classify->delete();
+        return back()->with('delete','Xóa thành công '.$classify->name);
+
     }
 }

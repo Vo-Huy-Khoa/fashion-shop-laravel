@@ -2,18 +2,24 @@
 @section('content')
     <div class="container-fluid" id="container-wrapper">
         <div class="wrapper bg-white mt-sm-4">
-            <h4 class="pb-4 border-bottom">Product Add</h4>
-            @if (session('add'))
+            <h4 class="pb-4 border-bottom">Product Edit</h4>
+            @if (session('edit'))
                 <div class="alert alert-success">
-                    {{ session('add') }}
+                    {{ session('edit') }}
                 </div>
             @endif
 
-            @if (session('error'))
+            @if (session('error_edit'))
                 <div class="alert alert-danger">
-                    {{ session('error') }}
+                    {{ session('error_edit') }}
                 </div>
             @endif
+
+            @if (session('delete_comments'))
+            <div class="alert alert-success">
+                {{ session('delete_comments') }}
+            </div>
+        @endif
             <form action="admin/products/edit/{{$products->id}}" method="post">
                 @csrf
                 <div class="d-flex align-items-start py-3 border-bottom"> <img
@@ -64,6 +70,65 @@
                                 Changes</button> <button class="btn border button">Cancel</button> </div>
             </form>
         </div>
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Comments</h6>
+                </div>
+                <div class="table-responsive p-3">
+                    <table class="table align-items-center table-flush table-hover" id="dataTableHover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>User Name</th>
+                                <th>Comment</th>
+                                {{-- <th>Size</th>
+                                <th>Unit Price</th>
+                                <th>Sale Price</th>
+                                <th>Add</th>
+                                <th>Edit</th> --}}
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>User Name</th>
+                                <th>Comment</th>
+                                {{-- <th>Unit Price</th>
+                                <th>Sale Price</th>
+                                <th>Add</th>
+                                <th>Edit</th> --}}
+                                <th>Delete</th>
+
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach ($products->comments as $comments)
+                            <tr>
+                                <td>{{$comments->id}}</td>
+                                <td>{{$comments->users->name}}</td>
+                                <td>{{$comments->comment}}</td>
+
+
+                                {{-- <td><a href="{{route('products_add')}}"><i></i>Add</a></td>
+                                <td><a href="admin/products/edit/{{$products->id}}"><i></i>Edit</a></td> --}}
+                                <td><a href="admin/products/delete_comments/{{$comments->id}}"</a><i></i>Delete</a></td>
+
+                            </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </div>
 
 

@@ -5,7 +5,7 @@
             <h4 class="pb-4 border-bottom">Classify Edit</h4>
             @if (session('add'))
             <div class="alert alert-success">
-                {{ session('add') }}
+                {{ session('edit') }}
             </div>
         @endif
 

@@ -1,14 +1,11 @@
 @extends('admin.index')
-
 @section('content')
-
-
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">DataTables Users</h1>
+            <h1 class="h3 mb-0 text-gray-800">Comment</h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{routet('index')}}">Home</a></li>
                 <li class="breadcrumb-item">Tables</li>
                 <li class="breadcrumb-item active" aria-current="page">DataTables</li>
             </ol>
@@ -31,47 +28,42 @@
                         <table class="table align-items-center table-flush table-hover" id="dataTableHover">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Categories Name</th>
-                                    <th>Name</th>
+                                    <th>ID</th>
+                                    <th>User Name</th>
+                                    <th>Product Name</th>
                                     <th>Description</th>
-                                    <th>Size</th>
+                                    {{-- <th>Size</th>
                                     <th>Unit Price</th>
                                     <th>Sale Price</th>
-                                    <th>Comments</th>
-
                                     <th>Add</th>
-                                    <th>Edit</th>
+                                    <th>Edit</th> --}}
                                     <th>Delete</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Categories Name</th>
-                                    <th>Name</th>
+                                    <th>ID</th>
+                                    <th>User Name</th>
                                     <th>Description</th>
-                                    <th>Size</th>
-                                    <th>Unit Price</th>
+                                    {{-- <th>Unit Price</th>
                                     <th>Sale Price</th>
-                                    <th>Comments</th>
                                     <th>Add</th>
-                                    <th>Edit</th>
+                                    <th>Edit</th> --}}
                                     <th>Delete</th>
 
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($list_products as $products)
+                                @foreach ($products->comments as $comments)
                                 <tr>
-                                    <td>{{$products->categories->name}}</td>
-                                    <td>{{$products->name}}</td>
-                                    <td>{{$products->description}}</td>
-                                    <td>{{$products->size}}</td>
-                                    <td>{{$products->unit_price}}</td>
-                                    <td>{{$products->sale_price}}</td>
-                                    <td><a href="admin/comments/list/{{$products->id}}"><i></i>Comments</a></td>
-                                    <td><a href="{{route('products_add')}}"><i></i>Add</a></td>
-                                    <td><a href="admin/products/edit/{{$products->id}}"><i></i>Edit</a></td>
-                                    <td><a href="admin/products/delete/{{$products->id}}"</a><i></i>Delete</a></td>
+                                    <td>{{$comments->id}}</td>
+                                    <td>{{$comments->users->name}}</td>
+                                    <td>{{$comments->comment}}</td>
+
+
+                                    {{-- <td><a href="{{route('products_add')}}"><i></i>Add</a></td>
+                                    <td><a href="admin/products/edit/{{$products->id}}"><i></i>Edit</a></td> --}}
+                                    <td><a href="admin/comments/delete/{{$comments->id}}"</a><i></i>Delete</a></td>
 
                                 </tr>
                                 @endforeach

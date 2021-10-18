@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClassifyController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\OderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -82,9 +83,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('edit/{id}', [ProductController::class,'edit']);
         Route::post('edit/{id}',[ProductController::class,'postEdit']);
         Route::get('delete/{id}',[ProductController::class,'delete']);
+        Route::get('delete_comments/{id}',[ProductController::class,'delete_comments']);
+
     });
 
     });
+
+
 
     Route::prefix('oders')->group(function () {
         Route::get('list',[OderController::class,'list'])->name('oders_list');

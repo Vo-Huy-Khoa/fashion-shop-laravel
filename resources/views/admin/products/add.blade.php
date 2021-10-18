@@ -9,9 +9,9 @@
                 </div>
             @endif
 
-            @if (session('error'))
+            @if (session('error_add'))
                 <div class="alert alert-danger">
-                    {{ session('error') }}
+                    {{ session('error_add') }}
                 </div>
             @endif
             <form action="{{ route('products_add') }}" method="post">

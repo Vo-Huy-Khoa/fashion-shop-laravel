@@ -12,7 +12,7 @@ class Product extends Model
     public function categories(){
         return $this->belongsTo(Category::class,'category_id','id');
     }
-    public function comment(){
+    public function comments(){
         return $this->hasMany(comment::class,'product_id','id');
     }
 }
