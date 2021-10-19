@@ -10,9 +10,10 @@
     <title>Shop | Fahsion</title>
 <link href="Front/img/logo/logo.png" rel="icon">
 
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
 <link rel="stylesheet" href="{{ URL::asset('Front/css/bootstrap.min.css') }}">
@@ -23,6 +24,8 @@
 <link rel="stylesheet" href="{{ URL::asset('Front/css/owl.carousel.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('Front/css/slicknav.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('Front/css/style.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('Front/css/shop_details.css') }}">
+
 
 <base href="{{asset('')}}">
 
