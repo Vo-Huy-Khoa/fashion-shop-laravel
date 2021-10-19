@@ -24,6 +24,8 @@ class CreateProductsTable extends Migration
             $table->decimal('unit_price')->nullable();
             $table->decimal('sale_price')->nullable();
             $table->string('image')->nullable();
+            $table->string('brand')->nullable();
+
             $table->tinyInteger('type')->nullable();
             $table->timestamps();
         });

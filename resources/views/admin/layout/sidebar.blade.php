@@ -16,6 +16,20 @@
       Features
     </div>
     <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
+        aria-controls="collapseForm">
+        <i class="fab fa-fw fa-wpforms"></i>
+        <span>Classify</span>
+      </a>
+      <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Forms</h6>
+          <a class="collapse-item" href="{{route('classify_add')}}">Add</a>
+          <a class="collapse-item" href="{{route('classify_list')}}">List</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
         aria-expanded="true" aria-controls="collapseBootstrap">
         <i class="far fa-fw fa-window-maximize"></i>
@@ -30,20 +44,7 @@
         </div>
       </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
-        aria-controls="collapseForm">
-        <i class="fab fa-fw fa-wpforms"></i>
-        <span>Classify</span>
-      </a>
-      <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Forms</h6>
-          <a class="collapse-item" href="{{route('classify_add')}}">Add</a>
-          <a class="collapse-item" href="{{route('classify_list')}}">List</a>
-        </div>
-      </div>
-    </li>
+
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
@@ -75,10 +76,11 @@
         </div>
       </div>
     </li>
+
     <li class="nav-item">
-      <a class="nav-link" href="{{route('oders_list')}}">
+      <a class="nav-link" href="{{route('oder_details_list')}}">
         <i class="fas fa-fw fa-palette"></i>
-        <span>Oders</span>
+        <span>Oder Details</span>
       </a>
     </li>
     <hr class="sidebar-divider">

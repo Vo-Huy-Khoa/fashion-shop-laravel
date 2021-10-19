@@ -14,24 +14,49 @@
                     {{ session('error_add') }}
                 </div>
             @endif
-            <form action="{{ route('products_add') }}" method="post">
-                @csrf
-                <div class="d-flex align-items-start py-3 border-bottom"> <img
-                        src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                        class="img" alt="">
-                    <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
-                        <p>Accepted file type .png. Less than 1MB</p> <button
-                            class="btn button border"><b>Upload</b></button>
-                    </div>
 
+            @if (session('error_img'))
+            <div class="alert alert-danger">
+                {{ session('error_img') }}
+            </div>
+        @endif
+            <form action="{{ route('products_add') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                {{-- chus thich --}}
+                <div class="py-2">
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <!-- Upload image input-->
+                            <div class="input-group  rounded-pill bg-white shadow-sm">
+                                <input id="upload" name="img" type="file" onchange="readURL(this);"
+                                    class="form-control border-0">
+                                <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose
+                                    file</label>
+                                <div class="input-group-append">
+                                    <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i
+                                            class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                                            class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                    <!-- Uploaded image area-->
+                    <p class="font-italic text-white text-center">The image uploaded will be rendered inside the box
+                        below.</p>
+                    <div class="image-area mt-4"><img style="height: 300px; width:300px; boder-radius:50px;" id="imageResult" src="#" alt=""
+                            class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                        </div>
+                        </div>
                 </div>
                 <div class="py-2">
                     <div class="row py-2">
                         <div class="col-md-6">
                             <label for="name">Categories Name</label>
-                            <select class="bg-light form-control" id="category_id" name="category_id" >
+                            <select class="bg-light form-control" id="category_id" name="category_id">
                                 @foreach ($list_categories as $categories)
-                                    <option value="{{$categories->id}}">{{$categories->name}}</option>
+                                    <option value="{{ $categories->id }}">{{ $categories->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -52,29 +77,27 @@
                         <div class="row py-2">
                             <div class="col-md-6">
                                 <label for="size">Size</label>
-                                <select class="bg-light form-control" id="size" name="size" >
-                                    <?php $stt = 0 ?>
+                                <select class="bg-light form-control" id="size" name="size">
                                     @foreach ($list_properties as $properties)
-                                        <option value="{{$stt++}}">{{$properties->size}}</option>
+                                        <option value="{{ $properties->size }}">{{ $properties->size }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="color">Color</label>
-                                <select class="bg-light form-control" id="color" name="color" >
-                                    <?php $stt = 0 ?>
+                                <select class="bg-light form-control" id="color" name="color">
                                     @foreach ($list_properties as $properties)
-                                        <option value="{{$stt++}}">{{$properties->color}}</option>
+                                        <option value="{{ $properties->color }}">{{ $properties->color }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="color">brand</label>
-                                <select class="bg-light form-control" id="brand" name="brand" >
-                                    <?php $stt = 0 ?>
+                                <select class="bg-light form-control" id="brand" name="brand">
+                                    <?php $stt = 0; ?>
                                     @foreach ($list_properties as $properties)
-                                        <option value="{{$stt++}}">{{$properties->brand}}</option>
+                                        <option value="{{ $properties->brand }}">{{ $properties->brand }}</option>
                                     @endforeach
                                 </select>
                             </div>

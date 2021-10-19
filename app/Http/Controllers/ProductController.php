@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Product;
 use App\Models\Properties;
 use Illuminate\Http\Request;
-
 class ProductController extends Controller
 {
     //
@@ -34,8 +33,31 @@ public function postAdd(Request $request)
     $products->description = $request->description;
     $products->size = $request->size;
     $products->color = $request->color;
+    $products->brand = $request->brand;
     $products->unit_price = $request->unit_price;
     $products->sale_price = $request->sale_price;
+
+    if ($request->hasFile('img')) {
+        $file = $request->file('img');
+    
+        $late = $file->getClientOriginalExtension();
+        if ($late !="jpg" && $late != "png" && $late != "jpeg") {
+            return back()->with('error_img','Sai định dạng hình ');
+        }
+        $name = $file->getClientOriginalName();
+        $img = Str::random(4)."_".$name;
+    
+        while (file_exists("uploads/products/".$img)) {
+            $img = Str::random(4)."_".$name;
+        }
+        
+        $file->move("uploads/products",$img);
+        $products->image = $img;
+        
+    }
+    else{
+        $products->image ="";
+    }
 
     if ($products->save()) {
         return back()->with('add','Thêm thành công '.$products->name);
@@ -59,9 +81,32 @@ public function postEdit(Request $request, $id)
     $products->name = $request->name;
     $products->description = $request->description;
     $products->size = $request->size;
+    $products->color = $request->color;
+    $products->brand = $request->brand;
     $products->unit_price = $request->unit_price;
     $products->sale_price = $request->sale_price;
+    
+if ($request->hasFile('img')) {
+    $file = $request->file('img');
 
+    $late = $file->getClientOriginalExtension();
+    if ($late !="jpg" && $late != "png" && $late != "jpeg") {
+        return back()->with('error_img','Sai định dạng hình ');
+    }
+    $name = $file->getClientOriginalName();
+    $img = Str::random(4)."_".$name;
+
+    while (file_exists("uploads/products/".$img)) {
+        $img = Str::random(4)."_".$name;
+    }
+    
+    $file->move("uploads/products",$img);
+    $products->image = $img;
+    
+}
+else{
+    $products->image ="";
+}
 
     if ($products->save()) {
         return back()->with('edit','Sửa thành công '.$products->name);

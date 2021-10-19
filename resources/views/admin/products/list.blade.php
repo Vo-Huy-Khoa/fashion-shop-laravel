@@ -31,8 +31,8 @@
                         <table class="table align-items-center table-flush table-hover" id="dataTableHover">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Categories Name</th>
                                     <th>Name</th>
+                                    <th>Categories Name</th>
                                     <th>Description</th>
                                     <th>Size</th>
                                     <th>Color</th>
@@ -47,8 +47,8 @@
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Categories Name</th>
                                     <th>Name</th>
+                                    <th>Categories Name</th>
                                     <th>Description</th>
                                     <th>Size</th>
                                     <th>Color</th>
@@ -65,8 +65,12 @@
                             <tbody>
                                 @foreach ($list_products as $products)
                                 <tr>
+                                    <td style="text-align: center">{{$products->name}}
+                                    <img style="width: 100px;height:100px" src="uploads/products/{{$products->image}}"alt="">
+                                    
+                                    
+                                    </td>
                                     <td>{{$products->categories->name}}</td>
-                                    <td>{{$products->name}}</td>
                                     <td>{{$products->description}}</td>
                                     <td>{{$products->size}}</td>
                                     <td>{{$products->color}}</td>

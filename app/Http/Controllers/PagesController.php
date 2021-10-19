@@ -2,14 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use function GuzzleHttp\Promise\all;
 
 class PagesController extends Controller
 {
     //
     public function __construct()
     {
-        
+        $list_categories = Category::all();
+        $list_products = Product::all();
+
+        view()->share('users',Auth::user());
+
+        if (Auth::check()) {
+            view()->share('users',Auth::user());
+        }
+
     }
 
     public function home()
@@ -46,5 +59,16 @@ class PagesController extends Controller
     public function check_out()
     {
         return view('pages.check_out');
+    }
+
+    public function profile()
+    {
+        return view('pages.profile');
+    }
+
+
+    public function profile_edit($id)
+    {
+        # code...
     }
 }

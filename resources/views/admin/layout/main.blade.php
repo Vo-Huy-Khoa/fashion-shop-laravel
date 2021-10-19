@@ -37,8 +37,8 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Oder</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo count($list_oder_details); ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                   <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
                   <span>Since last years</span>
@@ -58,7 +58,7 @@
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-uppercase mb-1">New User</div>
-                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">366</div>
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo count($list_users); ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                   <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
                   <span>Since last month</span>
@@ -77,8 +77,8 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Requests</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Products</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo count($list_products); ?></div>
                 <div class="mt-2 mb-0 text-muted text-xs">
                   <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
                   <span>Since yesterday</span>
@@ -92,6 +92,7 @@
         </div>
       </div>
 
+      
       <!-- Area Chart -->
       <div class="col-xl-8 col-lg-7">
         <div class="card mb-4">

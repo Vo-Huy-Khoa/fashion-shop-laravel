@@ -7,9 +7,12 @@
                         <ul>
                             <li><i class="fa fa-envelope"></i> huykhoa630@gmail.com</li>
                             <li>Free Shipping for all Order of $99</li>
+                            
+
                         </ul>
                     </div>
                 </div>
+                
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
@@ -18,18 +21,26 @@
                             <a href="#"><i class="fa fa-linkedin"></i></a>
                             <a href="#"><i class="fa fa-pinterest-p"></i></a>
                         </div>
-                        <div class="header__top__right__language">
-                            <img src="./Front/img/language.png" alt="">
-                            <div>English</div>
-                            <span class="arrow_carrot-down"></span>
-                            <ul>
-                                <li><a href="#">Spanis</a></li>
-                                <li><a href="#">English</a></li>
-                            </ul>
-                        </div>
-                        <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
-                        </div>
+                        <?php $users = Auth::user(); ?>
+                        @if(!isset($users))
+                        
+                            <div class="header__top__right__auth">
+                                <a href="{{route('users_register')}}"><i class="fa fa-user"></i>Register</a>
+                            </div>
+                            <span>&nbsp;&nbsp;</span>
+                            <div class="header__top__right__auth">
+                                <a href="{{route('users_login')}}"><i class="fa fa-user"></i>Login</a>
+                            </div>
+                        
+                        @else
+                            <div class="header__top__right__auth">
+                                <a href="{{route('profile')}}"><i class="fa fa-user"></i>{{$users->name}}</a>
+                            </div>
+                            <span>&nbsp;&nbsp;</span>
+                            <div class="header__top__right__auth">
+                                <a href="{{route('users_logout')}}"><i class="fa fa-sign-out"></i>Logout</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -66,7 +77,7 @@
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                         <li><a href="{{route('shop_cart')}}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                     </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div>
+                    <div class="header__cart__price">item: <span>$100.00</span></div>
                 </div>
             </div>
         </div>

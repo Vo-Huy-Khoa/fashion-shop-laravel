@@ -8,7 +8,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">DataTables Users</h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="./">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                 <li class="breadcrumb-item">Tables</li>
                 <li class="breadcrumb-item active" aria-current="page">DataTables</li>
             </ol>
@@ -53,15 +53,16 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($listuser as $user)
+                                @foreach ($listuser as $users)
                                 <tr>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->phone}}</td>
-                                    <td>{{$user->address}}</td>
+                                    <td >{{$users->name}}
+                                        <img style="width: 100px;height:100px" src="uploads/users/{{$users->image}}"alt="">
+                                    <td>{{$users->email}}</td>
+                                    <td>{{$users->phone}}</td>
+                                    <td>{{$users->address}}</td>
                                     <td><a href="{{route('users_add')}}"><i></i>Add</a></td>
-                                    <td><a href="admin/users/edit/{{$user->id}}}"><i></i>Edit</a></td>
-                                    <td><a href="admin/users/delete/{{$user->id}}"</a><i></i>Delete</a></td>
+                                    <td><a href="admin/users/edit/{{$users->id}}}"><i></i>Edit</a></td>
+                                    <td><a href="admin/users/delete/{{$users->id}}"</a><i></i>Delete</a></td>
 
                                 </tr>
                                 @endforeach

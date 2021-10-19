@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClassifyController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Oder_DetailController;
 use App\Http\Controllers\OderController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductController;
@@ -89,13 +90,8 @@ Route::middleware(['auth'])->group(function () {
     });
 
     });
-
-
-
-    Route::prefix('oders')->group(function () {
-        Route::get('list',[OderController::class,'list'])->name('oders_list');
-        Route::get('edit/{id}',[OderController::class,'edit']);
-        Route::post('edit/{id}',[OderController::class,'postEdit']);
+    Route::prefix('oder_details')->group(function () {
+        Route::get('list',[Oder_DetailController::class,'list'])->name('oder_details_list');
         Route::get('delete/{id}',[OderController::class,'delete']);
     });
 
@@ -107,6 +103,17 @@ Route::middleware(['auth'])->group(function () {
 
 // Route User
 
+
+Route::get('users/login',[UserController::class,'getUsers_login'])->name('users_login');
+Route::post('users/login',[UserController::class,'postUsers_login'])->name('users_login');
+
+Route::get('users/register',[UserController::class,'getUsers_Register'])->name('users_register');
+Route::post('users/register',[UserController::class,'postUsers_Register'])->name('users_register');
+
+Route::get('users/logout',[UserController::class,'users_logout'])->name('users_logout');
+
+Route::get('home',[PagesController::class,'home']);
+
 Route::prefix('user')->group(function () {
     Route::get('home',[PagesController::class,'home'])->name('user_home');
     Route::get('shop',[PagesController::class,'shop'])->name('user_shop');
@@ -117,6 +124,8 @@ Route::prefix('user')->group(function () {
     Route::get('shop_details',[PagesController::class,'shop_details'])->name('shop_details');
     Route::get('shop_cart',[PagesController::class,'shop_cart'])->name('shop_cart');
     Route::get('check_out',[PagesController::class,'check_out'])->name('check_out');
+    Route::get('profile',[PagesController::class,'profile'])->name('profile');
+    Route::get('profile_edit/{id}',[PagesController::class,'profile_edit']);
 
 
 

@@ -15,6 +15,16 @@
     <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
+{{-- css login --}}
+<link rel="stylesheet" href="{{ URL::asset('Front/css/login.css') }}">
+
+{{-- profile --}}
+<link rel="stylesheet" href="{{ URL::asset('Front/css/profile.css') }}">
+
+
+
+
+
     <!-- Css Styles -->
 <link rel="stylesheet" href="{{ URL::asset('Front/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('Front/css/font-awesome.min.css') }}">
@@ -79,6 +89,13 @@
   <script src="{{ URL::asset('Front/js/owl.carousel.min.js') }}"></script>
 
   <script src="{{ URL::asset('Front/js/main.js') }}"></script>
+
+
+  {{-- script login --}}
+  <script src="{{ URL::asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css') }}"></script>
+  <script src="{{ URL::asset('https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js') }}"></script>
+
 
 
 </body>

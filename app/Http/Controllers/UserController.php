@@ -2,19 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Oder_Detail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
     //
     public function __construct()
     {
-        return view('admin.layout.main');
+        $list_users = User::all();
+        $list_oder_details = Oder_Detail::all();
+        $list_products = Product::all();
+
+        return view('admin.layout.main',['list_users'=>$list_users,
+        'list_oder_details'=>$list_oder_details,
+        'list_products'=>$list_products]);
     }
 
     public function getAdmin_Login()
@@ -51,6 +60,7 @@ class UserController extends Controller
         $credentials = [
             'email'=> $request->email,
             'password' => $request->password ,
+            'type' => '1'
         ];
         if (Auth::attempt($credentials,$remember)) {
             // Authentication passed...
@@ -127,12 +137,32 @@ class UserController extends Controller
         if($request->password == $request->repassword)
              $user->password = Hash::make($request->password) ;
  
- 
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+    
+            $late = $file->getClientOriginalExtension();
+            if ($late !="jpg" && $late != "png" && $late != "jpeg") {
+                return back()->with('error_img','Sai định dạng hình ');
+        }
+        $name = $file->getClientOriginalName();
+        $img = Str::random(4)."_".$name;
+    
+        while (file_exists("uploads/users/".$img)) {
+            $img = Str::random(4)."_".$name;
+        }
+        
+        $file->move("uploads/users",$img);
+        $user->image = $img;
+        
+        }
+        else{
+            $user->image ="";
+        }
          $save = $user -> save();
          if ($save) {
-              return back()->with('add','Bạn đã thêm người dùng thành công!');
+              return back()->with('add','Bạn đã thêm thành công '.$user->name);
           }else{
-             return back()->with('error','Bạn đã thêm người dùng thất bại!');
+             return back()->with('error','Bạn đã thêm người dùng thất bại '.$user->name);
           }
     }
 
@@ -154,10 +184,32 @@ class UserController extends Controller
         if($request->password == $request->repassword)
              $user->password = Hash::make($request->password) ;
 
+
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+    
+            $late = $file->getClientOriginalExtension();
+        if ($late !="jpg" && $late != "png" && $late != "jpeg") {
+            return back()->with('error_img','Sai định dạng hình ');
+        }
+        $name = $file->getClientOriginalName();
+        $img = Str::random(4)."_".$name;
+    
+        while (file_exists("uploads/users/".$img)) {
+            $img = Str::random(4)."_".$name;
+        }
+        
+        $file->move("uploads/users",$img);
+        $user->image = $img;
+        
+        }
+        else{
+            $user->image ="";
+        }
         if ($user ->save()) {
-              return back()->with('edit','Bạn đã sửa thành công!'.$user->name);
+              return back()->with('edit','Bạn đã sửa thành công '.$user->name);
           }else{
-             return back()->with('error','Bạn đã sửa thất bại!');
+             return back()->with('error','Bạn đã sửa thất bại '.$user->name);
           }
     }
 
@@ -166,5 +218,85 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         return back()->with('delete','Xóa thành công người dùng '.$user->name);
+    }
+
+
+
+    public function getUsers_login()
+    {
+        return view('pages.login');
+    }
+
+    public function postUsers_login(Request $request)
+    {
+        $remember =isset($request->remember) ;
+
+        $credentials = [
+            'email'=> $request->email,
+            'password' => $request->password ,
+            'type' => '2'
+        ];
+        if (Auth::attempt($credentials,$remember)) {
+            // Authentication passed...
+            return redirect('user/home');
+        }
+        else{
+           return redirect()->back()->with('error','Đăng nhập thất bại!');
+
+        }
+    }
+
+    public function users_logout()
+    {
+        Auth::logout();
+        return redirect('home');
+    }
+
+
+
+    public function getUsers_Register()
+    {
+        return view('pages.register');
+    }
+
+    public function postUsers_Register(Request $request)
+    {
+        $user = new User;
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->type = "2";
+        // $user->phone = $request->phone;
+        // $user->address = $request->address;
+        if($request->password == $request->repassword)
+             $user->password = Hash::make($request->password) ;
+ 
+        // if ($request->hasFile('img')) {
+        //     $file = $request->file('img');
+    
+        //     $late = $file->getClientOriginalExtension();
+        //     if ($late !="jpg" && $late != "png" && $late != "jpeg") {
+        //         return back()->with('error_img','Sai định dạng hình ');
+        // }
+        // $name = $file->getClientOriginalName();
+        // $img = Str::random(4)."_".$name;
+    
+        // while (file_exists("uploads/users/".$img)) {
+        //     $img = Str::random(4)."_".$name;
+        // }
+        
+        // $file->move("uploads/users",$img);
+        // $user->image = $img;
+        
+        // }
+        // else{
+        //     $user->image ="";
+        // }
+         $save = $user -> save();
+         if ($save) {
+              return redirect('users/login')->with('register','Bạn đã tạo thành công tài khoản '.$user->name);
+          }else{
+             return back()->with('error','Bạn đã tạo thất bại tài khoản'.$user->name);
+          }
     }
 }

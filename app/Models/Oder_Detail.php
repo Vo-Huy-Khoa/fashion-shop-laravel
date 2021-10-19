@@ -18,4 +18,8 @@ class Oder_Detail extends Model
     {
         return $this->belongsTo(Shipping::class,'shipping_id','id');
     }
+
+
+
+
 }
