@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClassifyController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\OderController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\Classify;
@@ -100,4 +101,17 @@ Route::middleware(['auth'])->group(function () {
 
 
     
+});
+
+
+
+// Route User
+
+Route::prefix('user')->group(function () {
+    Route::get('home',[PagesController::class,'home'])->name('user_home');
+    Route::get('shop',[PagesController::class,'shop'])->name('user_shop');
+    Route::get('blog',[PagesController::class,'blog'])->name('user_blog');
+    Route::get('contact',[PagesController::class,'contact'])->name('user_contact');
+
+
 });
