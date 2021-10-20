@@ -141,8 +141,11 @@ class UserController extends Controller
         $user = new User;
 
         $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->city = $request->city;
         $user->address = $request->address;
         if($request->password == $request->repassword)
              $user->password = Hash::make($request->password) ;
@@ -170,9 +173,9 @@ class UserController extends Controller
         }
          $save = $user -> save();
          if ($save) {
-              return back()->with('add','Bạn đã thêm thành công '.$user->name);
+              return back()->with('add','Bạn đã thêm thành công '.$user->first_name." ".$user->last_name);
           }else{
-             return back()->with('error','Bạn đã thêm người dùng thất bại '.$user->name);
+             return back()->with('error','Bạn đã thêm người dùng thất bại '.$user->first_name." ".$user->last_name);
           }
     }
 
@@ -188,8 +191,11 @@ class UserController extends Controller
         $user = User::find($id);
 
         $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->city = $request->city;
         $user->address = $request->address;
         if($request->password == $request->repassword)
              $user->password = Hash::make($request->password) ;
@@ -217,9 +223,9 @@ class UserController extends Controller
             $user->image ="";
         }
         if ($user ->save()) {
-              return back()->with('edit','Bạn đã sửa thành công '.$user->name);
+              return back()->with('edit','Bạn đã sửa thành công '.$user->first_name." ".$user->last_name);
           }else{
-             return back()->with('error','Bạn đã sửa thất bại '.$user->name);
+             return back()->with('error','Bạn đã sửa thất bại '.$user->first_name." ".$user->last_name);
           }
     }
 
@@ -312,9 +318,16 @@ class UserController extends Controller
           }
     }
 
-    public function Admin_profile()
+    public function getAdmin_Profile()
     {
         return view('admin.users.profile');
     }
+
+    public function postAdmin_Profile(Request $request)
+    {
+        # code...
+    }
+
+
 
 }

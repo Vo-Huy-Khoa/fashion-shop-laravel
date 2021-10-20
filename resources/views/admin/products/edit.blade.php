@@ -20,7 +20,7 @@
                 {{ session('delete_comments') }}
             </div>
         @endif
-            <form action="admin/products/edit/{{$products->id}}" method="post">
+            <form action="admin/products/edit/{{$products->id}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="d-flex align-items-start py-3 border-bottom"> <img
                         src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"

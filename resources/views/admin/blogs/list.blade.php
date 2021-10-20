@@ -51,11 +51,13 @@
                             <tbody>
                                 @foreach ($list_blogs as $blogs)
                                 <tr>
-                                    <td>{{$blogs->title}}</td>
+                                    <td>{{$blogs->title}}
+                                        <img style="width: 100px;height:100px" src="uploads/blogs/{{$blogs->image}}"alt=""> 
+                                    </td>
                                     <td>{{$blogs->description}}</td>
                                     <td><a href="{{route('blogs_add')}}"><i></i>Add</a></td>
-                                    <td><a href="admin/blogs/edit/{{$blogs->id}}"><i></i>Edit</a></td>
-                                    <td><a href="admin/blogs/delete/{{$blogs->id}}"</a><i></i>Delete</a></td>
+                                    <td><a href="blogs/edit/{{$blogs->id}}"><i></i>Edit</a></td>
+                                    <td><a href="blogs/delete/{{$blogs->id}}"</a><i></i>Delete</a></td>
                                 </tr>
                                 @endforeach
 

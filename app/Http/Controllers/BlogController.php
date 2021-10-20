@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -23,7 +24,27 @@ class BlogController extends Controller
         $blogs = new Blog();
         $blogs->title = $request->title;
         $blogs->description = $request->description;
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
         
+            $late = $file->getClientOriginalExtension();
+            if ($late !="jpg" && $late != "png" && $late != "jpeg") {
+                return back()->with('error_img','Sai định dạng hình ');
+            }
+            $name = $file->getClientOriginalName();
+            $img = Str::random(4)."_".$name;
+        
+            while (file_exists("uploads/blogs/".$img)) {
+                $img = Str::random(4)."_".$name;
+            }
+            
+            $file->move("uploads/blogs",$img);
+            $blogs->image = $img;
+            
+        }
+        else{
+            $blogs->image ="";
+        }
 
         if ($blogs->save()) {
             return back()->with('add','Thêm thành công '.$blogs->title);
@@ -44,14 +65,35 @@ class BlogController extends Controller
 
         $blogs->title = $request->title;
         $blogs->description = $request->description;
-
-        if ($blogs->save()) {
-            return back()->with('edit',"Sửa thành công ".$blogs->title);
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+        
+            $late = $file->getClientOriginalExtension();
+            if ($late !="jpg" && $late != "png" && $late != "jpeg") {
+                return back()->with('error_img','Sai định dạng hình ');
+            }
+            $name = $file->getClientOriginalName();
+            $img = Str::random(4)."_".$name;
+        
+            while (file_exists("uploads/blogs/".$img)) {
+                $img = Str::random(4)."_".$name;
+            }
+            
+            $file->move("uploads/blogs",$img);
+            $blogs->image = $img;
+            
         }
         else{
-            return back()->with('error',"Sửa thất bại ".$blogs->title);
+            $blogs->image ="";
         }
-        
+
+        if ($blogs->save()) {
+            return redirect()->back()->with('edit','Sửa thành công '.$blogs->title);
+        }
+        else{
+            return back()->with('error','Sửa thất bại '.$blogs->title);
+            
+        }
 
 
     }
@@ -59,7 +101,7 @@ class BlogController extends Controller
     {
         $blogs = Blog::find($id);
         $blogs->delete();
-        return back()->with('delete','Xóa thành công '.$blogs->title);
+        return redirect()->back()->with('delete','Xóa thành công '.$blogs->title);
 
     }
 }

@@ -9,15 +9,44 @@
                 {{ session('error') }}
             </div>
         @endif
-            <form action="admin/users/edit/{{$user->id}}" method="post">
+        @if (session('edit'))
+        <div class="alert alert-success">
+            {{ session('edit') }}
+        </div>
+    @endif
+            <form action="admin/users/edit/{{$user->id}}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="d-flex align-items-start py-3 border-bottom"> <img
-                    src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                    class="img" alt="">
-                <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
-                    <p>Accepted file type .png. Less than 1MB</p> <button class="btn button border"><b>Upload</b></button>
-                </div>
-            </div>
+                {{-- chus thich --}}
+                <div class="row py-2">
+                    <!-- Uploaded image area-->
+                    <div class="image-area mt-4"><img style="height: 300px; width:300px; boder-radius:50px;" id="imageResult" src="#" alt=""
+                            class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                        </div>
+                    <div class="row py-2">
+                       
+                            <!-- Upload image input-->
+                            <div class="input-group  rounded-pill bg-white shadow-sm">
+                                <input id="upload" name="img" type="file" onchange="readURL(this);"
+                                    class="form-control border-0">
+                                <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose
+                                    file</label>
+                                <div class="input-group-append">
+                                    <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i
+                                            class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                                            class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                                </div>
+                            </div>
+                      
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="bg-light form-control" placeholder="Enter First Name..." value="{{$user->first_name}}" id="first_name"
+                                name="first_name">
+                        </div>
+                        <div class="col-md-6 pt-md-0 pt-3"> <label for="last_name">Last Name</label> <input type="text"
+                                class="bg-light form-control" placeholder="Last Name" value="{{$user->last_name}}" id="last_name" name="last_name"> </div>
+                    </div>
             <div class="py-2">
                 <div class="row py-2">
                     <div class="col-md-6"> 

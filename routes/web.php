@@ -56,7 +56,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('delete/{id}',[UserController::class,'delete'])->name('delete');
 
-       Route::get('profile/{id}',[UserController::class,'Admin_profile']);
+       Route::get('profile/{id}',[UserController::class,'getAdmin_Profile']);
+       Route::post('profile/{id}',[UserController::class,'postAdmin_Profile']);
 
     });
 
@@ -103,7 +104,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('blogs')->group(function () {
         Route::get('list', [BlogController::class,'list'])->name('blogs_list');
         Route::get('add',[BlogController::class,'getAdd'])->name('blogs_add');
-        Route::post('add',[BlogController::class,'postAdd'])->name('blogs_add');
+        Route::post('add',[BlogController::class,'postAdd']);
         Route::get('edit/{id}',[BlogController::class,'getEdit']);
         Route::post('edit/{id}', [BlogController::class,'postEdit']);
         Route::get('delete/{id}', [BlogController::class,'delete']);
