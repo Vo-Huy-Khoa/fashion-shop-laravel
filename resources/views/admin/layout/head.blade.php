@@ -20,7 +20,8 @@
 <link rel="stylesheet" href="{{ URL::asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('resources/css/app.css') }}">
 
-
+{{-- Admin Profile --}}
+<link rel="stylesheet" href="{{ URL::asset('Front/css/admin_profile.css') }}">
 
 <style>
     /*

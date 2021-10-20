@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->foreign('class_id')->references('id')->on('classifies');
             $table->string('name')->nullable();
             $table->longText('description')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -15,8 +15,23 @@
     <div class="sidebar-heading">
       Features
     </div>
+
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
+      <a class="nav-link collapsed" href="{{route('blogs_list')}}" data-toggle="collapse" data-target="#collapseForm1" aria-expanded="true"
+        aria-controls="collapseForm1">
+        <i class="fab fa-fw fa-wpforms"></i>
+        <span>Blogs</span>
+      </a>
+      <div id="collapseForm1" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Forms</h6>
+          <a class="collapse-item" href="{{route('blogs_add')}}">Add</a>
+          <a class="collapse-item" href="{{route('blogs_list')}}">List</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="{{route('classify_list')}}" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
         aria-controls="collapseForm">
         <i class="fab fa-fw fa-wpforms"></i>
         <span>Classify</span>

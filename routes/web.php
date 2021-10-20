@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClassifyController;
 use App\Http\Controllers\CommentController;
@@ -35,13 +36,15 @@ Route::post('admin/login',[UserController::class,'postAdmin_login'])->name('logi
 Route::get('admin/register',[UserController::class,'getAdmin_Register']);
 Route::post('admin/register',[UserController::class,'postAdmin_register'])->name('register');
 
+
+Route::get('admin/logout',[UserController::class,'Admin_Logout'])->name('admin_logout');
 //Route Index
 
 
 Route::middleware(['auth'])->group(function () {
 
     Route::prefix('admin')->group(function () {
-    Route::get('home',[UserController::class,'__construct'])->name('home');
+    Route::get('home',[UserController::class,'home'])->name('home');
     
     Route::prefix('users')->group(function () {
         Route::get('list',[UserController::class,'list'])->name('users_list');
@@ -52,6 +55,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('edit/{id}',[UserController::class,'postEdit'])->name('edit');
 
         Route::get('delete/{id}',[UserController::class,'delete'])->name('delete');
+
+       Route::get('profile/{id}',[UserController::class,'Admin_profile']);
 
     });
 
@@ -95,6 +100,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('delete/{id}',[OderController::class,'delete']);
     });
 
+    Route::prefix('blogs')->group(function () {
+        Route::get('list', [BlogController::class,'list'])->name('blogs_list');
+        Route::get('add',[BlogController::class,'getAdd'])->name('blogs_add');
+        Route::post('add',[BlogController::class,'postAdd'])->name('blogs_add');
+        Route::get('edit/{id}',[BlogController::class,'getEdit']);
+        Route::post('edit/{id}', [BlogController::class,'postEdit']);
+        Route::get('delete/{id}', [BlogController::class,'delete']);
+    });
+
 
     
 });
@@ -124,8 +138,8 @@ Route::prefix('user')->group(function () {
     Route::get('shop_details',[PagesController::class,'shop_details'])->name('shop_details');
     Route::get('shop_cart',[PagesController::class,'shop_cart'])->name('shop_cart');
     Route::get('check_out',[PagesController::class,'check_out'])->name('check_out');
-    Route::get('profile',[PagesController::class,'profile'])->name('profile');
-    Route::get('profile_edit/{id}',[PagesController::class,'profile_edit']);
+    Route::get('profile_edit/{id}',[PagesController::class,'getProfile_Edit']);
+    Route::post('profile_edit/{id}', [PagesController::class,'postProfile_Edit']);
 
 
 

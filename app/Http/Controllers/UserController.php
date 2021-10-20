@@ -17,6 +17,12 @@ class UserController extends Controller
     //
     public function __construct()
     {
+
+    }
+
+
+    public function home()
+    {
         $list_users = User::all();
         $list_oder_details = Oder_Detail::all();
         $list_products = Product::all();
@@ -25,7 +31,6 @@ class UserController extends Controller
         'list_oder_details'=>$list_oder_details,
         'list_products'=>$list_products]);
     }
-
     public function getAdmin_Login()
     {
         return view('admin.login');
@@ -72,6 +77,11 @@ class UserController extends Controller
         }
         // dd($request->input());
         
+    }
+    public function Admin_logout()
+    {
+        Auth::logout();
+        return redirect('admin/login')->with('logout','Bạn đã đăng xuất thành công! ');
     }
 
     public function getAdmin_Register()
@@ -249,7 +259,7 @@ class UserController extends Controller
     public function users_logout()
     {
         Auth::logout();
-        return redirect('home');
+        return redirect('home')->with('logout','Bạn đã đăng xuất thành công! ');
     }
 
 
@@ -265,6 +275,8 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->first_name = $request->first_name;
+        $user->last_name  = $request->last_name;
         $user->type = "2";
         // $user->phone = $request->phone;
         // $user->address = $request->address;
@@ -294,9 +306,15 @@ class UserController extends Controller
         // }
          $save = $user -> save();
          if ($save) {
-              return redirect('users/login')->with('register','Bạn đã tạo thành công tài khoản '.$user->name);
+              return redirect('users/login')->with('register','Bạn đã tạo thành công tài khoản '.$user->first_name." ".$user->last_name);
           }else{
-             return back()->with('error','Bạn đã tạo thất bại tài khoản'.$user->name);
+             return back()->with('error','Bạn đã tạo thất bại tài khoản'.$user->first_name." ".$user->last_name);
           }
     }
+
+    public function Admin_profile()
+    {
+        return view('admin.users.profile');
+    }
+
 }

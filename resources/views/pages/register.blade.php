@@ -43,14 +43,14 @@
                     <input type="text"  name="name" class="form-control form-control-lg" />
                     <label class="form-label" for="name">User Name</label>
                   </div>
-                  {{-- <div class="form-outline ">
+                  <div class="form-outline ">
                     <input type="text"  name="first_name" class="form-control form-control-lg" />
                     <label class="form-label" for="name">First Name</label>
                   </div>
                   <div class="form-outline">
                     <input type="text"  name="last_name" class="form-control form-control-lg" />
                     <label class="form-label" for="name">Last Name</label>
-                  </div> --}}
+                  </div>
   
                   <div class="form-outline mb-4">
                     <input type="email"  name="email" class="form-control form-control-lg" />

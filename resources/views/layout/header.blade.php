@@ -34,7 +34,7 @@
                         
                         @else
                             <div class="header__top__right__auth">
-                                <a href="{{route('profile')}}"><i class="fa fa-user"></i>{{$users->name}}</a>
+                                <a href="user/profile_edit/{{$users->id}}"><i class="fa fa-user"></i>{{$users->first_name." ".$users->last_name}}</a>
                             </div>
                             <span>&nbsp;&nbsp;</span>
                             <div class="header__top__right__auth">
