@@ -5,7 +5,7 @@
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="https://i.imgur.com/O1RmJXT.jpg" width="90"><span class="font-weight-bold">{{$users->first_name." ".$users->last_name}}</span><span class="text-black-50">{{$users->email}}</span><span>{{$users->address." ".$users->city}}</span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="uploads/users/{{$users->image}}" width="90"><span class="font-weight-bold">{{$users->first_name." ".$users->last_name}}</span><span class="text-black-50">{{$users->email}}</span><span>{{$users->address." ".$users->city}}</span></div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">

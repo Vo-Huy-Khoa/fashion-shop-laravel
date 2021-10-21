@@ -22,15 +22,27 @@
         @endif
             <form action="admin/products/edit/{{$products->id}}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="d-flex align-items-start py-3 border-bottom"> <img
-                        src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                        class="img" alt="">
-                    <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
-                        <p>Accepted file type .png. Less than 1MB</p> <button
-                            class="btn button border"><b>Upload</b></button>
+                <div class="row py-2">
+                    <!-- Uploaded image area-->
+                    <div class="image-area mt-4"><img style="height: 300px; width:300px; boder-radius:50px;" id="imageResult" src="#" alt=""
+                            class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                        </div>
+                    <div class="row py-2">
+                       
+                            <!-- Upload image input-->
+                            <div class="input-group  rounded-pill bg-white shadow-sm">
+                                <input id="upload" name="img" type="file" onchange="readURL(this);"
+                                    class="form-control border-0">
+                                <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose
+                                    file</label>
+                                <div class="input-group-append">
+                                    <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i
+                                            class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                                            class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                                </div>
+                            </div>
+                      
                     </div>
-
-                </div>
                 <div class="py-2">
                     <div class="row py-2">
                         <div class="col-md-6">
@@ -55,14 +67,38 @@
                                     type="text" class="bg-light form-control" value="{{$products->sale_price}}"
                                     id="sale_price" name="sale_price"> </div>
                         </div>
-                        <div class="row py-2">
-                            <div class="col-md-6 pt-md-0 pt-3"> <label for="size">Size</label> <input type="tel"
-                                    class="bg-light form-control" value="{{$products->size}}" id="size" name="size"> </div>
+                        
 
+                        <div class="row py-2">
+                            <div class="col-md-6">
+                                <label for="color">Color</label>
+                                <select class="bg-light form-control" id="color" name="color">
+                                    @foreach ($list_properties as $properties)
+                                        <option value="{{ $properties->color }}">{{ $properties->color }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 pt-md-0 pt-3">                            <label for="color">brand</label>
+                                <select class="bg-light form-control" id="brand" name="brand">
+                                    <?php $stt = 0; ?>
+                                    @foreach ($list_properties as $properties)
+                                        <option value="{{ $properties->brand }}">{{ $properties->brand }}</option>
+                                    @endforeach
+                                </select></div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-md-6">
+                            <label for="size">Size</label>
+                            <select class="bg-light form-control" id="size" name="size">
+                                @foreach ($list_properties as $properties)
+                                    <option value="{{ $properties->size }}">{{ $properties->size }}</option>
+                                @endforeach
+                            </select>
+                            </div>
 
                             <div class="col-md-6">
                                 <label for="description">Description</label>
-                                <textarea name="description" id="description" cols="80" rows="5"></textarea>
+                                <textarea name="description" id="description" cols="30" rows="5"></textarea>
                             </div>
                         </div>
 
@@ -73,66 +109,70 @@
 
 
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Comments</h6>
-                </div>
-                <div class="table-responsive p-3">
-                    <table class="table align-items-center table-flush table-hover" id="dataTableHover">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>ID</th>
-                                <th>User Name</th>
-                                <th>Comment</th>
-                                {{-- <th>Size</th>
-                                <th>Unit Price</th>
-                                <th>Sale Price</th>
-                                <th>Add</th>
-                                <th>Edit</th> --}}
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>User Name</th>
-                                <th>Comment</th>
-                                {{-- <th>Unit Price</th>
-                                <th>Sale Price</th>
-                                <th>Add</th>
-                                <th>Edit</th> --}}
-                                <th>Delete</th>
-
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            @foreach ($products->comments as $comments)
-                            <tr>
-                                <td>{{$comments->id}}</td>
-                                <td>{{$comments->users->name}}</td>
-                                <td>{{$comments->comment}}</td>
 
 
-                                {{-- <td><a href="{{route('products_add')}}"><i></i>Add</a></td>
-                                <td><a href="admin/products/edit/{{$products->id}}"><i></i>Edit</a></td> --}}
-                                <td><a href="admin/products/delete_comments/{{$comments->id}}"</a><i></i>Delete</a></td>
+    </div>
 
-                            </tr>
-                            @endforeach
 
-                        </tbody>
-                    </table>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Comments</h6>
+                    </div>
+                    <div class="table-responsive p-3">
+                        <table class="table align-items-center table-flush table-hover" id="dataTableHover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>User Name</th>
+                                    <th>Comment</th>
+                                    {{-- <th>Size</th>
+                                    <th>Unit Price</th>
+                                    <th>Sale Price</th>
+                                    <th>Add</th>
+                                    <th>Edit</th> --}}
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>User Name</th>
+                                    <th>Comment</th>
+                                    {{-- <th>Unit Price</th>
+                                    <th>Sale Price</th>
+                                    <th>Add</th>
+                                    <th>Edit</th> --}}
+                                    <th>Delete</th>
+    
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach ($products->comments as $comments)
+                                <tr>
+                                    <td>{{$comments->id}}</td>
+                                    <td>{{$comments->users->name}}</td>
+                                    <td>{{$comments->comment}}</td>
+    
+    
+                                    {{-- <td><a href="{{route('products_add')}}"><i></i>Add</a></td>
+                                    <td><a href="admin/products/edit/{{$products->id}}"><i></i>Edit</a></td> --}}
+                                    <td><a href="admin/products/delete_comments/{{$comments->id}}"</a><i></i>Delete</a></td>
+    
+                                </tr>
+                                @endforeach
+    
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    </div>
-
-
-
     </div>
 @endsection
 

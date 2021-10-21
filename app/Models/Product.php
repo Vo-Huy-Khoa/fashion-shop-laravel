@@ -16,5 +16,9 @@ class Product extends Model
         return $this->hasMany(comment::class,'product_id','id');
     }
 
-
+ 
+    // public function properties()
+    // {
+    //     return $this->belongsTo(Properties::class,'properties_id','id');
+    // }
 }

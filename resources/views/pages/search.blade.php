@@ -38,29 +38,69 @@
                         </div>
                         <div class="sidebar__item sidebar__item__color--option">
                             <h4>Colors</h4>
-                            @foreach ($list_properties as $properties)
-                            <div class="sidebar__item__color sidebar__item__color--{{"".$properties->color.""}}">
-                                <label for="{{$properties->color}}">
-                                    {{$properties->color}}
-                                    <input type="radio" id="{{$properties->color}}">
+                            <div class="sidebar__item__color sidebar__item__color--white">
+                                <label for="white">
+                                    White
+                                    <input type="radio" id="white">
                                 </label>
                             </div>
-                            @endforeach
-
-
+                            <div class="sidebar__item__color sidebar__item__color--gray">
+                                <label for="gray">
+                                    Gray
+                                    <input type="radio" id="gray">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--red">
+                                <label for="red">
+                                    Red
+                                    <input type="radio" id="red">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--black">
+                                <label for="black">
+                                    Black
+                                    <input type="radio" id="black">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--blue">
+                                <label for="blue">
+                                    Blue
+                                    <input type="radio" id="blue">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--green">
+                                <label for="green">
+                                    Green
+                                    <input type="radio" id="green">
+                                </label>
+                            </div>
                         </div>
                         <div class="sidebar__item">
                             <h4>Popular Size</h4>
-                            @foreach ($list_properties as $properties)
                             <div class="sidebar__item__size">
                                 <label for="large">
-                                    {{$properties->size}}
+                                    Large
                                     <input type="radio" id="large">
                                 </label>
-                            </div>  
-                            @endforeach
-
-
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="medium">
+                                    Medium
+                                    <input type="radio" id="medium">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="small">
+                                    Small
+                                    <input type="radio" id="small">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="tiny">
+                                    Tiny
+                                    <input type="radio" id="tiny">
+                                </label>
+                            </div>
                         </div>
                         <div class="sidebar__item">
                             <div class="latest-product__text">
@@ -130,38 +170,6 @@
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-7">
-                    <div class="product__discount">
-                        <div class="section-title product__discount__title">
-                            <h2>Sale Off</h2>
-                        </div>
-                        <div class="row">
-                            <div class="product__discount__slider owl-carousel">
-                                
-                                @foreach ($list_products_sale as $products_sale)
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="uploads/products/{{$products_sale->image}}">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>{{$products_sale->categories->name}}</span>
-                                            <h5><a href="">{{$products_sale->name}}</a></h5>
-                                            <div class="product__item__price">{{number_format($products_sale->sale_price)."đ"}} <span>{{number_format($products_sale->unit_price)."đ"}}</span></div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                @endforeach
-
-
-                            </div>
-                        </div>
-                    </div>
                     <div class="filter__item">
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
@@ -175,7 +183,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter__found">
-                                    <h6><span><?php echo count($list_products)  ;?></span> Products found</h6>
+                                    <h6><span><?php echo count($products_search)  ;?></span> Products found</h6>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-3">
@@ -187,7 +195,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        @foreach ($list_products as $products)
+                        @foreach ($products_search as $products)
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="uploads/products/{{$products->image}}">
@@ -208,10 +216,11 @@
 
                     </div>
                     <div class="product__pagination">
-                        <a href="#">1</a>
+                        {{$products_search->links()}}
+                        {{-- <a href="#">1</a>
                         <a href="#">2</a>
                         <a href="#">3</a>
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"><i class="fa fa-long-arrow-right"></i></a> --}}
                     </div>
                 </div>
             </div>

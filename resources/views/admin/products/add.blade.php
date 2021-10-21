@@ -22,10 +22,13 @@
         @endif
             <form action="{{ route('products_add') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                {{-- chus thich --}}
-                <div class="py-2">
+                <div class="row py-2">
+                    <!-- Uploaded image area-->
+                    <div class="image-area mt-4"><img style="height: 300px; width:300px; boder-radius:50px;" id="imageResult" src="#" alt=""
+                            class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+                        </div>
                     <div class="row py-2">
-                        <div class="col-md-6">
+                       
                             <!-- Upload image input-->
                             <div class="input-group  rounded-pill bg-white shadow-sm">
                                 <input id="upload" name="img" type="file" onchange="readURL(this);"
@@ -38,18 +41,8 @@
                                             class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
                                 </div>
                             </div>
-                        </div>
+                      
                     </div>
-                    <div class="row py-2">
-                        <div class="col-md-6">
-                    <!-- Uploaded image area-->
-                    <p class="font-italic text-white text-center">The image uploaded will be rendered inside the box
-                        below.</p>
-                    <div class="image-area mt-4"><img style="height: 300px; width:300px; boder-radius:50px;" id="imageResult" src="#" alt=""
-                            class="img-fluid rounded shadow-sm mx-auto d-block"></div>
-                        </div>
-                        </div>
-                </div>
                 <div class="py-2">
                     <div class="row py-2">
                         <div class="col-md-6">
@@ -104,7 +97,7 @@
 
                             <div class="col-md-6">
                                 <label for="description">Description</label>
-                                <textarea name="description" id="description" cols="80" rows="5"></textarea>
+                                <textarea name="description" id="description" cols="30" rows="5"></textarea>
                             </div>
                         </div>
 

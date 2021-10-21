@@ -10,5 +10,9 @@ class Properties extends Model
     use HasFactory;
     protected $table = "properties";
 
+    // public function products()
+    // {
+    //     return $this-> hasMany(Product::class,"properties_id",'id');
+    // }
 
-}
+}   

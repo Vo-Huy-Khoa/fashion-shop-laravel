@@ -4,11 +4,20 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Oder;
 use App\Models\Product;
 use App\Models\Properties;
 use Illuminate\Http\Request;
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $list_categories = Category::all();
+        $list_properties = Properties::all();
+        view()->share('list_categories',$list_categories);
+        view()->share('list_properties',$list_properties);
+    }
     //
 public function list()
 
@@ -119,7 +128,9 @@ else{
 public function delete($id)
 {
     $products = Product::find($id);
+    // $oders = Oder::find($products->id);
     $products->delete();
+    // $oders->delete();
     return back()->with('delete','Bạn đã xóa thành công sản phẩm '.$products->name);
 }
 

@@ -136,11 +136,14 @@ Route::prefix('user')->group(function () {
     Route::get('blog_details',[PagesController::class,'blog_details'])->name('blog_details');
 
     Route::get('contact',[PagesController::class,'contact'])->name('user_contact');
-    Route::get('shop_details',[PagesController::class,'shop_details'])->name('shop_details');
+    Route::get('products_details/{id}',[PagesController::class,'products_details']);
+    // Route::post('shop_details/{id}',);
     Route::get('shop_cart',[PagesController::class,'shop_cart'])->name('shop_cart');
     Route::get('check_out',[PagesController::class,'check_out'])->name('check_out');
     Route::get('profile_edit/{id}',[PagesController::class,'getProfile_Edit']);
     Route::post('profile_edit/{id}', [PagesController::class,'postProfile_Edit']);
+
+    Route::post('search',[PagesController::class,'Search']);
 
 
 

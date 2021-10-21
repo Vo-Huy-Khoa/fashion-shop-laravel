@@ -32,7 +32,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>Name</th>
-                                    <th>Classify Name</th>
+                                    {{-- <th>Classify Name</th> --}}
                                     <th>Description</th>
                                     <th>Add</th>
                                     <th>Edit</th>
@@ -42,7 +42,7 @@
                             <tfoot>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Classify Name</th>
+                                    {{-- <th>Classify Name</th> --}}
                                     <th>Description</th>
                                     <th>Add</th>
                                     <th>Edit</th>
@@ -53,8 +53,11 @@
                             <tbody>
                                 @foreach ($list_categories as $categories)
                                 <tr>
-                                    <td>{{$categories->name}}</td>
-                                    <td>{{$categories->classify->name}}</td>
+                                    <td style="text-align: center">{{$categories->name}}<br>
+                                    <img style="width: 100px;height:100px" src="uploads/categories/{{$categories->image}}"alt="">
+
+                                    </td>
+                                    {{-- <td>{{$categories->classify->name}}</td> --}}
                                     <td>{{$categories->description}}</td>
 
                                     <td><a href="{{route('categories_add')}}"><i></i>Add</a></td>

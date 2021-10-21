@@ -55,7 +55,7 @@
                             <tbody>
                                 @foreach ($listuser as $users)
                                 <tr>
-                                    <td >{{$users->first_name." ".$users->last_name}}
+                                    <td >{{$users->first_name." ".$users->last_name}}<br>
                                         <img style="width: 100px;height:100px" src="uploads/users/{{$users->image}}"alt="">
                                     <td>{{$users->email}}</td>
                                     <td>{{$users->phone}}</td>

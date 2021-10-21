@@ -33,6 +33,13 @@
   </a>
 
  @include('admin.layout.script')
+ <script>
+  $(document).ready(function () {
+    $('#dataTable').DataTable(); // ID From dataTable 
+    $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+  });
+</script>
+
 </body>
 
 </html>

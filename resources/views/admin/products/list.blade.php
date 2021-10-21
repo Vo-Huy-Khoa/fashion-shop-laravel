@@ -39,7 +39,7 @@
                                     <th>Brand</th>
                                     <th>Unit Price</th>
                                     <th>Sale Price</th>
-                                    <th>Comments</th>
+                                    {{-- <th>Comments</th> --}}
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -55,7 +55,7 @@
                                     <th>Brand</th>
                                     <th>Unit Price</th>
                                     <th>Sale Price</th>
-                                    <th>Comments</th>
+                                    {{-- <th>Comments</th> --}}
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -67,8 +67,6 @@
                                 <tr>
                                     <td style="text-align: center">{{$products->name}}
                                     <img style="width: 100px;height:100px" src="uploads/products/{{$products->image}}"alt="">
-                                    
-                                    
                                     </td>
                                     <td>{{$products->categories->name}}</td>
                                     <td>{{$products->description}}</td>
@@ -77,7 +75,7 @@
                                     <td>{{$products->brand}}</td>
                                     <td>{{$products->unit_price}}</td>
                                     <td>{{$products->sale_price}}</td>
-                                    <td><a href="admin/comments/list/{{$products->id}}"><i></i>Comments</a></td>
+                                    {{-- <td><a href="admin/comments/list/{{$products->id}}"><i></i>Comments</a></td> --}}
                                     <td><a href="{{route('products_add')}}"><i></i>Add</a></td>
                                     <td><a href="admin/products/edit/{{$products->id}}"><i></i>Edit</a></td>
                                     <td><a href="admin/products/delete/{{$products->id}}"</a><i></i>Delete</a></td>
@@ -100,11 +98,12 @@
 
     <!-- Page level custom scripts -->
     <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable(); // ID From dataTable 
-            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+        $(document).ready(function () {
+          $('#dataTable').DataTable(); // ID From dataTable 
+          $('#dataTableHover').DataTable(); // ID From dataTable with Hover
         });
-    </script>
+      </script>
+  
 
 
 @endsection

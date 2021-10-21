@@ -14,23 +14,22 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="./Front/img/product/details/product-details-1.jpg" alt="">
+                                src="uploads/products/{{$products->image}}" alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
-                                src="./Front/img/product/details/thumb-1.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
-                                src="./Front/img/product/details/thumb-2.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
-                                src="./Front/img/product/details/thumb-3.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
-                                src="./Front/img/product/details/thumb-4.jpg" alt="">
+
+                            @foreach ($list_products as $products)
+                            <img data-imgbigurl="uploads/products/{{$products->image}}"
+                            src="uploads/products/{{$products->image}}" alt="">    
+                            @endforeach
+
+
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h3>Vetgetable’s Package</h3>
+                        <h3>{{$products->name}}</h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -39,10 +38,8 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">$50.00</div>
-                        <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
-                            vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
-                            quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
+                        <div class="product__details__price">{{number_format($products->unit_price)." đ";}}</div>
+                        <p>{{$products->description}}</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
@@ -107,13 +104,10 @@
                                 </span>
                                 <span class="be-comment-time">
                                     <i class="fa fa-clock-o"></i>
-                                    May 27, 2015 at 3:14am
+                                    {{$products->created_at}}
                                 </span>
                                 <p class="be-comment-text">
-                                    Nunc ornare sed dolor sed mattis. In scelerisque dui a arcu mattis, at maximus eros
-                                    commodo. Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis
-                                    eleifend lorem non ant. Proin ut ornare lectus, vel eleifend est. Fusce hendrerit dui in
-                                    turpis tristique blandit.
+                                    {{$products->description}}
                                 </p>
                             </div>
                         </div>
@@ -183,9 +177,10 @@
                 </div>
             </div>
             <div class="row">
+                @foreach ($list_products as $products)
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./Front/img/product/product-1.jpg">
+                        <div class="product__item__pic set-bg" data-setbg="uploads/products/{{$products->image}}">
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -193,56 +188,14 @@
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
+                            <h6><a href="#">{{$products->name}}</a></h6>
+                            <h5>{{number_format($products->unit_price)}}</h5>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./Front/img/product/product-2.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./Front/img/product/product-3.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./Front/img/product/product-7.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
+                </div> 
+                @endforeach
+
+
             </div>
         </div>
     </section>

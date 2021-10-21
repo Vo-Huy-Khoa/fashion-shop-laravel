@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Classify;
 use App\Models\Product;
+use App\Models\Properties;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -19,8 +22,19 @@ class PagesController extends Controller
     {
         $list_categories = Category::all();
         $list_products = Product::all();
-
+        $list_classify = Classify::all();
+        $list_blogs = Blog::all();
+        $list_properties = Properties::all();
+        $list_products_sale = Product::whereNotNull('sale_price')->take(50)->paginate(12);
         view()->share('users',Auth::user());
+        view()->share('list_categories',$list_categories);
+        view()->share('list_classify',$list_classify);
+        view()->share('list_products',$list_products);
+        view()->share('list_blogs',$list_blogs);
+        view()->share('list_products_sale',$list_products_sale);
+        view()->share('list_properties',$list_properties);
+
+
 
         if (Auth::check()) {
             view()->share('users',Auth::user());
@@ -36,9 +50,11 @@ class PagesController extends Controller
     {
         return view('pages.shop');
     }
-    public function shop_details()
+    public function products_details($id)
+
     {
-        return view('pages.shop_details');
+        $products = Product::find($id);
+        return view('pages.shop_details',['products'=>$products]);
     }
     public function shop_cart()
     {
@@ -112,5 +128,15 @@ class PagesController extends Controller
           }else{
              return back()->with('error','Bạn đã sửa thất bại '.$user->first_name." ".$user->last_name);
           }
+    }
+
+
+    public function Search(Request $request)
+    {
+        $value = $request->value;
+        $products_search = Product::where('name','like','%' . $value . '%')->orWhere('size','like','%'.$value.'%')->take(50)->paginate(12);
+    //take trả về số lượng kết quả
+
+        return view('pages.search',['products_search'=>$products_search,'value'=>$value]);
     }
 }
