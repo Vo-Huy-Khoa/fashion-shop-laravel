@@ -147,6 +147,8 @@ Route::prefix('user')->group(function () {
 
     Route::post('search_blogs',[PagesController::class,'Search_blogs']);
 
+    Route::get('oders/{id}',[OderController::class,'oders']);
+
 
 
 
