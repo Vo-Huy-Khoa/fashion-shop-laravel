@@ -5,7 +5,7 @@
             <h4 class="pb-4 border-bottom">Blog Add</h4>
             @if (session('add'))
                 <div class="alert alert-success">
-                    {{ session('edit') }}
+                    {{ session('add') }}
                 </div>
             @endif
 
@@ -41,9 +41,22 @@
 
                 <div class="py-2">
                     <div class="row py-2">
+                        <label for="categories_id">Categories Name</label>
+                        <select class="bg-light form-control" id="categories_id" name="categories_id">
+                            @foreach ($list_categories as $categories)
+                                <option value="{{ $categories->id }}">{{ $categories->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="row py-2">
                             <label for="title">Title</label>
                             <input type="text" class="bg-light form-control" id="title" name="title">
                     </div>
+
+                    <div class="row py-2">
+                        <label for="brief">Brief</label>
+                        <input type="text" class="bg-light form-control" id="brief" name="brief">
+                </div>
                     <div class="py-2">
                         <div class="row py-2">
 

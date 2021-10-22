@@ -133,7 +133,7 @@ Route::prefix('user')->group(function () {
     Route::get('home',[PagesController::class,'home'])->name('user_home');
     Route::get('shop',[PagesController::class,'shop'])->name('user_shop');
     Route::get('blog',[PagesController::class,'blog'])->name('user_blog');
-    Route::get('blog_details',[PagesController::class,'blog_details'])->name('blog_details');
+    Route::get('blog_details/{id}',[PagesController::class,'blog_details']);
 
     Route::get('contact',[PagesController::class,'contact'])->name('user_contact');
     Route::get('products_details/{id}',[PagesController::class,'products_details']);

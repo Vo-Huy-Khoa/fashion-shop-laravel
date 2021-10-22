@@ -321,7 +321,7 @@
                                 <li><i class="fa fa-calendar-o"></i>{{$blogs->created_at}}</li>
                                 <li><i class="fa fa-comment-o"></i> 5</li>
                             </ul>
-                            <h5><a href="{{route('blog_details')}}">{{$blogs->title}}</a></h5>
+                            <h5><a href="">{{$blogs->title}}</a></h5>
                             <p>{{$blogs->description}}</p>
                         </div>
                     </div>

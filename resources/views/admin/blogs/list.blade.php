@@ -32,6 +32,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>Title</th>
+                                    <th>Brief</th>
                                     <th>Description</th>
                                     <th>Add</th>
                                     <th>Edit</th>
@@ -41,11 +42,11 @@
                             <tfoot>
                                 <tr>
                                     <th>Title</th>
+                                    <th>Brief</th>
                                     <th>Description</th>
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
-
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -54,6 +55,7 @@
                                     <td>{{$blogs->title}}
                                         <img style="width: 100px;height:100px" src="uploads/blogs/{{$blogs->image}}"alt=""> 
                                     </td>
+                                    <td>{{$blogs->brief}}</td>
                                     <td>{{$blogs->description}}</td>
                                     <td><a href="{{route('blogs_add')}}"><i></i>Add</a></td>
                                     <td><a href="blogs/edit/{{$blogs->id}}"><i></i>Edit</a></td>

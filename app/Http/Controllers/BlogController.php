@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Support\Str;
 
 class BlogController extends Controller
@@ -17,12 +18,15 @@ class BlogController extends Controller
     }
     public function getAdd()
     {
-        return view('admin.blogs.add');
+        $list_categories = Category::all();
+        return view('admin.blogs.add',['list_categories'=>$list_categories]);
     }
     public function postAdd(Request $request)
     {
         $blogs = new Blog();
+        $blogs->categories_id = $request->categories_id;
         $blogs->title = $request->title;
+        $blogs->brief = $request->brief;
         $blogs->description = $request->description;
         if ($request->hasFile('img')) {
             $file = $request->file('img');
@@ -57,13 +61,15 @@ class BlogController extends Controller
     public function getEdit($id)
     {
         $blogs = Blog::find($id);
-        return view('admin.blogs.edit',['blogs'=>$blogs]);
+        $list_categories = Category::all();
+        return view('admin.blogs.edit',['blogs'=>$blogs,'list_categories'=>$list_categories]);
     }
     public function postEdit(Request $request, $id)
     {
         $blogs = Blog::find($id);
-
+        $blogs->categories_id = $request->categories_id;
         $blogs->title = $request->title;
+        $blogs->brief = $request->brief;
         $blogs->description = $request->description;
         if ($request->hasFile('img')) {
             $file = $request->file('img');

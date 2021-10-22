@@ -66,9 +66,10 @@ class PagesController extends Controller
         return view('pages.blog');
     }
 
-    public function blog_details()
+    public function blog_details($id)
     {
-        return view('pages.blog_details');
+        $blogs_details = Blog::find($id);
+        return view('pages.blog_details',['blogs_details'=>$blogs_details]);
     }
 
     public function contact()
