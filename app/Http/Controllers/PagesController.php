@@ -140,4 +140,11 @@ class PagesController extends Controller
 
         return view('pages.search',['products_search'=>$products_search,'value'=>$value]);
     }
+
+    public function Search_blogs(Request $request)
+    {
+        $value = $request->value;
+        $list_blogs_search = Blog::where('title','like','%'.$value.'%')->take(50)->paginate(12);
+        return view('pages.blog_search',['list_blogs_search'=>$list_blogs_search]);
+    }
 }

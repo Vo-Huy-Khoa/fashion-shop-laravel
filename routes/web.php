@@ -145,6 +145,9 @@ Route::prefix('user')->group(function () {
 
     Route::post('search',[PagesController::class,'Search']);
 
+    Route::post('search_blogs',[PagesController::class,'Search_blogs']);
+
+
 
 
 

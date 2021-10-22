@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <div class="row">
-                        @foreach ($list_blogs as $blogs)
+                        @foreach ($list_blogs_search as $blogs)
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="blog__item">
                                 <div class="blog__item__pic">
