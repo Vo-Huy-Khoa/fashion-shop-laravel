@@ -28,6 +28,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class,'user_id','id');
     }
 
+    public function shippings()
+    {
+        return $this->hasMany(Shipping::class,'shipping_id','id');
+    }
+
 
     protected $fillable = [
         'name',

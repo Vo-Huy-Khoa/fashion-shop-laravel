@@ -8,6 +8,11 @@
 
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
+        @if (session('comment'))
+            <div class="alert alert-success">
+                {{ session('comment') }}
+            </div>
+        @endif
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
@@ -43,11 +48,11 @@
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input type="text" name="quantity" value="1">
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
+                        <a href="user/AddToCart/{{$products->id}}" class="primary-btn">ADD TO CARD</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
@@ -66,73 +71,36 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="be-comment-block">
-                        <h1 class="comments-title">Comments (3)</h1>
+                        <h1 class="comments-title">Comments ({{count($list_comments)}})</h1>
+                        @foreach ($list_comments as $comments)
+                            
+                        
                         <div class="be-comment">
                             <div class="be-img-comment">
-                                <a href="blog-detail-2.html">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
-                                        class="be-ava-comment">
+                                <a href="">
+                                    <img src="uploads/users/{{$comments->users->image}}">
                                 </a>
                             </div>
                             <div class="be-comment-content">
 
                                 <span class="be-comment-name">
-                                    <a href="blog-detail-2.html">Ravi Sah</a>
+                                    <a href="">{{$comments->users->name}}</a>
                                 </span>
                                 <span class="be-comment-time">
                                     <i class="fa fa-clock-o"></i>
-                                    May 27, 2015 at 3:14am
+                                    {{$comments->created_at}}
                                 </span>
 
                                 <p class="be-comment-text">
-                                    Pellentesque gravida tristique ultrices.
-                                    Sed blandit varius mauris, vel volutpat urna hendrerit id.
-                                    Curabitur rutrum dolor gravida turpis tristique efficitur.
+                                    {{$comments->comment}}
                                 </p>
                             </div>
                         </div>
-                        <div class="be-comment">
-                            <div class="be-img-comment">
-                                <a href="blog-detail-2.html">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""
-                                        class="be-ava-comment">
-                                </a>
-                            </div>
-                            <div class="be-comment-content">
-                                <span class="be-comment-name">
-                                    <a href="blog-detail-2.html">Phoenix, the Creative Studio</a>
-                                </span>
-                                <span class="be-comment-time">
-                                    <i class="fa fa-clock-o"></i>
-                                    {{$products->created_at}}
-                                </span>
-                                <p class="be-comment-text">
-                                    {{$products->description}}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="be-comment">
-                            <div class="be-img-comment">
-                                <a href="blog-detail-2.html">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""
-                                        class="be-ava-comment">
-                                </a>
-                            </div>
-                            <div class="be-comment-content">
-                                <span class="be-comment-name">
-                                    <a href="blog-detail-2.html">Cüneyt ŞEN</a>
-                                </span>
-                                <span class="be-comment-time">
-                                    <i class="fa fa-clock-o"></i>
-                                    May 27, 2015 at 3:14am
-                                </span>
-                                <p class="be-comment-text">
-                                    Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis eleifend lorem
-                                    non ant
-                                </p>
-                            </div>
-                        </div>
-                        <form action="" method="POST" class="form-block">
+                        @endforeach
+
+                        @if (Auth::user())
+                        <form action="user/comments/{{$products->id}}" method="POST" class="form-block">
+                            @csrf
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group fl_icon">
@@ -148,16 +116,17 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea style="width: 100%" class="form-input" required=""
+                                        <textarea style="width: 100%" name="comment" class="form-input" required=""
                                             placeholder="Your text"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <a style="width: 25%;" class="btn btn-primary pull-right">Send</a>
+                                        <button class="btn btn-primary" type="submit">Send</button>
 
                                     </div>
                                 </div>
                             </div>
                         </form>
+                        @endif
                     </div>
 
                 </div>

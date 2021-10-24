@@ -56,7 +56,7 @@
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="user/products_details/{{$products->id}}">{{$products->name}}</a></h6>
-                            <h5>{{number_format($products->unit_price)}}</h5>
+                            <h5>{{number_format($products->unit_price).'$'}}</h5>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
 
             <div class="checkout__form">
                 <h4>Billing Details</h4>
-                <form action="#" method="POST">
+                <form action="{{route('shipping')}}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
@@ -60,7 +60,7 @@
 
                             <div class="checkout__input">
                                 <p>Order notes<span>*</span></p>
-                                <input type="text" name="note"
+                                <input type="text" name="notes"
                                     placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
                         </div>

@@ -21,10 +21,10 @@
                         <div class="hero__search__form">
                             <form action="user/search" method="POST">
                                 @csrf
-                                {{-- <div class="hero__search__categories">
+                                <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
-                                </div> --}}
+                                </div>
 
                                 <input type="text" name="value" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>

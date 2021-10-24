@@ -33,7 +33,7 @@
                                         <h5>{{$cart->products->name}}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        {{number_format($cart->products->unit_price)}}
+                                        {{number_format($cart->products->unit_price).'$'}}
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
@@ -43,7 +43,7 @@
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        {{number_format($cart->products->unit_price * $cart->quantity )}}
+                                        {{number_format($cart->products->unit_price * $cart->quantity ).'$'}}
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
@@ -81,10 +81,10 @@
                         <h5>Cart Total</h5>
                         <ul>
                             @foreach ($list_oders as $oders)
-                                <li>{{$oders->products->name}} <span>{{number_format($oders->products->unit_price * $oders->quantity) }}</span></li>
+                                <li>{{$oders->products->name}} <span>{{number_format($oders->products->unit_price * $oders->quantity).'$' }}</span></li>
                             @endforeach
 
-                            <li>Total<span>{{number_format($oders->sum('total'))}}</span></li>
+                            <li>Total<span>{{number_format($oders->sum('total')).'$'}}</span></li>
 
                         </ul>
                         <a href="{{route('check_out')}}" class="primary-btn">PROCEED TO CHECKOUT</a>

@@ -1,4 +1,3 @@
-<?php $list_product_oder = (session()->has('list_cart'))? session()->get('list_cart') :[]; ?>
 
 <header class="header">
     <div class="header__top">
@@ -79,7 +78,7 @@
                         <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
                         <li><a href="{{route('shop_cart')}}"><i class="fa fa-shopping-bag"></i> <span>{{count($list_oders)}}</span></a></li>
                     </ul>
-                    <div class="header__cart__price">item: <span>$100.00</span></div>
+                    <div class="header__cart__price">Total: <span>{{number_format($list_oders->sum('total')).'$'}}</span></div>
                 </div>
             </div>
         </div>

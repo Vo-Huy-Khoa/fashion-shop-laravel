@@ -151,7 +151,7 @@ class OderController extends Controller
         }
         if (isset($cart[$id])) {
             $cart[$id]['quantity'] ++;
-            Oder::where('product_id', $id)->update(array('quantity' => $cart[$id]['quantity']));
+            Oder::where('product_id', $id)->update(array('quantity' => $cart[$id]['quantity'],'total'=> $products->unit_price * $cart[$id] ['quantity'] ));
             
             session()->put('cart', $cart);
             return redirect()->route('shop_cart');

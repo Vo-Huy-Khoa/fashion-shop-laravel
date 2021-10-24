@@ -8,8 +8,10 @@ use App\Http\Controllers\Oder_DetailController;
 use App\Http\Controllers\OderController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\UserController;
 use App\Models\Classify;
+use App\Models\Shipping;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -148,7 +150,9 @@ Route::prefix('user')->group(function () {
     Route::post('search_blogs',[PagesController::class,'Search_blogs']);
 
     Route::get('AddToCart/{product_id}',[OderController::class,'AddToCart']);
+    Route::post('shipping',[ShippingController::class,'postShipping'])->name('shipping');
 
+    Route::post('comments/{id}',[CommentController::class,'postcomments']);
 
 
 

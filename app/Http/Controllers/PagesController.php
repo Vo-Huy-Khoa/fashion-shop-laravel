@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Classify;
+use App\Models\Comment;
 use App\Models\Oder;
 use App\Models\Product;
 use App\Models\Properties;
@@ -30,7 +31,9 @@ class PagesController extends Controller
         $list_blogs = Blog::all();
         $list_properties = Properties::all();
         $list_products_sale = Product::whereNotNull('sale_price')->take(50)->paginate(12);
-        view()->share('users',Auth::user());
+
+        $list_comments = Comment::all();
+ 
         view()->share('list_categories',$list_categories);
         view()->share('list_classify',$list_classify);
         view()->share('list_products',$list_products);
@@ -38,6 +41,9 @@ class PagesController extends Controller
         view()->share('list_products_sale',$list_products_sale);
         view()->share('list_properties',$list_properties);
         view()->share('list_oders',$list_oders);
+
+        view()->share('list_comments',$list_comments);
+
 
 
 

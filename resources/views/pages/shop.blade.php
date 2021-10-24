@@ -151,8 +151,8 @@
                                         </div>
                                         <div class="product__discount__item__text">
                                             <span>{{$products_sale->categories->name}}</span>
-                                            <h5><a href="">{{$products_sale->name}}</a></h5>
-                                            <div class="product__item__price">{{number_format($products_sale->sale_price)."đ"}} <span>{{number_format($products_sale->unit_price)."đ"}}</span></div>
+                                            <h5><a href="user/products_details/{{$products_sale->id}}">{{$products_sale->name}}</a></h5>
+                                            <div class="product__item__price">{{number_format($products_sale->sale_price)."$"}} <span>{{number_format($products_sale->unit_price)."đ"}}</span></div>
                                         </div>
                                     </div>
                                 </div> 
@@ -198,8 +198,8 @@
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6><a href="">{{$products->name}}</a></h6>
-                                    <h5>{{number_format($products->unit_price)}}</h5>
+                                    <h6><a href="user/products_details/{{$products->id}}">{{$products->name}}</a></h6>
+                                    <h5>{{number_format($products->unit_price).'$'}}</h5>
                                 </div>
                             </div>
                         </div>  
