@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Classify;
+use App\Models\Oder;
 use App\Models\Product;
 use App\Models\Properties;
 use Illuminate\Http\Request;
@@ -21,6 +22,9 @@ class PagesController extends Controller
     public function __construct()
     {
         $list_categories = Category::all();
+        $user_id = Auth::id();
+        // $list_oders = Oder::where('user_id','$user_id')->take(50)->paginate(12);
+        $list_oders = Oder::all();
         $list_products = Product::all();
         $list_classify = Classify::all();
         $list_blogs = Blog::all();
@@ -33,6 +37,9 @@ class PagesController extends Controller
         view()->share('list_blogs',$list_blogs);
         view()->share('list_products_sale',$list_products_sale);
         view()->share('list_properties',$list_properties);
+        view()->share('list_oders',$list_oders);
+
+
 
 
 
@@ -78,7 +85,13 @@ class PagesController extends Controller
     }
     public function check_out()
     {
-        return view('pages.check_out');
+        if (Auth::check()) {
+            return view('pages.check_out');
+        }
+        else{
+            return view('pages.login');
+        }
+        
     }
 
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classify;
+use App\Models\Oder;
 use App\Models\Oder_Detail;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -17,7 +19,10 @@ class UserController extends Controller
     //
     public function __construct()
     {
-
+        $list_classify = Classify::all();
+        $list_oders = Oder::all();
+        view()->share('list_classify',$list_classify);
+        view()->share('list_oders',$list_oders);
     }
 
 
@@ -264,6 +269,7 @@ class UserController extends Controller
 
     public function users_logout()
     {
+        session()->forget('cart');
         Auth::logout();
         return redirect('home')->with('logout','Bạn đã đăng xuất thành công! ');
     }
@@ -312,7 +318,7 @@ class UserController extends Controller
         // }
          $save = $user -> save();
          if ($save) {
-              return redirect('users/login')->with('register','Bạn đã tạo thành công tài khoản '.$user->first_name." ".$user->last_name);
+              return redirect('user/login')->with('register','Bạn đã tạo thành công tài khoản '.$user->first_name." ".$user->last_name);
           }else{
              return back()->with('error','Bạn đã tạo thất bại tài khoản'.$user->first_name." ".$user->last_name);
           }

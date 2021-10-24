@@ -119,11 +119,11 @@ Route::middleware(['auth'])->group(function () {
 // Route User
 
 
-Route::get('users/login',[UserController::class,'getUsers_login'])->name('users_login');
-Route::post('users/login',[UserController::class,'postUsers_login'])->name('users_login');
+Route::get('user/login',[UserController::class,'getUsers_login'])->name('users_login');
+Route::post('user/login',[UserController::class,'postUsers_login'])->name('users_login');
 
-Route::get('users/register',[UserController::class,'getUsers_Register'])->name('users_register');
-Route::post('users/register',[UserController::class,'postUsers_Register'])->name('users_register');
+Route::get('user/register',[UserController::class,'getUsers_Register'])->name('users_register');
+Route::post('user/register',[UserController::class,'postUsers_Register'])->name('users_register');
 
 Route::get('users/logout',[UserController::class,'users_logout'])->name('users_logout');
 
@@ -147,7 +147,7 @@ Route::prefix('user')->group(function () {
 
     Route::post('search_blogs',[PagesController::class,'Search_blogs']);
 
-    Route::get('oders/{id}',[OderController::class,'oders']);
+    Route::get('AddToCart/{product_id}',[OderController::class,'AddToCart']);
 
 
 

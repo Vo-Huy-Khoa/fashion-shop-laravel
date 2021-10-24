@@ -6,6 +6,8 @@
 
     <!-- Breadcrumb Section End -->
 
+
+ 
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
@@ -15,6 +17,7 @@
                         <table>
                             <thead>
                                 <tr>
+
                                     <th class="shoping__product">Products</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
@@ -23,24 +26,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cart as $item_cart)
+                                @foreach ($list_oders as $cart)
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img style="width: 100px; height:100px" src="uploads/products/{{$item_cart['image']}}" alt="">
-                                        <h5>{{$item_cart['name']}}</h5>
+                                        <img style="width: 100px; height:100px" src="uploads/products/{{$cart->products->image}}" alt="">
+                                        <h5>{{$cart->products->name}}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        {{number_format($item_cart['unit_price'])}}
+                                        {{number_format($cart->products->unit_price)}}
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <input type="text" value="{{$item_cart['quantity']}}">
+                                                <input type="text" value="{{$cart->quantity}}">
                                             </div>
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        {{number_format($item_cart['unit_price'] * $item_cart['quantity'] )}}
+                                        {{number_format($cart->products->unit_price * $cart->quantity )}}
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
@@ -77,8 +80,12 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            @foreach ($list_oders as $oders)
+                                <li>{{$oders->products->name}} <span>{{number_format($oders->products->unit_price * $oders->quantity) }}</span></li>
+                            @endforeach
+
+                            <li>Total<span>{{number_format($oders->sum('total'))}}</span></li>
+
                         </ul>
                         <a href="{{route('check_out')}}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
