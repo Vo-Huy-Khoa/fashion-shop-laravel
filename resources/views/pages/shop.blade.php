@@ -14,7 +14,7 @@
                             <h4>Department</h4>
                             <ul>
                                 @foreach ($list_categories as $categories)
-                                    <li><a href="#">{{$categories->name}}</a></li>
+                                    <li><a href="user/search/categories/{{$categories->id}}">{{$categories->name}}</a></li>
                                 @endforeach
 
                             </ul>
@@ -67,62 +67,34 @@
                                 <h4>Latest Products</h4>
                                 <div class="latest-product__slider owl-carousel">
                                     <div class="latest-prdouct__slider__item">
+                                        @foreach ($list_products_shirt as $shirt)
                                         <a href="" class="latest-product__item">
                                             <div class="latest-product__item__pic">
-                                                <img src="./Front/img/latest-product/lp-1.jpg" alt="">
+                                                <img src="uploads/products/{{$shirt->image}}" alt="">
                                             </div>
                                             <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
+                                                <h6>{{$shirt->name}}</h6>
+                                                <span>${{number_format($shirt->unit_price)}}</span>
                                             </div>
                                         </a>
-                                        <a href="" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="./Front/img/latest-product/lp-2.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="./Front/img/latest-product/lp-3.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
+                                        @endforeach
+
+
                                     </div>
                                     <div class="latest-prdouct__slider__item">
+                                        @foreach ($list_products_hoodie as $hoodie)
                                         <a href="" class="latest-product__item">
                                             <div class="latest-product__item__pic">
-                                                <img src="./Front/img/latest-product/lp-1.jpg" alt="">
+                                                <img src="uploads/products/{{$hoodie->image}}" alt="">
                                             </div>
                                             <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
+                                                <h6>{{$hoodie->name}}</h6>
+                                                <span>${{number_format($hoodie->unit_price)}}</span>
                                             </div>
                                         </a>
-                                        <a href="" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="./Front/img/latest-product/lp-2.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
-                                        <a href="" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="./Front/img/latest-product/lp-3.jpg" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>Crab Pool Security</h6>
-                                                <span>$30.00</span>
-                                            </div>
-                                        </a>
+                                        @endforeach
+
+
                                     </div>
                                 </div>
                             </div>

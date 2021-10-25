@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 use function GuzzleHttp\Promise\all;
 
@@ -35,6 +36,15 @@ class PagesController extends Controller
 
         $list_comments = Comment::all();
  
+        $list_products_shirt = Product::where('category_id',6)->take(50)->paginate(3);
+        $list_products_hoodie = Product::where('category_id',3)->take(50)->paginate(3);
+        $list_products_somi = Product::where('category_id',9)->take(50)->paginate(3);
+        $list_products_shoe = Product::where('category_id',8)->take(50)->paginate(3);
+        $list_products_au = Product::where('category_id',7)->take(50)->paginate(3);
+
+
+
+
         view()->share('list_categories',$list_categories);
         view()->share('list_classify',$list_classify);
         view()->share('list_products',$list_products);
@@ -45,6 +55,16 @@ class PagesController extends Controller
 
         view()->share('list_comments',$list_comments);
         // view()->share('list_oders_null',$list_oders_null);
+        view()->share('list_products_shirt',$list_products_shirt);
+        view()->share('list_products_hoodie',$list_products_hoodie);
+        view()->share('list_products_somi',$list_products_somi);
+        view()->share('list_products_shoe',$list_products_shoe);
+        view()->share('list_products_au',$list_products_au);
+
+
+
+
+
 
 
 
@@ -71,7 +91,9 @@ class PagesController extends Controller
 
     {
         $products = Product::find($id);
-        return view('pages.shop_details',['products'=>$products]);
+        $id_categories = $products->category_id;
+        $list_products_categories = Product::where('category_id',$id_categories)->take(50)->paginate(10);
+        return view('pages.shop_details',['products'=>$products,'list_products_categories'=>$list_products_categories]);
     }
     public function shop_cart()
     {
@@ -163,6 +185,25 @@ class PagesController extends Controller
 
         return view('pages.search',['products_search'=>$products_search,'value'=>$value]);
     }
+
+
+    public function Search_categories($id)
+    {
+  
+        $products_search = Product::where('category_id',$id)->take(50)->paginate(12);
+    //take trả về số lượng kết quả
+    return view('pages.search',['products_search'=>$products_search]);
+
+    }
+
+    // public function Search_color($id,$value)
+    // {
+  
+    //     $products_search = Product::where('color',$value)->take(50)->paginate(12);
+    // //take trả về số lượng kết quả
+
+    //     return view('pages.search',['products_search'=>$products_search]);
+    // }
 
     public function Search_blogs(Request $request)
     {

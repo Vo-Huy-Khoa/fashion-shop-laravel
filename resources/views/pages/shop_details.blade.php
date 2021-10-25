@@ -146,7 +146,7 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($list_products as $products)
+                @foreach ($list_products_categories as $products)
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="uploads/products/{{$products->image}}">

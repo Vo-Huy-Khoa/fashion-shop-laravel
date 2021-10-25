@@ -146,6 +146,10 @@ Route::prefix('user')->group(function () {
     Route::post('profile_edit/{id}', [PagesController::class,'postProfile_Edit']);
 
     Route::post('search',[PagesController::class,'Search']);
+    Route::get('search/categories/{id}',[PagesController::class,'Search_categories']);
+    Route::get('search/color/{id}/{value}',[PagesController::class,'Search_color']);
+
+
 
     Route::post('search_blogs',[PagesController::class,'Search_blogs']);
 

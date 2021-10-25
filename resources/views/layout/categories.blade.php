@@ -10,7 +10,7 @@
                         </div>
                         <ul>
                             @foreach ($list_classify as $classify)
-                            <li><a href="#">{{$classify->name}}</a></li>
+                            <li><a href="">{{$classify->name}}</a></li>
                             @endforeach
 
                         </ul>
