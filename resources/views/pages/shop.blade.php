@@ -142,7 +142,7 @@
                                     <div class="product__discount__item">
                                         <div class="product__discount__item__pic set-bg"
                                             data-setbg="uploads/products/{{$products_sale->image}}">
-                                            <div class="product__discount__percent">-20%</div>
+                                            <div class="product__discount__percent">-{{number_format(($products_sale->unit_price - $products_sale->sale_price) * 100  / $products_sale->unit_price ,0)}}%</div>
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>

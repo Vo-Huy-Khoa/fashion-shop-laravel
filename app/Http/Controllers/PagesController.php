@@ -24,7 +24,8 @@ class PagesController extends Controller
     {
         $list_categories = Category::all();
         $user_id = Auth::id();
-        // $list_oders = Oder::where('user_id','$user_id')->take(50)->paginate(12);
+        // $list_oders = Oder::where('user_id',$user_id)->take(50)->paginate(12);
+        // $list_oders_null = Oder::whereNull('user_id')->take(50)->paginate(12);
         $list_oders = Oder::all();
         $list_products = Product::all();
         $list_classify = Classify::all();
@@ -43,6 +44,9 @@ class PagesController extends Controller
         view()->share('list_oders',$list_oders);
 
         view()->share('list_comments',$list_comments);
+        // view()->share('list_oders_null',$list_oders_null);
+
+
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,8 +19,8 @@ class CommentController extends Controller
         $comments->comment = $request->comment;
         $comments->save();
 
-
-
+        
+        $list_comments = Comment::where('product_id',$id)->get();
         return redirect()->back()->with('comment','Bình luận thành công !');
     }
 }

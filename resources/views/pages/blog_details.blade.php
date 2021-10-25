@@ -94,9 +94,9 @@
                 <div class="col-lg-8 col-md-7 order-md-1 order-1">
                     <div class="blog__details__text">
                         <img src="uploads/blogs/{{$blogs_details->image}}" alt="">
-                        <p>{{$blogs_details->description}}</p>
+                         <p>{{$blogs_details->brief}}</p>
                         <h3>{{$blogs_details->title}}</h3>
-                        <p>{{$blogs_details->brief}}</p>
+                        <p>{{$blogs_details->description}}</p>
                     </div>
                     <div class="blog__details__content">
                         <div class="row">
@@ -149,7 +149,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
-                            <img src="uploads/blogs/{{$blogs->image}}" alt="">
+                            <img style="width: 20px ;height:200px" src="uploads/blogs/{{$blogs->image}}" alt="">
                         </div>
                         <div class="blog__item__text">
                             <ul>

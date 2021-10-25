@@ -17,13 +17,14 @@ class OderController extends Controller
     //
 
     public function __construct()
-    {
+    {        $user_id = Auth::id();
+
         $list_categories = Category::all();
         $list_products = Product::all();
         $list_classify = Classify::all();
         $user_id = Auth::id();
         // $list_oders = Oder::where('user_id',$user_id)->take(50)->paginate(12);
-        $list_oders = Oder::all();
+        // $list_oders = Oder::all();
         // $list_cart = session()->get('list_cart');
         $list_blogs = Blog::all();
         $list_properties = Properties::all();
@@ -35,7 +36,7 @@ class OderController extends Controller
         view()->share('list_blogs',$list_blogs);
         view()->share('list_products_sale',$list_products_sale);
         view()->share('list_properties',$list_properties);
-        view()->share('list_oders',$list_oders);
+
 
     }
     public function list()

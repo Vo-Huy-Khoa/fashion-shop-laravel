@@ -53,7 +53,7 @@ class CategoryController extends Controller
         }
 
         if($categories->save())
-            return back()->with('add','Bạn đã xóa thành công '.$categories->name);
+            return back()->with('add','Bạn đã thêm thành công '.$categories->name);
         else
             return back()->with('error_add','Bạn đã xóa thất bại '.$categories->name);
 

@@ -75,7 +75,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="blog__item">
                                 <div class="blog__item__pic">
-                                    <img src="uploads/blogs/{{$blogs->image}}" alt="">
+                                    <img style="width: 30px ;height:200px" src="uploads/blogs/{{$blogs->image}}" alt="">
                                 </div>
                                 <div class="blog__item__text">
                                     <ul>
@@ -83,7 +83,7 @@
                                         <li><i class="fa fa-comment-o"></i> 5</li>
                                     </ul>
                                     <h5><a href="">{{$blogs->title}}</a></h5>
-                                    <p>{{$blogs->description}}</p>
+                                    <p>{{$blogs->brief}}</p>
                                     <a href="user/blog_details/{{$blogs->id}}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
                             </div>

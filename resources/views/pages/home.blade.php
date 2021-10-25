@@ -314,15 +314,15 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
-                            <img src="uploads/blogs/{{$blogs->image}}" alt="">
+                            <img style="width: 20px ;height:200px" src="uploads/blogs/{{$blogs->image}}" alt="">
                         </div>
                         <div class="blog__item__text">
                             <ul>
                                 <li><i class="fa fa-calendar-o"></i>{{$blogs->created_at}}</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
+                                <li><i class="fa fa-comment-o"></i>{{count($list_comments)}}</li>
                             </ul>
-                            <h5><a href="">{{$blogs->title}}</a></h5>
-                            <p>{{$blogs->description}}</p>
+                            <h5><a href="user/blog_details/{{$blogs->id}}">{{$blogs->title}}</a></h5>
+                            <p>{{$blogs->brief}}</p>
                         </div>
                     </div>
                 </div>

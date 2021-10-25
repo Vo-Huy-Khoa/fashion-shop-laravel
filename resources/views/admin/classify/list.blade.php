@@ -53,7 +53,10 @@
                             <tbody>
                                 @foreach ($list_classify as $classify)
                                 <tr>
-                                    <td>{{$classify->name}}</td>
+                                    <td style="text-align: center">{{$classify->name}} <br>
+                                    <img style="width: 100px;height:100px" src="uploads/classify/{{$classify->image}}"alt="">
+
+                                    </td>
                                     <td>{{$classify->description}}</td>
                                     <td><a href="{{route('classify_add')}}"><i></i>Add</a></td>
                                     <td><a href="admin/classify/edit/{{$classify->id}}"><i></i>Edit</a></td>

@@ -23,10 +23,10 @@
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
 
-                            @foreach ($list_products as $products)
+                           
                             <img data-imgbigurl="uploads/products/{{$products->image}}"
                             src="uploads/products/{{$products->image}}" alt="">    
-                            @endforeach
+                            
 
 
                         </div>
@@ -102,7 +102,7 @@
                         <form action="user/comments/{{$products->id}}" method="POST" class="form-block">
                             @csrf
                             <div class="row">
-                                <div class="col-xs-12 col-sm-6">
+                                {{-- <div class="col-xs-12 col-sm-6">
                                     <div class="form-group fl_icon">
                                         <div class="icon"><i class="fa fa-user"></i></div>
                                         <input class="form-input" type="text" placeholder="Your name">
@@ -113,7 +113,7 @@
                                         <div class="icon"><i class="fa fa-envelope-o"></i></div>
                                         <input class="form-input" type="text" placeholder="Your email">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <textarea style="width: 100%" name="comment" class="form-input" required=""
@@ -153,11 +153,11 @@
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li><a href="user/AddToCart/{{$products->id}}"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#">{{$products->name}}</a></h6>
+                            <h6><a href="user/products_details/{{$products->id}}">{{$products->name}}</a></h6>
                             <h5>{{number_format($products->unit_price)}}</h5>
                         </div>
                     </div>

@@ -18,4 +18,9 @@ class Category extends Model
     {
         return $this->belongsTo(Classify::class,'class_id','id');
     }
+
+    public function blogs()
+    {
+        return $this->belongsTo(Blog::class,'categories_id','id');
+    }
 }
