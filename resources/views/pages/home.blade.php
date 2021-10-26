@@ -64,6 +64,10 @@
 
 
             </div>
+            <div>
+            {{$list_products->links('pagination::bootstrap-4') }}
+            </div>
+
         </div>
     </section>
     <!-- Featured Section End -->
@@ -230,7 +234,7 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($list_blogs as $blogs)
+                @foreach ($list_blogs_home as $blogs)
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
@@ -250,6 +254,8 @@
 
 
             </div>
+            {{$list_blogs_home->links('pagination::bootstrap-4') }}
+
         </div>
     </section>
     <!-- Blog Section End -->

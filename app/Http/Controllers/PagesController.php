@@ -28,9 +28,13 @@ class PagesController extends Controller
         // $list_oders = Oder::where('user_id',$user_id)->take(50)->paginate(12);
         // $list_oders_null = Oder::whereNull('user_id')->take(50)->paginate(12);
         $list_oders = Oder::all();
-        $list_products = Product::all();
+        $list_products = Product::take(500)->paginate(12);
+        $list_products_shop = Product::take(500)->paginate(9);
+
         $list_classify = Classify::all();
-        $list_blogs = Blog::all();
+        $list_blogs_home = Blog::take(500)->paginate(3);
+        $list_blogs = Blog::take(500)->paginate(4);
+
         $list_properties = Properties::all();
         $list_products_sale = Product::whereNotNull('sale_price')->take(50)->paginate(12);
 
@@ -48,7 +52,9 @@ class PagesController extends Controller
         view()->share('list_categories',$list_categories);
         view()->share('list_classify',$list_classify);
         view()->share('list_products',$list_products);
+        view()->share('list_blogs_home',$list_blogs_home);
         view()->share('list_blogs',$list_blogs);
+
         view()->share('list_products_sale',$list_products_sale);
         view()->share('list_properties',$list_properties);
         view()->share('list_oders',$list_oders);
@@ -60,6 +66,8 @@ class PagesController extends Controller
         view()->share('list_products_somi',$list_products_somi);
         view()->share('list_products_shoe',$list_products_shoe);
         view()->share('list_products_au',$list_products_au);
+        view()->share('list_products_shop',$list_products_shop);
+
 
 
 

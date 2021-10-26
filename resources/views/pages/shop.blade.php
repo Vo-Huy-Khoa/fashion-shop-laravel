@@ -39,7 +39,7 @@
                         <div class="sidebar__item sidebar__item__color--option">
                             <h4>Colors</h4>
                             @foreach ($list_properties as $properties)
-                            <div class="sidebar__item__color sidebar__item__color--{{"".$properties->color.""}}">
+                            <div class="sidebar__item__color sidebar__item__color--{{$properties->color}}">
                                 <label for="{{$properties->color}}">
                                     {{$properties->color}}
                                     <input type="radio" id="{{$properties->color}}">
@@ -159,7 +159,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        @foreach ($list_products as $products)
+                        @foreach ($list_products_shop as $products)
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="uploads/products/{{$products->image}}">
@@ -181,13 +181,17 @@
 
 
                     </div>
-                    <div class="product__pagination">
+                    {{-- <div class="product__pagination">
                         <a href="#">1</a>
                         <a href="#">2</a>
                         <a href="#">3</a>
                         <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                    </div>
+                    </div> --}}
+                            {{$list_products_shop->links('pagination::bootstrap-4') }}
+
+
                 </div>
+
             </div>
         </div>
     </section>

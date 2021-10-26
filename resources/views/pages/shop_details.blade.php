@@ -22,10 +22,12 @@
                                 src="uploads/products/{{$products->image}}" alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
-
-                           
+                            @foreach ($list_products_categories as $products)
+                                
                             <img data-imgbigurl="uploads/products/{{$products->image}}"
-                            src="uploads/products/{{$products->image}}" alt="">    
+                            src="uploads/products/{{$products->image}}" alt=""> 
+     
+                            @endforeach
                             
 
 
@@ -74,7 +76,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button style="height: 51px;" type="submit" class="btn btn-success">ADD TO CARD</button>
+                        <button style="height: 51px; margin-right:5px;" type="submit" class="btn btn-success">ADD TO CARD</button>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
 
                     </form>
