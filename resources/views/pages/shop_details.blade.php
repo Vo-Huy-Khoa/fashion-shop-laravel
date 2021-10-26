@@ -43,8 +43,30 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">{{number_format($products->unit_price)." đ";}}</div>
+                        <div class="product__details__price">{{number_format($products->unit_price)}} $</div>
                         <p>{{$products->description}}</p>
+<style>
+    div.size{
+        margin-bottom:20px;
+    }
+    div.size input {
+        color: red;
+        width: 50px;
+        margin-right: 1.5%;
+    }
+    div.size input:hover{
+        background-color: yellow;
+    }
+
+</style>            <form action="user/AddToCart_Detail/{{$products->id}}" method="post">
+                        @csrf
+                        {{-- <div class="size"  >
+                            <input type="button" value="S" name>
+                            <input type="button" value="M">
+                            <input type="button" value="L">
+                            <input type="button" value="XL">
+                            <input type="button" value="XXL">
+                        </div> --}}
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
@@ -52,8 +74,12 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="user/AddToCart/{{$products->id}}" class="primary-btn">ADD TO CARD</a>
+                        <button style="height: 51px;" type="submit" class="btn btn-success">ADD TO CARD</button>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+
+                    </form>
+                        
+                        
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
@@ -158,7 +184,7 @@
                         </div>
                         <div class="product__item__text">
                             <h6><a href="user/products_details/{{$products->id}}">{{$products->name}}</a></h6>
-                            <h5>{{number_format($products->unit_price)}}</h5>
+                            <h5>{{number_format($products->unit_price)}} $</h5>
                         </div>
                     </div>
                 </div> 

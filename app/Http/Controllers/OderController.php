@@ -180,6 +180,20 @@ class OderController extends Controller
 
 }
 
+public function AddToCart_Detail(Request $request,$id)
+{
+    $products = Product::find($id);
+    $oders = new Oder();
+    $user_id = Auth::id();
+
+    $oders->user_id = $user_id;
+    $oders->product_id =$id;
+    $oders->quantity = $request->quantity;
+    $oders->total = $products->unit_price * $request->quantity;
+    $oders->save();
+    return redirect()->route('shop_cart');
+}
+
 
 
 }

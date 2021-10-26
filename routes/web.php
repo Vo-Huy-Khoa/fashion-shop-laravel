@@ -148,12 +148,16 @@ Route::prefix('user')->group(function () {
     Route::post('search',[PagesController::class,'Search']);
     Route::get('search/categories/{id}',[PagesController::class,'Search_categories']);
     Route::get('search/color/{id}/{value}',[PagesController::class,'Search_color']);
+    Route::get('search/classify/{id}',[PagesController::class,'Search_classify']);
+
 
 
 
     Route::post('search_blogs',[PagesController::class,'Search_blogs']);
 
     Route::get('AddToCart/{product_id}',[OderController::class,'AddToCart']);
+    Route::post('AddToCart_Detail/{id}',[OderController::class,'AddToCart_Detail']);
+
     Route::post('shipping',[ShippingController::class,'postShipping'])->name('shipping');
 
     Route::post('comments/{id}',[CommentController::class,'postcomments']);

@@ -11,7 +11,7 @@ class Classify extends Model
     use HasFactory;
     protected $table = "classifies";
 
-    public function category(): HasMany
+    public function category()
     {
         return $this->hasMany(Category::class, 'category_id','id');
     }

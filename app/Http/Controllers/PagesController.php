@@ -186,6 +186,14 @@ class PagesController extends Controller
         return view('pages.search',['products_search'=>$products_search,'value'=>$value]);
     }
 
+    public function Search_classify($id)
+    {
+        $classify = Classify::find($id);
+
+        $products_search = $classify->product; ;
+        return view('pages.search',['products_search'=>$products_search]);
+    }
+
 
     public function Search_categories($id)
     {

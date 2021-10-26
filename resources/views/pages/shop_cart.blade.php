@@ -29,9 +29,10 @@
                                 @foreach ($list_oders as $cart)
                                 <tr>
                                     <td class="shoping__cart__item">
+                                        <h5>{{substr($cart->products->name,0,30)}}</h5><br>
                                         <img style="width: 100px; height:100px" src="uploads/products/{{$cart->products->image}}" alt="">
-                                        <h5>{{$cart->products->name}}</h5>
                                     </td>
+                                    
                                     <td class="shoping__cart__price">
                                         {{number_format($cart->products->unit_price).'$'}}
                                     </td>

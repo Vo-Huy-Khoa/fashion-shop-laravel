@@ -105,7 +105,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 @foreach ($list_products_shirt as $shirt)
-                                <a href="" class="latest-product__item">
+                                <a href="user/products_details/{{$shirt->id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="uploads/products/{{$shirt->image}}" alt="">
                                     </div>
@@ -118,7 +118,7 @@
                             </div>
                             <div class="latest-prdouct__slider__item">
                                 @foreach ($list_products_au as $au)
-                                <a href="" class="latest-product__item">
+                                <a href="user/products_details/{{$au->id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="uploads/products/{{$au->image}}" alt="">
                                     </div>
@@ -138,7 +138,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 @foreach ($list_products_hoodie as $hoodie)
-                                <a href="" class="latest-product__item">
+                                <a href="user/products_details/{{$hoodie->id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="uploads/products/{{$hoodie->image}}" alt="">
                                     </div>
@@ -151,7 +151,7 @@
                             </div>
                             <div class="latest-prdouct__slider__item">
                                 @foreach ($list_products_somi as $somi)
-                                <a href="" class="latest-product__item">
+                                <a href="user/products_details/{{$somi->id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="uploads/products/{{$somi->image}}" alt="">
                                     </div>
@@ -171,7 +171,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 @foreach ($list_products_shoe as $shoe)
-                                <a href="" class="latest-product__item">
+                                <a href="user/products_details/{{$shoe->id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="uploads/products/{{$shoe->image}}" alt="">
                                     </div>

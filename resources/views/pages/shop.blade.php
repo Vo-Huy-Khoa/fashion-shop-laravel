@@ -171,7 +171,9 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="user/products_details/{{$products->id}}">{{$products->name}}</a></h6>
-                                    <h5>{{number_format($products->unit_price).'$'}}</h5>
+                                    {{-- <h5>{{number_format($products->unit_price).'$'}}</h5> --}}
+                                    <div class="product__item__price"><span><b>{{number_format($products->sale_price)."$"}}</b> &nbsp;</span> <tt style="color: red"> <strike>{{number_format($products->unit_price).'$'}}</strike> </tt></div>
+
                                 </div>
                             </div>
                         </div>  
