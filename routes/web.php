@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClassifyController;
 use App\Http\Controllers\CommentController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\UserController;
+use App\Models\Brand;
 use App\Models\Classify;
 use App\Models\Shipping;
 use Illuminate\Support\Facades\Route;
@@ -110,6 +112,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('edit/{id}',[BlogController::class,'getEdit']);
         Route::post('edit/{id}', [BlogController::class,'postEdit']);
         Route::get('delete/{id}', [BlogController::class,'delete']);
+    });
+
+
+    Route::prefix('brands')->group(function () {
+        Route::get('list',[BrandController::class,'list'])->name('brands_list');
+        Route::get('add',[BrandController::class,'getAdd'])->name('brands_add');
+        Route::post('add',[BrandController::class,'postAdd'])->name('brands_add');
+
+        Route::get('edit/{id}',[BrandController::class,'getEdit']);
+        Route::post('edit/{id}', [BrandController::class,'postEdit']);
+
+        Route::get('delete/{id}',[BrandController::class,'delete']);
+
     });
 
 
