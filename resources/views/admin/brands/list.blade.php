@@ -61,8 +61,8 @@
 
                                     </td>
                                     <td><a href="{{route('brands_add')}}"><i></i>Add</a></td>
-                                    <td><a href="brands/edit/{{$brands->id}}"><i></i>Edit</a></td>
-                                    <td><a href="users/delete/{{$brands->id}}"</a><i></i>Delete</a></td>
+                                    <td><a href="admin/brands/edit/{{$brands->id}}"><i></i>Edit</a></td>
+                                    <td><a href="admin/brands/delete/{{$brands->id}}"</a><i></i>Delete</a></td>
 
                                 </tr>
                                 @endforeach

@@ -14,7 +14,7 @@
                     {{ session('error') }}
                 </div>
             @endif
-            <form action="blogs/edit/{{$blogs->id}}" method="post" enctype="multipart/form-data">
+            <form action="admin/blogs/edit/{{$blogs->id}}" method="post" enctype="multipart/form-data">
                 @csrf
                 {{-- chus thich --}}
                     <div class="row py-2">
@@ -54,14 +54,14 @@
                     </div>
                     <div class="row py-2">
                         <label for="brief">Brief</label>
-                        <input type="text" class="bg-light form-control" id="brief" name="brief">
+                        <input type="text" class="bg-light form-control" value="{{$blogs->brief}}" id="brief" name="brief">
                 </div>
                     <div class="py-2">
                         <div class="row py-2">
 
                              <label for="description">Description</label>
                                 <textarea class="bg-light form-control" name="description" id="description" cols="30"
-                                    rows="10" aria-valuetext="{{$blogs->description}}">
+                                    rows="10" value="{{$blogs->description}}">
                                     </textarea>
                         </div>
 

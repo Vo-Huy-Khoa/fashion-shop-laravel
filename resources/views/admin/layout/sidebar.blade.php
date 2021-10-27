@@ -125,8 +125,8 @@
       <div id="color" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Example Pages</h6>
-          <a class="collapse-item" href="login.html">Add</a>
-          <a class="collapse-item" href="register.html">List</a>
+          <a class="collapse-item" href="{{route('colors_add')}}">Add</a>
+          <a class="collapse-item" href="{{route('colors_list')}}">List</a>
         </div>
       </div>
     </li>

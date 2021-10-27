@@ -27,7 +27,6 @@ class OderController extends Controller
         // $list_oders = Oder::all();
         // $list_cart = session()->get('list_cart');
         $list_blogs = Blog::all();
-        $list_properties = Properties::all();
         $list_products_sale = Product::whereNotNull('sale_price')->take(50)->paginate(12);
         view()->share('users',Auth::user());
         view()->share('list_categories',$list_categories);
@@ -35,7 +34,6 @@ class OderController extends Controller
         view()->share('list_products',$list_products);
         view()->share('list_blogs',$list_blogs);
         view()->share('list_products_sale',$list_products_sale);
-        view()->share('list_properties',$list_properties);
 
 
     }
@@ -79,48 +77,6 @@ class OderController extends Controller
     }
 
 
-    public function addCart($product_id)
-    {
-        // session()->forget('list_cart');
-        // session()->flush();
-        // dd('list_cart');
-        $products = Product::find($product_id);
-        $user_id = Auth::id();
-        $oders = new Oder();
-        
-        $list_cart = session()->get('list_cart');
-
-        
-        // if (array_key_exists($product_id,$list_cart)) {
-            
-        // }
-        if (isset($list_cart[$product_id])) {
-            $list_cart[$product_id] ['quantity'] = $list_cart[$product_id] ['quantity'] ++;
-            // $oders->quantity = $list_cart[$product_id] ['quantity']++;
-            // $oders->save();
-        }else{
-
-            $list_cart[$product_id] =
-            [
-                'name' => $products->name,
-                'image' => $products->image,
-                'unit_price' => $products->unit_price,
-                'quantity' => 1,
-
-            ];
-            $oders->user_id = $user_id;
-            $oders->product_id = $product_id;
-            $oders->quantity = $list_cart[$product_id] ['quantity'];
-            $oders->save();
-        }
-
-        session()->put('list_cart',$list_cart);
-
-
-        return redirect()->route('shop_cart');
-
-
-    }
 
 
         public function AddToCart($id)
@@ -145,6 +101,7 @@ class OderController extends Controller
                      $oders->product_id =$id;
                      $oders->quantity = $cart[$id] ['quantity'];
                      $oders->total = $products->unit_price * $cart[$id] ['quantity'];
+                     $oders->status = 0;
                      $oders->save();
 
             session()->put('cart', $cart);
@@ -171,6 +128,7 @@ class OderController extends Controller
         $oders->product_id =$id;
         $oders->quantity = $cart[$id] ['quantity'];
         $oders->total = $products->unit_price * $cart[$id] ['quantity'];
+        $oders->status = 0;
         $oders->save();
 
         session()->put('cart', $cart);

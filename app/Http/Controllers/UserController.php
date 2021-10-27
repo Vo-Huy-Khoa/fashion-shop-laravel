@@ -116,6 +116,7 @@ class UserController extends Controller
 
        $user->name = $request->name;
        $user->email = $request->email;
+       $user->type = 1;
 
        if($request->password == $request->repassword)
             $user->password = Hash::make($request->password) ;

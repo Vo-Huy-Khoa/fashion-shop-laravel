@@ -71,8 +71,8 @@
                             <div class="col-md-6">
                                 <label for="size">Size</label>
                                 <select class="bg-light form-control" id="size" name="size">
-                                    @foreach ($list_properties as $properties)
-                                        <option value="{{ $properties->size }}">{{ $properties->size }}</option>
+                                    @foreach ($list_sizes as $sizes)
+                                        <option value="{{ $sizes->id }}">{{ $sizes->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -80,17 +80,16 @@
                             <div class="col-md-6">
                                 <label for="color">Color</label>
                                 <select class="bg-light form-control" id="color" name="color">
-                                    @foreach ($list_properties as $properties)
-                                        <option value="{{ $properties->color }}">{{ $properties->color }}</option>
+                                    @foreach ($list_colors as $colors)
+                                        <option value="{{ $colors->id }}">{{ $colors->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="color">brand</label>
                                 <select class="bg-light form-control" id="brand" name="brand">
-                                    <?php $stt = 0; ?>
-                                    @foreach ($list_properties as $properties)
-                                        <option value="{{ $properties->brand }}">{{ $properties->brand }}</option>
+                                    @foreach ($list_brands as $brands)
+                                        <option value="{{ $brands->id }}">{{ $brands->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

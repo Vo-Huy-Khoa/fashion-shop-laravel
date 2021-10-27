@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Classify;
+use App\Models\Color;
 use App\Models\Comment;
 use App\Models\Oder;
 use App\Models\Product;
 use App\Models\Properties;
+use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -30,22 +32,18 @@ class PagesController extends Controller
         $list_oders = Oder::all();
         $list_products = Product::take(500)->paginate(12);
         $list_products_shop = Product::take(500)->paginate(9);
-
         $list_classify = Classify::all();
         $list_blogs_home = Blog::take(500)->paginate(3);
         $list_blogs = Blog::take(500)->paginate(4);
-
-        $list_properties = Properties::all();
         $list_products_sale = Product::whereNotNull('sale_price')->take(50)->paginate(12);
-
         $list_comments = Comment::all();
- 
+        $list_colors = Color::all();
         $list_products_shirt = Product::where('category_id',6)->take(50)->paginate(3);
         $list_products_hoodie = Product::where('category_id',3)->take(50)->paginate(3);
         $list_products_somi = Product::where('category_id',9)->take(50)->paginate(3);
         $list_products_shoe = Product::where('category_id',8)->take(50)->paginate(3);
         $list_products_au = Product::where('category_id',7)->take(50)->paginate(3);
-
+        $list_sizes = Size::all();
 
 
 
@@ -54,11 +52,9 @@ class PagesController extends Controller
         view()->share('list_products',$list_products);
         view()->share('list_blogs_home',$list_blogs_home);
         view()->share('list_blogs',$list_blogs);
-
+        view()->share('list_colors',$list_colors);
         view()->share('list_products_sale',$list_products_sale);
-        view()->share('list_properties',$list_properties);
         view()->share('list_oders',$list_oders);
-
         view()->share('list_comments',$list_comments);
         // view()->share('list_oders_null',$list_oders_null);
         view()->share('list_products_shirt',$list_products_shirt);
@@ -67,6 +63,8 @@ class PagesController extends Controller
         view()->share('list_products_shoe',$list_products_shoe);
         view()->share('list_products_au',$list_products_au);
         view()->share('list_products_shop',$list_products_shop);
+        view()->share('list_sizes',$list_sizes);
+
 
 
 

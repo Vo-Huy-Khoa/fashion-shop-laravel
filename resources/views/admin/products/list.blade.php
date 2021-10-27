@@ -65,14 +65,14 @@
                             <tbody>
                                 @foreach ($list_products as $products)
                                 <tr>
-                                    <td style="text-align: center">{{$products->name}}
+                                    <td style="text-align: center">{{Str::substr($products->name,0,50)}}
                                     <img style="width: 100px;height:100px" src="uploads/products/{{$products->image}}"alt="">
                                     </td>
                                     <td>{{$products->categories->name}}</td>
-                                    <td>{{$products->description}}</td>
-                                    <td>{{$products->size}}</td>
-                                    <td>{{$products->color}}</td>
-                                    <td>{{$products->brand}}</td>
+                                    <td>{{Str::substr($products->description, 0, 60) }}</td>
+                                    <td>{{$products->sizes->name}}</td>
+                                    <td>{{$products->colors->name}}</td>
+                                    <td>{{$products->brands->name}}</td>
                                     <td>{{$products->unit_price}}</td>
                                     <td>{{$products->sale_price}}</td>
                                     {{-- <td><a href="admin/comments/list/{{$products->id}}"><i></i>Comments</a></td> --}}

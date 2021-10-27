@@ -6,7 +6,7 @@
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">DataTables Blogs</h1>
+            <h1 class="h3 mb-0 text-gray-800">DataTables Color</h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="./">Home</a></li>
                 <li class="breadcrumb-item">Tables</li>
@@ -31,9 +31,8 @@
                         <table class="table align-items-center table-flush table-hover" id="dataTableHover">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Brief</th>
-                                    <th>Description</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -41,25 +40,25 @@
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Brief</th>
-                                    <th>Description</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
+
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($list_blogs as $blogs)
+                                @foreach ($list_colors as $colors)
                                 <tr>
-                                    <td>{{$blogs->title}}
-                                        <img style="width: 100px;height:100px" src="uploads/blogs/{{$blogs->image}}"alt=""> 
+                                    <td>{{$colors->id}}</td>
+                                    <td style="text-align: center">{{$colors->name}} <br>
+
                                     </td>
-                                    <td>{{$blogs->brief}}</td>
-                                    <td>{{$blogs->description}}</td>
-                                    <td><a href="{{route('blogs_add')}}"><i></i>Add</a></td>
-                                    <td><a href="admin/blogs/edit/{{$blogs->id}}"><i></i>Edit</a></td>
-                                    <td><a href="admin/blogs/delete/{{$blogs->id}}"</a><i></i>Delete</a></td>
+                                    <td><a href="{{route('colors_add')}}"><i></i>Add</a></td>
+                                    <td><a href="admin/colors/edit/{{$colors->id}}"><i></i>Edit</a></td>
+                                    <td><a href="admin/colors/delete/{{$colors->id}}"</a><i></i>Delete</a></td>
+
                                 </tr>
                                 @endforeach
 

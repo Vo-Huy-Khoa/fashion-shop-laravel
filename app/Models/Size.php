@@ -10,4 +10,9 @@ class Size extends Model
     use HasFactory;
     protected $table = "sizes";
 
+    public function products()
+    {
+        return $this->hasMany(Product::class,'size','id');
+    }
+
 }

@@ -38,11 +38,11 @@
                         </div>
                         <div class="sidebar__item sidebar__item__color--option">
                             <h4>Colors</h4>
-                            @foreach ($list_properties as $properties)
-                            <div class="sidebar__item__color sidebar__item__color--{{"".$properties->color.""}}">
-                                <label for="{{$properties->color}}">
-                                    {{$properties->color}}
-                                    <input type="radio" id="{{$properties->color}}">
+                            @foreach ($list_colors as $colors)
+                            <div class="sidebar__item__color sidebar__item__color--{{$colors->name}}">
+                                <label for="{{$colors->name}}">
+                                    {{$colors->name}}
+                                    <input type="radio" id="{{$colors->name}}">
                                 </label>
                             </div>
                             @endforeach
@@ -51,10 +51,10 @@
                         </div>
                         <div class="sidebar__item">
                             <h4>Popular Size</h4>
-                            @foreach ($list_properties as $properties)
+                            @foreach ($list_sizes as $sizes)
                             <div class="sidebar__item__size">
                                 <label for="large">
-                                    {{$properties->size}}
+                                    {{$sizes->name}}
                                     <input type="radio" id="large">
                                 </label>
                             </div>  

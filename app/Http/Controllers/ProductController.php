@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Brand;
 use Illuminate\Support\Str;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Comment;
 use App\Models\Oder;
 use App\Models\Product;
 use App\Models\Properties;
+use App\Models\Size;
 use Illuminate\Http\Request;
 class ProductController extends Controller
 {
@@ -14,9 +18,13 @@ class ProductController extends Controller
     public function __construct()
     {
         $list_categories = Category::all();
-        $list_properties = Properties::all();
+        $list_colors = Color::all();
+        $list_sizes = Size::all();
+        $list_brands = Brand::all();
+        view()->share('list_colors',$list_colors);
+        view()->share('list_sizes',$list_sizes);
+        view()->share('list_brands',$list_brands);
         view()->share('list_categories',$list_categories);
-        view()->share('list_properties',$list_properties);
     }
     //
 public function list()
@@ -28,9 +36,8 @@ public function list()
 
 public function add()
 {
-    $list_properties = Properties::all();
-    $list_categories = Category::all();
-    return view('admin.products.add',['list_categories'=> $list_categories,'list_properties'=>$list_properties]);
+
+    return view('admin.products.add');
 }
 
 public function postAdd(Request $request)
@@ -45,6 +52,7 @@ public function postAdd(Request $request)
     $products->brand = $request->brand;
     $products->unit_price = $request->unit_price;
     $products->sale_price = $request->sale_price;
+    $products->status = 1;
 
     if ($request->hasFile('img')) {
         $file = $request->file('img');
@@ -77,9 +85,8 @@ public function postAdd(Request $request)
 
 public function edit($id)
 {
-    $list_categories = Category::all();
     $products = Product::find($id);
-    return view('admin.products.edit',['products'=>$products,'list_categories'=>$list_categories]);
+    return view('admin.products.edit',['products'=>$products]);
 }
 
 public function postEdit(Request $request, $id)

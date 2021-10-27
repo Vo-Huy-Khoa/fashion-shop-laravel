@@ -88,7 +88,7 @@ class BrandController extends Controller
 
         $brands -> save();
 
-        return back()->with('edit','Sửa thành công '.$brands->name);
+        return redirect()->back()->with('edit','Sửa thành công '.$brands->name);
     }
     public function delete($id)
     {

@@ -16,6 +16,20 @@ class Product extends Model
         return $this->hasMany(comment::class,'product_id','id');
     }
 
+    public function sizes()
+    {
+        return $this->belongsTo(Size::class,'size','id');
+    }
+    public function colors()
+    {
+        return $this->belongsTo(Color::class,'color','id');
+    }
+
+    public function brands()
+    {
+        return $this->belongsTo(Brand::class,'brand','id');
+    }
+
  
     // public function properties()
     // {

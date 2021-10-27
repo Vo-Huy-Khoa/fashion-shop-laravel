@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClassifyController;
+use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Oder_DetailController;
 use App\Http\Controllers\OderController;
@@ -39,8 +40,6 @@ Route::post('admin/login',[UserController::class,'postAdmin_login'])->name('logi
 //Route Register
 Route::get('admin/register',[UserController::class,'getAdmin_Register']);
 Route::post('admin/register',[UserController::class,'postAdmin_register'])->name('register');
-
-
 Route::get('admin/logout',[UserController::class,'Admin_Logout'])->name('admin_logout');
 //Route Index
 
@@ -54,12 +53,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('list',[UserController::class,'list'])->name('users_list');
         Route::get('add',[UserController::class,'add'])->name('users_add');
         Route::post('add',[UserController::class,'postAdd'])->name('users_add');
-
         Route::get('edit/{id}',[UserController::class,'edit']);
         Route::post('edit/{id}',[UserController::class,'postEdit'])->name('edit');
-
         Route::get('delete/{id}',[UserController::class,'delete'])->name('delete');
-
        Route::get('profile/{id}',[UserController::class,'getAdmin_Profile']);
        Route::post('profile/{id}',[UserController::class,'postAdmin_Profile']);
 
@@ -69,10 +65,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('list',[ClassifyController::class,'list'])->name('classify_list');
         Route::get('add',[ClassifyController::class,'add'])->name('classify_add');
         Route::post('add',[ClassifyController::class,'postAdd'])->name('classify_add');
-
         Route::get('edit/{id}',[ClassifyController::class,'edit'])->name('classify_edit');
         Route::post('edit/{id}', [ClassifyController::class,'postEdit'])->name('classify_edit');
-
         Route::get('delete/{id}',[ClassifyController::class,'delete']);
 
     });
@@ -99,7 +93,27 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
+
+    Route::prefix('brands')->group(function () {
+        Route::get('list',[BrandController::class,'list'])->name('brands_list');
+        Route::get('add',[BrandController::class,'getAdd'])->name('brands_add');
+        Route::post('add',[BrandController::class,'postAdd'])->name('brands_add');
+        Route::get('edit/{id}',[BrandController::class,'getEdit']);
+        Route::post('edit/{id}', [BrandController::class,'postEdit']);
+        Route::get('delete/{id}',[BrandController::class,'delete']);
+
     });
+
+    Route::prefix('colors')->group(function () {
+        Route::get('list',[ColorController::class,'list'])->name('colors_list');
+        Route::get('add',[ColorController::class,'getAdd'])->name('colors_add');
+        Route::post('add',[ColorController::class,'postAdd'])->name('colors_add');
+        Route::get('edit/{id}',[ColorController::class,'getEdit']);
+        Route::post('edit/{id}', [ColorController::class,'postEdit']);
+        Route::get('delete/{id}',[ColorController::class,'delete']);
+
+    });
+
     Route::prefix('oder_details')->group(function () {
         Route::get('list',[Oder_DetailController::class,'list'])->name('oder_details_list');
         Route::get('delete/{id}',[OderController::class,'delete']);
@@ -114,18 +128,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('delete/{id}', [BlogController::class,'delete']);
     });
 
-
-    Route::prefix('brands')->group(function () {
-        Route::get('list',[BrandController::class,'list'])->name('brands_list');
-        Route::get('add',[BrandController::class,'getAdd'])->name('brands_add');
-        Route::post('add',[BrandController::class,'postAdd'])->name('brands_add');
-
-        Route::get('edit/{id}',[BrandController::class,'getEdit']);
-        Route::post('edit/{id}', [BrandController::class,'postEdit']);
-
-        Route::get('delete/{id}',[BrandController::class,'delete']);
-
     });
+
+
+
+
 
 
     

@@ -82,7 +82,7 @@
                                         <li><i class="fa fa-calendar-o"></i>{{$blogs->created_at}}</li>
                                         <li><i class="fa fa-comment-o"></i> 5</li>
                                     </ul>
-                                    <h5><a href="">{{$blogs->title}}</a></h5>
+                                    <h5><a href="user/blog_details/{{$blogs->id}}">{{$blogs->title}}</a></h5>
                                     <p>{{$blogs->brief}}</p>
                                     <a href="user/blog_details/{{$blogs->id}}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
