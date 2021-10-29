@@ -1,6 +1,9 @@
 
 @extends('layout.index')
 @section('content')
+@if (!Auth::check())
+    
+
 <link rel="stylesheet" href="{{ URL::asset('Front/css/login.css') }}">
 
     <div id="container">
@@ -38,5 +41,5 @@ document.getElementById("formcontainer").style.display="none";
 };
 });
 </script>
-
+@endif
 @endsection

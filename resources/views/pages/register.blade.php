@@ -1,6 +1,6 @@
 @extends('layout.index')
 @section('content')
-
+@if (!Auth::check())
 <style>
     .gradient-custom-3 {
   /* fallback for old browsers */
@@ -94,4 +94,5 @@
       </div>
     </div>
   </section>
+  @endif
 @endsection

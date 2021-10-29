@@ -27,9 +27,8 @@ class ShippingController extends Controller
         $shippings->save();
 
 
-        $oders_id = '85';
         $oder_details = new Oder_Detail();
-        $oder_details->oder_id = $oders_id;
+        $oder_details->users_id = $user_id;
         $oder_details->shipping_id = $shippings->id;
         $oder_details->status = '1';
 

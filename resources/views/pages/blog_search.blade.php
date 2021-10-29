@@ -19,7 +19,7 @@
                             <h4>Categories</h4>
                             <ul>
                                 @foreach ($list_categories as $categories)
-                                <li><a href="#">{{$categories->name}}</a></li>
+                                <li><a href="user/Search_categories_blogs/{{$categories->id}}">{{$categories->name}}</a></li>
                                 @endforeach
     
                             </ul>
@@ -82,7 +82,7 @@
                                         <li><i class="fa fa-calendar-o"></i>{{$blogs->created_at}}</li>
                                         <li><i class="fa fa-comment-o"></i> 5</li>
                                     </ul>
-                                    <h5><a href="">{{$blogs->title}}</a></h5>
+                                    <h5><a href="user/blog_details/{{$blogs->id}}">{{$blogs->title}}</a></h5>
                                     <p>{{$blogs->description}}</p>
                                     <a href="user/blog_details/{{$blogs->id}}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>

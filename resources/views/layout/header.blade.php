@@ -1,3 +1,9 @@
+<?php
+use App\Models\Oder;
+$users = Auth::user();
+        $id = Auth::id();
+        $list_oders = Oder::where('user_id',$id)->get();
+?>
 
 <header class="header">
     <div class="header__top">
@@ -22,7 +28,6 @@
                             <a href="#"><i class="fa fa-linkedin"></i></a>
                             <a href="#"><i class="fa fa-pinterest-p"></i></a>
                         </div>
-                        <?php $users = Auth::user(); ?>
                         @if(!isset($users))
                         
                             <div class="header__top__right__auth">

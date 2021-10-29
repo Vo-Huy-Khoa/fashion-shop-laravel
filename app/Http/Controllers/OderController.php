@@ -37,11 +37,7 @@ class OderController extends Controller
 
 
     }
-    public function list()
-    {
-        $list_oders = Oder::all();
-        return view('admin.oders.list',['list_oders'=>$list_oders]);
-    }
+
 
     // public function edit($id)
     // {

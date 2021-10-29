@@ -21,6 +21,6 @@ class Oder extends Model
 
     public function oder_details()
     {
-        return $this->belongsTo(Oder_Detail::class,'oder_id','id');
+        return $this->belongsTo(Oder_Detail::class,'users_id','user_id');
     }
 }

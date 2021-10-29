@@ -159,7 +159,7 @@
                 <a class="nav-link dropdown-toggle" href="admin/users/profile/{{$users->id}}" id="userDropdown" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   <img class="img-profile rounded-circle" src="admin_asset/img/boy.png" style="max-width: 60px">
-                  <span class="ml-2 d-none d-lg-inline text-white small">{{$users->name}}</span>
+                  <span class="ml-2 d-none d-lg-inline text-white small">{{$users->first_name." ".$users->last_name}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                   <a class="dropdown-item" href="admin/users/profile/{{$users->id}}">

@@ -1,7 +1,12 @@
 @extends('layout.index')
 @section('content')
     
-
+<?php
+use App\Models\Oder;
+$users = Auth::user();
+        $id = Auth::id();
+        $list_oders = Oder::where('user_id',$id)->get();
+?>
     <!-- Breadcrumb Section Begin -->
 
     <!-- Breadcrumb Section End -->
@@ -76,7 +81,7 @@
 
                                 </ul>
                                 <div class="checkout__order__subtotal">Subtotal <span>$0</span></div>
-                                <div class="checkout__order__total">Total <span>{{number_format($oders->sum('total'))}}</span></div>
+                                <div class="checkout__order__total">Total <span>{{number_format($list_oders->sum('total'))}}</span></div>
    
                                 <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
                                     ut labore et dolore magna aliqua.</p>

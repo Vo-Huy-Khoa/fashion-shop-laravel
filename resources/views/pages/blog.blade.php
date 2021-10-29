@@ -19,7 +19,7 @@
                             <h4>Categories</h4>
                             <ul>
                                 @foreach ($list_categories as $categories)
-                                <li><a href="#">{{$categories->name}}</a></li>
+                                <li><a href="user/Search_categories_blogs/{{$categories->id}}">{{$categories->name}}</a></li>
                                 @endforeach
     
                             </ul>

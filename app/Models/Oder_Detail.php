@@ -12,7 +12,7 @@ class Oder_Detail extends Model
 
     public function oders()
     {
-        return $this->belongsTo(Oder::class,'oder_id','id');
+        return $this->belongsTo(Oder::class,'users_id','user_id');
     }
     public function shippings()
     {

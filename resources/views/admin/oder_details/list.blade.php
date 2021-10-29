@@ -11,11 +11,19 @@
                 <li class="breadcrumb-item active" aria-current="page">List</li>
             </ol>
         </div>
-        @if (session('delete'))
-        <div class="alert alert-danger">
+        @if(session('delete'))
+        <div  class="alert alert-danger">
             {{ session('delete') }}
         </div>
-    @endif
+        @elseif(session('oder_close'))
+        <div class="alert alert-success">
+            {{ session('oder_close') }}
+        </div>
+        @elseif(session('un_oder_close'))
+        <div  class="alert alert-danger">
+            {{ session('un_oder_close') }}
+        </div>
+        @endif
         <div class="row">
             <div class="col-lg-12 mb-4">
                 <!-- Simple Tables -->
@@ -43,17 +51,31 @@
                                 @foreach ($list_oder_details as $oder_details)
                                 <tr>
                                     <td>{{$oder_details->id}}</td>
-                                    <td>{{$oder_details->oders->users->name}}</td>
-                                    <td>{{$oder_details->oders->products->name}}</td>
-                                    <td>1</td>
+                                    <td>{{$oder_details->oders->users->first_name." ".$oder_details->oders->users->last_name}}</td>
+                                    <td>
+                                        {{$oder_details->oders->products->name}}
+
+
+
+                                    </td>
+                                    <td>{{$oder_details->oders->quantity}}</td>
                                     <td>{{$oder_details->shippings->address.", ".$oder_details->shippings->city}}</td>
-                                    <td>{{$oder_details->total}}</td>
+                                    {{-- <td>{{number_format($list_oders->sum('total')).'$'}}</td> --}}
                                     
                                     <td><a href="admin/oder_details/delete/{{$oder_details->id}}"</a><i></i>Delete</a></td>
-
-                                    <td><span class="badge badge-success">Delivered</span></td>
-                                    <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                                </tr>
+                                    
+                                    @if($oder_details->status == '0')
+                                        <td><span class="badge badge-success">Đã chốt</span></td>   
+                                    @elseif($oder_details->status == '1')
+                                        <td><span class="badge badge-danger">Chưa chốt</span></td>
+                                    @endif
+                                    @if($oder_details->status == '0')
+                                        <td><a href="admin/oder_details/un_oder_close/{{$oder_details->id}}" class="btn btn-sm btn-danger">Hủy</a></td>
+                                    @elseif($oder_details->status == '1')
+                                        <td><a href="admin/oder_details/oder_close/{{$oder_details->id}}" class="btn btn-sm btn-primary">Chốt đơn</a></td>
+                                     @endif
+                                
+                                    </tr>
                                 @endforeach
 
 

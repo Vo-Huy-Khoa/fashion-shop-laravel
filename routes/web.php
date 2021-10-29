@@ -116,7 +116,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('oder_details')->group(function () {
         Route::get('list',[Oder_DetailController::class,'list'])->name('oder_details_list');
-        Route::get('delete/{id}',[OderController::class,'delete']);
+        Route::get('delete/{id}',[Oder_DetailController::class,'delete']);
+        Route::get('oder_close/{id}',[Oder_DetailController::class,'oder_close']);
+        Route::get('un_oder_close/{id}',[Oder_DetailController::class,'un_oder_close']);
+
     });
 
     Route::prefix('blogs')->group(function () {
@@ -171,7 +174,7 @@ Route::prefix('user')->group(function () {
     Route::get('search/categories/{id}',[PagesController::class,'Search_categories']);
     Route::get('search/color/{id}/{value}',[PagesController::class,'Search_color']);
     Route::get('search/classify/{id}',[PagesController::class,'Search_classify']);
-
+    Route::get('Search_categories_blogs/{id}',[PagesController::class,'Search_categories_blogs']);
 
 
 

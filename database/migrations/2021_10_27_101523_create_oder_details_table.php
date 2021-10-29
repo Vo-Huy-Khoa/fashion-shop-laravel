@@ -15,8 +15,8 @@ class CreateOderDetailsTable extends Migration
     {
         Schema::create('oder_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('oder_id')->unsigned()->nullable();
-            $table->foreign('oder_id')->references('id')->on('oders');
+            $table->integer('users_id')->unsigned()->nullable();
+            $table->foreign('users_id')->references('user_id')->on('oders');
             $table->integer('shipping_id')->unsigned()->nullable();
             $table->foreign('shipping_id')->references('id')->on('shippings');
             $table->tinyInteger('status')->nullable();

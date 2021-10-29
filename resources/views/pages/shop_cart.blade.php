@@ -85,7 +85,7 @@
                                 <li>{{$oders->products->name}} <span>{{number_format($oders->products->unit_price * $oders->quantity).'$' }}</span></li>
                             @endforeach
 
-                            <li>Total<span>{{number_format($oders->sum('total')).'$'}}</span></li>
+                            <li>Total<span>{{number_format($list_oders->sum('total')).'$'}}</span></li>
 
                         </ul>
                         <a href="{{route('check_out')}}" class="primary-btn">PROCEED TO CHECKOUT</a>

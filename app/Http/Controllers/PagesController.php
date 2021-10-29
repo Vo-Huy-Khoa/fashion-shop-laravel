@@ -26,25 +26,26 @@ class PagesController extends Controller
     public function __construct()
     {
         $list_categories = Category::all();
-        $user_id = Auth::id();
-        // $list_oders = Oder::where('user_id',$user_id)->take(50)->paginate(12);
-        // $list_oders_null = Oder::whereNull('user_id')->take(50)->paginate(12);
-        $list_oders = Oder::all();
+        
+        // $list_oders = Oder::all();
+
+        $list_classify = Classify::all();
+        $list_comments = Comment::all();
+
         $list_products = Product::take(500)->paginate(12);
         $list_products_shop = Product::take(500)->paginate(9);
-        $list_classify = Classify::all();
         $list_blogs_home = Blog::take(500)->paginate(3);
         $list_blogs = Blog::take(500)->paginate(4);
+        
         $list_products_sale = Product::whereNotNull('sale_price')->take(50)->paginate(12);
-        $list_comments = Comment::all();
-        $list_colors = Color::all();
         $list_products_shirt = Product::where('category_id',6)->take(50)->paginate(3);
         $list_products_hoodie = Product::where('category_id',3)->take(50)->paginate(3);
         $list_products_somi = Product::where('category_id',9)->take(50)->paginate(3);
         $list_products_shoe = Product::where('category_id',8)->take(50)->paginate(3);
         $list_products_au = Product::where('category_id',7)->take(50)->paginate(3);
-        $list_sizes = Size::all();
 
+        $list_sizes = Size::all();
+        $list_colors = Color::all();
 
 
         view()->share('list_categories',$list_categories);
@@ -54,7 +55,6 @@ class PagesController extends Controller
         view()->share('list_blogs',$list_blogs);
         view()->share('list_colors',$list_colors);
         view()->share('list_products_sale',$list_products_sale);
-        view()->share('list_oders',$list_oders);
         view()->share('list_comments',$list_comments);
         // view()->share('list_oders_null',$list_oders_null);
         view()->share('list_products_shirt',$list_products_shirt);
@@ -67,21 +67,9 @@ class PagesController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        if (Auth::check()) {
-            view()->share('users',Auth::user());
-        }
+        // if (Auth::check()) {
+        //     view()->share('users',Auth::user());
+        // }
 
     }
 
@@ -99,11 +87,14 @@ class PagesController extends Controller
         $products = Product::find($id);
         $id_categories = $products->category_id;
         $list_products_categories = Product::where('category_id',$id_categories)->take(50)->paginate(10);
+        
         return view('pages.shop_details',['products'=>$products,'list_products_categories'=>$list_products_categories]);
     }
     public function shop_cart()
     {
-        return view('pages.shop_cart');
+        $id = Auth::id();
+        $list_oders = Oder::where('user_id',$id)->get();
+        return view('pages.shop_cart',['list_oders'=>$list_oders]);
     }
 
     public function blog()
@@ -114,6 +105,7 @@ class PagesController extends Controller
     public function blog_details($id)
     {
         $blogs_details = Blog::find($id);
+       
         return view('pages.blog_details',['blogs_details'=>$blogs_details]);
     }
 
@@ -206,7 +198,8 @@ class PagesController extends Controller
   
         $products_search = Product::where('category_id',$id)->take(50)->paginate(12);
     //take trả về số lượng kết quả
-    return view('pages.search',['products_search'=>$products_search]);
+    
+        return view('pages.search',['products_search'=>$products_search]);
 
     }
 
@@ -223,6 +216,15 @@ class PagesController extends Controller
     {
         $value = $request->value;
         $list_blogs_search = Blog::where('title','like','%'.$value.'%')->take(50)->paginate(12);
+        
         return view('pages.blog_search',['list_blogs_search'=>$list_blogs_search]);
+    }
+
+    public function Search_categories_blogs($id)
+    {
+        $list_blogs_search = Blog::where('categories_id',$id)->take(50)->paginate(12);
+        
+        return view('pages.blog_search',['list_blogs_search'=>$list_blogs_search]);
+
     }
 }
