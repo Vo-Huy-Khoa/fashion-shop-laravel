@@ -205,49 +205,52 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th>Order ID</th>
-                  <th>Customer</th>
-                  <th>Item</th>
+                  <th>User Name</th>
+                  <th>Product Name</th>
+                  <th>Quantity</th>
+                  <th>Address</th>
+                  <th>Total</th>
+                  {{-- <th>Delete</th> --}}
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
+                @foreach ($list_oder_details as $oder_details)
                 <tr>
-                  <td><a href="#">RA0449</a></td>
-                  <td>Udin Wayang</td>
-                  <td>Nasi Padang</td>
-                  <td><span class="badge badge-success">Delivered</span></td>
-                  <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
+                <td>{{$oder_details->oders->users->first_name." ".$oder_details->oders->users->last_name}}</td>
+                <td>
+                    {{substr($oder_details->oders->products->name,0,26)}}
+                    {{-- <?php 
+                    use App\Models\Oder;
+                     $list_oders = Oder::where('user_id',$oder_details->users_id)->get();
+                    ?>
+                    
+                    @foreach ($list_oders as $oders)
+                        {{$oders->products->name}}
+                    @endforeach --}}
+
+
+                </td>
+                <td>{{$oder_details->oders->quantity}}</td>
+                <td>{{$oder_details->shippings->address.", ".$oder_details->shippings->city}}</td>
+                <td>{{number_format($list_oders->sum('total')).'$'}}</td>
+                
+                {{-- <td><a href="admin/oder_details/delete/{{$oder_details->id}}"</a><i></i>Delete</a></td> --}}
+                
+                @if($oder_details->status == '0')
+                    <td><span class="badge badge-success">Đã chốt</span></td>   
+                @elseif($oder_details->status == '1')
+                    <td><span class="badge badge-danger">Chưa chốt</span></td>
+                @endif
+                @if($oder_details->status == '0')
+                    <td><a href="admin/oder_details/un_oder_close/{{$oder_details->id}}" class="btn btn-sm btn-danger">Hủy</a></td>
+                @elseif($oder_details->status == '1')
+                    <td><a href="admin/oder_details/oder_close/{{$oder_details->id}}" class="btn btn-sm btn-primary">Chốt đơn</a></td>
+                 @endif
+            
                 </tr>
-                <tr>
-                  <td><a href="#">RA5324</a></td>
-                  <td>Jaenab Bajigur</td>
-                  <td>Gundam 90' Edition</td>
-                  <td><span class="badge badge-warning">Shipping</span></td>
-                  <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                </tr>
-                <tr>
-                  <td><a href="#">RA8568</a></td>
-                  <td>Rivat Mahesa</td>
-                  <td>Oblong T-Shirt</td>
-                  <td><span class="badge badge-danger">Pending</span></td>
-                  <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                </tr>
-                <tr>
-                  <td><a href="#">RA1453</a></td>
-                  <td>Indri Junanda</td>
-                  <td>Hat Rounded</td>
-                  <td><span class="badge badge-info">Processing</span></td>
-                  <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                </tr>
-                <tr>
-                  <td><a href="#">RA1998</a></td>
-                  <td>Udin Cilok</td>
-                  <td>Baby Powder</td>
-                  <td><span class="badge badge-success">Delivered</span></td>
-                  <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                </tr>
+            @endforeach
               </tbody>
             </table>
           </div>

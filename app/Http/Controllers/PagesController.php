@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Classify;
 use App\Models\Color;
 use App\Models\Comment;
+use App\Models\Message;
 use App\Models\Oder;
 use App\Models\Product;
 use App\Models\Properties;
@@ -26,11 +27,12 @@ class PagesController extends Controller
     public function __construct()
     {
         $list_categories = Category::all();
-        
+        $list_message = Message::all();
+        view()->share('list_message',$list_message);
         // $list_oders = Oder::all();
 
         $list_classify = Classify::all();
-        $list_comments = Comment::all();
+        // $list_comments = Comment::all();
 
         $list_products = Product::take(500)->paginate(12);
         $list_products_shop = Product::take(500)->paginate(9);
@@ -55,8 +57,7 @@ class PagesController extends Controller
         view()->share('list_blogs',$list_blogs);
         view()->share('list_colors',$list_colors);
         view()->share('list_products_sale',$list_products_sale);
-        view()->share('list_comments',$list_comments);
-        // view()->share('list_oders_null',$list_oders_null);
+        // view()->share('list_comments',$list_comments);
         view()->share('list_products_shirt',$list_products_shirt);
         view()->share('list_products_hoodie',$list_products_hoodie);
         view()->share('list_products_somi',$list_products_somi);
@@ -87,8 +88,12 @@ class PagesController extends Controller
         $products = Product::find($id);
         $id_categories = $products->category_id;
         $list_products_categories = Product::where('category_id',$id_categories)->take(50)->paginate(10);
-        
-        return view('pages.shop_details',['products'=>$products,'list_products_categories'=>$list_products_categories]);
+        $list_comments = Comment::where('product_id',$id)->get();
+        return view('pages.shop_details',['products'=>$products,
+                                        'list_products_categories'=>$list_products_categories,
+                                        'list_comments'=>$list_comments]);
+
+        // return redirect()->route();
     }
     public function shop_cart()
     {

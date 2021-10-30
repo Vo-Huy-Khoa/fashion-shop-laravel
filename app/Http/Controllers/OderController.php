@@ -97,7 +97,7 @@ class OderController extends Controller
                      $oders->product_id =$id;
                      $oders->quantity = $cart[$id] ['quantity'];
                      $oders->total = $products->unit_price * $cart[$id] ['quantity'];
-                     $oders->status = 0;
+                     $oders->status = '1';
                      $oders->save();
 
             session()->put('cart', $cart);
@@ -124,7 +124,7 @@ class OderController extends Controller
         $oders->product_id =$id;
         $oders->quantity = $cart[$id] ['quantity'];
         $oders->total = $products->unit_price * $cart[$id] ['quantity'];
-        $oders->status = 0;
+        $oders->status = '1';
         $oders->save();
 
         session()->put('cart', $cart);

@@ -10,6 +10,13 @@
     <!-- Contact Section Begin -->
     <section class="contact spad">
         <div class="container">
+
+            @if (session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                     <div class="contact__widget">
@@ -44,10 +51,12 @@
     </section>
     <!-- Contact Section End -->
 
+ 
+    
     <!-- Map Begin -->
     <div class="map">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49116.39176087041!2d-86.41867791216099!3d39.69977417971648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886ca48c841038a1%3A0x70cfba96bf847f0!2sPlainfield%2C%20IN%2C%20USA!5e0!3m2!1sen!2sbd!4v1586106673811!5m2!1sen!2sbd"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61466.75893325878!2d108.32775796429377!3d15.662422218042128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3169e13c0741604b%3A0xdba5862258c0a32!2zQsOsbmggQ2jDoW5oLCBUaMSDbmcgQsOsbmggRGlzdHJpY3QsIFByb3ZpbmNlIGRlIFF14bqjbmcgTmFt!5e0!3m2!1sfr!2s!4v1635565330617!5m2!1sfr!2s"
             height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         <div class="map-inside">
             <i class="icon_pin"></i>
@@ -72,7 +81,8 @@
                     </div>
                 </div>
             </div>
-            <form action="#">
+            <form action="{{route('messages')}}" method="POST">
+                @csrf
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <input type="text" placeholder="Your name">
@@ -81,7 +91,7 @@
                         <input type="text" placeholder="Your Email">
                     </div>
                     <div class="col-lg-12 text-center">
-                        <textarea placeholder="Your message"></textarea>
+                        <textarea name="content" placeholder="Your message"></textarea>
                         <button type="submit" class="site-btn">SEND MESSAGE</button>
                     </div>
                 </div>

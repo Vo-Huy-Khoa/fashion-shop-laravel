@@ -33,7 +33,7 @@ class ShippingController extends Controller
         $oder_details->status = '1';
 
         $oder_details->save();
-        return redirect()->back();
+        return redirect()->route('out_cart');
 
     }
 }

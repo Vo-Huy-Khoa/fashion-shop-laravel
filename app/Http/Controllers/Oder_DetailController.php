@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classify;
 use App\Models\Oder;
 use App\Models\Oder_Detail;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class Oder_DetailController extends Controller
     //
     public function __construct()
     {
-        
+        $list_classify = Classify::all();
+        view()->share('list_classify',$list_classify);
     }
     public function list()
     {
@@ -47,6 +49,14 @@ class Oder_DetailController extends Controller
         $oder_details->status = '1';
         $oder_details->save();
         return redirect()->back()->with('un_oder_close','Hủy chốt đơn thành công đơn hàng cho '.$oder_details->shippings->first_name." ".$oder_details->shippings->last_name);
+    }
+
+    public function out_cart()
+    {
+
+        $out_cart = Oder_Detail::where('users_id',Auth::id())->get();
+        // dd($out_cart);
+        return view('pages.out_cart',['out_cart'=>$out_cart]);
     }
 
 }

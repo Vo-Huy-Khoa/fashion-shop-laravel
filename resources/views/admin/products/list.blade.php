@@ -6,7 +6,7 @@
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">DataTables Users</h1>
+            <h1 class="h3 mb-0 text-gray-800">DataTables Products</h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="./">Home</a></li>
                 <li class="breadcrumb-item">Tables</li>
@@ -32,7 +32,6 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>Name</th>
-                                    <th>Categories Name</th>
                                     <th>Description</th>
                                     <th>Size</th>
                                     <th>Color</th>
@@ -40,6 +39,8 @@
                                     <th>Unit Price</th>
                                     <th>Sale Price</th>
                                     {{-- <th>Comments</th> --}}
+                                    <th>Status</th>
+
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -48,7 +49,6 @@
                             <tfoot>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Categories Name</th>
                                     <th>Description</th>
                                     <th>Size</th>
                                     <th>Color</th>
@@ -56,6 +56,7 @@
                                     <th>Unit Price</th>
                                     <th>Sale Price</th>
                                     {{-- <th>Comments</th> --}}
+                                    <th>Status</th>
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -68,13 +69,18 @@
                                     <td style="text-align: center">{{Str::substr($products->name,0,50)}}
                                     <img style="width: 100px;height:100px" src="uploads/products/{{$products->image}}"alt="">
                                     </td>
-                                    <td>{{$products->categories->name}}</td>
                                     <td>{{Str::substr($products->description, 0, 60) }}</td>
                                     <td>{{$products->sizes->name}}</td>
                                     <td>{{$products->colors->name}}</td>
                                     <td>{{$products->brands->name}}</td>
                                     <td>{{$products->unit_price}}</td>
                                     <td>{{$products->sale_price}}</td>
+                                    @if($products->status == '0')
+                                        <td><span class="badge badge-success">Đã bán</span></td>   
+                                    @elseif($products->status == '1')
+                                        <td><span class="badge badge-danger">Chưa bán</span></td>
+                                     @endif
+
                                     {{-- <td><a href="admin/comments/list/{{$products->id}}"><i></i>Comments</a></td> --}}
                                     <td><a href="{{route('products_add')}}"><i></i>Add</a></td>
                                     <td><a href="admin/products/edit/{{$products->id}}"><i></i>Edit</a></td>

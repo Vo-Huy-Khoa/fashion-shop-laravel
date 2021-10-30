@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClassifyController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Oder_DetailController;
 use App\Http\Controllers\OderController;
 use App\Http\Controllers\PagesController;
@@ -131,6 +132,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('delete/{id}', [BlogController::class,'delete']);
     });
 
+    Route::prefix('message')->group(function () {
+        Route::get('list',[MessageController::class,'list']);
+    });
+
     });
 
 
@@ -182,11 +187,14 @@ Route::prefix('user')->group(function () {
 
     Route::get('AddToCart/{product_id}',[OderController::class,'AddToCart']);
     Route::post('AddToCart_Detail/{id}',[OderController::class,'AddToCart_Detail']);
+    Route::get('out_cart',[Oder_DetailController::class,'out_cart'])->name('out_cart');
+
 
     Route::post('shipping',[ShippingController::class,'postShipping'])->name('shipping');
 
     Route::post('comments/{id}',[CommentController::class,'postcomments']);
 
+    Route::post('message',[MessageController::class,'send'])->name('messages');
 
 
 

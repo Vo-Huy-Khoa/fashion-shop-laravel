@@ -20,7 +20,7 @@ class CommentController extends Controller
         $comments->save();
 
         
-        $list_comments = Comment::where('product_id',$id)->get();
-        return redirect()->back()->with('comment','Bình luận thành công !');
+
+        return back()->with('comment','Bình luận thành công !');
     }
 }

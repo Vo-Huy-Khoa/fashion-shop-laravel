@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classify;
+use App\Models\Message;
 use App\Models\Oder;
 use App\Models\Oder_Detail;
 use App\Models\Product;
@@ -23,6 +24,11 @@ class UserController extends Controller
         $list_oders = Oder::all();
         view()->share('list_classify',$list_classify);
         view()->share('list_oders',$list_oders);
+        $list_message = Message::all();
+        view()->share('list_message',$list_message);
+
+
+        
     }
 
 
@@ -153,6 +159,8 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->city = $request->city;
         $user->address = $request->address;
+        // $user->type = $request->type;
+
         if($request->password == $request->repassword)
              $user->password = Hash::make($request->password) ;
  
@@ -203,6 +211,8 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->city = $request->city;
         $user->address = $request->address;
+        // $user->type = $request->type;
+
         if($request->password == $request->repassword)
              $user->password = Hash::make($request->password) ;
 
@@ -239,7 +249,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return back()->with('delete','Xóa thành công người dùng '.$user->name);
+        return back()->with('delete','Xóa thành công người dùng '.$user->first_name." ".$user->last_name);
     }
 
 

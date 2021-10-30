@@ -54,7 +54,14 @@
                                     <td>{{$oder_details->oders->users->first_name." ".$oder_details->oders->users->last_name}}</td>
                                     <td>
                                         {{$oder_details->oders->products->name}}
-
+                                        {{-- <?php 
+                                        use App\Models\Oder;
+                                         $list_oders = Oder::where('user_id',$oder_details->users_id)->get();
+                                        ?>
+                                        
+                                        @foreach ($list_oders as $oders)
+                                            {{$oders->products->name}}
+                                        @endforeach --}}
 
 
                                     </td>

@@ -39,6 +39,7 @@ $users = Auth::user();
                             </div>
                         
                         @else
+    
                             <div class="header__top__right__auth">
                                 <a href="user/profile_edit/{{$users->id}}"><i class="fa fa-user"></i>{{$users->first_name." ".$users->last_name}}</a>
                             </div>

@@ -4,7 +4,7 @@
 <head>
 
   <title>Admin - Dashboard</title>
-@include('admin.layout.head')
+@include('admin.layout.css')
 </head>
 
 <body id="page-top">
@@ -15,7 +15,7 @@
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <!-- TopBar -->
-    @include('admin.layout.nav')
+    @include('admin.layout.header')
     <!-- TopBar -->
         <!-- Container Fluid-->
         @yield('content')

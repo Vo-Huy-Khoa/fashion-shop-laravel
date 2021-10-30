@@ -24,7 +24,6 @@
 
 
 
-
     <!-- Css Styles -->
 <link rel="stylesheet" href="{{ URL::asset('Front/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('Front/css/font-awesome.min.css') }}">

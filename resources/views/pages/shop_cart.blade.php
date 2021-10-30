@@ -29,7 +29,7 @@
                                 @foreach ($list_oders as $cart)
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <h5>{{substr($cart->products->name,0,30)}}</h5><br>
+                                        <h5>{{substr($cart->products->name,0,50)}}</h5><br>
                                         <img style="width: 100px; height:100px" src="uploads/products/{{$cart->products->image}}" alt="">
                                     </td>
                                     
@@ -39,7 +39,7 @@
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <input type="text" value="{{$cart->quantity}}">
+                                                <input type="text" name="quantity" value="{{$cart->quantity}}">
                                             </div>
                                         </div>
                                     </td>
@@ -62,8 +62,8 @@
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="{{route('user_shop')}}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                            Upadate Cart</a>
+                        <button type="submit" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                            Upadate Cart</button>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -82,7 +82,7 @@
                         <h5>Cart Total</h5>
                         <ul>
                             @foreach ($list_oders as $oders)
-                                <li>{{$oders->products->name}} <span>{{number_format($oders->products->unit_price * $oders->quantity).'$' }}</span></li>
+                                <li>{{substr($oders->products->name,0,50)}}<span>{{number_format($oders->products->unit_price * $oders->quantity).'$' }}</span></li>
                             @endforeach
 
                             <li>Total<span>{{number_format($list_oders->sum('total')).'$'}}</span></li>

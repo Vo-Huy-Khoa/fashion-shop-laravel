@@ -243,7 +243,7 @@
                         <div class="blog__item__text">
                             <ul>
                                 <li><i class="fa fa-calendar-o"></i>{{$blogs->created_at}}</li>
-                                <li><i class="fa fa-comment-o"></i>{{count($list_comments)}}</li>
+                                {{-- <li><i class="fa fa-comment-o"></i>{{count($list_comments)}}</li> --}}
                             </ul>
                             <h5><a href="user/blog_details/{{$blogs->id}}">{{$blogs->title}}</a></h5>
                             <p>{{$blogs->brief}}</p>

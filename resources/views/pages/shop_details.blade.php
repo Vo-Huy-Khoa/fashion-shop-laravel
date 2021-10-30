@@ -9,9 +9,9 @@
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
         @if (session('comment'))
-            <div class="alert alert-success">
-                {{ session('comment') }}
-            </div>
+        <div style=" text-align:center" class="alert alert-success">
+            {{ session('comment') }}
+        </div>
         @endif
         <div class="container">
             <div class="row">
@@ -98,6 +98,7 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
+
                     <div class="be-comment-block">
                         <h1 class="comments-title">Comments ({{count($list_comments)}})</h1>
                         @foreach ($list_comments as $comments)

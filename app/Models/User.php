@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->hasMany(Shipping::class,'shipping_id','id');
     }
 
+    public function message()
+    {
+        return $this->hasMany(Message::class,'users_id','id');
+    }
+
 
     protected $fillable = [
         'name',
