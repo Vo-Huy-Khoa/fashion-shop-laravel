@@ -21,6 +21,7 @@ class CreateOderDetailsTable extends Migration
             $table->foreign('shipping_id')->references('id')->on('shippings');
             $table->tinyInteger('status')->nullable();
             $table->timestamps();
+
         });
     }
 

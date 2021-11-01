@@ -3,7 +3,7 @@
 
 <head>
   <title>Login</title>
-@include('admin.layout.head')
+@include('admin.layout.css')
 
 </head>
 

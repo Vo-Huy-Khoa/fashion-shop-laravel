@@ -39,21 +39,19 @@
                       
                     </div>
             <div class="py-2">
-                <div class="row py-2">
-                    <div class="col-md-6"> 
+             
+               
                         <label for="name">Classify Name</label>
                          <input type="text"
                             class="bg-light form-control" placeholder="Enter Classify Name..." id="name" name="name"> 
-                        </div>
-                </div>
-                <div class="py-2">
-                    <div class="row py-2">
+                    
+           
 
-                        <div class="col-md-6 pt-md-0 pt-3"> <label for="description">Description</label> 
-                            <textarea class="bg-light form-control" name="description" id="description" cols="30" rows="10">
-                                </textarea> </div>
-                    </div>
 
+                       <label for="description">Description</label> 
+                            <textarea class="ckeditor" name="description" id="description" cols="30" rows="10">
+                                </textarea>
+                   
 
                 <div class="py-3 pb-4 border-bottom"> <button type="submit" class="btn btn-primary mr-3">Save Changes</button> <button
                         class="btn border button">Cancel</button> </div>

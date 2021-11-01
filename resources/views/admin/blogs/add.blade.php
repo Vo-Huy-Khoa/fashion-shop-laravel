@@ -61,7 +61,7 @@
                         <div class="row py-2">
 
                              <label for="description">Description</label>
-                                <textarea class="bg-light form-control" name="description" id="description" cols="30"
+                                <textarea class="ckeditor" name="description" id="description" cols="30"
                                     rows="10">
                                     </textarea>
                         </div>

@@ -42,13 +42,35 @@
                             </div>
                       
                     </div>
+
+                    
+                    <div>
+                        <label for="image"> Multiple Image <br>
+                        </label>
+                        <input type="file" name="images[]" id="image" multiple="multiple">
+
+                    </div>
+                    <div class="row">
+                        @foreach ($product_image as $image)
+                        <div class="col-md-4">
+                            <a href="" class="thumbnail"><img src="uploads/products/{{$image->image}}" alt=""></a>
+                            
+                        </div>
+                        @endforeach
+ 
+                    </div>
                 <div class="py-2">
                     <div class="row py-2">
                         <div class="col-md-6">
                             <label for="name">Categories Name</label>
                             <select class="bg-light form-control" id="category_id" name="category_id" >
                                 @foreach ($list_categories as $categories)
-                                    <option value="{{$categories->id}}">{{$categories->name}}</option>
+                                    <option
+                                    @if ($products->category_id == $categories->id )
+                                    {{"selected"}}
+                                    @endif
+                                    
+                                    value="{{$categories->id}}">{{$categories->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -69,22 +91,23 @@
                         
 
                         <div class="row py-2">
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <label for="color">Color</label>
                                 <select class="bg-light form-control" id="color" name="color">
                                     @foreach ($list_colors as $colors)
                                         <option value="{{ $colors->id }}">{{ $colors->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                            <div class="col-md-6 pt-md-0 pt-3">                            <label for="color">brand</label>
+                            </div> --}}
+                            {{-- <div class="col-md-6 pt-md-0 pt-3">                            <label for="color">brand</label>
                                 <select class="bg-light form-control" id="brand" name="brand">
                                     @foreach ($list_brands as $brands)
                                         <option value="{{ $brands->id }}">{{ $brands->name }}</option>
                                     @endforeach
-                                </select></div>
+                                </select>
+                            </div> --}}
                         </div>
-                        <div class="row py-2">
+                        {{-- <div class="row py-2">
                             <div class="col-md-6">
                             <label for="size">Size</label>
                             <select class="bg-light form-control" id="size" name="size">
@@ -94,10 +117,34 @@
                             </select>
                             </div>
 
-                            <div class="col-md-6">
-                                <label for="description">Description</label>
-                                <textarea name="description" id="description" cols="30" rows="5"></textarea>
+
+                        </div> --}}
+
+                        <span>Size <br></span>
+                        @foreach ($list_sizes as $sizes)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="size" name="attribute_id[]" value="{{ $sizes->id }}"
+                           {{ in_array($sizes->id,$id_attr)?'checked':'' }}
+                           
+                            
+                             />
+                            <label class="form-check-label" for="size">{{ $sizes->value }}</label>
+                          </div>
+                          @endforeach
+                            <br>
+                            <span><br>Color <br></span>
+                          @foreach ($list_colors as $colors)
+                          <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="color" name="attribute_id[]" value="{{ $colors->id }}"
+                              {{ in_array($colors->id,$id_attr)?'checked':'' }} />
+                              <label class="form-check-label" for="color">{{ $colors->value }}</label>
                             </div>
+                            @endforeach
+
+
+                        <div class="row">
+                            <label for="description">Description</label>
+                            <textarea class="ckeditor" name="description" id="description" cols="30" rows="5">{{$products->description}} </textarea>
                         </div>
 
                         <div class="py-3 pb-4 border-bottom"> <button type="submit" class="btn btn-primary mr-3">Save

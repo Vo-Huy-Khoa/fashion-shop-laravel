@@ -43,6 +43,13 @@
                             </div>
                       
                     </div>
+
+                    <div>
+                        <label for="image"> Multiple Image
+                        </label>
+                        <input type="file" name="images[]" id="image" multiple="multiple">
+
+                    </div>
                 <div class="py-2">
                     <div class="row py-2">
                         <div class="col-md-6">
@@ -67,37 +74,57 @@
                                     type="text" class="bg-light form-control" placeholder="Enter Sale Price..."
                                     id="sale_price" name="sale_price"> </div>
                         </div>
+                        <br>
+                        <span>Size <br></span>
+                        @foreach ($list_sizes as $sizes)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="size" name="attribute_id[]" value="{{ $sizes->id }}" />
+                            <label class="form-check-label" for="size">{{ $sizes->value }}</label>
+                          </div>
+                          @endforeach
+                            <br>
+                            <span><br>Color <br></span>
+                          @foreach ($list_colors as $colors)
+                          <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="color" name="attribute_id[]" value="{{ $colors->id }}" />
+                              <label class="form-check-label" for="color">{{ $colors->value }}</label>
+                            </div>
+                            @endforeach
                         <div class="row py-2">
-                            <div class="col-md-6">
-                                <label for="size">Size</label>
+
+
+                         
+                                {{-- <label for="size">Size</label>
                                 <select class="bg-light form-control" id="size" name="size">
                                     @foreach ($list_sizes as $sizes)
-                                        <option value="{{ $sizes->id }}">{{ $sizes->name }}</option>
+                                        <option value="{{ $sizes->id }}">{{ $sizes->value }}</option>
                                     @endforeach
-                                </select>
-                            </div>
+                                </select> --}}
+                       
 
-                            <div class="col-md-6">
-                                <label for="color">Color</label>
-                                <select class="bg-light form-control" id="color" name="color">
+                       
+                                {{-- <label for="color">Color</label>
+                                <select class="bg-light form-control" id="color" name="attribute_id[]">
                                     @foreach ($list_colors as $colors)
-                                        <option value="{{ $colors->id }}">{{ $colors->name }}</option>
+                                        <option value="{{ $colors->id }}">{{ $colors->value }}</option>
                                     @endforeach
-                                </select>
-                            </div>
-                            <div class="col-md-6">
+                                </select> --}}
+                            
+                            {{-- <div class="col-md-6">
                                 <label for="color">brand</label>
                                 <select class="bg-light form-control" id="brand" name="brand">
                                     @foreach ($list_brands as $brands)
-                                        <option value="{{ $brands->id }}">{{ $brands->name }}</option>
+                                        <option value="{{ $brands->id }}">{{ $brands->value }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
 
-                            <div class="col-md-6">
+
+
+                           
                                 <label for="description">Description</label>
-                                <textarea name="description" id="description" cols="30" rows="5"></textarea>
-                            </div>
+                                <textarea class="ckeditor" name="description" id="description" cols="30" rows="30"></textarea>
+                           
                         </div>
 
                         <div class="py-3 pb-4 border-bottom"> <button type="submit" class="btn btn-primary mr-3">Save

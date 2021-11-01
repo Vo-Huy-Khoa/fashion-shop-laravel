@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use App\Models\Oder_Detail;
 use App\Models\Shipping;
 use App\Models\User;
@@ -11,6 +12,11 @@ use Illuminate\Support\Facades\Auth;
 class ShippingController extends Controller
 {
     //
+    public function __construct()
+    {
+        $list_message = Message::all();
+        view()->share('list_message',$list_message);
+    }
     public function postShipping(Request $request)
     {
         $shippings = new Shipping();

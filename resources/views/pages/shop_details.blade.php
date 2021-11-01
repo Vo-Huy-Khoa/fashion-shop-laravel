@@ -22,10 +22,10 @@
                                 src="uploads/products/{{$products->image}}" alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
-                            @foreach ($list_products_categories as $products)
+                            @foreach ($product_image as $image)
                                 
-                            <img data-imgbigurl="uploads/products/{{$products->image}}"
-                            src="uploads/products/{{$products->image}}" alt=""> 
+                            <img data-imgbigurl="uploads/products/{{$image->image}}"
+                            src="uploads/products/{{$image->image}}" alt=""> 
      
                             @endforeach
                             
@@ -62,13 +62,33 @@
 
 </style>            <form action="user/AddToCart_Detail/{{$products->id}}" method="post">
                         @csrf
-                        {{-- <div class="size"  >
-                            <input type="button" value="S" name>
-                            <input type="button" value="M">
-                            <input type="button" value="L">
-                            <input type="button" value="XL">
-                            <input type="button" value="XXL">
-                        </div> --}}
+                        <span>Size <br></span>
+                        @foreach ($list_sizes as $sizes)
+                        <div class="form-check form-check-inline">
+                            @if (in_array($sizes->id,$id_attr))
+                            <input class="form-check-input" type="checkbox" id="size" name="attribute_id[]" value="{{ $sizes->id }}"
+                             />
+                            <label class="form-check-label" for="size">{{ $sizes->value }}</label>
+
+                            @endif
+                           {{-- {{ in_array($sizes->id,$id_attr)?'checked':'' }} --}}
+                           
+                            
+                          </div>
+                          @endforeach
+                            <br>
+                            <span><br>Color <br></span>
+                            @foreach ($list_colors as $colors)
+                            <div class="form-check form-check-inline">
+                                @if (in_array($colors->id,$id_attr))
+                                <input class="form-check-input" type="checkbox" id="color" name="attribute_id[]" value="{{$colors->id}}"/>
+                                     <label class="form-check-label" for="color">{{ $colors->value }}</label>
+                                @endif
+                              </div>
+                            @endforeach
+                                <br>
+                                <br>
+
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">

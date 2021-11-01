@@ -70,9 +70,9 @@
                                     <img style="width: 100px;height:100px" src="uploads/products/{{$products->image}}"alt="">
                                     </td>
                                     <td>{{Str::substr($products->description, 0, 60) }}</td>
-                                    <td>{{$products->sizes->name}}</td>
-                                    <td>{{$products->colors->name}}</td>
-                                    <td>{{$products->brands->name}}</td>
+                                    {{-- <td>{{$products->sizes->name}}</td>
+                                    <td>{{$products->colors->name}}</td> --}}
+                                    {{-- <td>{{$products->brands->name}}</td> --}}
                                     <td>{{$products->unit_price}}</td>
                                     <td>{{$products->sale_price}}</td>
                                     @if($products->status == '0')

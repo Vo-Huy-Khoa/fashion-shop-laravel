@@ -7,7 +7,7 @@ use App\Models\Classify;
 use App\Models\Product;
 use App\Models\Properties;
 use App\Models\Blog;
-
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +34,8 @@ class OderController extends Controller
         view()->share('list_products',$list_products);
         view()->share('list_blogs',$list_blogs);
         view()->share('list_products_sale',$list_products_sale);
+        $list_message = Message::all();
+        view()->share('list_message',$list_message);
 
 
     }

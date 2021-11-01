@@ -10,8 +10,10 @@ use App\Models\Comment;
 use App\Models\Message;
 use App\Models\Oder;
 use App\Models\Product;
-use App\Models\Properties;
-use App\Models\Size;
+use App\Models\product_image;
+use App\Models\Product_Attribute;
+use App\Models\Attribute;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -46,8 +48,7 @@ class PagesController extends Controller
         $list_products_shoe = Product::where('category_id',8)->take(50)->paginate(3);
         $list_products_au = Product::where('category_id',7)->take(50)->paginate(3);
 
-        $list_sizes = Size::all();
-        $list_colors = Color::all();
+
 
 
         view()->share('list_categories',$list_categories);
@@ -55,7 +56,6 @@ class PagesController extends Controller
         view()->share('list_products',$list_products);
         view()->share('list_blogs_home',$list_blogs_home);
         view()->share('list_blogs',$list_blogs);
-        view()->share('list_colors',$list_colors);
         view()->share('list_products_sale',$list_products_sale);
         // view()->share('list_comments',$list_comments);
         view()->share('list_products_shirt',$list_products_shirt);
@@ -64,7 +64,6 @@ class PagesController extends Controller
         view()->share('list_products_shoe',$list_products_shoe);
         view()->share('list_products_au',$list_products_au);
         view()->share('list_products_shop',$list_products_shop);
-        view()->share('list_sizes',$list_sizes);
 
 
 
@@ -87,11 +86,21 @@ class PagesController extends Controller
     {
         $products = Product::find($id);
         $id_categories = $products->category_id;
+        $product_image = product_image::where('product_id',$id)->get();
+        $list_colors = Attribute::where('name','color')->get();
+        $list_sizes = Attribute::where('name','size')->get();
+        $id_attr = Product_Attribute::where('product_id',$id)->pluck('attribute_id')->toArray();
+
+        
         $list_products_categories = Product::where('category_id',$id_categories)->take(50)->paginate(10);
         $list_comments = Comment::where('product_id',$id)->get();
         return view('pages.shop_details',['products'=>$products,
                                         'list_products_categories'=>$list_products_categories,
-                                        'list_comments'=>$list_comments]);
+                                        'list_comments'=>$list_comments,
+                                        'product_image'=>$product_image,
+                                        'list_colors'=>$list_colors,
+                                        'list_sizes'=>$list_sizes,
+                                        'id_attr'=> $id_attr]);
 
         // return redirect()->route();
     }
@@ -193,7 +202,7 @@ class PagesController extends Controller
     {
         $classify = Classify::find($id);
 
-        $products_search = $classify->product; ;
+        $products_search = $classify->product;
         return view('pages.search',['products_search'=>$products_search]);
     }
 

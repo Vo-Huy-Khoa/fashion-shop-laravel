@@ -17,21 +17,16 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->integer('attribute_id')->unsigned();
+            $table->foreign('attribute_id')->references('id')->on('attributes');
             $table->longText('name');
             $table->longText('description')->nullable();
-            $table->integer('size')->unsigned();
-            $table->foreign('size')->references('id')->on('sizes');
-
-            $table->integer('color')->unsigned();
-            $table->foreign('color')->references('id')->on('colors');
-
             $table->decimal('unit_price')->nullable();
             $table->decimal('sale_price')->nullable();
             $table->string('image')->nullable();
             $table->integer('brand')->unsigned();
             $table->foreign('brand')->references('id')->on('brands');
             $table->integer('quantity');
-
             $table->tinyInteger('status')->nullable();
             $table->timestamps();
         });

@@ -26,6 +26,11 @@ class UserController extends Controller
         view()->share('list_oders',$list_oders);
         $list_message = Message::all();
         view()->share('list_message',$list_message);
+        $users = Auth::user();
+        view()->share('users',$users);
+        $list_message = Message::all();
+        view()->share('list_message',$list_message);
+
 
 
         

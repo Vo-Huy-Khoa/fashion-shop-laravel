@@ -30,6 +30,17 @@ class Product extends Model
         return $this->belongsTo(Brand::class,'brand','id');
     }
 
+    public function product_attribute()
+    {
+        return $this->hasMany(Product_Attribute::class,'product_id','id');
+    }
+
+
+    public function product_images()
+    {
+        return $this->hasMany(product_image::class,'product_id','id');
+    }
+
  
     // public function properties()
     // {

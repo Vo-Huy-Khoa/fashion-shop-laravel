@@ -36,20 +36,38 @@
                             </div>
                       
                     </div>
+
+                    <div class="row py-2">
+                     
+                            <label for="class_id">Classify Name</label>
+                            <select class="bg-light form-control" id="class_id" name="class_id" >
+                                @foreach ($list_classify as $classify)
+                                    <option
+                                    @if ($categories->class_id == $classify->id )
+                                        {{"selected"}}
+                                    @endif
+                                    
+                                    
+                                    
+                                    value="{{$classify->id}}">{{$classify->name}}</option>
+                                @endforeach
+                            </select>
+                       
+                    </div>
             <div class="py-2">
                 <div class="row py-2">
-                    <div class="col-md-6"> 
+                   
                         <label for="name">Categories Name</label>
                          <input type="text"
                             class="bg-light form-control" value="{{$categories->name}}" id="name" name="name"> 
-                        </div>
+                       
                 </div>
                 <div class="py-2">
                     <div class="row py-2">
 
-                        <div class="col-md-6 pt-md-0 pt-3"> <label for="description">Description</label> 
-                            <textarea class="bg-light form-control" aria-valuetext="{{$categories->description}}" name="description" id="description" cols="30" rows="10">
-                                </textarea> </div>
+                        <label for="description">Description</label> 
+                            <textarea class="ckeditor" name="description" id="description" cols="30" rows="10">
+                                {{$categories->description}}  </textarea>
                     </div>
 
 

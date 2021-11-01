@@ -62,14 +62,15 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $classify =  Classify::all();
+        $list_classify =  Classify::all();
         $categories = Category::find($id);
-        return view('admin.categories.edit',['categories'=>$categories,'classify'=>$classify]);
+        return view('admin.categories.edit',['categories'=>$categories,'list_classify'=>$list_classify]);
     }
 
     public function postEdit(Request $request, $id)
     {
         $categories = Category::find($id);
+        $categories->class_id = $request->class_id;
         $categories->name = $request->name;
         $categories->description = $request->description;
         if ($request->hasFile('img')) {

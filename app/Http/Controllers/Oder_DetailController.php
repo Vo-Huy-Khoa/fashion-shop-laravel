@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classify;
+use App\Models\Message;
 use App\Models\Oder;
 use App\Models\Oder_Detail;
 use Illuminate\Http\Request;
@@ -15,6 +16,8 @@ class Oder_DetailController extends Controller
     {
         $list_classify = Classify::all();
         view()->share('list_classify',$list_classify);
+        $list_message = Message::all();
+        view()->share('list_message',$list_message);
     }
     public function list()
     {
