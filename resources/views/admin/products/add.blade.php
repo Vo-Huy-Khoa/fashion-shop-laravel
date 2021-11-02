@@ -67,11 +67,11 @@
                         <div class="row py-2">
                             <div class="col-md-6">
                                 <label for="unit_price">Unit Price</label>
-                                <input type="text" class="bg-light form-control" id="unit_price" name="unit_price"
+                                <input type="text" class="bg-light form-control" id="unit_price" value=" 000" name="unit_price"
                                     placeholder="Enter Unit Price...">
                             </div>
                             <div class="col-md-6 pt-md-0 pt-3"> <label for="sale_price">Sale Price</label> <input
-                                    type="text" class="bg-light form-control" placeholder="Enter Sale Price..."
+                                    type="text" class="bg-light form-control" value=" 000" placeholder="Enter Sale Price..."
                                     id="sale_price" name="sale_price"> </div>
                         </div>
                         <br>

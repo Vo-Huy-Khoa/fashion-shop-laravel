@@ -57,7 +57,7 @@ public function postAdd(Request $request)
     $products->unit_price = $request->unit_price;
     $products->sale_price = $request->sale_price;
     $products->status = 1;
-    // $products->save();
+    $products->save();
     // dd($request->attribute_id);
 
     if ($request->hasFile('img')) {
@@ -92,7 +92,7 @@ public function postAdd(Request $request)
         }
     }
 
-    if ($request->image) {
+    if ($request->images) {
         foreach ($request->images as $image) {
             $product_image =  new product_image();
             $product_image->product_id = $products->id;
@@ -167,6 +167,7 @@ public function postEdit(Request $request, $id)
         }
         
         $file->move("uploads/products",$img);
+        unlink("uploads/products/".$products->image);
         $products->image = $img;
         
     }
@@ -210,6 +211,10 @@ public function postEdit(Request $request, $id)
                 }
                 
                 $file->move("uploads/products",$img);
+                foreach ($product_image as $image){
+                    unlink("uploads/products/".$image->image);
+                }
+                
                 $product_image->image = $img;
                 
             }
@@ -228,6 +233,9 @@ public function postEdit(Request $request, $id)
 
 public function delete($id)
 {
+    $product_attributes = Product_Attribute::where('product_id',$id)->delete();
+    $product_images = product_image::where('product_id',$id)->delete();
+
     $products = Product::find($id);
     // $oders = Oder::find($products->id);
     $products->delete();

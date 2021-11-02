@@ -46,7 +46,7 @@
                             <span>(18 reviews)</span>
                         </div>
                         <div class="product__details__price">{{number_format($products->unit_price)}} $</div>
-                        <p>{{$products->description}}</p>
+                        <p>{!! $products->description !!}</p>
 <style>
     div.size{
         margin-bottom:20px;
@@ -66,7 +66,7 @@
                         @foreach ($list_sizes as $sizes)
                         <div class="form-check form-check-inline">
                             @if (in_array($sizes->id,$id_attr))
-                            <input class="form-check-input" type="checkbox" id="size" name="attribute_id[]" value="{{ $sizes->id }}"
+                            <input class="form-check-input" type="radio" id="size" name="size" value="{{ $sizes->value }}"
                              />
                             <label class="form-check-label" for="size">{{ $sizes->value }}</label>
 
@@ -81,7 +81,7 @@
                             @foreach ($list_colors as $colors)
                             <div class="form-check form-check-inline">
                                 @if (in_array($colors->id,$id_attr))
-                                <input class="form-check-input" type="checkbox" id="color" name="attribute_id[]" value="{{$colors->id}}"/>
+                                <input class="form-check-input" type="radio" id="color" name="color" value="{{$colors->value}}"/>
                                      <label class="form-check-label" for="color">{{ $colors->value }}</label>
                                 @endif
                               </div>

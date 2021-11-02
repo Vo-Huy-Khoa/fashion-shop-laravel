@@ -19,6 +19,8 @@ class CreateOdersTable extends Migration
             $table->integer('product_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('product_id')->references('id')->on('products');
+            $table->string('size')->nullable();
+            $table->string('color')->nullable();
             $table->integer('quantity')->nullable();
             $table->decimal('total')->nullable();
             $table->integer('status')->nullable();

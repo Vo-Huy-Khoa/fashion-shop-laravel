@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sidebar__item sidebar__item__color--option">
+                        {{-- <div class="sidebar__item sidebar__item__color--option">
                             <h4>Colors</h4>
                             @foreach ($list_colors as $colors)
                             <div class="sidebar__item__color sidebar__item__color--{{$colors->name}}">
@@ -61,7 +61,7 @@
                             @endforeach
 
 
-                        </div>
+                        </div> --}}
                         <div class="sidebar__item">
                             <div class="latest-product__text">
                                 <h4>Latest Products</h4>
@@ -74,7 +74,7 @@
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>{{$shirt->name}}</h6>
-                                                <span>${{number_format($shirt->unit_price)}}</span>
+                                                <span>{{number_format($shirt->unit_price)}}$</span>
                                             </div>
                                         </a>
                                         @endforeach
@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>{{$hoodie->name}}</h6>
-                                                <span>${{number_format($hoodie->unit_price)}}</span>
+                                                <span>{{number_format($hoodie->unit_price)}}$</span>
                                             </div>
                                         </a>
                                         @endforeach
@@ -141,7 +141,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="user/products_details/{{$products->id}}">{{$products->name}}</a></h6>
-                                    <h5>{{number_format($products->unit_price)}}</h5>
+                                    <h5>{{number_format($products->unit_price)}}$</h5>
                                 </div>
                             </div>
                         </div>  

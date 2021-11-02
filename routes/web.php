@@ -196,6 +196,8 @@ Route::prefix('user')->group(function () {
 
     Route::post('message',[MessageController::class,'send'])->name('messages');
 
+    Route::get('oder/delete/{id}',[OderController::class,'delete']);
+
 
 
 

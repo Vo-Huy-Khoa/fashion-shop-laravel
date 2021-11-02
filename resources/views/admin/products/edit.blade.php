@@ -90,36 +90,6 @@
                         </div>
                         
 
-                        <div class="row py-2">
-                            {{-- <div class="col-md-6">
-                                <label for="color">Color</label>
-                                <select class="bg-light form-control" id="color" name="color">
-                                    @foreach ($list_colors as $colors)
-                                        <option value="{{ $colors->id }}">{{ $colors->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div> --}}
-                            {{-- <div class="col-md-6 pt-md-0 pt-3">                            <label for="color">brand</label>
-                                <select class="bg-light form-control" id="brand" name="brand">
-                                    @foreach ($list_brands as $brands)
-                                        <option value="{{ $brands->id }}">{{ $brands->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div> --}}
-                        </div>
-                        {{-- <div class="row py-2">
-                            <div class="col-md-6">
-                            <label for="size">Size</label>
-                            <select class="bg-light form-control" id="size" name="size">
-                                @foreach ($list_sizes as $sizes)
-                                    <option value="{{ $sizes->id }}">{{ $sizes->name}}</option>
-                                @endforeach
-                            </select>
-                            </div>
-
-
-                        </div> --}}
-
                         <span>Size <br></span>
                         @foreach ($list_sizes as $sizes)
                         <div class="form-check form-check-inline">

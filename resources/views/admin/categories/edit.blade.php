@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid" id="container-wrapper">
         <div class="wrapper bg-white mt-sm-4">
-            <h4 class="pb-4 border-bottom">Classify Edit</h4>
+            <h4 class="pb-4 border-bottom">Category Edit</h4>
             @if (session('edit'))
             <div class="alert alert-success">
                 {{ session('edit') }}

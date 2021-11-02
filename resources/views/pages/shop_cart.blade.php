@@ -11,18 +11,25 @@
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
+            @if (session('delete'))
+            <div style="text-align: center" class="alert alert-success">
+                {{ session('delete') }}
+            </div>
+        @endif
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
                         <table>
                             <thead>
                                 <tr>
-
                                     <th class="shoping__product">Products</th>
+                                    <th>Size</th>
+                                    <th>Color</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
-                                    <th></th>
+                                    <th>Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,7 +39,12 @@
                                         <h5>{{substr($cart->products->name,0,50)}}</h5><br>
                                         <img style="width: 100px; height:100px" src="uploads/products/{{$cart->products->image}}" alt="">
                                     </td>
-                                    
+                                    <td style="text-align: center" class="shoping__cart__item">
+                                        <strong>{{$cart->size}}</strong>
+                                    </td>
+                                    <td style="text-align: center" class="shoping__cart__item">
+                                        <strong>{{$cart->color}}</strong>
+                                    </td>
                                     <td class="shoping__cart__price">
                                         {{number_format($cart->products->unit_price).'$'}}
                                     </td>
@@ -47,7 +59,7 @@
                                         {{number_format($cart->products->unit_price * $cart->quantity ).'$'}}
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
+                                       <a href="user/oder/delete/{{$cart->id}}"><span class="icon_close"></span></a> 
                                     </td>
                                 </tr>
                                 @endforeach

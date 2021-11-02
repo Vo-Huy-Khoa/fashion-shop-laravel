@@ -88,6 +88,7 @@ class CategoryController extends Controller
             }
             
             $file->move("uploads/categories",$img);
+            unlink("uploads/categories/".$categories->image);
             $categories->image = $img;
             
         }

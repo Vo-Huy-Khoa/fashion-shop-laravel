@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<?php use App\Models\Product_Attribute; ?>
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -35,7 +35,7 @@
                                     <th>Description</th>
                                     <th>Size</th>
                                     <th>Color</th>
-                                    <th>Brand</th>
+                                    {{-- <th>Brand</th> --}}
                                     <th>Unit Price</th>
                                     <th>Sale Price</th>
                                     {{-- <th>Comments</th> --}}
@@ -52,7 +52,7 @@
                                     <th>Description</th>
                                     <th>Size</th>
                                     <th>Color</th>
-                                    <th>Brand</th>
+                                    {{-- <th>Brand</th> --}}
                                     <th>Unit Price</th>
                                     <th>Sale Price</th>
                                     {{-- <th>Comments</th> --}}
@@ -69,11 +69,26 @@
                                     <td style="text-align: center">{{Str::substr($products->name,0,50)}}
                                     <img style="width: 100px;height:100px" src="uploads/products/{{$products->image}}"alt="">
                                     </td>
-                                    <td>{{Str::substr($products->description, 0, 60) }}</td>
-                                    {{-- <td>{{$products->sizes->name}}</td>
-                                    <td>{{$products->colors->name}}</td> --}}
-                                    {{-- <td>{{$products->brands->name}}</td> --}}
-                                    <td>{{$products->unit_price}}</td>
+                                    <td>{!! substr($products->description, 0,800) !!}</td>
+                                    <td>
+                                        <?php $id_attr = Product_Attribute::where('product_id',$products->id)->pluck('attribute_id')->toArray();?>
+                                        @foreach ($list_sizes as $sizes)
+                                            @if(in_array($sizes->id,$id_attr))
+                                            {{$sizes->value." "}}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        <?php $id_attr = Product_Attribute::where('product_id',$products->id)->pluck('attribute_id')->toArray();?>
+                                        @foreach ($list_colors as $colors)
+                                            @if(in_array($colors->id,$id_attr))
+                                            {{$colors->value." "}}
+                                            @endif
+                                        @endforeach
+                                </td>
+                                    
+                                   {{-- <td>{{$products->brands->name}}</td> --}}
+                                    <td>{{$products->unit_price}}</td> 
                                     <td>{{$products->sale_price}}</td>
                                     @if($products->status == '0')
                                         <td><span class="badge badge-success">Đã bán</span></td>   
