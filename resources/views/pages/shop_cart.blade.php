@@ -94,8 +94,13 @@
                         <h5>Cart Total</h5>
                         <ul>
                             @foreach ($list_oders as $oders)
-                                <li>{{substr($oders->products->name,0,50)}}<span>{{number_format($oders->products->unit_price * $oders->quantity).'$' }}</span></li>
-                            @endforeach
+                                <li>{{substr($oders->products->name,0,50)}}
+                                    <span>{{number_format($oders->products->unit_price * $oders->quantity).'$' }}
+                                    </span>
+                                    <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+                                    <span>x{{$oders->quantity}} </span>
+                                </li>
+                                @endforeach
 
                             <li>Total<span>{{number_format($list_oders->sum('total')).'$'}}</span></li>
 

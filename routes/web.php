@@ -29,9 +29,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PagesController::class,'home']);
 
 
 //Route Login
@@ -169,7 +167,6 @@ Route::prefix('user')->group(function () {
 
     Route::get('contact',[PagesController::class,'contact'])->name('user_contact');
     Route::get('products_details/{id}',[PagesController::class,'products_details']);
-    // Route::post('shop_details/{id}',);
     Route::get('shop_cart',[PagesController::class,'shop_cart'])->name('shop_cart');
     Route::get('check_out',[PagesController::class,'check_out'])->name('check_out');
     Route::get('profile_edit/{id}',[PagesController::class,'getProfile_Edit']);

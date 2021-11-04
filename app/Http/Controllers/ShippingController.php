@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use App\Models\Oder;
 use App\Models\Oder_Detail;
 use App\Models\Shipping;
 use App\Models\User;
@@ -39,6 +40,12 @@ class ShippingController extends Controller
         $oder_details->status = '1';
 
         $oder_details->save();
+
+        // $list_oders = Oder::where('user_id',$user_id)->get();
+        // foreach ($list_oders as $oders) {
+        //     $oders->status = '0';
+        //     $oders->save();
+        // }
         return redirect()->route('out_cart');
 
     }

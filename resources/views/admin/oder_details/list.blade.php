@@ -1,6 +1,8 @@
 @extends('admin.index')
 @section('content')
-
+<?php 
+use App\Models\Oder;
+?>
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -39,6 +41,8 @@
                                     <th>User Name</th>
                                     <th>product</th>
                                     <th>Quantity</th>
+                                    <th>Price</th>
+
                                     <th>Address</th>
                                     <th>Total</th>
 
@@ -52,22 +56,37 @@
                                 <tr>
                                     <td>{{$oder_details->id}}</td>
                                     <td>{{$oder_details->oders->users->first_name." ".$oder_details->oders->users->last_name}}</td>
+   
                                     <td>
-                                        {{$oder_details->oders->products->name}}
-                                        {{-- <?php 
-                                        use App\Models\Oder;
-                                         $list_oders = Oder::where('user_id',$oder_details->users_id)->get();
-                                        ?>
-                                        
-                                        @foreach ($list_oders as $oders)
-                                            {{$oders->products->name}}
-                                        @endforeach --}}
-
-
+                                        <?php
+                                                $product_id = Oder::where('user_id',$oder_details->oders->user_id)->pluck('product_id')->toArray();
+                                            ?>
+                                        @foreach ($list_products as $products)
+                                                @if(in_array($products->id,$product_id))
+                                                    {{substr($products->name,0,100)}}<br><br>
+                                                @endif
+                                        @endforeach
                                     </td>
-                                    <td>{{$oder_details->oders->quantity}}</td>
+
+                                    <td>
+                                        <?php $list_oders = Oder::where('user_id',$oder_details->oders->user_id)->get();
+                                        ?>
+                                        @foreach ($list_oders as $oders)
+                                                {{$oders->quantity}}<br> <br> <br> <br>
+                                        @endforeach
+                                    </td>
+    
+                                    <td>
+                                        <?php $list_oders = Oder::where('user_id',$oder_details->oders->user_id)->get();
+                                        ?>
+                                        @foreach ($list_oders as $oders)
+                                                {{number_format($oders->total)}}$<br> <br> <br> <br>
+                                        @endforeach
+                                    </td>
                                     <td>{{$oder_details->shippings->address.", ".$oder_details->shippings->city}}</td>
-                                    {{-- <td>{{number_format($list_oders->sum('total')).'$'}}</td> --}}
+    
+                                    <td style="color: red; font-weight: bold;">{{number_format($list_oders->sum('total')).'$'}}</td>
+    
                                     
                                     <td><a href="admin/oder_details/delete/{{$oder_details->id}}"</a><i></i>Delete</a></td>
                                     

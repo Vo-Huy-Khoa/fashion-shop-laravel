@@ -17,9 +17,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="login-form">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Login</h1>
-                  </div>
+             
                   @if (session('login'))
                   <div class="alert alert-success">
                       {{ session('login') }}
@@ -35,6 +33,14 @@
                       {{ session('error') }}
                   </div>
               @endif
+              @if (session('logout'))
+              <div class="alert alert-success">
+                  {{ session('logout') }}
+              </div>
+          @endif
+          <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Login</h1>
+          </div>
                   <form class="user" action="{{ route('login') }}" method="POST" >
                     @csrf
                     <div class="form-group">

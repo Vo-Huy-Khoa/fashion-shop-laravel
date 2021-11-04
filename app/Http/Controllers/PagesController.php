@@ -90,7 +90,6 @@ class PagesController extends Controller
         $list_colors = Attribute::where('name','color')->get();
         $list_sizes = Attribute::where('name','size')->get();
         $id_attr = Product_Attribute::where('product_id',$id)->pluck('attribute_id')->toArray();
-
         
         $list_products_categories = Product::where('category_id',$id_categories)->take(50)->paginate(10);
         $list_comments = Comment::where('product_id',$id)->get();
@@ -100,14 +99,15 @@ class PagesController extends Controller
                                         'product_image'=>$product_image,
                                         'list_colors'=>$list_colors,
                                         'list_sizes'=>$list_sizes,
-                                        'id_attr'=> $id_attr]);
+                                        'id_attr'=> $id_attr
+                                        ]);
 
         // return redirect()->route();
     }
     public function shop_cart()
     {
         $id = Auth::id();
-        $list_oders = Oder::where('user_id',$id)->get();
+        $list_oders = Oder::where('user_id',$id)->where('status',1)->get();
         return view('pages.shop_cart',['list_oders'=>$list_oders]);
     }
 

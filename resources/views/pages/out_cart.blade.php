@@ -31,9 +31,12 @@
                                     <th>User Name</th>
                                     <th>product</th>
                                     <th>Quantity</th>
+                                    <th>Price</th>
                                     <th>Address</th>
                                     <th>Total</th>
-                                    <th>Action</th>
+                                    <th>Status</th>
+
+
 
 
 
@@ -46,15 +49,43 @@
                                         
                                     <td>{{$out_cart->oders->users->first_name." ".$out_cart->oders->users->last_name}}</td>
                                     <td>
-                                        {{$out_cart->oders->products->name}}
+                                    
+                                    @foreach ($list_products as $products)
+                                            @if(in_array($products->id,$product_id))
+                                                {{$products->name}}<br>
+                                            @endif
+                                    @endforeach
+
 
                                     </td>
-                                    <td>{{$out_cart->oders->quantity}}</td>
+                                    <td>
+                                        @foreach ($list_oders as $oders)
+                                        @if(in_array($oders->quantity,$quantity))
+                                            {{"x".$oders->quantity}}<br>
+                                        @endif
+                                        @endforeach
+                                    </td>
+
+                                    
+                                    <td>
+                                        @foreach ($list_oders as $oders)
+                                        @if(in_array($oders->total,$total))
+                                            {{number_format($oders->total)}}$<br>
+                                        @endif
+                                        @endforeach
+                                    </td>
                                     <td>{{$out_cart->shippings->address.", ".$out_cart->shippings->city}}</td>
-                                    <td>{{number_format($out_cart->oders->sum('total')).'$'}}</td>
-                                    
-                                    <td><a href="admin/out_cart/delete/{{$out_cart->id}}"</a><i></i>Delete</a></td>
-                                    
+
+                                    <td style="color: red; font-weight: bold;">{{number_format($list_oders->sum('total')).'$'}}</td>
+                                    <td>
+                                        @if ($out_cart->status == '0')
+                                        <span class="badge badge-success">Đã chốt</span>  
+                                            
+                                        @endif
+                                        @if ($out_cart->status == '1')
+                                        <span class="badge badge-danger">Chưa chốt</span>  
+                                        @endif
+                                    </td>
 
                                 
                                     </tr>
@@ -70,7 +101,13 @@
         </div>
         <!--Row-->
 
-
+        <div class="row">
+            <div class="col-lg-12" style="display: flex; align-items: center;">
+                <div class="shoping__cart__btns" >
+                    <a href="{{route('user_shop')}}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                </div>
+            </div>
+        </div>
     </div>
     <!---Container Fluid-->
 
