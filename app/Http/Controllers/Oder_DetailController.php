@@ -9,7 +9,7 @@ use App\Models\Oder_Detail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Mail;
 class Oder_DetailController extends Controller
 {
     //
@@ -56,6 +56,27 @@ class Oder_DetailController extends Controller
             $oders->status = '0';
             $oders->save();
         }
+        $email = $oder_details->shippings->email;
+        $name = $oder_details->oders->users->first_name." ".$oder_details->oders->users->last_name ;
+
+        $user_id = $oder_details->oders->user_id;;
+        $out_cart = Oder_Detail::where('users_id',$user_id)->get();
+        $list_oders = Oder::where('user_id',$user_id)->get();
+        $product_id = Oder::where('user_id',$user_id)->pluck('product_id')->toArray();
+        $quantity = Oder::where('user_id',$user_id)->pluck('quantity')->toArray();
+        $total = Oder::where('user_id',$user_id)->pluck('total')->toArray();
+        $date = $oder_details->created_at;
+        Mail::send('admin.oder_details.email',compact('name','out_cart','list_oders','product_id','quantity','total','date'), function ($message) use($name, $email) {
+            $message->from('huykhoa630@gmail.com', 'SHOP FASHION');
+            // $message->sender('huykhoa630@gmail.com', 'Admin');
+            $message->to($email,$name);
+            // $message->cc('3', '4');
+            $message->subject('ĐẶT HÀNG THÀNH CÔNG !');
+            // $message->bcc('john@johndoe.com', 'John Doe');
+            // $message->replyTo('john@johndoe.com', 'John Doe');
+            // $message->priority(3);
+            // $message->attach('pathToFile');
+        });
         return redirect()->back()->with('oder_close','Chốt thành công đơn hàng cho '.$oder_details->shippings->first_name." ".$oder_details->shippings->last_name);
         // return redirect()->back()->with('oder_close','Chốt đơn thành công!'.$oder_details->shippings->first_name." ".$oder_details->shippings->last_name);
     }

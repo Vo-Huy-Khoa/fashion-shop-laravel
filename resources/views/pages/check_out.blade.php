@@ -75,14 +75,25 @@ $users = Auth::user();
                                 <div class="checkout__order__products">Products <span>Total</span></div>
                                 <ul>
                                     @foreach ($list_oders as $oders)
-                                    <li>{{substr($oders->products->name,0,30)."..."}}<span>{{number_format($oders->products->unit_price * $oders->quantity) }}</span>
-                                    <span style="margin-right:10px;">x{{$oders->quantity}}</span></li>
+                                    <li>
+                                        {{substr($oders->products->name,0,25)."..."}}
+
+                                        <span>
+                                            {{number_format($oders->products->unit_price) }}$ 
+                                        </span>
+                                        <span style="color: red; margin-right:15px;">
+                                            x{{$oders->quantity }}
+                                        </span>
+                                        <br>
+
+
+                                    </li>
                                         
                                     @endforeach
 
                                 </ul>
                                 <div class="checkout__order__subtotal">Subtotal <span>$0</span></div>
-                                <div class="checkout__order__total">Total <span>{{number_format($list_oders->sum('total'))}}</span></div>
+                                <div class="checkout__order__total">Total <span>{{number_format($list_oders->sum('total'))}}$</span></div>
    
                                 <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
                                     ut labore et dolore magna aliqua.</p>
