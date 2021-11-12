@@ -1,5 +1,7 @@
     @extends('layout.index')
-
+@section('title')
+    Home
+@endsection
     @section('content')
             <!-- Categories Section Begin -->
     <section class="categories">
@@ -64,9 +66,11 @@
 
 
             </div>
-            <div>
-            {{$list_products->links('pagination::bootstrap-4') }}
-            </div>
+            <div class="row" style="display: flex;align-items: center;justify-content: center;">
+
+                <div class="link">{{$list_products->links('pagination::bootstrap-4') }}</div>
+  
+              </div>
 
         </div>
     </section>
@@ -238,7 +242,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
-                            <img style="width: 20px ;height:200px" src="uploads/blogs/{{$blogs->image}}" alt="">
+                            <img style="width: 20px ;height:400px" src="uploads/blogs/{{$blogs->image}}" alt="">
                         </div>
                         <div class="blog__item__text">
                             <ul>
@@ -254,7 +258,11 @@
 
 
             </div>
-            {{$list_blogs_home->links('pagination::bootstrap-4') }}
+            <div class="row" style="display: flex;align-items: center;justify-content: center;">
+
+              <div class="link">{{$list_blogs_home->links('pagination::bootstrap-4') }}</div>
+
+            </div>
 
         </div>
     </section>
@@ -264,3 +272,5 @@
 
     <!-- Footer Section End -->
     @endsection
+
+

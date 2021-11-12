@@ -1,4 +1,8 @@
 @extends('layout.index')
+
+@section('title')
+    Shop cart
+@endsection
 @section('content')
     
 

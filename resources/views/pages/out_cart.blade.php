@@ -1,4 +1,7 @@
 @extends('layout.index')
+@section('title')
+    Out cart
+@endsection
 @section('content')
 
     <!-- Container Fluid-->

@@ -1,4 +1,8 @@
 @extends('layout.index')
+
+@section('title')
+    Check out
+@endsection
 @section('content')
     
 <?php

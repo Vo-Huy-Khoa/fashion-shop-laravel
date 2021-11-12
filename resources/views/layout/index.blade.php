@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Shop | Fahsion</title>
+    <title>Fahsion |@yield('title')</title>
 <link href="Front/img/logo/logo.png" rel="icon">
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -15,11 +15,9 @@
     <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
-{{-- css login --}}
-<link rel="stylesheet" href="{{ URL::asset('Front/css/login.css') }}">
+@yield('css')
 
-{{-- profile --}}
-<link rel="stylesheet" href="{{ URL::asset('Front/css/profile.css') }}">
+
 
 
 

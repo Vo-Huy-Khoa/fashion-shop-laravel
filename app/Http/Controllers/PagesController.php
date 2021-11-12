@@ -192,7 +192,7 @@ class PagesController extends Controller
     public function Search(Request $request)
     {
         $value = $request->value;
-        $products_search = Product::where('name','like','%' . $value . '%')->orWhere('size','like','%'.$value.'%')->take(50)->paginate(12);
+        $products_search = Product::where('name','like','%' . $value . '%')->take(50)->paginate(12);
     //take trả về số lượng kết quả
 
         return view('pages.search',['products_search'=>$products_search,'value'=>$value]);

@@ -1,4 +1,8 @@
 @extends('layout.index')
+
+@section('title')
+    Blog Search
+@endsection
 @section('content')
     
 

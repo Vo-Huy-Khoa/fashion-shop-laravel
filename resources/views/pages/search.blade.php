@@ -1,5 +1,9 @@
 
 @extends('layout.index')
+
+@section('title')
+    Search product
+@endsection
 @section('content')
     
 
@@ -151,6 +155,11 @@
                     </div>
 
                 </div>
+                {{-- <div class="row" style="display: flex;align-items: center;justify-content: center;">
+
+                    <div class="link">{{$products_search->links('pagination::bootstrap-4') }}</div>
+      
+                  </div> --}}
             </div>
         </div>
     </section>

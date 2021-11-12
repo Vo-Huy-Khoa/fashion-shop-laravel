@@ -30,4 +30,17 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'facebook' => [
+        'client_id' => '1028247174626585',
+        'client_secret' => '8cc98b7b009c84a2ed7ac0f4c9ec9bcf',
+        'redirect' => 'http://shopfashion.test/admin/login/callback'
+    ],
+
+    'google' => [
+        'client_id' => '222855328049-orc8ar64e9dj7mvdin7vkb8aqnt2co5e.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://localhost/fashion/admin/login/google/callback'
+    ],
+
+
 ];

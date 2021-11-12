@@ -1,4 +1,8 @@
 @extends('layout.index')
+@section('title')
+    Product Details
+@endsection
+
 @section('content')
 
 
@@ -49,28 +53,43 @@
                         <p>{!! $products->description !!}</p>
 <style>
     div.size{
-        margin-bottom:20px;
+        margin-top: 10px;
+        border: 1px solid black;
     }
-    div.size input {
-        color: red;
+    input[type='radio']:checked:after{
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        background-color: #0400ff;
+        
+    }
+    div.color{
+        margin-top: 10px;
+        border: 1px solid black;
+    }
+    div.color input {
+        background-color: red;
         width: 50px;
-        margin-right: 1.5%;
     }
-    div.size input:hover{
-        background-color: yellow;
-    }
+
 
 </style>            <form action="user/AddToCart_Detail/{{$products->id}}" method="post">
                         @csrf
-                        <span>Size <br></span>
+                        @if ($id_attr)
+                            <span>Size <br></span>
+                        @endif
                         @foreach ($list_sizes as $sizes)
                         <div class="form-check form-check-inline">
-                            @if (in_array($sizes->id,$id_attr))
-                            <input class="form-check-input" type="radio" id="size" name="size" value="{{ $sizes->value }}"
-                             />
-                            <label class="form-check-label" for="size">{{ $sizes->value }}</label>
+                           
+                                @if (in_array($sizes->id,$id_attr))
+                                <div class="size">
+                                    <input class="form-check-input" type="radio" id="size" name="size" value="{{ $sizes->value }}"
+                                    />
+                                    <label class="form-check-label" for="size">{{ $sizes->value }}</label>
+                                </div>
+                                @endif
+                            
 
-                            @endif
                            {{-- {{ in_array($sizes->id,$id_attr)?'checked':'' }} --}}
                            
                             
@@ -81,10 +100,12 @@
                             @foreach ($list_colors as $colors)
                             <div class="form-check form-check-inline">
                                 @if (in_array($colors->id,$id_attr))
-                                <input class="form-check-input" type="radio" id="color" name="color" value="{{$colors->value}}"/>
+                                <div class="color">
+                                    <input class="form-check-input" type="radio" id="color" name="color" value="{{$colors->value}}"/>
                                      <label class="form-check-label" for="color">{{ $colors->value }}</label>
+                                </div>
                                 @endif
-                              </div>
+                            </div>
                             @endforeach
                                 <br>
                                 <br>

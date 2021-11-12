@@ -1,5 +1,7 @@
 @extends('admin.index')
-
+@section('title')
+    List Products
+@endsection
 @section('content')
 
 <?php use App\Models\Product_Attribute; ?>

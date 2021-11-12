@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClassifyController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Oder_DetailController;
 use App\Http\Controllers\OderController;
@@ -29,12 +30,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PagesController::class,'home']);
+Route::get('/', [PagesController::class,'home'])->name('admin_home');
 
 
 //Route Login
 Route::get('admin/login',[UserController::class,'getAdmin_Login']);
 Route::post('admin/login',[UserController::class,'postAdmin_login'])->name('login');
+Route::get('admin/login/facebook', [LoginController::class,'redirectToFacebook']);
+Route::get('admin/login/facebook/callback', [LoginController::class,'handleFacebookCallback']);
+
+Route::get('admin/login/google', [LoginController::class,'redirectToGoogle']);
+Route::get('admin/login/google/callback', [LoginController::class,'handleGoogleCallback']);
 
 //Route Register
 Route::get('admin/register',[UserController::class,'getAdmin_Register']);

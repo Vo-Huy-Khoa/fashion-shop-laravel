@@ -1,4 +1,7 @@
 @extends('admin.index')
+@section('title')
+    Add Products
+@endsection
 @section('content')
     <div class="container-fluid" id="container-wrapper">
         <div class="wrapper bg-white mt-sm-4">
@@ -90,6 +93,16 @@
                               <label class="form-check-label" for="color">{{ $colors->value }}</label>
                             </div>
                             @endforeach
+
+
+                    </div>
+                    <div class="row py-2">
+                            <span >Quantity<br></span>
+                            <input type="text" class="bg-light form-control"  value="" name="quantity"
+                             >
+
+                    </div>
+                    
                         <div class="row py-2">
 
 

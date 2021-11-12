@@ -64,8 +64,17 @@ $users = Auth::user();
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="{{route('user_home')}}">Home</a></li>
-                        <li><a href="{{route('user_shop')}}">Shop</a></li>
+                        <li
+                        {{-- @if (route('user_home'))
+                            class="active"
+                        @endif --}}
+                         
+                         ><a href="{{route('user_home')}}">Home</a></li>
+                        <li
+                        {{-- @if (route('user_shop'))
+                            class="active"  
+                        @endif --}}
+                        ><a href="{{route('user_shop')}}">Shop</a></li>
                         {{-- <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="./shop-details.html">Shop Details</a></li>
@@ -74,8 +83,16 @@ $users = Auth::user();
                                 <li><a href="./blog-details.html">Blog Details</a></li>
                             </ul>
                         </li> --}}
-                        <li><a href="{{route('user_blog')}}">Blog</a></li>
-                        <li><a href="{{route('user_contact')}}">Contact</a></li>
+                        <li 
+                        {{-- @if (route('user_blog'))
+                            class="active"  
+                        @endif --}}
+                        ><a href="{{route('user_blog')}}">Blog</a></li>
+                        <li 
+                        {{-- @if (route('user_contact'))
+                            class="active"  
+                        @endif --}}
+                        ><a href="{{route('user_contact')}}">Contact</a></li>
                     </ul>
                 </nav>
             </div>

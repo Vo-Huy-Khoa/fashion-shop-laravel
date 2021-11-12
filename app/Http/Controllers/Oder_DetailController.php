@@ -9,7 +9,8 @@ use App\Models\Oder_Detail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Mail;
+use Illuminate\Support\Facades\Mail;
+
 class Oder_DetailController extends Controller
 {
     //

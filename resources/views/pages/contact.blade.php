@@ -1,5 +1,9 @@
 
     @extends('layout.index')
+    
+    @section('title')
+    Contact
+@endsection
     @section('content')
         
 
@@ -85,10 +89,10 @@
                 @csrf
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your name">
+                        <input type="text" name="name" placeholder="Your name">
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your Email">
+                        <input type="email" email placeholder="Your Email">
                     </div>
                     <div class="col-lg-12 text-center">
                         <textarea name="content" placeholder="Your message"></textarea>

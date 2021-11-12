@@ -1,4 +1,8 @@
 @extends('layout.index')
+
+@section('title')
+    Blog
+@endsection
 @section('content')
     
 
@@ -75,7 +79,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="blog__item">
                                 <div class="blog__item__pic">
-                                    <img style="width: 30px ;height:200px" src="uploads/blogs/{{$blogs->image}}" alt="">
+                                    <img style="width: 30px ;height:400px" src="uploads/blogs/{{$blogs->image}}" alt="">
                                 </div>
                                 <div class="blog__item__text">
                                     <ul>
@@ -83,17 +87,18 @@
                                         <li><i class="fa fa-comment-o"></i> 5</li>
                                     </ul>
                                     <h5><a href="user/blog_details/{{$blogs->id}}">{{$blogs->title}}</a></h5>
-                                    <p>{{$blogs->brief}}</p>
+                                    <p>{{substr($blogs->brief,0,500)}}...</p>
                                     <a href="user/blog_details/{{$blogs->id}}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
                             </div>
                         </div>
                         @endforeach
 
+                        <div class="row" style="display: flex;align-items: center;justify-content: center;">
 
-                        <div class="col-lg-12">
-                            {{$list_blogs->links('pagination::bootstrap-4') }}
-                        </div>
+                            <div class="link">{{$list_blogs->links('pagination::bootstrap-4') }}</div>
+              
+                          </div>
                     </div>
                 </div>
             </div>

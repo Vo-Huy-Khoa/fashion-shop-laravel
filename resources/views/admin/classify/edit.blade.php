@@ -1,4 +1,7 @@
 @extends('admin.index')
+@section('title')
+    Edit Classify
+@endsection
 @section('content')
     <div class="container-fluid" id="container-wrapper">
         <div class="wrapper bg-white mt-sm-4">

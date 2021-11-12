@@ -1,4 +1,7 @@
 @extends('admin.index')
+@section('title')
+    Edit Products
+@endsection
 @section('content')
     <div class="container-fluid" id="container-wrapper">
         <div class="wrapper bg-white mt-sm-4">
@@ -100,18 +103,23 @@
                              />
                             <label class="form-check-label" for="size">{{ $sizes->value }}</label>
                           </div>
-                          @endforeach
+                        @endforeach
                             <br>
                             <span><br>Color <br></span>
-                          @foreach ($list_colors as $colors)
+                        @foreach ($list_colors as $colors)
                           <div class="form-check form-check-inline">
                               <input class="form-check-input" type="checkbox" id="color" name="attribute_id[]" value="{{ $colors->id }}"
                               {{ in_array($colors->id,$id_attr)?'checked':'' }} />
                               <label class="form-check-label" for="color">{{ $colors->value }}</label>
                             </div>
-                            @endforeach
+                        @endforeach
 
+                        <div class="row py-2">
+                            <span >Quantity<br></span>
+                            <input type="text" class="bg-light form-control"  value="" name="quantity"
+                             >
 
+                    </div>
                         <div class="row">
                             <label for="description">Description</label>
                             <textarea class="ckeditor" name="description" id="description" cols="30" rows="5">{{$products->description}} </textarea>

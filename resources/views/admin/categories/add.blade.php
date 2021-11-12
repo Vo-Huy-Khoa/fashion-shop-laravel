@@ -1,4 +1,9 @@
 @extends('admin.index')
+
+@section('title')
+    Add Categories
+@endsection
+
 @section('content')
     <div class="container-fluid" id="container-wrapper">
         <div class="wrapper bg-white mt-sm-4">

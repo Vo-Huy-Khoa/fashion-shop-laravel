@@ -1,4 +1,7 @@
 @extends('admin.index')
+@section('title')
+    Oders
+@endsection
 @section('content')
 <?php 
 use App\Models\Oder;

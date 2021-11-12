@@ -1,5 +1,7 @@
 @extends('admin.index')
-
+@section('title')
+    Profile
+@endsection
 @section('content')
     <?php $users = Auth::user(); ?>
     <div class="wrapper bg-white mt-sm-5">
@@ -18,7 +20,7 @@
             @csrf
             <div class="row py-2">
                 <!-- Uploaded image area-->
-                <div class="image-area mt-4"><img style="height: 300px; width:300px; boder-radius:50px;" id="imageResult" src="#" alt=""
+                <div class="image-area mt-4"><img style="height: 300px; width:300px; boder-radius:50px;" id="imageResult" src="uploads/users/{{$users->image}}" alt=""
                         class="img-fluid rounded shadow-sm mx-auto d-block"></div>
                     </div>
                 <div class="row py-2">
@@ -27,8 +29,7 @@
                         <div class="input-group  rounded-pill bg-white shadow-sm">
                             <input id="upload" name="img" type="file" onchange="readURL(this);"
                                 class="form-control border-0">
-                            <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose
-                                file</label>
+                            <label id="upload-label" for="upload" class="font-weight-light text-muted">{{$users->image}}</label>
                             <div class="input-group-append">
                                 <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i
                                         class="fa fa-cloud-upload mr-2 text-muted"></i><small

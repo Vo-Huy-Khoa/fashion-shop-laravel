@@ -56,6 +56,7 @@ public function postAdd(Request $request)
 
     $products->unit_price = $request->unit_price;
     $products->sale_price = $request->sale_price;
+    $products->quantity = $request->quantity;
     $products->status = 1;
     $products->save();
     // dd($request->attribute_id);
@@ -151,6 +152,8 @@ public function postEdit(Request $request, $id)
     $products->description = $request->description;
     $products->unit_price = $request->unit_price;
     $products->sale_price = $request->sale_price;
+    $products->quantity = $request->quantity;
+
 
     if ($request->hasFile('img')) {
         $file = $request->file('img');

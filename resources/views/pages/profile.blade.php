@@ -1,4 +1,13 @@
 @extends('layout.index')
+
+@section('title')
+    Profile
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="{{ URL::asset('Front/css/profile.css') }}">
+@endsection
+
 @section('content')    
 <?php $users = Auth::user(); ?>
 

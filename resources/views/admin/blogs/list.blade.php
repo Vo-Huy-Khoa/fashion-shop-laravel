@@ -1,5 +1,7 @@
 @extends('admin.index')
-
+@section('title')
+    List Blog
+@endsection
 @section('content')
 
 

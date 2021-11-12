@@ -1,5 +1,7 @@
 @extends('admin.index')
-
+@section('title')
+    List Users
+@endsection
 @section('content')
 
 

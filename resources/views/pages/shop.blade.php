@@ -1,5 +1,10 @@
 
 @extends('layout.index')
+
+@section('title')
+    Shop
+@endsection
+
 @section('content')
     
 
@@ -175,14 +180,13 @@
 
 
                     </div>
-                    {{-- <div class="product__pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                    </div> --}}
-                            {{$list_products_shop->links('pagination::bootstrap-4') }}
 
+                            
+                            <div class="row" style="display: flex;align-items: center;justify-content: center;">
+
+                                <div class="link">{{$list_products_shop->links('pagination::bootstrap-4') }}</div>
+                  
+                              </div>
 
                 </div>
 

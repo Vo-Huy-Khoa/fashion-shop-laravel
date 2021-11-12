@@ -1,4 +1,8 @@
 @extends('layout.index')
+
+@section('title')
+    Register
+@endsection
 @section('content')
 @if (!Auth::check())
 <style>
