@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
@@ -99,23 +100,14 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
-    Route::prefix('brands')->group(function () {
-        Route::get('list',[BrandController::class,'list'])->name('brands_list');
-        Route::get('add',[BrandController::class,'getAdd'])->name('brands_add');
-        Route::post('add',[BrandController::class,'postAdd'])->name('brands_add');
-        Route::get('edit/{id}',[BrandController::class,'getEdit']);
-        Route::post('edit/{id}', [BrandController::class,'postEdit']);
-        Route::get('delete/{id}',[BrandController::class,'delete']);
 
-    });
-
-    Route::prefix('colors')->group(function () {
-        Route::get('list',[ColorController::class,'list'])->name('colors_list');
-        Route::get('add',[ColorController::class,'getAdd'])->name('colors_add');
-        Route::post('add',[ColorController::class,'postAdd'])->name('colors_add');
-        Route::get('edit/{id}',[ColorController::class,'getEdit']);
-        Route::post('edit/{id}', [ColorController::class,'postEdit']);
-        Route::get('delete/{id}',[ColorController::class,'delete']);
+    Route::prefix('attributes')->group(function () {
+        Route::get('list',[AttributeController::class,'list']);
+        Route::get('add',[AttributeController::class,'getAdd']);
+        Route::post('add',[AttributeController::class,'postAdd']);
+        Route::get('edit/{id}',[AttributeController::class,'getEdit']);
+        Route::post('edit/{id}', [AttributeController::class,'postEdit']);
+        Route::get('delete/{id}',[AttributeController::class,'delete']);
 
     });
 

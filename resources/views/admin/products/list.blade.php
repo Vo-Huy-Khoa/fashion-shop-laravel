@@ -3,7 +3,30 @@
     List Products
 @endsection
 @section('content')
+<style>
 
+
+    .colors label {
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .colors input {
+        display: none;
+    }
+
+
+
+    .swatch {
+        display: inline-block;
+        vertical-align: middle;
+        height: 30px;
+        width: 30px;
+        margin: 0 5px 0 0;
+        border: 1px solid #d4d4d4;
+    }
+
+</style>
 <?php use App\Models\Product_Attribute; ?>
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
@@ -76,7 +99,12 @@
                                         <?php $id_attr = Product_Attribute::where('product_id',$products->id)->pluck('attribute_id')->toArray();?>
                                         @foreach ($list_sizes as $sizes)
                                             @if(in_array($sizes->id,$id_attr))
-                                            {{$sizes->value." "}}
+                                            <div class="colors">
+                                                <label>
+                                                    <span class="swatch"
+                                                        style="background-color:white; text-align:center "> <b>{{$sizes->value}}</b></span>
+                                                </label>
+                                            </div>
                                             @endif
                                         @endforeach
                                     </td>
@@ -84,14 +112,19 @@
                                         <?php $id_attr = Product_Attribute::where('product_id',$products->id)->pluck('attribute_id')->toArray();?>
                                         @foreach ($list_colors as $colors)
                                             @if(in_array($colors->id,$id_attr))
-                                            {{$colors->value." "}}
+                                            <div class="colors">
+                                                <label>
+                                                    <span class="swatch"
+                                                        style="background-color:{{ $colors->value }}; "> </span>
+                                                </label>
+                                            </div>
                                             @endif
                                         @endforeach
                                 </td>
                                     
                                    {{-- <td>{{$products->brands->name}}</td> --}}
-                                    <td>{{$products->unit_price}}</td> 
-                                    <td>{{$products->sale_price}}</td>
+                                    <td>{{number_format($products->unit_price)}}</td> 
+                                    <td>{{number_format($products->sale_price)}}</td>
                                     @if($products->status == '0')
                                         <td><span class="badge badge-success">Đã bán</span></td>   
                                     @elseif($products->status == '1')

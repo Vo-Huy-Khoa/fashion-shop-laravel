@@ -48,7 +48,11 @@ class PagesController extends Controller
         $list_products_shoe = Product::where('category_id',8)->take(50)->paginate(3);
         $list_products_au = Product::where('category_id',7)->take(50)->paginate(3);
 
+        $list_colors = Attribute::where('name','color')->get();
+        $list_sizes = Attribute::where('name','size')->get();
 
+        view()->share('list_colors',$list_colors);
+        view()->share('list_sizes',$list_sizes);
 
 
         view()->share('list_categories',$list_categories);
@@ -203,7 +207,7 @@ class PagesController extends Controller
         $classify = Classify::find($id);
 
         $products_search = $classify->product;
-        return view('pages.search',['products_search'=>$products_search]);
+        return view('pages.search',['products_search'=>$products_search,'value'=>$classify->name]);
     }
 
 
@@ -211,9 +215,10 @@ class PagesController extends Controller
     {
   
         $products_search = Product::where('category_id',$id)->take(50)->paginate(12);
+        $categories = Category::find($id);
     //take trả về số lượng kết quả
     
-        return view('pages.search',['products_search'=>$products_search]);
+        return view('pages.search',['products_search'=>$products_search,'value'=>$categories->name]);
 
     }
 

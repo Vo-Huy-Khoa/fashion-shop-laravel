@@ -102,7 +102,7 @@
     <div class="sidebar-heading">
         properties
     </div>
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#brand" aria-expanded="true"
         aria-controls="brand">
         <i class="fas fa-fw fa-columns"></i>
@@ -115,8 +115,8 @@
           <a class="collapse-item" href="{{route('brands_list')}}">List</a>
         </div>
       </div>
-    </li>
-    <li class="nav-item">
+    </li> --}}
+    {{-- <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#color" aria-expanded="true"
         aria-controls="color">
         <i class="fas fa-fw fa-columns"></i>
@@ -129,18 +129,18 @@
           <a class="collapse-item" href="{{route('colors_list')}}">List</a>
         </div>
       </div>
-    </li>
+    </li> --}}
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#size" aria-expanded="true"
         aria-controls="size">
         <i class="fas fa-fw fa-columns"></i>
-        <span>Size</span>
+        <span>Attributes</span>
       </a>
       <div id="size" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Example Pages</h6>
-          <a class="collapse-item" href="login.html">Add</a>
-          <a class="collapse-item" href="register.html">List</a>
+          <a class="collapse-item" href="admin/attributes/add">Add</a>
+          <a class="collapse-item" href="admin/attributes/list">List</a>
         </div>
       </div>
     </li>

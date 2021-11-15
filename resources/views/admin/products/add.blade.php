@@ -3,6 +3,31 @@
     Add Products
 @endsection
 @section('content')
+
+<style>
+
+
+    .colors label {
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .colors input {
+        display: none;
+    }
+    .colors input[type="checkbox"]:checked+.swatch {
+            box-shadow: inset 0 0 0 3px wheat;
+        }
+    .swatch {
+        display: inline-block;
+        vertical-align: middle;
+        height: 30px;
+        width: 30px;
+        margin: 0 5px 0 0;
+        border: 1px solid #d4d4d4;
+    }
+
+</style>
     <div class="container-fluid" id="container-wrapper">
         <div class="wrapper bg-white mt-sm-4">
             <h4 class="pb-4 border-bottom">Product Add</h4>
@@ -81,18 +106,35 @@
                         <span>Size <br></span>
                         @foreach ($list_sizes as $sizes)
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="size" name="attribute_id[]" value="{{ $sizes->id }}" />
-                            <label class="form-check-label" for="size">{{ $sizes->value }}</label>
+                            <div class="colors">
+                                <label>
+                                    <input type="checkbox" name="attribute_id[]" value="{{ $sizes->id }}">
+                                    <span class="swatch"
+                                        style="background-color:white; text-align:center">{{ $sizes->value }}</span>
+                                </label>
+                            </div>
                           </div>
                           @endforeach
                             <br>
                             <span><br>Color <br></span>
-                          @foreach ($list_colors as $colors)
+                          {{-- @foreach ($list_colors as $colors)
                           <div class="form-check form-check-inline">
                               <input class="form-check-input" type="checkbox" id="color" name="attribute_id[]" value="{{ $colors->id }}" />
                               <label class="form-check-label" for="color">{{ $colors->value }}</label>
                             </div>
-                            @endforeach
+                            @endforeach --}}
+
+                            @foreach ($list_colors as $colors)
+                            <div class="form-check form-check-inline">
+                                <div class="colors">
+                                    <label>
+                                        <input type="checkbox" name="attribute_id[]" value="{{ $colors->id }}">
+                                        <span class="swatch"
+                                            style="background-color:{{ $colors->value }}"></span>
+                                    </label>
+                                </div>
+                              </div>
+                              @endforeach
 
 
                     </div>

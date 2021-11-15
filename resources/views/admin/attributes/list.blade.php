@@ -1,7 +1,27 @@
 @extends('admin.index')
-
+@section('title')
+    Attributes
+@endsection
 @section('content')
+<style>
 
+
+    .colors label {
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+
+    .swatch {
+        display: inline-block;
+        vertical-align: middle;
+        height: 30px;
+        width: 30px;
+        margin: 0 5px 0 0;
+        border: 1px solid #d4d4d4;
+    }
+
+</style>
 
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
@@ -32,7 +52,8 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Size</th>
+                                    <th>Color</th>
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -41,26 +62,41 @@
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Size</th>
+                                    <th>Color</th>
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
-
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($list_colors as $colors)
                                 <tr>
-                                    <td>{{$colors->id}}</td>
-                                    <td style="text-align: center">{{$colors->name}} <br>
-
+                                    <td></td>
+                                    <td style="text-align: center"> <br>
+                                        @foreach ($list_sizes as $sizes)
+                                        <div class="colors">
+                                            <label>
+                                                <span class="swatch"
+                                                    style="background-color:white; text-align:center">{{ $sizes->value }}</span>
+                                            </label>
+                                        </div>
+                                        @endforeach
                                     </td>
-                                    <td><a href="{{route('colors_add')}}"><i></i>Add</a></td>
-                                    <td><a href="admin/colors/edit/{{$colors->id}}"><i></i>Edit</a></td>
-                                    <td><a href="admin/colors/delete/{{$colors->id}}"</a><i></i>Delete</a></td>
+                                    <td style="text-align: center"> <br>
+                                        @foreach ($list_colors as $colors)
+                                        <div class="colors">
+                                            <label>
+                                                <span class="swatch"
+                                                    style="background-color:{{ $colors->value }}"></span>
+                                            </label>
+                                        </div>
+                                        @endforeach
+                                    </td>
+                                    <td><a href="admin/attributes/add"><i></i>Add</a></td>
+                                    <td><a href="admin/attributes/edit/1"><i></i>Edit</a></td>
+                                    <td><a href="admin/attributes/delete/2"</a><i></i>Delete</a></td>
 
                                 </tr>
-                                @endforeach
 
                             </tbody>
                         </table>

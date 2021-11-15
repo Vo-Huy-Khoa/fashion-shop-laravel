@@ -3,7 +3,7 @@
 
 <head>
 
-  <title>Admin | @yield('title')</title>
+  <title>@yield('title') | Admin</title>
 @include('admin.layout.css')
 </head>
 

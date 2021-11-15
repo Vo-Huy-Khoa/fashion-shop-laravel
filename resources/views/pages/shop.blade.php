@@ -7,7 +7,29 @@
 
 @section('content')
     
+<style>
+    .colors label {
+        cursor: pointer;
+    }
 
+    .colors input {
+        display: none;
+    }
+
+    .colors input[type="radio"]:checked+.swatch {
+        box-shadow: inset 0 0 0 3px wheat;
+    }
+
+    .swatch {
+        display: inline-block;
+        vertical-align: middle;
+        height: 30px;
+        width: 30px;
+        margin: 0 5px 0 0;
+        border: 1px solid #d4d4d4;
+    }
+
+</style>
 
     <!-- Product Section Begin -->
     <section class="product spad">
@@ -41,26 +63,47 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sidebar__item sidebar__item__color--option">
-                            <h4>Colors</h4>
-                            <div class="sidebar__item__color sidebar__item__color--">
-                                <label for="">
-                                    <input type="radio" id="">
+                        <h4><b>Color</b></h4><br>
+
+                        @foreach ($list_colors as $colors)
+                        <div class="form-check form-check-inline">
+                            <div class="colors">
+                                <label>
+                                    <input type="checkbox" name="color" value="{{ $colors->id }}">
+                                    <span class="swatch"
+                                        style="background-color:{{ $colors->value }}"></span>
                                 </label>
                             </div>
+                          </div>
+                          @endforeach
 
 
-                        </div>
-                        <div class="sidebar__item">
+
+
+                        {{-- <div class="sidebar__item">
                             <h4>Popular Size</h4>
                             <div class="sidebar__item__size">
                                 <label for="large">
                                     <input type="radio" id="large">
                                 </label>
                             </div>  
+                        </div> --}}
 
+                        <br><br>
+                        <h4><b>Size</b></h4><br>
 
-                        </div>
+                        @foreach ($list_sizes as $sizes)
+                        <div class="form-check form-check-inline">
+                            <div class="colors">
+                                <label>
+                                    <input type="checkbox" name="attribute_id[]" value="{{ $sizes->id }}">
+                                    <span class="swatch"
+                                        style="background-color:white; text-align:center">{{ $sizes->value }}</span>
+                                </label>
+                            </div>
+                          </div>
+                          @endforeach
+                          <br> <br>
                         <div class="sidebar__item">
                             <div class="latest-product__text">
                                 <h4>Latest Products</h4>

@@ -1,8 +1,6 @@
 @extends('layout.index')
 
-@section('title')
-    Profile
-@endsection
+
 
 @section('css')
     <link rel="stylesheet" href="{{ URL::asset('Front/css/profile.css') }}">
@@ -75,4 +73,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('title')
+    {{$users->first_name." ".$users->last_name}}
 @endsection
