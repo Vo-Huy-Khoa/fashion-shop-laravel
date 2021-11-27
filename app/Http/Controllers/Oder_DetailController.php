@@ -98,7 +98,7 @@ class Oder_DetailController extends Controller
     public function out_cart()
     {
         $user_id = Auth::id();
-        $out_cart = Oder_Detail::where('users_id',Auth::id())->get();
+        $out_cart = Oder_Detail::where('users_id',Auth::id())->where('status','1')->get();
         $list_oders = Oder::where('user_id',$user_id)->get();
         $product_id = Oder::where('user_id',$user_id)->pluck('product_id')->toArray();
         $quantity = Oder::where('user_id',$user_id)->pluck('quantity')->toArray();

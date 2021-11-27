@@ -1,6 +1,6 @@
 @extends('layout.index')
 
-
+<?php use Illuminate\Support\Facades\Hash; ?>
 
 @section('css')
     <link rel="stylesheet" href="{{ URL::asset('Front/css/profile.css') }}">
@@ -10,9 +10,26 @@
 <?php $users = Auth::user(); ?>
 
 <div class="container rounded bg-white mt-5 mb-5">
+    <form action="user/profile_edit/{{$users->id}}" method="POST" enctype="multipart/form-data">
+    @csrf
     <div class="row">
+ 
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="uploads/users/{{$users->image}}" width="90"><span class="font-weight-bold">{{$users->first_name." ".$users->last_name}}</span><span class="text-black-50">{{$users->email}}</span><span>{{$users->address." ".$users->city}}</span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" src="uploads/users/{{$users->image}}" width="90" id="imageResult">
+                <br>
+                <input style="display:none" id="upload" name="img" type="file" onchange="readURL(this);"
+                class="form-control border-0">
+            <div class="input-group-append">
+                <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i
+                        class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                        class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+            </div>
+            <br>
+                <span class="font-weight-bold">{{$users->first_name." ".$users->last_name}}</span>
+                <span class="text-black-50">{{$users->email}}</span>
+                <span>{{$users->address." ".$users->city}}</span>
+            </div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
@@ -29,8 +46,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h6 class="text-right">Edit your profile</h6>
                 </div>
-                <form action="user/profile_edit/{{$users->id}}" method="POST">
-                    @csrf
+
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="labels">First Name</label>
                         <input type="text" name="first_name" class="form-control" placeholder="First Name" value="{{$users->first_name}}"></div>
@@ -42,9 +58,21 @@
                         <input type="text" name="name" class="form-control" placeholder="User Name" value="{{$users->name}}"></div>
                     <div class="col-md-12"><label class="labels">Email</label>
                         <input type="email" name="email" class="form-control" placeholder="Email" value="{{$users->email}}"></div>
-                    <div class="col-md-12"><label class="labels">Phone</label>
-                        <input type="text" name="phone" class="form-control" placeholder="Phone Number" value="{{$users->phone}}"></div>
+                        <div class="col-md-12">
+                            <label class="labels">Password</label>
+                            <input type="password" name="password" id="password" class="form-control"  >
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Confirm Password</label>
+                            <input type="password" name="confirm_password" id="confirm_password"  class="form-control"  >
+                            <span id='message'></span>
+                        </div>
+                        <div class="col-md-12">
+                        <label class="labels">Phone</label>
+                        <input type="text" name="phone" class="form-control" placeholder="Phone Number" value="{{$users->phone}}">
+                    </div>
                 </div>
+                
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">City</label>
                         <input type="text" name="city" class="form-control" placeholder="country" value="{{$users->city}}"></div>
@@ -52,9 +80,10 @@
                         <input type="text" name="address" class="form-control" value="{{$users->address}}" placeholder="Local Address"></div>
                 </div>
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
-                </form>
+                
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div>
@@ -72,8 +101,36 @@
             </div>
         </div>
     </div>
+    </form>
+
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+    function readURL(input) {
+if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        $('#imageResult')
+            .attr('src', e.target.result);
+    };
+    reader.readAsDataURL(input.files[0]);
+}
+}
+
+$('#password, #confirm_password').on('keyup', function () {
+  if ($('#password').val() == $('#confirm_password').val()) {
+    $('#message').html('Matching').css('color', 'green');
+  } else 
+    $('#message').html('Not Matching').css('color', 'red');
+});
+
+
+</script>
 @endsection
+
+
 @section('title')
     {{$users->first_name." ".$users->last_name}}
 @endsection

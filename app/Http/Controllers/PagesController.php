@@ -13,7 +13,7 @@ use App\Models\Product;
 use App\Models\product_image;
 use App\Models\Product_Attribute;
 use App\Models\Attribute;
-
+use App\Models\Shipping;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -134,7 +134,11 @@ class PagesController extends Controller
     public function check_out()
     {
         if (Auth::check()) {
-            return view('pages.check_out');
+            $id = Auth::id();
+            $id_shipping = Shipping::where('user_id',$id)->pluck('id');
+            $shippings = Shipping::find($id_shipping);
+            $list_oders = Oder::where('user_id',$id)->where('status',1)->get();
+            return view('pages.check_out',['list_oders'=>$list_oders,'shippings'=>$shippings]);
         }
         else{
             return view('pages.login');
@@ -160,31 +164,31 @@ class PagesController extends Controller
         $user->city = $request->city;
         $user->phone = $request->phone;
         $user->address = $request->address;
-        // if($request->password == $request->repassword)
-        //      $user->password = Hash::make($request->password) ;
+        if($request->password == $request->confirm_password)
+             $user->password = Hash::make($request->password) ;
 
 
-        // if ($request->hasFile('img')) {
-        //     $file = $request->file('img');
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
     
-        //     $late = $file->getClientOriginalExtension();
-        // if ($late !="jpg" && $late != "png" && $late != "jpeg") {
-        //     return back()->with('error_img','Sai định dạng hình ');
-        // }
-        // $name = $file->getClientOriginalName();
-        // $img = Str::random(4)."_".$name;
+            $late = $file->getClientOriginalExtension();
+        if ($late !="jpg" && $late != "png" && $late != "jpeg") {
+            return back()->with('error_img','Sai định dạng hình ');
+        }
+        $name = $file->getClientOriginalName();
+        $img = Str::random(4)."_".$name;
     
-        // while (file_exists("uploads/users/".$img)) {
-        //     $img = Str::random(4)."_".$name;
-        // }
+        while (file_exists("uploads/users/".$img)) {
+            $img = Str::random(4)."_".$name;
+        }
         
-        // $file->move("uploads/users",$img);
-        // $user->image = $img;
+        $file->move("uploads/users",$img);
+        $user->image = $img;
         
-        // }
-        // else{
-        //     $user->image ="";
-        // }
+        }
+        else{
+            $user->image ="";
+        }
         if ($user ->save()) {
               return back()->with('edit','Bạn đã sửa thành công '.$user->first_name." ".$user->last_name);
           }else{
@@ -245,5 +249,28 @@ class PagesController extends Controller
         
         return view('pages.blog_search',['list_blogs_search'=>$list_blogs_search]);
 
+    }
+    public function Search_color($id)
+    {
+        // $attribtute = Attribute::find($id);
+        // $value = $attribtute->value;
+        $value = "color";
+    $list_product_id = Product_Attribute::where('attribute_id',$id)->pluck('product_id')->toArray();
+    $list_products = Product::all();
+
+        return view('pages.search',['list_product_id'=>$list_product_id,'value'=>$value,'list_products'=>$list_products]);
+    }
+
+    public function Search_size($id)
+    {
+
+        $attribtute = Attribute::find($id);
+        $name = $attribtute->value;
+        $value = "size ".$name;
+
+    $list_product_id = Product_Attribute::where('attribute_id',$id)->pluck('product_id')->toArray();
+    $list_products = Product::all();
+
+        return view('pages.search',['list_product_id'=>$list_product_id,'value'=>$value,'list_products'=>$list_products]);
     }
 }

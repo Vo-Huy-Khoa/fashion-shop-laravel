@@ -31,7 +31,7 @@
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="col-12 col-md-9 col-lg-8 col-xl-8">
             <div class="card" style="border-radius: 15px;">
               <div class="card-body p-5">
                 @if (session('error'))
@@ -62,13 +62,15 @@
                   </div>
   
                   <div class="form-outline mb-4">
-                    <input type="password"  name="password" class="form-control form-control-lg" />
+                    <input type="password"  name="password" id="password" class="form-control form-control-lg" />
                     <label class="form-label" for="password">Password</label>
                   </div>
   
                   <div class="form-outline mb-4">
-                    <input type="password"  name="repassword" class="form-control form-control-lg" />
-                    <label class="form-label" for="repassword">Repeat your password</label>
+                    <span id='message'></span>
+                    <input type="password"  name="confirm_password" id="confirm_password" class="form-control form-control-lg" />
+                    
+                    <label class="form-label" for="confirm_password">Repeat your password</label>
                   </div>
   
                   {{-- <div class="form-check d-flex justify-content-center mb-5">
@@ -99,4 +101,17 @@
     </div>
   </section>
   @endif
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+$('#password, #confirm_password').on('keyup', function () {
+  if ($('#password').val() == $('#confirm_password').val()) {
+    $('#message').html('Matching').css('color', 'green');
+  } else 
+    $('#message').html('Not Matching').css('color', 'red');
+});
+
+
+</script>
 @endsection

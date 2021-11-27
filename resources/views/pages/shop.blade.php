@@ -69,36 +69,23 @@
                         <div class="form-check form-check-inline">
                             <div class="colors">
                                 <label>
-                                    <input type="checkbox" name="color" value="{{ $colors->id }}">
-                                    <span class="swatch"
-                                        style="background-color:{{ $colors->value }}"></span>
+                                    <input type="text" name="color" value="{{ $colors->id }}">
+                                   <a href="user/search/color/{{$colors->id}}"> <span class="swatch"
+                                        style="background-color:{{ $colors->value }}"></span> </a>
                                 </label>
                             </div>
                           </div>
                           @endforeach
-
-
-
-
-                        {{-- <div class="sidebar__item">
-                            <h4>Popular Size</h4>
-                            <div class="sidebar__item__size">
-                                <label for="large">
-                                    <input type="radio" id="large">
-                                </label>
-                            </div>  
-                        </div> --}}
-
                         <br><br>
                         <h4><b>Size</b></h4><br>
-
                         @foreach ($list_sizes as $sizes)
                         <div class="form-check form-check-inline">
                             <div class="colors">
                                 <label>
                                     <input type="checkbox" name="attribute_id[]" value="{{ $sizes->id }}">
-                                    <span class="swatch"
-                                        style="background-color:white; text-align:center">{{ $sizes->value }}</span>
+                                    <a href="user/search/size/{{$sizes->id}}"><span class="swatch"
+                                        style="background-color:#7FAD39;color:white; text-align:center">{{ $sizes->value }}</span>
+                                    </a>
                                 </label>
                             </div>
                           </div>
@@ -120,8 +107,6 @@
                                             </div>
                                         </a>
                                         @endforeach
-
-
                                     </div>
                                     <div class="latest-prdouct__slider__item">
                                         @foreach ($list_products_hoodie as $hoodie)
@@ -135,8 +120,6 @@
                                             </div>
                                         </a>
                                         @endforeach
-
-
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +133,6 @@
                         </div>
                         <div class="row">
                             <div class="product__discount__slider owl-carousel">
-                                
                                 @foreach ($list_products_sale as $products_sale)
                                 <div class="col-lg-4">
                                     <div class="product__discount__item">
@@ -171,8 +153,6 @@
                                     </div>
                                 </div> 
                                 @endforeach
-
-
                             </div>
                         </div>
                     </div>

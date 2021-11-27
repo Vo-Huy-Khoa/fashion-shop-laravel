@@ -65,14 +65,18 @@
                         <div class="col-md-6"> 
                             <label for="password">Password</label>
                              <input type="password"
-                                class="bg-light form-control" id="password" name="password" value="" > 
+                                class="bg-light form-control" id="password" name="password" placeholder="Password..." > 
                             </div>
+                            
                         <div class="col-md-6 pt-md-0 pt-3"> <label for="address">Address</label> <input type="text"
                                 class="bg-light form-control" value="{{$user->address}}" id="address" name="address"> </div>
                     </div>
                 <div class="row py-2">
-                    <div class="col-md-6"> <label for="repassword">Repassword</label> <input type="repassword" placeholder="Enter repassword..."
-                            class="bg-light form-control" id="repassword" name="repassword"> </div>
+                    <div class="col-md-6"> <label for="confirm_password">Repassword</label>
+                         <input type="password" placeholder="Confirm Password..."
+                            class="bg-light form-control" id="confirm_password" name="confirm_password"> 
+                            <span id='message'></span>
+                        </div>
                     <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Phone Number</label> <input type="tel"
                             class="bg-light form-control" value="{{$user->phone}}" id="phone" name="phone"> </div>
                 </div>
@@ -84,7 +88,20 @@
         </div>
 
 
+@section('script')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
 
+$('#password, #confirm_password').on('keyup', function () {
+  if ($('#password').val() == $('#confirm_password').val()) {
+    $('#message').html('Matching').css('color', 'green');
+  } else 
+    $('#message').html('Not Matching').css('color', 'red');
+});
+
+
+</script>
+@endsection
     </div>
 @endsection
 

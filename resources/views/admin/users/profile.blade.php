@@ -21,9 +21,10 @@
             <div class="row py-2">
                 <!-- Uploaded image area-->
                 <div class="image-area mt-4"><img style="height: 300px; width:300px; boder-radius:50px;" id="imageResult" src="uploads/users/{{$users->image}}" alt=""
-                        class="img-fluid rounded shadow-sm mx-auto d-block"></div>
-                    </div>
-                <div class="row py-2">
+                        class="img-fluid rounded shadow-sm mx-auto d-block">
+                </div>
+            </div>
+            <div class="row py-2">
                    
                         <!-- Upload image input-->
                         <div class="input-group  rounded-pill bg-white shadow-sm">
@@ -37,7 +38,7 @@
                             </div>
                         </div>
                   
-                </div>
+            </div>
             <div class="py-2">
                 <div class="row py-2">
                     <div class="col-md-6"> <label for="firstname">First Name</label> <input type="text"
@@ -52,6 +53,16 @@
                     <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Phone Number</label> <input type="tel"
                             name="phone" value="{{ $users->phone }}" class="bg-light form-control"
                             placeholder="Phone Number"> </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-6"> <label for="password">Password</label> <input type="password" id="password" name="password"
+                            class="bg-light form-control"  placeholder="Password"> </div>
+                    <div class="col-md-6 pt-md-0 pt-3"> <label for="confirm_password">Confirm Password</label>
+                         <input type="tel"
+                            name="confirm_password" id="confirm_password"  class="bg-light form-control"
+                            placeholder="Confirm Password">
+                            <span id='message'></span>
+                         </div>
                 </div>
                 <div class="row py-2">
                     <div class="col-md-6"> <label for="city">City</label> <input type="text" name="city"
@@ -71,4 +82,18 @@
             </div>
         </form>
     </div>
+@endsection
+@section('script')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+$('#password, #confirm_password').on('keyup', function () {
+  if ($('#password').val() == $('#confirm_password').val()) {
+    $('#message').html('Matching').css('color', 'green');
+  } else 
+    $('#message').html('Not Matching').css('color', 'red');
+});
+
+
+</script>
 @endsection

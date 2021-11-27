@@ -20,6 +20,7 @@
             {{ session('un_oder_close') }}
         </div>
         @endif
+        @if (empty($out_cart))
         <div class="row">
             <div class="col-lg-12 mb-4">
                 <!-- Simple Tables -->
@@ -111,6 +112,42 @@
                 </div>
             </div>
         </div>
+        @endif
+            <!-- Related Product Section Begin -->
+    <section class="related-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title related__product__title">
+                        <h2>Purchased Product</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach ($list_products as $products)
+                @if(in_array($products->id,$product_id))
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="uploads/products/{{ $products->image }}">
+                            <ul class="product__item__pic" >
+                                <li style="width:100px;"><a href="user/products_details/{{ $products->id }}"><button class="btn btn-danger">Repurchase</button></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="user/products_details/{{ $products->id }}">{{ $products->name }}</a></h6>
+                            <h5>{{ number_format($products->unit_price) }} $</h5>
+                        </div>
+                    </div>
+                </div>
+                @endif
+
+                @endforeach
+
+
+            </div>
+        </div>
+    </section>
+    <!-- Related Product Section End -->
     </div>
     <!---Container Fluid-->
 

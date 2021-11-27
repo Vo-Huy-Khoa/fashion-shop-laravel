@@ -5,8 +5,29 @@
     Search: {{$value}}
 @endsection
 @section('content')
-    
+<style>
+    .colors label {
+        cursor: pointer;
+    }
 
+    .colors input {
+        display: none;
+    }
+
+    .colors input[type="radio"]:checked+.swatch {
+        box-shadow: inset 0 0 0 3px wheat;
+    }
+
+    .swatch {
+        display: inline-block;
+        vertical-align: middle;
+        height: 30px;
+        width: 30px;
+        margin: 0 5px 0 0;
+        border: 1px solid #d4d4d4;
+    }
+
+</style>
 
     <!-- Product Section Begin -->
     <section class="product spad">
@@ -66,6 +87,43 @@
 
 
                         </div> --}}
+                        <h4><b>Color</b></h4><br>
+
+                        @foreach ($list_colors as $colors)
+                        <div class="form-check form-check-inline">
+                            <div class="colors">
+                                <label>
+                                    <input type="text" name="color" value="{{ $colors->id }}">
+                                   <a href="user/search/color/{{$colors->id}}"> <span class="swatch"
+                                        style="background-color:{{ $colors->value }}"></span> </a>
+                                </label>
+                            </div>
+                          </div>
+                          @endforeach
+                        {{-- <div class="sidebar__item">
+                            <h4>Popular Size</h4>
+                            <div class="sidebar__item__size">
+                                <label for="large">
+                                    <input type="radio" id="large">
+                                </label>
+                            </div>  
+                        </div> --}}
+
+                        <br><br>
+                        <h4><b>Size</b></h4><br>
+
+                        @foreach ($list_sizes as $sizes)
+                        <div class="form-check form-check-inline">
+                            <div class="colors">
+                                <label>
+                                    <input type="checkbox" name="attribute_id[]" value="{{ $sizes->id }}">
+                                    <a href="user/search/size/{{$sizes->id}}"><span class="swatch"
+                                        style="background-color:white; text-align:center">{{ $sizes->value }}</span></a>
+                                </label>
+                            </div>
+                          </div>
+                          @endforeach
+                          <br> <br>
                         <div class="sidebar__item">
                             <div class="latest-product__text">
                                 <h4>Latest Products</h4>
@@ -120,9 +178,11 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4">
-                                <div class="filter__found">
-                                    <h6><span><?php echo count($products_search)  ;?></span> Products found</h6>
-                                </div>
+                                @if(isset($products_search))
+                                    <div class="filter__found">
+                                        <h6><span><?php echo count($products_search)  ;?></span> Products found</h6>
+                                    </div>
+                                @endif
                             </div>
                             <div class="col-lg-4 col-md-3">
                                 <div class="filter__option">
@@ -132,27 +192,52 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        @foreach ($products_search as $products)
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="uploads/products/{{$products->image}}">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="user/AddToCart/{{$products->id}}"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
+                    @if(isset($products_search))
+                        <div class="row">
+                            @foreach ($products_search as $products)
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="uploads/products/{{$products->image}}">
+                                        <ul class="product__item__pic__hover">
+                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                            <li><a href="user/AddToCart/{{$products->id}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6><a href="user/products_details/{{$products->id}}">{{$products->name}}</a></h6>
+                                        <h5>{{number_format($products->unit_price)}}$</h5>
+                                    </div>
                                 </div>
-                                <div class="product__item__text">
-                                    <h6><a href="user/products_details/{{$products->id}}">{{$products->name}}</a></h6>
-                                    <h5>{{number_format($products->unit_price)}}$</h5>
-                                </div>
-                            </div>
-                        </div>  
-                        @endforeach
-
-
-                    </div>
+                            </div>  
+                            @endforeach
+                        </div>
+                    @endif
+                    
+                    @if(isset($list_product_id))
+                        <div class="row">
+                            
+                            @foreach ($list_products as $products)
+                            @if (in_array($products->id, $list_product_id))
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="uploads/products/{{$products->image}}">
+                                            <ul class="product__item__pic__hover">
+                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                                <li><a href="user/AddToCart/{{$products->id}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="product__item__text">
+                                            <h6><a href="user/products_details/{{$products->id}}">{{$products->name}}</a></h6>
+                                            <h5>{{number_format($products->unit_price)}}$</h5>
+                                        </div>
+                                    </div>
+                                </div> 
+                            @endif 
+                            @endforeach
+                        </div>
+                    @endif
 
                 </div>
                 {{-- <div class="row" style="display: flex;align-items: center;justify-content: center;">

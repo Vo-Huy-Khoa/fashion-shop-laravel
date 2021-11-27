@@ -30,10 +30,6 @@ class UserController extends Controller
         view()->share('users',$users);
         $list_message = Message::all();
         view()->share('list_message',$list_message);
-
-
-
-        
     }
 
 
@@ -42,10 +38,9 @@ class UserController extends Controller
         $list_users = User::all();
         $list_oder_details = Oder_Detail::all();
         $list_products = Product::all();
-
         return view('admin.layout.main',['list_users'=>$list_users,
-        'list_oder_details'=>$list_oder_details,
-        'list_products'=>$list_products]);
+                                        'list_oder_details'=>$list_oder_details,
+                                        'list_products'=>$list_products]);
     }
     public function getAdmin_Login()
     {
@@ -89,7 +84,6 @@ class UserController extends Controller
         }
         else{
            return redirect()->back()->with('error','Đăng nhập thất bại!');
-
         }
         // dd($request->input());
         
@@ -124,21 +118,17 @@ class UserController extends Controller
         
 
        $user = new User;
-
        $user->name = $request->name;
        $user->email = $request->email;
        $user->type = 1;
-
        if($request->password == $request->repassword)
             $user->password = Hash::make($request->password) ;
-
-
         $save = $user -> save();
-        if ($save) {
-             return redirect('admin/login')->with('register','Bạn đã đăng ký thành công!');
-         }else{
+        if ($save) 
+            return redirect('admin/login')->with('register','Bạn đã đăng ký thành công!');
+        else
             return back()->with('errorregister','Bạn đã đăng ký thất bại!');
-         }
+         
 
     }
 
@@ -147,16 +137,13 @@ class UserController extends Controller
         $listuser  = User::all();
         return view('admin.users.list',['listuser'=> $listuser]);
     }
-
     public function add()
     {
         return view('admin.users.add');
     }
-
     public function postAdd(Request $request)
     {
         $user = new User;
-
         $user->name = $request->name;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -165,37 +152,31 @@ class UserController extends Controller
         $user->city = $request->city;
         $user->address = $request->address;
         // $user->type = $request->type;
-
-        if($request->password == $request->repassword)
-             $user->password = Hash::make($request->password) ;
- 
+        if($request->password == $request->confirm_password)
+             $user->password = Hash::make($request->password);
         if ($request->hasFile('img')) {
             $file = $request->file('img');
-    
             $late = $file->getClientOriginalExtension();
             if ($late !="jpg" && $late != "png" && $late != "jpeg") {
                 return back()->with('error_img','Sai định dạng hình ');
         }
         $name = $file->getClientOriginalName();
         $img = Str::random(4)."_".$name;
-    
         while (file_exists("uploads/users/".$img)) {
             $img = Str::random(4)."_".$name;
         }
-        
         $file->move("uploads/users",$img);
         $user->image = $img;
-        
         }
-        else{
+        else
             $user->image ="";
-        }
+        
          $save = $user -> save();
-         if ($save) {
+         if ($save)
               return back()->with('add','Bạn đã thêm thành công '.$user->first_name." ".$user->last_name);
-          }else{
+         else
              return back()->with('error','Bạn đã thêm người dùng thất bại '.$user->first_name." ".$user->last_name);
-          }
+          
     }
 
 
@@ -208,7 +189,6 @@ class UserController extends Controller
     public function postEdit(Request $request, $id)
     {
         $user = User::find($id);
-
         $user->name = $request->name;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -216,38 +196,33 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->city = $request->city;
         $user->address = $request->address;
-        // $user->type = $request->type;
-
-        if($request->password == $request->repassword)
+        if($request->password == $request->confirm_password)
              $user->password = Hash::make($request->password) ;
-
-
         if ($request->hasFile('img')) {
             $file = $request->file('img');
-    
             $late = $file->getClientOriginalExtension();
         if ($late !="jpg" && $late != "png" && $late != "jpeg") {
             return back()->with('error_img','Sai định dạng hình ');
         }
         $name = $file->getClientOriginalName();
         $img = Str::random(4)."_".$name;
-    
         while (file_exists("uploads/users/".$img)) {
             $img = Str::random(4)."_".$name;
         }
-        
+        //add image
         $file->move("uploads/users",$img);
+        //delete image
+        unlink("uploads/uers/".$user->image);
         $user->image = $img;
-        
         }
-        else{
+        else
             $user->image ="";
-        }
-        if ($user ->save()) {
+        
+        if ($user ->save())
               return back()->with('edit','Bạn đã sửa thành công '.$user->first_name." ".$user->last_name);
-          }else{
+        else
              return back()->with('error','Bạn đã sửa thất bại '.$user->first_name." ".$user->last_name);
-          }
+          
     }
 
     public function delete($id)
@@ -256,9 +231,6 @@ class UserController extends Controller
         $user->delete();
         return back()->with('delete','Xóa thành công người dùng '.$user->first_name." ".$user->last_name);
     }
-
-
-
     public function getUsers_login()
     {
         return view('pages.login');
@@ -267,7 +239,6 @@ class UserController extends Controller
     public function postUsers_login(Request $request)
     {
         $remember =isset($request->remember) ;
-
         $credentials = [
             'email'=> $request->email,
             'password' => $request->password ,
@@ -289,25 +260,18 @@ class UserController extends Controller
         Auth::logout();
         return redirect('home')->with('logout','Bạn đã đăng xuất thành công! ');
     }
-
-
-
     public function getUsers_Register()
     {
         return view('pages.register');
     }
-
     public function postUsers_Register(Request $request)
     {
         $user = new User;
-
         $user->name = $request->name;
         $user->email = $request->email;
         $user->first_name = $request->first_name;
         $user->last_name  = $request->last_name;
         $user->type = "2";
-        // $user->phone = $request->phone;
-        // $user->address = $request->address;
         if($request->password == $request->repassword)
              $user->password = Hash::make($request->password) ;
  

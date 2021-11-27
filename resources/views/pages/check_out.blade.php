@@ -5,20 +5,13 @@
 @endsection
 @section('content')
     
-<?php
-use App\Models\Oder;
-$users = Auth::user();
-        $id = Auth::id();
-        $list_oders = Oder::where('user_id',$id)->get();
-?>
+
     <!-- Breadcrumb Section Begin -->
 
     <!-- Breadcrumb Section End -->
-
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
-
             <div class="checkout__form">
                 <h4>Billing Details</h4>
                 <form action="{{route('shipping')}}" method="POST">
@@ -29,7 +22,7 @@ $users = Auth::user();
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Fist Name<span>*</span></p>
-                                        <input type="text" name="first_name">
+                                        <input type="text" name="first_name" >
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

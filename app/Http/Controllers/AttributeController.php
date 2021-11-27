@@ -9,17 +9,12 @@ use Illuminate\Http\Request;
 
 class AttributeController extends Controller
 {
-    //
-
-
-
     public function list()
     {
         $list_colors = Attribute::where('name','color')->get();
         $list_sizes = Attribute::where('name','size')->get();
         return view('admin.attributes.list',['list_colors'=>$list_colors,'list_sizes'=>$list_sizes]);
     }
-
     public function getAdd()
     {
         return view('admin.attributes.add');
@@ -34,7 +29,6 @@ class AttributeController extends Controller
         $attributes->save();
         return back()->with('add','Thêm thành công '.$request->value);
     }
-
     public function getEdit()
     {
         # code...

@@ -4,6 +4,11 @@
 @endsection
     @section('content')
             <!-- Categories Section Begin -->
+            @if (session('logout'))
+            <div class="alert alert-success">
+                {{ session('logout') }}
+            </div>
+        @endif
     <section class="categories">
         <div class="container">
             <div class="row">
@@ -94,15 +99,8 @@
         </div>
     </div>
     <!-- Banner End -->
-    @if (session('logout'))
-    <script>
-        var msg = '{{Session::get('logout')}}';
-        var exist = '{{Session::has('logout')}}';
-        if(exist){
-          alert(msg);
-        }
-      </script>
-@endif
+
+
     <!-- Latest Product Section Begin -->
     <section class="latest-product spad">
         <div class="container">
