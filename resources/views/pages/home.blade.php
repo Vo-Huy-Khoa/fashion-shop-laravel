@@ -16,7 +16,7 @@
                     @foreach ($list_categories as $categories)
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="uploads/categories/{{$categories->image}}">
-                            <h5><a href="user/search/categories/{{$categories->id}}">{{$categories->name}}</a></h5>
+                            <h5><a href="search/categories/{{$categories->id}}">{{$categories->name}}</a></h5>
                         </div>
                     </div>
                     @endforeach
@@ -58,11 +58,11 @@
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="user/AddToCart/{{$products->id}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li><a href="product-detail/{{$products->id}}"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="user/products_details/{{$products->id}}">{{$products->name}}</a></h6>
+                            <h6><a href="product-detail/{{$products->id}}">{{$products->name}}</a></h6>
                             <h5>{{number_format($products->unit_price).'$'}}</h5>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 @foreach ($list_products_shirt as $shirt)
-                                <a href="user/products_details/{{$shirt->id}}" class="latest-product__item">
+                                <a href="product-detail/{{$shirt->id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="uploads/products/{{$shirt->image}}" alt="">
                                     </div>
@@ -124,7 +124,7 @@
                             </div>
                             <div class="latest-prdouct__slider__item">
                                 @foreach ($list_products_au as $au)
-                                <a href="user/products_details/{{$au->id}}" class="latest-product__item">
+                                <a href="product-detail/{{$au->id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="uploads/products/{{$au->image}}" alt="">
                                     </div>
@@ -144,7 +144,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 @foreach ($list_products_hoodie as $hoodie)
-                                <a href="user/products_details/{{$hoodie->id}}" class="latest-product__item">
+                                <a href="product-detail/{{$hoodie->id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="uploads/products/{{$hoodie->image}}" alt="">
                                     </div>
@@ -157,7 +157,7 @@
                             </div>
                             <div class="latest-prdouct__slider__item">
                                 @foreach ($list_products_somi as $somi)
-                                <a href="user/products_details/{{$somi->id}}" class="latest-product__item">
+                                <a href="product-detail/{{$somi->id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="uploads/products/{{$somi->image}}" alt="">
                                     </div>
@@ -177,7 +177,7 @@
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item">
                                 @foreach ($list_products_shoe as $shoe)
-                                <a href="user/products_details/{{$shoe->id}}" class="latest-product__item">
+                                <a href="product-detail/{{$shoe->id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="uploads/products/{{$shoe->image}}" alt="">
                                     </div>
@@ -189,33 +189,17 @@
                                 @endforeach
                             </div>
                             <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
+                                @foreach ($list_products_shoe as $shoe)
+                                <a href="product-detail/{{$shoe->id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="./Front/img/latest-product/lp-1.jpg" alt="">
+                                        <img src="uploads/products/{{$shoe->image}}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
+                                        <h6>{{$shoe->name}}</h6>
+                                        <span>${{number_format($shoe->unit_price)}}</span>
                                     </div>
                                 </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="./Front/img/latest-product/lp-2.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="./Front/img/latest-product/lp-3.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -247,7 +231,7 @@
                                 <li><i class="fa fa-calendar-o"></i>{{$blogs->created_at}}</li>
                                 {{-- <li><i class="fa fa-comment-o"></i>{{count($list_comments)}}</li> --}}
                             </ul>
-                            <h5><a href="user/blog_details/{{$blogs->id}}">{{$blogs->title}}</a></h5>
+                            <h5><a href="blog-detail/{{$blogs->id}}">{{$blogs->title}}</a></h5>
                             <p>{{$blogs->brief}}</p>
                         </div>
                     </div>

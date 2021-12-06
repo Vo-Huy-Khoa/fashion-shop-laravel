@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('product', [ProductController::class,'index']);
+Route::get('api-product',[ApiController::class,'ApiProduct']);
+

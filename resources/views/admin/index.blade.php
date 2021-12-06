@@ -10,8 +10,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="admin_asset/img/logo/logo.png" rel="icon">
-  
-  
   <link rel="stylesheet" href="{{ URL::asset('admin_asset/vendor/fontawesome-free/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('admin_asset/vendor/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('admin_asset/css/ruang-admin.min.css') }}">
@@ -51,19 +49,13 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
 </body>
-
-@yield('script')
- <!-- Page level plugins -->
- <script src="{{ URL::asset('admin_asset/vendor/datatables/jquery.dataTables.min.js') }}"></script>
- <script src="{{ URL::asset('admin_asset/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-{{-- Script User --}}
-  <script src="{{ URL::asset('https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js') }}"></script>
-{{-- script message --}}
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-{{-- editor CKE --}}
-  <script src="{{ URL::asset('admin_asset\ckeditor\ckeditor.js') }}"></script>
+<script>
+  $(document).ready(function () {
+    $('#dataTable').DataTable(); // ID From dataTable 
+    $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+  });
+</script>
   <!-- Login Content -->
   <script src="{{ URL::asset('admin_asset/vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ URL::asset('admin_asset/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -73,12 +65,19 @@
   <script src="{{ URL::asset('admin_asset/vendor/chart.js/Chart.min.js') }}"></script>
   <script src="{{ URL::asset('admin_asset/js/demo/chart-area-demo.js') }}"></script>
   {{-- DataTable --}}
-  <script>
-    $(document).ready(function () {
-      $('#dataTable').DataTable(); // ID From dataTable 
-      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-    });
-  </script>
+    <!-- Page level plugins -->
+  <script src="{{ URL::asset('admin_asset/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ URL::asset('admin_asset/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Page level custom scripts -->
+    <script>
+      $(document).ready(function () {
+        $('#dataTable').DataTable(); // ID From dataTable 
+        $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+      });
+    </script>
+{{-- Script User --}}
+<script src="{{ URL::asset('https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js') }}"></script>
+{{-- <script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js') }}"></script> --}}
 <script>
   /*  ==========================================
     SHOW UPLOADED IMAGE
@@ -103,7 +102,6 @@ $(function () {
 * ========================================== */
 var input = document.getElementById( 'upload' );
 var infoArea = document.getElementById( 'upload-label' );
-
 input.addEventListener( 'change', showFileName );
 function showFileName( event ) {
   var input = event.srcElement;
@@ -111,5 +109,10 @@ function showFileName( event ) {
   infoArea.textContent = 'File name: ' + fileName;
 }
 </script>
+{{-- script message --}}
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+{{-- editor CKE --}}
+<script src="{{ URL::asset('admin_asset\ckeditor\ckeditor.js') }}"></script>
+
 
 </html>

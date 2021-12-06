@@ -47,7 +47,7 @@
                                         <strong>{{$cart->size}}</strong>
                                     </td>
                                     <td style="text-align: center" class="shoping__cart__item">
-                                        <strong>{{$cart->color}}</strong>
+                                        <strong>{!!$cart->color!!}</strong>
                                     </td>
                                     <td class="shoping__cart__price">
                                         {{number_format($cart->products->unit_price).'$'}}
@@ -63,7 +63,7 @@
                                         {{number_format($cart->products->unit_price * $cart->quantity ).'$'}}
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                       <a href="user/oder/delete/{{$cart->id}}"><span class="icon_close"></span></a> 
+                                       <a href="oder/delete/{{$cart->id}}"><span class="icon_close"></span></a> 
                                     </td>
                                 </tr>
                                 @endforeach
@@ -77,7 +77,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="{{route('user_shop')}}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                        <a href="{{route('shop-fashion')}}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
                         <button type="submit" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                             Upadate Cart</button>
                     </div>

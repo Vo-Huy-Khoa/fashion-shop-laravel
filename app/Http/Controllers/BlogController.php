@@ -9,10 +9,8 @@ use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
-    //
     public function list()
     {
-        # code...
         $list_blogs = Blog::all();
         return view('admin.blogs.list',['list_blogs'=>$list_blogs]);
     }
@@ -44,7 +42,6 @@ class BlogController extends Controller
             
             $file->move("uploads/blogs",$img);
             $blogs->image = $img;
-            
         }
         else{
             $blogs->image ="";
@@ -86,6 +83,7 @@ class BlogController extends Controller
             }
             
             $file->move("uploads/blogs",$img);
+            unlink("uploads/blogs/".$blogs->image);
             $blogs->image = $img;
             
         }

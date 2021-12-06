@@ -96,7 +96,7 @@
                 {{ session('register') }}
             </div>
         @endif
-            <form action="{{route('users_login')}}" method="POST">
+            <form action="{{route('user-login')}}" method="POST">
             @csrf
  
             <div class="container">
@@ -127,6 +127,8 @@
                                     <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit">
                                         <i class="fab fa-facebook-f mr-2"></i> 
                                         Sign in with Facebook</button>
+                  <p class="text-center text-muted mt-5 mb-0">Create an account? <a href="{{route('user-register')}}" class="fw-bold text-body"><u>Click here</u></a></p>
+
                                 </form>
                             </div>
                         </div>

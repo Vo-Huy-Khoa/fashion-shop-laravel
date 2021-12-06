@@ -79,6 +79,7 @@ class BrandController extends Controller
             }
             
             $file->move("uploads/brands",$img);
+            unlink("uploads/brands".$brands->image);
             $brands->image = $img;
             
         }

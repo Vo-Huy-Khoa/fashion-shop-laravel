@@ -41,7 +41,7 @@
             @endif
                 <h2 class="text-uppercase text-center mb-5">Create an account</h2>
   
-                <form action="{{route('users_register')}}" method="POST">
+                <form action="{{route('user-register')}}" method="POST">
                     @csrf
                   <div class="form-outline mb-4">
                     <input type="text"  name="name" class="form-control form-control-lg" />
@@ -89,7 +89,7 @@
                     <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                   </div>
   
-                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="{{route('users_login')}}" class="fw-bold text-body"><u>Login here</u></a></p>
+                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="{{route('user-login')}}" class="fw-bold text-body"><u>Login here</u></a></p>
   
                 </form>
   

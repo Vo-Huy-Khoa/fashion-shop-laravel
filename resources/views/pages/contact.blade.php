@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                     <div class="contact__widget">
-                        <span class="icon_mail_alt"></span>
+                        <a href="mailto:huykhoa630@gmail.com"><span class="icon_mail_alt"></span></a>
                         <h4>Email</h4>
                         <p>huykhoa630@gmail.com</p>
                     </div>

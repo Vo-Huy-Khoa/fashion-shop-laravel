@@ -31,8 +31,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PagesController::class,'home'])->name('admin_home');
-
+Route::get('/', [PagesController::class,'home']);
 
 //Route Login
 Route::get('admin/login',[UserController::class,'getAdmin_Login']);
@@ -113,36 +112,35 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 // Route User
-Route::get('user/login',[UserController::class,'getUsers_login'])->name('users_login');
-Route::post('user/login',[UserController::class,'postUsers_login'])->name('users_login');
-Route::get('user/register',[UserController::class,'getUsers_Register'])->name('users_register');
-Route::post('user/register',[UserController::class,'postUsers_Register'])->name('users_register');
-Route::get('users/logout',[UserController::class,'users_logout'])->name('users_logout');
-Route::get('home',[PagesController::class,'home']);
-Route::prefix('user')->group(function () {
+Route::get('login',[UserController::class,'getUsers_login'])->name('user-login');
+Route::post('login',[UserController::class,'postUsers_login'])->name('user-login');
+Route::get('register',[UserController::class,'getUsers_Register'])->name('user-register');
+Route::post('register',[UserController::class,'postUsers_Register'])->name('user-register');
+Route::get('logout',[UserController::class,'users_logout'])->name('user-logout');
+
     Route::get('home',[PagesController::class,'home'])->name('user_home');
-    Route::get('shop',[PagesController::class,'shop'])->name('user_shop');
+    Route::get('shop',[PagesController::class,'shop'])->name('shop-fashion');
     Route::get('blog',[PagesController::class,'blog'])->name('user_blog');
-    Route::get('blog_details/{id}',[PagesController::class,'blog_details']);
+    Route::get('blog-detail/{id}',[PagesController::class,'blog_details']);
     Route::get('contact',[PagesController::class,'contact'])->name('user_contact');
-    Route::get('products_details/{id}',[PagesController::class,'products_details']);
-    Route::get('shop_cart',[PagesController::class,'shop_cart'])->name('shop_cart');
+    Route::get('product-detail/{id}',[PagesController::class,'products_details']);
+    Route::get('show-cart',[PagesController::class,'show_cart'])->name('show-cart');
     Route::get('check_out',[PagesController::class,'check_out'])->name('check_out');
-    Route::get('profile_edit/{id}',[PagesController::class,'getProfile_Edit']);
-    Route::post('profile_edit/{id}', [PagesController::class,'postProfile_Edit']);
+    Route::get('profile-edit/{id}',[PagesController::class,'getProfile_Edit']);
+    Route::post('profile-edit/{id}', [PagesController::class,'postProfile_Edit']);
     Route::post('search',[PagesController::class,'Search']);
-    Route::get('search/categories/{id}',[PagesController::class,'Search_categories']);
-    Route::get('search/color/{id}',[PagesController::class,'Search_color']);
-    Route::get('search/size/{id}',[PagesController::class,'Search_size']);
-    Route::get('search/classify/{id}',[PagesController::class,'Search_classify']);
-    Route::get('Search_categories_blogs/{id}',[PagesController::class,'Search_categories_blogs']);
-    Route::post('search_blogs',[PagesController::class,'Search_blogs']);
-    Route::get('search/color/{id}',[PagesController::class,'search_color']);
-    Route::get('AddToCart/{product_id}',[OderController::class,'AddToCart']);
+    Route::get('search-categories/{id}',[PagesController::class,'Search_categories']);
+    Route::get('search-color/{id}',[PagesController::class,'Search_color']);
+    Route::get('search-size/{id}',[PagesController::class,'Search_size']);
+    Route::get('search-classify/{id}',[PagesController::class,'Search_classify']);
+    Route::get('search-category-blog/{id}',[PagesController::class,'Search_categories_blogs']);
+    Route::post('search-blog',[PagesController::class,'Search_blogs']);
+    Route::get('add-to-cart/{product_id}',[OderController::class,'AddToCart'])->name('AddToCart');
     Route::post('AddToCart_Detail/{id}',[OderController::class,'AddToCart_Detail']);
     Route::get('out_cart',[Oder_DetailController::class,'out_cart'])->name('out_cart');
     Route::post('shipping',[ShippingController::class,'postShipping'])->name('shipping');
     Route::post('comments/{id}',[CommentController::class,'postcomments']);
     Route::post('message',[MessageController::class,'send'])->name('messages');
     Route::get('oder/delete/{id}',[OderController::class,'delete']);
-});
+
+

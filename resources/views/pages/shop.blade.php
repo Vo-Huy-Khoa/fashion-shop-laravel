@@ -41,7 +41,7 @@
                             <h4>Department</h4>
                             <ul>
                                 @foreach ($list_categories as $categories)
-                                    <li><a href="user/search/categories/{{$categories->id}}">{{$categories->name}}</a></li>
+                                    <li><a href="search-categories/{{$categories->id}}">{{$categories->name}}</a></li>
                                 @endforeach
 
                             </ul>
@@ -70,7 +70,7 @@
                             <div class="colors">
                                 <label>
                                     <input type="text" name="color" value="{{ $colors->id }}">
-                                   <a href="user/search/color/{{$colors->id}}"> <span class="swatch"
+                                   <a href="search-color/{{$colors->id}}"> <span class="swatch"
                                         style="background-color:{{ $colors->value }}"></span> </a>
                                 </label>
                             </div>
@@ -83,7 +83,7 @@
                             <div class="colors">
                                 <label>
                                     <input type="checkbox" name="attribute_id[]" value="{{ $sizes->id }}">
-                                    <a href="user/search/size/{{$sizes->id}}"><span class="swatch"
+                                    <a href="search-size/{{$sizes->id}}"><span class="swatch"
                                         style="background-color:#7FAD39;color:white; text-align:center">{{ $sizes->value }}</span>
                                     </a>
                                 </label>
@@ -142,12 +142,12 @@
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="user/AddToCart/{{$products_sale->id}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="product-detail/{{$products_sale->id}}"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <div class="product__discount__item__text">
                                             <span>{{$products_sale->categories->name}}</span>
-                                            <h5><a href="user/products_details/{{$products_sale->id}}">{{$products_sale->name}}</a></h5>
+                                            <h5><a href="product-detail/{{$products_sale->id}}">{{$products_sale->name}}</a></h5>
                                             <div class="product__item__price">{{number_format($products_sale->sale_price)."$"}} <span>{{number_format($products_sale->unit_price)."đ"}}</span></div>
                                         </div>
                                     </div>
@@ -188,11 +188,11 @@
                                     <ul class="product__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="user/AddToCart/{{$products->id}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a href="product-detail/{{$products->id}}"><i class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6><a href="user/products_details/{{$products->id}}">{{$products->name}}</a></h6>
+                                    <h6><a href="product-detail/{{$products->id}}">{{$products->name}}</a></h6>
                                     {{-- <h5>{{number_format($products->unit_price).'$'}}</h5> --}}
                                     <div class="product__item__price"><span><b>{{number_format($products->sale_price)."$"}}</b> &nbsp;</span> <tt style="color: red"> <strike>{{number_format($products->unit_price).'$'}}</strike> </tt></div>
 

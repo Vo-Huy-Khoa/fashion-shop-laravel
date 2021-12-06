@@ -72,7 +72,7 @@
                         <div class="product__details__price">{{ number_format($products->unit_price) }} $</div>
                         <p>{!! $products->description !!}</p>
 
-                        <form action="user/AddToCart_Detail/{{ $products->id }}" method="post">
+                        <form action="AddToCart_Detail/{{ $products->id }}" method="post">
                             @csrf
                             @if ($id_attr)
                                 <span> <b>Size</b> <br> </span>
@@ -180,7 +180,7 @@
                         @endforeach
 
                         @if (Auth::user())
-                            <form action="user/comments/{{ $products->id }}" method="POST" class="form-block">
+                            <form action="comments/{{ $products->id }}" method="POST" class="form-block">
                                 @csrf
                                 <div class="row">
                                     {{-- <div class="col-xs-12 col-sm-6">
@@ -234,12 +234,12 @@
                                 <ul class="product__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="user/AddToCart/{{ $products->id }}"><i
+                                    <li><a href="AddToCart/{{ $products->id }}"><i
                                                 class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="user/products_details/{{ $products->id }}">{{ $products->name }}</a></h6>
+                                <h6><a href="product-detail/{{ $products->id }}">{{ $products->name }}</a></h6>
                                 <h5>{{ number_format($products->unit_price) }} $</h5>
                             </div>
                         </div>

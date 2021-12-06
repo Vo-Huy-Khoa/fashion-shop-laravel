@@ -1,5 +1,4 @@
     <!-- Hero Section Begin -->
-
     <section class="hero hero-normal">
         <div class="container">
             <div class="row">
@@ -11,7 +10,7 @@
                         </div>
                         <ul>
                             @foreach ($list_classify as $classify)
-                            <li><a href="user/search/classify/{{$classify->id}}">{{$classify->name}}</a></li>
+                            <li><a href="search-classify/{{$classify->id}}">{{$classify->name}}</a></li>
                             @endforeach
 
                         </ul>
@@ -20,7 +19,7 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="user/search" method="POST">
+                            <form action="search" method="POST">
                                 @csrf
                                 <div class="hero__search__categories">
                                     All Categories

@@ -246,7 +246,7 @@ class UserController extends Controller
         ];
         if (Auth::attempt($credentials,$remember)) {
             // Authentication passed...
-            return redirect('user/home');
+            return redirect('.');
         }
         else{
            return redirect()->back()->with('error','Đăng nhập thất bại!');
@@ -258,7 +258,7 @@ class UserController extends Controller
     {
         session()->forget('cart');
         Auth::logout();
-        return redirect('home')->with('logout','Bạn đã đăng xuất thành công! ');
+        return redirect('.')->with('logout','Bạn đã đăng xuất thành công! ');
     }
     public function getUsers_Register()
     {

@@ -4,8 +4,6 @@
     Blog Search
 @endsection
 @section('content')
-    
-
     <!-- Blog Section Begin -->
     <section class="blog spad">
         <div class="container">
@@ -13,7 +11,7 @@
                 <div class="col-lg-4 col-md-5">
                     <div class="blog__sidebar">
                         <div class="blog__sidebar__search">
-                            <form action="user/search_blogs" method="POST">
+                            <form action="search-blog" method="POST">
                                 @csrf
                                 <input type="text" name="value" placeholder="Search...">
                                 <button type="submit"><span class="icon_search"></span></button>
@@ -23,41 +21,24 @@
                             <h4>Categories</h4>
                             <ul>
                                 @foreach ($list_categories as $categories)
-                                <li><a href="user/Search_categories_blogs/{{$categories->id}}">{{$categories->name}}</a></li>
+                                <li><a href="search-category-blog/{{$categories->id}}">{{$categories->name}}</a></li>
                                 @endforeach
-    
                             </ul>
                         </div>
                         <div class="blog__sidebar__item">
                             <h4>Recent News</h4>
                             <div class="blog__sidebar__recent">
-                                <a href="" class="blog__sidebar__recent__item">
+                                @foreach ($list_blogs as $blog)
+                                <a href="blog-detail/{{$blog->id}}" class="blog__sidebar__recent__item">
                                     <div class="blog__sidebar__recent__item__pic">
-                                        <img src="./Front/img/blog/sidebar/sr-1.jpg" alt="">
+                                        <img width="60px"  height="60px"  src="uploads/blogs/{{$blog->image}}" alt="">
                                     </div>
                                     <div class="blog__sidebar__recent__item__text">
-                                        <h6>09 Kinds Of Vegetables<br /> Protect The Liver</h6>
-                                        <span>MAR 05, 2019</span>
+                                        <h6>{{$blog->title}}</h6>
+                                        <span>{{$blog->created_at}}</span>
                                     </div>
                                 </a>
-                                <a href="" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="./Front/img/blog/sidebar/sr-2.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>Tips You To Balance<br /> Nutrition Meal Day</h6>
-                                        <span>MAR 05, 2019</span>
-                                    </div>
-                                </a>
-                                <a href="" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="./Front/img/blog/sidebar/sr-3.jpg" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>4 Principles Help You Lose <br />Weight With Vegetables</h6>
-                                        <span>MAR 05, 2019</span>
-                                    </div>
-                                </a>
+                                @endforeach
                             </div>
                         </div>
                         <div class="blog__sidebar__item">
@@ -79,22 +60,20 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="blog__item">
                                 <div class="blog__item__pic">
-                                    <img src="uploads/blogs/{{$blogs->image}}" alt="">
+                                    <img style="width: 30px ;height:400px" src="uploads/blogs/{{$blogs->image}}" alt="">
                                 </div>
                                 <div class="blog__item__text">
                                     <ul>
                                         <li><i class="fa fa-calendar-o"></i>{{$blogs->created_at}}</li>
                                         <li><i class="fa fa-comment-o"></i> 5</li>
                                     </ul>
-                                    <h5><a href="user/blog_details/{{$blogs->id}}">{{$blogs->title}}</a></h5>
-                                    <p>{{$blogs->description}}</p>
-                                    <a href="user/blog_details/{{$blogs->id}}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                                    <h5><a href="blog_details/{{$blogs->id}}">{{$blogs->title}}</a></h5>
+                                    <p>{{substr($blogs->brief,0,500)}}...</p>
+                                    <a href="blog_details/{{$blogs->id}}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
                             </div>
                         </div>
                         @endforeach
-
-
                         <div class="col-lg-12">
                             <div class="product__pagination blog__pagination">
                                 <a href="#">1</a>
@@ -109,5 +88,4 @@
         </div>
     </section>
     <!-- Blog Section End -->
-
-    @endsection
+@endsection

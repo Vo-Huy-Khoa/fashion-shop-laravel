@@ -94,7 +94,7 @@
                                     <td style="text-align: center">{{Str::substr($products->name,0,50)}}
                                     <img style="width: 100px;height:100px" src="uploads/products/{{$products->image}}"alt="">
                                     </td>
-                                    <td>{!! substr($products->description, 0,800) !!}</td>
+                                    <td>{!! substr($products->description, 0,200) !!}</td>
                                     <td>
                                         <?php $id_attr = Product_Attribute::where('product_id',$products->id)->pluck('attribute_id')->toArray();?>
                                         @foreach ($list_sizes as $sizes)

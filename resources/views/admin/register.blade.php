@@ -3,11 +3,17 @@
 
 <head>
     <title>Admin - Register</title>
-    @include('admin.layout.css')
-
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="admin_asset/img/logo/logo.png" rel="icon">
+    <link rel="stylesheet" href="{{ URL::asset('admin_asset/vendor/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('admin_asset/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('admin_asset/css/ruang-admin.min.css') }}">
+    <base href="{{asset('')}}">
 </head>
-
 <body class="bg-gradient-login">
     <!-- Register Content -->
     <div class="container-login">
@@ -30,7 +36,6 @@
                                             </ul>
                                         </div>
                                     @endif
-
                                     @if (session('register'))
                                         <div class="alert alert-success">
                                             {{ session('register') }}
@@ -48,10 +53,6 @@
                                             <input type="text" class="form-control" name="name"
                                                 placeholder="Enter Name">
                                         </div>
-                                        {{-- <div class="form-group">
-                      <label>Last Name</label>
-                      <input type="text" class="form-control" id="exampleInputLastName" placeholder="Enter Last Name">
-                    </div> --}}
                                         <div class="form-group">
                                             <label>Email</label>
                                             <input type="email" class="form-control" name="email"
@@ -93,8 +94,11 @@
             </div>
         </div>
     </div>
-    @include('admin.layout.script')
-
+     <!-- Login Content -->
+     <script src="{{ URL::asset('admin_asset/vendor/jquery/jquery.min.js') }}"></script>
+     <script src="{{ URL::asset('admin_asset/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+     <script src="{{ URL::asset('admin_asset/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+     <script src="{{ URL::asset('admin_asset/js/ruang-admin.min.js') }}"></script>
 </body>
 
 </html>

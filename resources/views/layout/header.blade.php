@@ -5,7 +5,6 @@ $users = Auth::user();
         $id = Auth::id();
         $list_oders = Oder::where('user_id',$id)->where('status',1)->get();
 ?>
-
 <header class="header">
     <div class="header__top">
         <div class="container">
@@ -13,14 +12,11 @@ $users = Auth::user();
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i> huykhoa630@gmail.com</li>
+                            <li><a style="color: black" href="mailto:huykhoa630@gmail.com"><i class="fa fa-envelope"></i> huykhoa630@gmail.com</a></li>
                             <li>Free Shipping for all Order of $99</li>
-                            
-
                         </ul>
                     </div>
                 </div>
-                
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
@@ -30,23 +26,20 @@ $users = Auth::user();
                             <a href="#"><i class="fa fa-pinterest-p"></i></a>
                         </div>
                         @if(!isset($users))
-                        
                             <div class="header__top__right__auth">
-                                <a href="{{route('users_register')}}"><i class="fa fa-user"></i>Register</a>
+                                <a href="{{route('user-register')}}"><i class="fa fa-user"></i>Register</a>
                             </div>
                             <span>&nbsp;&nbsp;</span>
                             <div class="header__top__right__auth">
-                                <a href="{{route('users_login')}}"><i class="fa fa-user"></i>Login</a>
+                                <a href="{{route('user-login')}}"><i class="fa fa-user"></i>Login</a>
                             </div>
-                        
                         @else
-    
                             <div class="header__top__right__auth">
-                                <a href="user/profile_edit/{{$users->id}}"><i class="fa fa-user"></i>{{$users->first_name." ".$users->last_name}}</a>
+                                <a href="user/profile-edit/{{$users->id}}"><i class="fa fa-user"></i>{{$users->first_name." ".$users->last_name}}</a>
                             </div>
                             <span>&nbsp;&nbsp;</span>
                             <div class="header__top__right__auth">
-                                <a href="{{route('users_logout')}}"><i class="fa fa-sign-out"></i>Logout</a>
+                                <a href="{{route('user-logout')}}"><i class="fa fa-sign-out"></i>Logout</a>
                             </div>
                         @endif
                     </div>
@@ -58,23 +51,17 @@ $users = Auth::user();
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="{{route('user_home')}}"><img src="./Front/img/logo.png" alt=""></a>
+                    <a href="#"><img src="./Front/img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
                         <li
-                        {{-- @if (route('user_home'))
-                            class="active"
-                        @endif --}}
-                         
-                         ><a href="{{route('user_home')}}">Home</a></li>
+                         ><a href="#">Home</a></li>
                         <li
-                        {{-- @if (route('user_shop'))
-                            class="active"  
-                        @endif --}}
-                        ><a href="{{route('user_shop')}}">Shop</a></li>
+
+                        ><a href="{{route('shop-fashion')}}">Shop</a></li>
                         {{-- <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="./shop-details.html">Shop Details</a></li>
@@ -84,14 +71,8 @@ $users = Auth::user();
                             </ul>
                         </li> --}}
                         <li 
-                        {{-- @if (route('user_blog'))
-                            class="active"  
-                        @endif --}}
                         ><a href="{{route('user_blog')}}">Blog</a></li>
                         <li 
-                        {{-- @if (route('user_contact'))
-                            class="active"  
-                        @endif --}}
                         ><a href="{{route('user_contact')}}">Contact</a></li>
                     </ul>
                 </nav>
@@ -100,7 +81,7 @@ $users = Auth::user();
                 <div class="header__cart">
                     <ul>
                         <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
-                        <li><a href="{{route('shop_cart')}}"><i class="fa fa-shopping-bag"></i> <span>{{count($list_oders)}}</span></a></li>
+                        <li><a href="{{route('show-cart')}}"><i class="fa fa-shopping-bag"></i> <span>{{count($list_oders)}}</span></a></li>
                     </ul>
                     <div class="header__cart__price">Total: <span>{{number_format($list_oders->sum('total')).'$'}}</span></div>
                 </div>

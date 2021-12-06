@@ -130,11 +130,11 @@
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="uploads/products/{{ $products->image }}">
                             <ul class="product__item__pic" >
-                                <li style="width:100px;"><a href="user/products_details/{{ $products->id }}"><button class="btn btn-danger">Repurchase</button></a></li>
+                                <li style="width:100px;"><a href="products_details/{{ $products->id }}"><button class="btn btn-danger">Repurchase</button></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="user/products_details/{{ $products->id }}">{{ $products->name }}</a></h6>
+                            <h6><a href="products_details/{{ $products->id }}">{{ $products->name }}</a></h6>
                             <h5>{{ number_format($products->unit_price) }} $</h5>
                         </div>
                     </div>

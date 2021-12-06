@@ -97,7 +97,7 @@ class PagesController extends Controller
         
         $list_products_categories = Product::where('category_id',$id_categories)->take(50)->paginate(10);
         $list_comments = Comment::where('product_id',$id)->get();
-        return view('pages.shop_details',['products'=>$products,
+        return view('pages.product-detail',['products'=>$products,
                                         'list_products_categories'=>$list_products_categories,
                                         'list_comments'=>$list_comments,
                                         'product_image'=>$product_image,
@@ -108,11 +108,11 @@ class PagesController extends Controller
 
         // return redirect()->route();
     }
-    public function shop_cart()
+    public function show_cart()
     {
         $id = Auth::id();
         $list_oders = Oder::where('user_id',$id)->where('status',1)->get();
-        return view('pages.shop_cart',['list_oders'=>$list_oders]);
+        return view('pages.add-to-cart',['list_oders'=>$list_oders]);
     }
 
     public function blog()
@@ -124,7 +124,7 @@ class PagesController extends Controller
     {
         $blogs_details = Blog::find($id);
        
-        return view('pages.blog_details',['blogs_details'=>$blogs_details]);
+        return view('pages.blog-detail',['blogs_details'=>$blogs_details]);
     }
 
     public function contact()
@@ -240,14 +240,14 @@ class PagesController extends Controller
         $value = $request->value;
         $list_blogs_search = Blog::where('title','like','%'.$value.'%')->take(50)->paginate(12);
         
-        return view('pages.blog_search',['list_blogs_search'=>$list_blogs_search]);
+        return view('pages.search-blog',['list_blogs_search'=>$list_blogs_search]);
     }
 
     public function Search_categories_blogs($id)
     {
         $list_blogs_search = Blog::where('categories_id',$id)->take(50)->paginate(12);
         
-        return view('pages.blog_search',['list_blogs_search'=>$list_blogs_search]);
+        return view('pages.search-blog',['list_blogs_search'=>$list_blogs_search]);
 
     }
     public function Search_color($id)

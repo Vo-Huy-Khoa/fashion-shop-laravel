@@ -101,14 +101,14 @@ class OderController extends Controller
                      $oders->save();
 
             session()->put('cart', $cart);
-            return redirect()->route('shop_cart');
+            return redirect()->route('show-cart');
         }
         if (isset($cart[$id])) {
             $cart[$id]['quantity'] ++;
             Oder::where('product_id', $id)->update(array('quantity' => $cart[$id]['quantity'],'total'=> $products->unit_price * $cart[$id] ['quantity'] ));
             
             session()->put('cart', $cart);
-            return redirect()->route('shop_cart');
+            return redirect()->route('show-cart');
         }
 
         $cart[$id] =
@@ -128,7 +128,7 @@ class OderController extends Controller
         $oders->save();
 
         session()->put('cart', $cart);
-        return redirect()->route('shop_cart');
+        return redirect()->route('show-cart');
 
         
 
@@ -148,7 +148,7 @@ public function AddToCart_Detail(Request $request,$id)
     $oders->total = $products->unit_price * $request->quantity;
     $oders->status = '1';
     $oders->save();
-    return redirect()->route('shop_cart');
+    return redirect()->route('show-cart');
 }
 
 

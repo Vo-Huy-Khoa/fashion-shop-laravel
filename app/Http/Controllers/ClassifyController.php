@@ -83,6 +83,8 @@ class ClassifyController extends Controller
             }
             
             $file->move("uploads/classify",$img);
+            unlink("uploads/classify".$classify->image);
+
             $classify->image = $img;
             
         }
