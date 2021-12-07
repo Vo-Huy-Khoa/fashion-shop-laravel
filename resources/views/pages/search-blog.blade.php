@@ -1,7 +1,7 @@
 @extends('layout.index')
 
 @section('title')
-    Blog Search
+    {{$value}}
 @endsection
 @section('content')
     <!-- Blog Section Begin -->

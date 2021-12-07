@@ -2,7 +2,7 @@
 @extends('layout.index')
 
 @section('title')
-    Search: {{$value}}
+    {{$value}}
 @endsection
 @section('content')
 <style>

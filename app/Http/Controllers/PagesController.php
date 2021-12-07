@@ -202,14 +202,12 @@ class PagesController extends Controller
         $value = $request->value;
         $products_search = Product::where('name','like','%' . $value . '%')->take(50)->paginate(12);
     //take trả về số lượng kết quả
-
         return view('pages.search',['products_search'=>$products_search,'value'=>$value]);
     }
 
     public function Search_classify($id)
     {
         $classify = Classify::find($id);
-
         $products_search = $classify->product;
         return view('pages.search',['products_search'=>$products_search,'value'=>$classify->name]);
     }
@@ -221,7 +219,6 @@ class PagesController extends Controller
         $products_search = Product::where('category_id',$id)->take(50)->paginate(12);
         $categories = Category::find($id);
     //take trả về số lượng kết quả
-    
         return view('pages.search',['products_search'=>$products_search,'value'=>$categories->name]);
 
     }
@@ -239,15 +236,14 @@ class PagesController extends Controller
     {
         $value = $request->value;
         $list_blogs_search = Blog::where('title','like','%'.$value.'%')->take(50)->paginate(12);
-        
-        return view('pages.search-blog',['list_blogs_search'=>$list_blogs_search]);
+        return view('pages.search-blog',['list_blogs_search'=>$list_blogs_search,'value'=>$value]);
     }
 
     public function Search_categories_blogs($id)
     {
         $list_blogs_search = Blog::where('categories_id',$id)->take(50)->paginate(12);
-        
-        return view('pages.search-blog',['list_blogs_search'=>$list_blogs_search]);
+        $categories = Category::find($id);
+        return view('pages.search-blog',['list_blogs_search'=>$list_blogs_search,'value'=>$categories->name]);
 
     }
     public function Search_color($id)
