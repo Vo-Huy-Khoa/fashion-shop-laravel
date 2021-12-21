@@ -1,4 +1,7 @@
     <!-- Hero Section Begin -->
+    <style>
+ 
+    </style>
     <section class="hero hero-normal">
         <div class="container">
             <div class="row">

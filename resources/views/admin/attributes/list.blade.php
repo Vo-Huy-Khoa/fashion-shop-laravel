@@ -4,14 +4,10 @@
 @endsection
 @section('content')
 <style>
-
-
     .colors label {
         cursor: pointer;
         margin-top: 5px;
     }
-
-
     .swatch {
         display: inline-block;
         vertical-align: middle;
@@ -20,9 +16,7 @@
         margin: 0 5px 0 0;
         border: 1px solid #d4d4d4;
     }
-
 </style>
-
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -40,7 +34,6 @@
     @endif
         <!-- Row -->
         <div class="row">
-
             <!-- DataTable with Hover -->
             <div class="col-lg-12">
                 <div class="card mb-4">
@@ -95,30 +88,15 @@
                                     <td><a href="admin/attributes/add"><i></i>Add</a></td>
                                     <td><a href="admin/attributes/edit/1"><i></i>Edit</a></td>
                                     <td><a href="admin/attributes/delete/2"</a><i></i>Delete</a></td>
-
                                 </tr>
-
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
     <!---Container Fluid-->
-
-
-
     <!-- Page level custom scripts -->
-    <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable(); // ID From dataTable 
-            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-        });
-    </script>
-
-
 @endsection
 

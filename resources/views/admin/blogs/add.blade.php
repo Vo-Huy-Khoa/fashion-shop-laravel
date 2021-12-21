@@ -11,7 +11,6 @@
                     {{ session('add') }}
                 </div>
             @endif
-
             @if (session('error'))
                 <div class="alert alert-danger">
                     {{ session('error') }}
@@ -19,14 +18,12 @@
             @endif
             <form action="{{ route('blogs_add') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                {{-- chus thich --}}
                     <div class="row py-2">
                     <!-- Uploaded image area-->
                     <div class="image-area mt-4"><img style="height: 300px; width:300px; boder-radius:50px;" id="imageResult" src="#" alt=""
                             class="img-fluid rounded shadow-sm mx-auto d-block"></div>
                         </div>
                     <div class="row py-2">
-                       
                             <!-- Upload image input-->
                             <div class="input-group  rounded-pill bg-white shadow-sm">
                                 <input id="upload" name="img" type="file" onchange="readURL(this);"
@@ -39,9 +36,7 @@
                                             class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
                                 </div>
                             </div>
-                      
                     </div>
-
                 <div class="py-2">
                     <div class="row py-2">
                         <label for="categories_id">Categories Name</label>
@@ -55,28 +50,19 @@
                             <label for="title">Title</label>
                             <input type="text" class="bg-light form-control" id="title" name="title">
                     </div>
-
                     <div class="row py-2">
                         <label for="brief">Brief</label>
                         <input type="text" class="bg-light form-control" id="brief" name="brief">
                 </div>
                     <div class="py-2">
                         <div class="row py-2">
-
                              <label for="description">Description</label>
-                                <textarea class="ckeditor" name="description" id="description" cols="30"
-                                    rows="10">
-                                    </textarea>
+                            <textarea class="ckeditor" name="description" id="description" cols="30" rows="10"></textarea>
                         </div>
-
-
                         <div class="py-3 pb-4 border-bottom"> <button type="submit" class="btn btn-primary mr-3">Save
                                 Changes</button> <button class="btn border button">Cancel</button> </div>
             </form>
         </div>
     </div>
-
-
-
     </div>
 @endsection

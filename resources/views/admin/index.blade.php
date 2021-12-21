@@ -23,6 +23,9 @@
   {{-- message --}}
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
   <link rel="stylesheet" href="{{ URL::asset('admin_asset/css/message.css') }}">
+    {{-- Css input --}}
+    <link rel="stylesheet" href="{{ URL::asset('admin_asset/css/input.css') }}">
+
   <base href="{{asset('')}}">
 </head>
 
@@ -75,6 +78,7 @@
         $('#dataTableHover').DataTable(); // ID From dataTable with Hover
       });
     </script>
+    
 {{-- Script User --}}
 <script src="{{ URL::asset('https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js') }}"></script>
 {{-- <script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js') }}"></script> --}}

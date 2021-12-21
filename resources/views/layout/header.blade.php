@@ -5,6 +5,7 @@ $users = Auth::user();
         $id = Auth::id();
         $list_oders = Oder::where('user_id',$id)->where('status',1)->get();
 ?>
+
 <header class="header">
     <div class="header__top">
         <div class="container">

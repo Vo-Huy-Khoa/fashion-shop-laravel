@@ -31,9 +31,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
                 <div class="py-2 color ">
                     <div class="row py-2">
@@ -51,18 +48,12 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="py-3 pb-4 border-bottom"> <button type="submit" class="btn btn-primary mr-3">Save
                         Changes</button> <button class="btn border button">Cancel</button> </div>
-
             </form>
         </div>
-
     </div>
-
-
 @endsection
-
 @section('script')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

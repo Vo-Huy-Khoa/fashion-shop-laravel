@@ -4,19 +4,13 @@
 @endsection
 @section('content')
 <style>
-
-
     .colors label {
         cursor: pointer;
         margin-top: 5px;
     }
-
     .colors input {
         display: none;
     }
-
-
-
     .swatch {
         display: inline-block;
         vertical-align: middle;
@@ -25,7 +19,6 @@
         margin: 0 5px 0 0;
         border: 1px solid #d4d4d4;
     }
-
 </style>
 <?php use App\Models\Product_Attribute; ?>
     <!-- Container Fluid-->
@@ -45,7 +38,6 @@
     @endif
         <!-- Row -->
         <div class="row">
-
             <!-- DataTable with Hover -->
             <div class="col-lg-12">
                 <div class="card mb-4">
@@ -60,12 +52,9 @@
                                     <th>Description</th>
                                     <th>Size</th>
                                     <th>Color</th>
-                                    {{-- <th>Brand</th> --}}
                                     <th>Unit Price</th>
                                     <th>Sale Price</th>
-                                    {{-- <th>Comments</th> --}}
                                     <th>Status</th>
-
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -77,15 +66,12 @@
                                     <th>Description</th>
                                     <th>Size</th>
                                     <th>Color</th>
-                                    {{-- <th>Brand</th> --}}
                                     <th>Unit Price</th>
                                     <th>Sale Price</th>
-                                    {{-- <th>Comments</th> --}}
                                     <th>Status</th>
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
-
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -121,8 +107,6 @@
                                             @endif
                                         @endforeach
                                 </td>
-                                    
-                                   {{-- <td>{{$products->brands->name}}</td> --}}
                                     <td>{{number_format($products->unit_price)}}</td> 
                                     <td>{{number_format($products->sale_price)}}</td>
                                     @if($products->status == '0')
@@ -130,36 +114,18 @@
                                     @elseif($products->status == '1')
                                         <td><span class="badge badge-danger">Chưa bán</span></td>
                                      @endif
-
-                                    {{-- <td><a href="admin/comments/list/{{$products->id}}"><i></i>Comments</a></td> --}}
                                     <td><a href="{{route('products_add')}}"><i></i>Add</a></td>
                                     <td><a href="admin/products/edit/{{$products->id}}"><i></i>Edit</a></td>
                                     <td><a href="admin/products/delete/{{$products->id}}"</a><i></i>Delete</a></td>
-
                                 </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
     <!---Container Fluid-->
-
-
-
     <!-- Page level custom scripts -->
-    <script>
-        $(document).ready(function () {
-          $('#dataTable').DataTable(); // ID From dataTable 
-          $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-        });
-      </script>
-  
-
-
 @endsection

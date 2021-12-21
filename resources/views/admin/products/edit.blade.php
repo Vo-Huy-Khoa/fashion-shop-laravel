@@ -3,30 +3,6 @@
     Edit Products
 @endsection
 @section('content')
-<style>
-
-
-    .colors label {
-        cursor: pointer;
-        margin-top: 5px;
-    }
-
-    .colors input {
-        display: none;
-    }
-    .colors input[type="checkbox"]:checked+.swatch {
-            box-shadow: inset 0 0 0 3px wheat;
-        }
-    .swatch {
-        display: inline-block;
-        vertical-align: middle;
-        height: 30px;
-        width: 30px;
-        margin: 0 5px 0 0;
-        border: 1px solid #d4d4d4;
-    }
-
-</style>
     <div class="container-fluid" id="container-wrapper">
         <div class="wrapper bg-white mt-sm-4">
             <h4 class="pb-4 border-bottom">Product Edit</h4>
@@ -67,24 +43,18 @@
                                             class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
                                 </div>
                             </div>
-                      
                     </div>
-
-                    
                     <div>
                         <label for="image"> Multiple Image <br>
                         </label>
                         <input type="file" name="images[]" id="image" multiple="multiple">
-
                     </div>
                     <div class="row">
                         @foreach ($product_image as $image)
                         <div class="col-md-4">
                             <a href="" class="thumbnail"><img src="uploads/products/{{$image->image}}" alt=""></a>
-                            
                         </div>
                         @endforeach
- 
                     </div>
                 <div class="py-2">
                     <div class="row py-2">
@@ -96,7 +66,6 @@
                                     @if ($products->category_id == $categories->id )
                                     {{"selected"}}
                                     @endif
-                                    
                                     value="{{$categories->id}}">{{$categories->name}}</option>
                                 @endforeach
                             </select>
@@ -115,19 +84,7 @@
                                     type="text" class="bg-light form-control" value="{{$products->sale_price}}"
                                     id="sale_price" name="sale_price"> </div>
                         </div>
-                        
-
                         <span>Size <br></span>
-
-                        {{-- @foreach ($list_sizes as $sizes)
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="size" name="attribute_id[]" value="{{ $sizes->id }}"
-                           {{ in_array($sizes->id,$id_attr)?'checked':'' }}
-                             />
-                            <label class="form-check-label" for="size">{{ $sizes->value }}</label>
-                          </div>
-                        @endforeach --}}
-
                         @foreach ($list_sizes as $sizes)
                         <div class="form-check form-check-inline">
                             <div class="colors">
@@ -139,20 +96,8 @@
                             </div>
                           </div>
                           @endforeach
-
-
-
                             <br>
                             <span><br>Color <br></span>
-                        {{-- @foreach ($list_colors as $colors)
-                          <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="checkbox" id="color" name="attribute_id[]" value="{{ $colors->id }}"
-                              {{ in_array($colors->id,$id_attr)?'checked':'' }} />
-                              <label class="form-check-label" for="color">{{ $colors->value }}</label>
-                            </div>
-                        @endforeach --}}
-
-
                         @foreach ($list_colors as $colors)
                         <div class="form-check form-check-inline">
                             <div class="colors">
@@ -165,36 +110,21 @@
                             </div>
                           </div>
                           @endforeach
-
-
-
-
                         <div class="row py-2">
                             <span >Quantity<br></span>
                             <input type="text" class="bg-light form-control"  value="" name="quantity"
                              >
-
                     </div>
                         <div class="row">
                             <label for="description">Description</label>
                             <textarea class="ckeditor" name="description" id="description" cols="30" rows="5">{{$products->description}} </textarea>
                         </div>
-
                         <div class="py-3 pb-4 border-bottom"> <button type="submit" class="btn btn-primary mr-3">Save
                                 Changes</button> <button class="btn border button">Cancel</button> </div>
             </form>
         </div>
-
-
-
-
-
     </div>
-
-
-
     </div>
-
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -209,11 +139,6 @@
                                     <th>ID</th>
                                     <th>User Name</th>
                                     <th>Comment</th>
-                                    {{-- <th>Size</th>
-                                    <th>Unit Price</th>
-                                    <th>Sale Price</th>
-                                    <th>Add</th>
-                                    <th>Edit</th> --}}
                                     <th>Delete</th>
                                 </tr>
                             </thead>
@@ -222,12 +147,7 @@
                                     <th>ID</th>
                                     <th>User Name</th>
                                     <th>Comment</th>
-                                    {{-- <th>Unit Price</th>
-                                    <th>Sale Price</th>
-                                    <th>Add</th>
-                                    <th>Edit</th> --}}
                                     <th>Delete</th>
-    
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -236,15 +156,9 @@
                                     <td>{{$comments->id}}</td>
                                     <td>{{$comments->users->name}}</td>
                                     <td>{{$comments->comment}}</td>
-    
-    
-                                    {{-- <td><a href="{{route('products_add')}}"><i></i>Add</a></td>
-                                    <td><a href="admin/products/edit/{{$products->id}}"><i></i>Edit</a></td> --}}
                                     <td><a href="admin/products/delete_comments/{{$comments->id}}"</a><i></i>Delete</a></td>
-    
                                 </tr>
                                 @endforeach
-    
                             </tbody>
                         </table>
                     </div>

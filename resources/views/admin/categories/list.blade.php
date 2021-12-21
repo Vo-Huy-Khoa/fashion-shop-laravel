@@ -3,8 +3,6 @@
     List Categories
 @endsection
 @section('content')
-
-
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -16,13 +14,12 @@
             </ol>
         </div>
         @if (session('delete'))
-        <div class="alert alert-danger">
-            {{ session('delete') }}
-        </div>
-    @endif
+            <div class="alert alert-danger">
+                {{ session('delete') }}
+            </div>
+        @endif
         <!-- Row -->
         <div class="row">
-
             <!-- DataTable with Hover -->
             <div class="col-lg-12">
                 <div class="card mb-4">
@@ -34,7 +31,6 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>Name</th>
-                                    {{-- <th>Classify Name</th> --}}
                                     <th>Description</th>
                                     <th>Add</th>
                                     <th>Edit</th>
@@ -44,12 +40,10 @@
                             <tfoot>
                                 <tr>
                                     <th>Name</th>
-                                    {{-- <th>Classify Name</th> --}}
                                     <th>Description</th>
                                     <th>Add</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
-
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -57,39 +51,20 @@
                                 <tr>
                                     <td style="text-align: center">{{$categories->name}}<br>
                                     <img style="width: 100px;height:100px" src="uploads/categories/{{$categories->image}}"alt="">
-
                                     </td>
-                                    {{-- <td>{{$categories->classify->name}}</td> --}}
                                     <td>{{$categories->description}}</td>
-
                                     <td><a href="{{route('categories_add')}}"><i></i>Add</a></td>
                                     <td><a href="admin/categories/edit/{{$categories->id}}"><i></i>Edit</a></td>
                                     <td><a href="admin/categories/delete/{{$categories->id}}"</a><i></i>Delete</a></td>
-
                                 </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
     <!---Container Fluid-->
-
-
-
-    <!-- Page level custom scripts -->
-    <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable(); // ID From dataTable 
-            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-        });
-    </script>
-
-
 @endsection
 

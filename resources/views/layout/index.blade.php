@@ -23,23 +23,28 @@
 <link rel="stylesheet" href="{{ URL::asset('Front/css/shop_details.css') }}">
 <base href="{{asset('')}}">
 @yield('css')
+
 </head>
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
-    <!-- Header Section Begin -->
-    @include('layout.header')
-    <!-- Header Section End -->
-    <!-- Hero Section Begin -->
-    @include('layout.categories')
-    <!-- Hero Section End -->
-    <!-- Categories Section End -->
+        <!-- Header Begin -->
+        @include('layout.header')
+        <!-- Header End -->
+        <!-- Categories Begin -->
+        @include('layout.categories')
+        <!-- Categories End -->
+
+
+    <!-- Contain begin -->
     @yield('content')
-    <!-- Footer Section Begin -->
+    <!-- Contain end -->
+
+    <!-- Footer Begin -->
     @include('layout.footer')
-    <!-- Footer Section End -->
+    <!-- Footer End -->
     <!-- Js Plugins -->
   <script src="{{ URL::asset('Front/js/jquery-3.3.1.min.js') }}"></script>
   <script src="{{ URL::asset('Front/js/bootstrap.min.js') }}"></script>

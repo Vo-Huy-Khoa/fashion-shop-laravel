@@ -3,8 +3,6 @@
     List Blog
 @endsection
 @section('content')
-
-
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -16,13 +14,12 @@
             </ol>
         </div>
         @if (session('delete'))
-        <div class="alert alert-danger">
-            {{ session('delete') }}
-        </div>
-    @endif
+            <div class="alert alert-danger">
+                {{ session('delete') }}
+            </div>
+        @endif
         <!-- Row -->
         <div class="row">
-
             <!-- DataTable with Hover -->
             <div class="col-lg-12">
                 <div class="card mb-4">
@@ -64,28 +61,13 @@
                                     <td><a href="admin/blogs/delete/{{$blogs->id}}"</a><i></i>Delete</a></td>
                                 </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
     <!---Container Fluid-->
-
-
-
-    <!-- Page level custom scripts -->
-    <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable(); // ID From dataTable 
-            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-        });
-    </script>
-
-
 @endsection
 
