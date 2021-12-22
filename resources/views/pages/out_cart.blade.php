@@ -6,19 +6,18 @@
 
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
-
         @if(session('delete'))
-        <div  class="alert alert-danger">
-            {{ session('delete') }}
-        </div>
+            <div  class="alert alert-danger">
+                {{ session('delete') }}
+            </div>
         @elseif(session('oder_close'))
-        <div class="alert alert-success">
-            {{ session('oder_close') }}
-        </div>
+            <div class="alert alert-success">
+                {{ session('oder_close') }}
+            </div>
         @elseif(session('un_oder_close'))
-        <div  class="alert alert-danger">
-            {{ session('un_oder_close') }}
-        </div>
+            <div  class="alert alert-danger">
+                {{ session('un_oder_close') }}
+            </div>
         @endif
         @if (empty($out_cart))
         <div class="row">
@@ -104,7 +103,6 @@
             </div>
         </div>
         <!--Row-->
-
         <div class="row">
             <div class="col-lg-12" style="display: flex; align-items: center;">
                 <div class="shoping__cart__btns" >
@@ -140,16 +138,9 @@
                     </div>
                 </div>
                 @endif
-
                 @endforeach
-
-
             </div>
         </div>
     </section>
-    <!-- Related Product Section End -->
     </div>
-    <!---Container Fluid-->
-
-
 @endsection

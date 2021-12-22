@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>Login</title>
   <meta charset="utf-8">
@@ -9,8 +8,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="admin_asset/img/logo/logo.png" rel="icon">
-  
-  
   <link rel="stylesheet" href="{{ URL::asset('admin_asset/vendor/fontawesome-free/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('admin_asset/vendor/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('admin_asset/css/ruang-admin.min.css') }}">
@@ -26,46 +23,37 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="login-form">
-             
                   @if (session('login'))
-                  <div class="alert alert-success">
-                      {{ session('login') }}
-                  </div>
-              @endif
-              @if (session('register'))
-              <div class="alert alert-success">
-                  {{ session('register') }}
-              </div>
-          @endif
+                    <div class="alert alert-success">
+                        {{ session('login') }}
+                    </div>
+                  @endif
+                  @if (session('register'))
+                    <div class="alert alert-success">
+                        {{ session('register') }}
+                    </div>
+                  @endif
                   @if (session('error'))
-                  <div class="alert alert-danger">
-                      {{ session('error') }}
-                  </div>
-              @endif
-              @if (session('logout'))
-              <div class="alert alert-success">
-                  {{ session('logout') }}
-              </div>
-          @endif
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                  @endif
+                  @if (session('logout'))
+                    <div class="alert alert-success">
+                        {{ session('logout') }}
+                    </div>
+                  @endif
           <div class="text-center">
             <h1 class="h4 text-gray-900 mb-4">Login</h1>
           </div>
                   <form class="user" action="{{ route('login') }}" method="POST" >
                     @csrf
                     <div class="form-group">
-                      <input type="email" class="form-control" name="email" aria-describedby="emailHelp"
-                        placeholder="Enter Email Address">
+                        <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address">
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control" name="password" placeholder="Password">
                     </div>
-                    {{-- <div class="form-group">
-                        <input  type="checkbox" class="custom-control-input" id="customCheck" name="remember">
-                        
-                        <label  class="custom-control-label" for="customCheck">Remember
-                          Me</label>
-                     
-                    </div> --}}
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary btn-block">Login</button>
                     </div>

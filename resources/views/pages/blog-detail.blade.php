@@ -1,15 +1,9 @@
 
 @extends('layout.index')
-
 @section('title')
     Blog Detals
 @endsection
 @section('content')
-    
-    <!-- Breadcrumb Section Begin -->
-
-    <!-- Breadcrumb Section End -->
-
     <!-- Blog Details Hero Begin -->
     {{-- <section class="blog-details-hero set-bg" data-setbg="./Front/img/blog/details/details-hero.jpg">
         <div class="container">
@@ -28,7 +22,6 @@
         </div>
     </section> --}}
     <!-- Blog Details Hero End -->
-
     <!-- Blog Details Section Begin -->
     <section class="blog-details spad">
         <div class="container">
@@ -69,7 +62,7 @@
                             <h4>Search By</h4>
                             <div class="blog__sidebar__item__tags">
                                 @foreach ($list_classify as $classify)
-                                <a href="#">{{$classify->name}}</a>
+                                    <a href="#">{{$classify->name}}</a>
                                 @endforeach
                             </div>
                         </div>

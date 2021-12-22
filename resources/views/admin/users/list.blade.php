@@ -3,9 +3,6 @@
     List Users
 @endsection
 @section('content')
-
-
-    <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">DataTables Users</h1>
@@ -16,13 +13,11 @@
             </ol>
         </div>
         @if (session('delete'))
-        <div class="alert alert-danger">
-            {{ session('delete') }}
-        </div>
-    @endif
-        <!-- Row -->
+            <div class="alert alert-danger">
+                {{ session('delete') }}
+            </div>
+        @endif
         <div class="row">
-
             <!-- DataTable with Hover -->
             <div class="col-lg-12">
                 <div class="card mb-4">
@@ -65,30 +60,13 @@
                                     <td><a href="{{route('users_add')}}"><i></i>Add</a></td>
                                     <td><a href="admin/users/edit/{{$users->id}}}"><i></i>Edit</a></td>
                                     <td><a href="admin/users/delete/{{$users->id}}"</a><i></i>Delete</a></td>
-
                                 </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
-    <!---Container Fluid-->
-
-
-
-    <!-- Page level custom scripts -->
-    <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable(); // ID From dataTable 
-            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-        });
-    </script>
-
-
 @endsection

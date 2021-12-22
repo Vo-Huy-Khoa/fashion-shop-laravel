@@ -6,36 +6,27 @@
 @endsection
 @section('content')
 @if (!Auth::check())
-    
-
 <style>
     :root {
     --input-padding-x: 1.5rem;
     --input-padding-y: .75rem
 }
-
-
-
 .card-signin {
     border: 0;
     border-radius: 0rem;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1)
 }
-
 .card-signin .card-title {
     margin-bottom: 2rem;
     font-weight: 300;
     font-size: 1.5rem
 }
-
 .card-signin .card-body {
     padding: 2rem
 }
-
 .form-signin {
     width: 100%
 }
-
 .form-signin .btn {
     font-size: 80%;
     border-radius: 0rem;
@@ -44,7 +35,6 @@
     padding: 1rem;
     transition: all 0.2s
 }
-
 .form-label-group {
     position: relative;
     margin-bottom: 1rem
@@ -92,13 +82,12 @@
     <div id="container">
         <div id="formcontainer">
             @if (session('register'))
-            <div class="alert alert-success">
-                {{ session('register') }}
-            </div>
-        @endif
+                <div class="alert alert-success">
+                    {{ session('register') }}
+                </div>
+            @endif
             <form action="{{route('user-login')}}" method="POST">
             @csrf
- 
             <div class="container">
                 <div class="row">
                     <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
@@ -108,27 +97,28 @@
                                 <form class="form-signin">
                                     <div class="form-label-group">
                                          <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required> 
-                                         {{-- <label for="email">Email address</label>  --}}
-                                        </div>
+                                     </div>
                                     <div class="form-label-group">
                                          <input type="password" id="password" name="password" class="form-control" placeholder="Password"> 
-                                         {{-- <label for="password">Password</label> --}}
-                                         </div>
+                                     </div>
                                     <div class="custom-control custom-checkbox mb-3">
                                          <input type="checkbox" class="custom-control-input" id="customCheck1"> 
                                          <label class="custom-control-label" for="customCheck1">Remember password?</label> 
                                     </div> 
-                                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
                                     <hr class="my-4">
                                      <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
-                                         <i class="fab fa-google mr-2"></i>
-                                          Sign in with Google
-                                        </button> 
+                                         <i class="fab fa-google mr-2"></i>Sign in with Google
+                                    </button> 
                                     <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit">
                                         <i class="fab fa-facebook-f mr-2"></i> 
-                                        Sign in with Facebook</button>
-                  <p class="text-center text-muted mt-5 mb-0">Create an account? <a href="{{route('user-register')}}" class="fw-bold text-body"><u>Click here</u></a></p>
-
+                                        Sign in with Facebook
+                                    </button>
+                                    <p class="text-center text-muted mt-5 mb-0">Create an account? 
+                                        <a href="{{route('user-register')}}" class="fw-bold text-body">
+                                        <u>Click here</u>
+                                        </a>
+                                    </p>
                                 </form>
                             </div>
                         </div>
@@ -139,8 +129,5 @@
         </div>
     </div>
 </body>
-
-
-
 @endif
 @endsection

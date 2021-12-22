@@ -1,11 +1,8 @@
 @extends('layout.index')
-
 @section('title')
     Blog
 @endsection
 @section('content')
-    
-
     <!-- Blog Section Begin -->
     <section class="blog spad">
         <div class="container">
@@ -23,27 +20,24 @@
                             <h4>Categories</h4>
                             <ul>
                                 @foreach ($list_categories as $categories)
-                                <li><a href="search-category-blog/{{$categories->id}}">{{$categories->name}}</a></li>
+                                    <li><a href="search-category-blog/{{$categories->id}}">{{$categories->name}}</a></li>
                                 @endforeach
-    
                             </ul>
                         </div>
                         <div class="blog__sidebar__item">
                             <h4>List Blog</h4>
                             <div class="blog__sidebar__recent">
                                 @foreach ($list_blogs as $blog)
-                                    
-                                <a href="blog-detail/{{$blog->id}}" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img width="60px"  height="60px"  src="uploads/blogs/{{$blog->image}}" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>{{$blog->title}}</h6>
-                                        <span>{{$blog->created_at}}</span>
-                                    </div>
-                                </a>
+                                    <a href="blog-detail/{{$blog->id}}" class="blog__sidebar__recent__item">
+                                        <div class="blog__sidebar__recent__item__pic">
+                                            <img width="60px"  height="60px"  src="uploads/blogs/{{$blog->image}}" alt="">
+                                        </div>
+                                        <div class="blog__sidebar__recent__item__text">
+                                            <h6>{{$blog->title}}</h6>
+                                            <span>{{$blog->created_at}}</span>
+                                        </div>
+                                    </a>
                                 @endforeach
-
                             </div>
                         </div>
                         <div class="blog__sidebar__item">
@@ -79,17 +73,12 @@
                             </div>
                         </div>
                         @endforeach
-
                         <div class="row" style="display: flex;align-items: center;justify-content: center;">
-
                             <div class="link">{{$list_blogs->links('pagination::bootstrap-4') }}</div>
-              
                           </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Blog Section End -->
-
     @endsection

@@ -1,26 +1,17 @@
 
     @extends('layout.index')
-    
     @section('title')
     Contact
 @endsection
-    @section('content')
-        
-
-    <!-- Breadcrumb Section Begin -->
-
-    <!-- Breadcrumb Section End -->
-
+@section('content')
     <!-- Contact Section Begin -->
     <section class="contact spad">
         <div class="container">
-
             @if (session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
-
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                     <div class="contact__widget">
@@ -54,9 +45,6 @@
         </div>
     </section>
     <!-- Contact Section End -->
-
- 
-    
     <!-- Map Begin -->
     <div class="map">
         <iframe
@@ -74,7 +62,6 @@
         </div>
     </div>
     <!-- Map End -->
-
     <!-- Contact Form Begin -->
     <div class="contact-form spad">
         <div class="container">

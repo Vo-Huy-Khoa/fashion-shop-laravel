@@ -72,20 +72,15 @@ class UserController extends Controller
         //    return back()->with('error','Đăng nhập thất bại!');
 
         // }
-
         $credentials = [
             'email'=> $request->email,
             'password' => $request->password ,
             'type' => '1'
         ];
-        if (Auth::attempt($credentials,$remember)) {
-            // Authentication passed...
+        if (Auth::attempt($credentials,$remember)) 
             return redirect('admin/home');
-        }
-        else{
+        else
            return redirect()->back()->with('error','Đăng nhập thất bại!');
-        }
-        // dd($request->input());
         
     }
     public function Admin_logout()
@@ -128,10 +123,7 @@ class UserController extends Controller
             return redirect('admin/login')->with('register','Bạn đã đăng ký thành công!');
         else
             return back()->with('errorregister','Bạn đã đăng ký thất bại!');
-         
-
     }
-
     public function list()
     {
         $listuser  = User::all();
@@ -176,10 +168,7 @@ class UserController extends Controller
               return back()->with('add','Bạn đã thêm thành công '.$user->first_name." ".$user->last_name);
          else
              return back()->with('error','Bạn đã thêm người dùng thất bại '.$user->first_name." ".$user->last_name);
-          
     }
-
-
     public function edit($id)
     {   
         $user = User::find($id);
@@ -244,14 +233,10 @@ class UserController extends Controller
             'password' => $request->password ,
             'type' => '2'
         ];
-        if (Auth::attempt($credentials,$remember)) {
-            // Authentication passed...
+        if (Auth::attempt($credentials,$remember)) 
             return redirect('.');
-        }
-        else{
+        else
            return redirect()->back()->with('error','Đăng nhập thất bại!');
-
-        }
     }
 
     public function users_logout()
@@ -297,11 +282,10 @@ class UserController extends Controller
         //     $user->image ="";
         // }
          $save = $user -> save();
-         if ($save) {
-              return redirect('user/login')->with('register','Bạn đã tạo thành công tài khoản '.$user->first_name." ".$user->last_name);
-          }else{
-             return back()->with('error','Bạn đã tạo thất bại tài khoản'.$user->first_name." ".$user->last_name);
-          }
+        if ($save)
+            return redirect('user/login')->with('register','Bạn đã tạo thành công tài khoản '.$user->first_name." ".$user->last_name);
+        else
+            return back()->with('error','Bạn đã tạo thất bại tài khoản'.$user->first_name." ".$user->last_name);
     }
 
     public function getAdmin_Profile()

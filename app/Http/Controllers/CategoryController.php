@@ -10,7 +10,6 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     //
-
     public function list()
     {
         $list_categories = Category::all();
@@ -18,7 +17,6 @@ class CategoryController extends Controller
     }
 
     public function add()
-
     {
         $list_classify = Classify::all();
         return view('admin.categories.add',['list_classify'=>$list_classify]);
@@ -31,33 +29,25 @@ class CategoryController extends Controller
         $categories->name = $request->name;
         $categories->description = $request->description;
         if ($request->hasFile('img')) {
-            $file = $request->file('img');
-        
+            $file = $request->file('img');//get request form add category
             $late = $file->getClientOriginalExtension();
-            if ($late !="jpg" && $late != "png" && $late != "jpeg") {
+            if ($late !="jpg" && $late != "png" && $late != "jpeg") 
                 return back()->with('error_img','Sai định dạng hình ');
-            }
-            $name = $file->getClientOriginalName();
+            $name = $file->getClientOriginalName();//get name image
             $img = Str::random(4)."_".$name;
-        
             while (file_exists("uploads/categories/".$img)) {
                 $img = Str::random(4)."_".$name;
             }
-            
-            $file->move("uploads/categories",$img);
+            $file->move("uploads/categories",$img);//add new image
             $categories->image = $img;
-            
         }
-        else{
+        else
             $categories->image ="";
-        }
-
+        
         if($categories->save())
             return back()->with('add','Bạn đã thêm thành công '.$categories->name);
         else
             return back()->with('error_add','Bạn đã xóa thất bại '.$categories->name);
-
-
     }
 
     public function edit($id)
@@ -88,32 +78,23 @@ class CategoryController extends Controller
             }
             
             $file->move("uploads/categories",$img);
-            unlink("uploads/categories/".$categories->image);
+            unlink("uploads/categories/".$categories->image);//delete image old
             $categories->image = $img;
             
         }
-        else{
+        else
             $categories->image ="";
-        }
-
 
         if($categories->save())
             return back()->with('edit','Bạn đã sửa thành công '.$categories->name);
         else
             return back()->with('error_edit','Bạn đã sửa thất bại '.$categories->name);
-
-
-
-
-
-
     }
 
     public function delete($id)
     {
         $categories = Category::find($id);
         $categories->delete();
-
         return back()->with('delete','bạn đã xóa thành công'.$categories->name);
     }
 

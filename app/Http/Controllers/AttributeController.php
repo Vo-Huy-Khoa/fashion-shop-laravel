@@ -22,7 +22,6 @@ class AttributeController extends Controller
 
     public function postAdd(Request $request)
     {
-        // dd($request->all());
         $attributes = new Attribute();
         $attributes->name = $request->name;
         $attributes->value = $request->value;

@@ -5,7 +5,6 @@ $users = Auth::user();
         $id = Auth::id();
         $list_oders = Oder::where('user_id',$id)->where('status',1)->get();
 ?>
-
 <header class="header">
     <div class="header__top">
         <div class="container">
@@ -13,7 +12,12 @@ $users = Auth::user();
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><a style="color: black" href="mailto:huykhoa630@gmail.com"><i class="fa fa-envelope"></i> huykhoa630@gmail.com</a></li>
+                            <li>
+                                <a style="color: black" href="mailto:huykhoa630@gmail.com">
+                                <i class="fa fa-envelope"></i> 
+                                huykhoa630@gmail.com
+                                </a>
+                            </li>
                             <li>Free Shipping for all Order of $99</li>
                         </ul>
                     </div>
@@ -58,23 +62,10 @@ $users = Auth::user();
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li
-                         ><a href="#">Home</a></li>
-                        <li
-
-                        ><a href="{{route('shop-fashion')}}">Shop</a></li>
-                        {{-- <li><a href="#">Pages</a>
-                            <ul class="header__menu__dropdown">
-                                <li><a href="./shop-details.html">Shop Details</a></li>
-                                <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                <li><a href="./checkout.html">Check Out</a></li>
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </li> --}}
-                        <li 
-                        ><a href="{{route('user_blog')}}">Blog</a></li>
-                        <li 
-                        ><a href="{{route('user_contact')}}">Contact</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="{{route('shop-fashion')}}">Shop</a></li>
+                        <li><a href="{{route('user_blog')}}">Blog</a></li>
+                        <li><a href="{{route('user_contact')}}">Contact</a></li>
                     </ul>
                 </nav>
             </div>

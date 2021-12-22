@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <title>@yield('title') | Admin</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,29 +22,27 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
   <link rel="stylesheet" href="{{ URL::asset('admin_asset/css/message.css') }}">
     {{-- Css input --}}
-    <link rel="stylesheet" href="{{ URL::asset('admin_asset/css/input.css') }}">
-
+  <link rel="stylesheet" href="{{ URL::asset('admin_asset/css/input.css') }}">
   <base href="{{asset('')}}">
 </head>
-
 <body id="page-top">
   <div id="wrapper">
-    <!-- Sidebar -->
-    @include('admin.layout.sidebar')
-    <!-- Sidebar -->
-    <div id="content-wrapper" class="d-flex flex-column">
-      <div id="content">
-        <!-- TopBar -->
-    @include('admin.layout.header')
-    <!-- TopBar -->
-        <!-- Container Fluid-->
-        @yield('content')
-        <!---Container Fluid-->
-      </div>
-      <!-- Footer -->
+      <!-- Sidebar -->
+      @include('admin.layout.sidebar')
+      <!-- Sidebar -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <!-- TopBar -->
+            @include('admin.layout.header')
+            <!-- TopBar -->
+            <!-- Container Fluid-->
+            @yield('content')
+            <!---Container Fluid-->
+        </div>
+        <!-- Footer -->
         @include('admin.layout.footer')
-      <!-- Footer -->
-    </div>
+        <!-- Footer -->
+      </div>
   </div>
   <!-- Scroll to top -->
   <a class="scroll-to-top rounded" href="#page-top">
@@ -78,7 +74,6 @@
         $('#dataTableHover').DataTable(); // ID From dataTable with Hover
       });
     </script>
-    
 {{-- Script User --}}
 <script src="{{ URL::asset('https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js') }}"></script>
 {{-- <script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js') }}"></script> --}}
@@ -117,6 +112,4 @@ function showFileName( event ) {
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 {{-- editor CKE --}}
 <script src="{{ URL::asset('admin_asset\ckeditor\ckeditor.js') }}"></script>
-
-
 </html>

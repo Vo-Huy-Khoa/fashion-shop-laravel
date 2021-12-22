@@ -1,5 +1,4 @@
 @extends('layout.index')
-
 @section('title')
     {{$value}}
 @endsection
@@ -21,7 +20,7 @@
                             <h4>Categories</h4>
                             <ul>
                                 @foreach ($list_categories as $categories)
-                                <li><a href="search-category-blog/{{$categories->id}}">{{$categories->name}}</a></li>
+                                    <li><a href="search-category-blog/{{$categories->id}}">{{$categories->name}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -29,15 +28,15 @@
                             <h4>Recent News</h4>
                             <div class="blog__sidebar__recent">
                                 @foreach ($list_blogs as $blog)
-                                <a href="blog-detail/{{$blog->id}}" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img width="60px"  height="60px"  src="uploads/blogs/{{$blog->image}}" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>{{$blog->title}}</h6>
-                                        <span>{{$blog->created_at}}</span>
-                                    </div>
-                                </a>
+                                    <a href="blog-detail/{{$blog->id}}" class="blog__sidebar__recent__item">
+                                        <div class="blog__sidebar__recent__item__pic">
+                                            <img width="60px"  height="60px"  src="uploads/blogs/{{$blog->image}}" alt="">
+                                        </div>
+                                        <div class="blog__sidebar__recent__item__text">
+                                            <h6>{{$blog->title}}</h6>
+                                            <span>{{$blog->created_at}}</span>
+                                        </div>
+                                    </a>
                                 @endforeach
                             </div>
                         </div>
@@ -57,22 +56,22 @@
                 <div class="col-lg-8 col-md-7">
                     <div class="row">
                         @foreach ($list_blogs_search as $blogs)
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img style="width: 30px ;height:400px" src="uploads/blogs/{{$blogs->image}}" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i>{{$blogs->created_at}}</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="blog_details/{{$blogs->id}}">{{$blogs->title}}</a></h5>
-                                    <p>{{substr($blogs->brief,0,500)}}...</p>
-                                    <a href="blog_details/{{$blogs->id}}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="blog__item">
+                                    <div class="blog__item__pic">
+                                        <img style="width: 30px ;height:400px" src="uploads/blogs/{{$blogs->image}}" alt="">
+                                    </div>
+                                    <div class="blog__item__text">
+                                        <ul>
+                                            <li><i class="fa fa-calendar-o"></i>{{$blogs->created_at}}</li>
+                                            <li><i class="fa fa-comment-o"></i> 5</li>
+                                        </ul>
+                                        <h5><a href="blog_details/{{$blogs->id}}">{{$blogs->title}}</a></h5>
+                                        <p>{{substr($blogs->brief,0,500)}}...</p>
+                                        <a href="blog_details/{{$blogs->id}}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                         <div class="col-lg-12">
                             <div class="product__pagination blog__pagination">

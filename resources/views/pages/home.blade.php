@@ -2,13 +2,13 @@
 @section('title')
     Home
 @endsection
-    @section('content')
+@section('content')
             <!-- Categories Section Begin -->
             @if (session('logout'))
-            <div class="alert alert-success">
-                {{ session('logout') }}
-            </div>
-        @endif
+                <div class="alert alert-success">
+                    {{ session('logout') }}
+                </div>
+            @endif
     <section class="categories">
         <div class="container">
             <div class="row">
@@ -20,15 +20,11 @@
                         </div>
                     </div>
                     @endforeach
-
-
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Categories Section End -->
-
     <!-- Featured Section Begin -->
     <section class="featured spad">
         <div class="container">
@@ -41,17 +37,14 @@
                         <ul>
                             <li class="active" data-filter="*">All</li>
                             @foreach ($list_classify as $classify)
-                            <li data-filter="{{".".$classify->name}}">{{$classify->name}}</li>
+                                <li data-filter="{{".".$classify->name}}">{{$classify->name}}</li>
                             @endforeach
-                            
                         </ul>
                     </div>
                 </div>
             </div>
-
             <div class="row featured__filter">
                 @foreach ($list_products as $products)
-
                 <div class="col-lg-3 col-md-4 col-sm-6 mix {{" ".$products->categories->classify->name." "}}">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="uploads/products/{{$products->image}}">
@@ -68,19 +61,13 @@
                     </div>
                 </div>
                 @endforeach
-
-
             </div>
             <div class="row" style="display: flex;align-items: center;justify-content: center;">
-
                 <div class="link">{{$list_products->links('pagination::bootstrap-4') }}</div>
-  
-              </div>
-
+            </div>
         </div>
     </section>
     <!-- Featured Section End -->
-
     <!-- Banner Begin -->
     <div class="banner">
         <div class="container">
@@ -99,8 +86,6 @@
         </div>
     </div>
     <!-- Banner End -->
-
-
     <!-- Latest Product Section Begin -->
     <section class="latest-product spad">
         <div class="container">
@@ -229,7 +214,6 @@
                         <div class="blog__item__text">
                             <ul>
                                 <li><i class="fa fa-calendar-o"></i>{{$blogs->created_at}}</li>
-                                {{-- <li><i class="fa fa-comment-o"></i>{{count($list_comments)}}</li> --}}
                             </ul>
                             <h5><a href="blog-detail/{{$blogs->id}}">{{$blogs->title}}</a></h5>
                             <p>{{$blogs->brief}}</p>
@@ -237,22 +221,12 @@
                     </div>
                 </div>
                 @endforeach
-
-
             </div>
             <div class="row" style="display: flex;align-items: center;justify-content: center;">
-
-              <div class="link">{{$list_blogs_home->links('pagination::bootstrap-4') }}</div>
-
+                 <div class="link">{{$list_blogs_home->links('pagination::bootstrap-4') }}</div>
             </div>
-
         </div>
     </section>
-    <!-- Blog Section End -->
-
-    <!-- Footer Section Begin -->
-
-    <!-- Footer Section End -->
     @endsection
 
 

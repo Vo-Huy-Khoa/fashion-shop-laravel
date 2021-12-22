@@ -1,6 +1,7 @@
 @extends('layout.index')
-
-
+@section('title')
+    {{ $products->name }}
+@endsection
 @section('content')
     <style>
         .colors label {
@@ -23,13 +24,7 @@
             margin: 0 5px 0 0;
             border: 1px solid #d4d4d4;
         }
-
     </style>
-
-    <!-- Breadcrumb Section Begin -->
-
-    <!-- Breadcrumb Section End -->
-
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
         @if (session('comment'))
@@ -47,14 +42,9 @@
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             @foreach ($product_image as $image)
-
                                 <img data-imgbigurl="uploads/products/{{ $image->image }}"
                                     src="uploads/products/{{ $image->image }}" alt="">
-
                             @endforeach
-
-
-
                         </div>
                     </div>
                 </div>
@@ -71,14 +61,12 @@
                         </div>
                         <div class="product__details__price">{{ number_format($products->unit_price) }} $</div>
                         <p>{!! $products->description !!}</p>
-
                         <form action="AddToCart_Detail/{{ $products->id }}" method="post">
                             @csrf
                             @if ($id_attr)
                                 <span> <b>Size</b> <br> </span>
                             @endif
                             @foreach ($list_sizes as $sizes)
-
                                 @if (in_array($sizes->id, $id_attr))
                                     <div class="form-check form-check-inline">
                                         <div class="colors">
@@ -89,20 +77,11 @@
                                             </label>
                                         </div>
                                     </div>
-
-                                
-
-
                                 @endif
-
-
-
-
                             @endforeach
                             <br>
                             <span><br> <b>Color</b> <br></span>
                             @foreach ($list_colors as $colors)
-
                                 @if (in_array($colors->id, $id_attr))
                                     <div class="form-check form-check-inline">
                                         <div class="colors">
@@ -113,12 +92,10 @@
                                             </label>
                                         </div>
                                     </div>
-
                                 @endif
                             @endforeach
                             <br>
                             <br>
-
                             <div class="product__details__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
@@ -126,15 +103,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <button style="height: 51px; margin-right:5px;" type="submit" class="btn btn-success">ADD TO
-                                CARD</button>
+                            <button style="height: 51px; margin-right:5px;" type="submit" class="btn btn-success">
+                                ADD TO CARD
+                            </button>
                             <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-
                         </form>
-
-
                         <ul>
-                            <li><b>Availability</b> <span>In Stock</span></li>
+                            <li><b>Availability</b><span>In Stock</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
                             <li><b>Weight</b> <span>0.5 kg</span></li>
                             <li><b>Share on</b>
@@ -149,67 +124,43 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-
                     <div class="be-comment-block">
                         <h1 class="comments-title">Comments ({{ count($list_comments) }})</h1>
                         @foreach ($list_comments as $comments)
-
-
                             <div class="be-comment">
                                 <div class="be-img-comment">
-                                    <a href="">
-                                        <img src="uploads/users/{{ $comments->users->image }}">
-                                    </a>
+                                    <a href=""><img src="uploads/users/{{ $comments->users->image }}"> </a>
                                 </div>
                                 <div class="be-comment-content">
-
                                     <span class="be-comment-name">
-                                        <a
-                                            href="">{{ $comments->users->first_name . ' ' . $comments->users->last_name }}</a>
+                                    <a href="">{{ $comments->users->first_name . ' ' . $comments->users->last_name }}</a>
                                     </span>
                                     <span class="be-comment-time">
                                         <i class="fa fa-clock-o"></i>
                                         {{ $comments->created_at }}
                                     </span>
-
                                     <p class="be-comment-text">
                                         {{ $comments->comment }}
                                     </p>
                                 </div>
                             </div>
                         @endforeach
-
                         @if (Auth::user())
                             <form action="comments/{{ $products->id }}" method="POST" class="form-block">
                                 @csrf
                                 <div class="row">
-                                    {{-- <div class="col-xs-12 col-sm-6">
-                                    <div class="form-group fl_icon">
-                                        <div class="icon"><i class="fa fa-user"></i></div>
-                                        <input class="form-input" type="text" placeholder="Your name">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 fl_icon">
-                                    <div class="form-group fl_icon">
-                                        <div class="icon"><i class="fa fa-envelope-o"></i></div>
-                                        <input class="form-input" type="text" placeholder="Your email">
-                                    </div>
-                                </div> --}}
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <textarea style="width: 100%" name="comment" class="form-input" required=""
-                                                placeholder="Your text"></textarea>
+                                            <textarea style="width: 100%" name="comment" class="form-input" required="" placeholder="Your text"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <button class="btn btn-primary" type="submit">Send</button>
-
                                         </div>
                                     </div>
                                 </div>
                             </form>
                         @endif
                     </div>
-
                 </div>
             </div>
         </div>
@@ -245,19 +196,8 @@
                         </div>
                     </div>
                 @endforeach
-
-
             </div>
         </div>
     </section>
-    <!-- Related Product Section End -->
-
-
-
-
-
 @endsection
 
-@section('title')
-    {{ $products->name }}
-@endsection

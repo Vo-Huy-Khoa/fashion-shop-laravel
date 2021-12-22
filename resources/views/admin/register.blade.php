@@ -50,23 +50,19 @@
                                         @csrf
                                         <div class="form-group">
                                             <label>User Name</label>
-                                            <input type="text" class="form-control" name="name"
-                                                placeholder="Enter Name">
+                                            <input type="text" class="form-control" name="name" placeholder="Enter Name">
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="email" class="form-control" name="email"
-                                                aria-describedby="emailHelp" placeholder="Enter Email Address">
+                                            <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address">
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" class="form-control" name="password"
-                                                placeholder="Password">
+                                            <input type="password" class="form-control" name="password" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <label>Repeat Password</label>
-                                            <input type="password" class="form-control" name="repassword"
-                                                placeholder="Repeat Password">
+                                            <input type="password" class="form-control" name="repassword" placeholder="Repeat Password">
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary btn-block">Register</button>
@@ -81,8 +77,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="font-weight-bold small" href="{{ route('login') }}">Already have an
-                                            account?</a>
+                                        <a class="font-weight-bold small" href="{{ route('login') }}">Already have an account?</a>
                                     </div>
                                     <div class="text-center">
                                     </div>

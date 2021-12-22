@@ -10,8 +10,6 @@ use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
-    
-
    // Facebook login
    public function redirectToFacebook()
    {
@@ -47,8 +45,6 @@ class LoginController extends Controller
         //    return redirect()->route('admin_home');
            dd($user);
        }
-       
-       
    protected function _registerOrLoginUser($data)
    {
        $user = User::where('email', '=', $data->email)->first();
@@ -60,7 +56,6 @@ class LoginController extends Controller
            $user->image = $data->image;
            $user->save();
        }
-
        Auth::login($user);
    }
 

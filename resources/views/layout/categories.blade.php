@@ -13,9 +13,10 @@
                         </div>
                         <ul>
                             @foreach ($list_classify as $classify)
-                            <li><a href="search-classify/{{$classify->id}}">{{$classify->name}}</a></li>
+                            <li>
+                                <a href="search-classify/{{$classify->id}}">{{$classify->name}}</a>
+                            </li>
                             @endforeach
-
                         </ul>
                     </div>
                 </div>
@@ -28,7 +29,6 @@
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                
                                 <input type="text" name="value" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>

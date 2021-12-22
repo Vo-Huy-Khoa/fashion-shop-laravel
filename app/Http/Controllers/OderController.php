@@ -23,9 +23,6 @@ class OderController extends Controller
         $list_products = Product::all();
         $list_classify = Classify::all();
         $user_id = Auth::id();
-        // $list_oders = Oder::where('user_id',$user_id)->take(50)->paginate(12);
-        // $list_oders = Oder::all();
-        // $list_cart = session()->get('list_cart');
         $list_blogs = Blog::all();
         $list_products_sale = Product::whereNotNull('sale_price')->take(50)->paginate(12);
         view()->share('users',Auth::user());
@@ -36,55 +33,36 @@ class OderController extends Controller
         view()->share('list_products_sale',$list_products_sale);
         $list_message = Message::all();
         view()->share('list_message',$list_message);
-
-
     }
-
-
     // public function edit($id)
     // {
     //     $oders = Oder::find($id);
     //     $list_products = Product::all();
     //     return view('admin.oders.edit',['oders'=>$oders,'list_products'=>$list_products]);
     // }
-
     // public function postEdit(Request $request, $id)
     // {
     //     $oders = Oder::find($id);
-
     //     $oders->product_id = $request->product_id;
     //     $oders->quantity = $request->quantity;
-
     //     if ($oders->save()) {
     //         return back()->with('edit','Sửa thành công '.$oders->name);
     //     }else{
     //         return back()->with('error_edit','Sửa thất bại '.$oders->name);
-
     //     }
     // }
-
-
     public function delete($id)
     {
         $oders = Oder::find($id);
-        
         $oders->delete();
         return redirect()->back()->with('delete','Hủy đơn hàng thành công! ');
     }
-
-
-
-
         public function AddToCart($id)
 {           
-        // session()->forget('cart');
-        // // session()->flush();
-        // dd('list_cart');
             $user_id = Auth::id();
             $oders = new Oder();
             $products = Product::find($id);
-            $cart = session()->get('cart');
-
+            $cart = session()->get('cart');// new session 
             if (!$cart) {
                 $cart = [ $id => [
                     'name' => $products->name,
@@ -99,18 +77,15 @@ class OderController extends Controller
                      $oders->total = $products->unit_price * $cart[$id] ['quantity'];
                      $oders->status = '1';
                      $oders->save();
-
-            session()->put('cart', $cart);
+            session()->put('cart', $cart); //add property to session
             return redirect()->route('show-cart');
         }
-        if (isset($cart[$id])) {
+        if (isset($cart[$id])) { // update property session
             $cart[$id]['quantity'] ++;
             Oder::where('product_id', $id)->update(array('quantity' => $cart[$id]['quantity'],'total'=> $products->unit_price * $cart[$id] ['quantity'] ));
-            
             session()->put('cart', $cart);
             return redirect()->route('show-cart');
         }
-
         $cart[$id] =
         [
             'name' => $products->name,
@@ -119,19 +94,14 @@ class OderController extends Controller
             'quantity' => 1,
 
         ];
-
         $oders->user_id = $user_id;
         $oders->product_id =$id;
         $oders->quantity = $cart[$id] ['quantity'];
         $oders->total = $products->unit_price * $cart[$id] ['quantity'];
         $oders->status = '1';
         $oders->save();
-
         session()->put('cart', $cart);
         return redirect()->route('show-cart');
-
-        
-
 }
 
 public function AddToCart_Detail(Request $request,$id)
@@ -139,7 +109,6 @@ public function AddToCart_Detail(Request $request,$id)
     $products = Product::find($id);
     $oders = new Oder();
     $user_id = Auth::id();
-
     $oders->user_id = $user_id;
     $oders->product_id =$id;
     $oders->size = $request->size;

@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Support\Str;
-
 class BlogController extends Controller
 {
     public function list()
@@ -43,17 +40,14 @@ class BlogController extends Controller
             $file->move("uploads/blogs",$img);
             $blogs->image = $img;
         }
-        else{
+        else
             $blogs->image ="";
-        }
 
-        if ($blogs->save()) {
+        if ($blogs->save())
             return back()->with('add','Thêm thành công '.$blogs->title);
-        }
-        else{
+        else
             return back()->with('error','Thêm thất bại '.$blogs->title);
-            
-        }
+
     }
     public function getEdit($id)
     {
@@ -70,42 +64,33 @@ class BlogController extends Controller
         $blogs->description = $request->description;
         if ($request->hasFile('img')) {
             $file = $request->file('img');
-        
             $late = $file->getClientOriginalExtension();
-            if ($late !="jpg" && $late != "png" && $late != "jpeg") {
+            if ($late !="jpg" && $late != "png" && $late != "jpeg")
                 return back()->with('error_img','Sai định dạng hình ');
-            }
-            $name = $file->getClientOriginalName();
+            $name = $file->getClientOriginalName(); // get name file
             $img = Str::random(4)."_".$name;
-        
             while (file_exists("uploads/blogs/".$img)) {
                 $img = Str::random(4)."_".$name;
             }
-            
+            //add new file image
             $file->move("uploads/blogs",$img);
+
+            //delete file old image
             unlink("uploads/blogs/".$blogs->image);
             $blogs->image = $img;
-            
         }
-        else{
+        else
             $blogs->image ="";
-        }
 
-        if ($blogs->save()) {
+        if ($blogs->save())
             return redirect()->back()->with('edit','Sửa thành công '.$blogs->title);
-        }
-        else{
+        else
             return back()->with('error','Sửa thất bại '.$blogs->title);
-            
-        }
-
-
     }
     public function delete($id)
     {
         $blogs = Blog::find($id);
         $blogs->delete();
         return redirect()->back()->with('delete','Xóa thành công '.$blogs->title);
-
     }
 }

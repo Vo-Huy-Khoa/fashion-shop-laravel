@@ -55,8 +55,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('edit/{id}',[UserController::class,'edit']);
         Route::post('edit/{id}',[UserController::class,'postEdit'])->name('edit');
         Route::get('delete/{id}',[UserController::class,'delete'])->name('delete');
-       Route::get('profile/{id}',[UserController::class,'getAdmin_Profile']);
-       Route::post('profile/{id}',[UserController::class,'postAdmin_Profile']);
+        Route::get('profile/{id}',[UserController::class,'getAdmin_Profile']);
+        Route::post('profile/{id}',[UserController::class,'postAdmin_Profile']);
     });
     Route::prefix('classify')->group(function () {
         Route::get('list',[ClassifyController::class,'list'])->name('classify_list');

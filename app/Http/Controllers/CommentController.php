@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    //
-
     public function postComments(Request $request,$id)
     {
         $comments = new Comment();
@@ -18,9 +16,6 @@ class CommentController extends Controller
         $comments->product_id = $id;
         $comments->comment = $request->comment;
         $comments->save();
-
-        
-
         return back()->with('comment','Bình luận thành công !');
     }
 }

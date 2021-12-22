@@ -1,14 +1,8 @@
 @extends('layout.index')
-
 @section('title')
     Check out
 @endsection
 @section('content')
-    
-
-    <!-- Breadcrumb Section Begin -->
-
-    <!-- Breadcrumb Section End -->
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
@@ -62,8 +56,7 @@
 
                             <div class="checkout__input">
                                 <p>Order notes<span>*</span></p>
-                                <input type="text" name="notes"
-                                    placeholder="Notes about your order, e.g. special notes for delivery.">
+                                <input type="text" name="notes" placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
@@ -72,26 +65,16 @@
                                 <div class="checkout__order__products">Products <span>Total</span></div>
                                 <ul>
                                     @foreach ($list_oders as $oders)
-                                    <li>
-                                        {{substr($oders->products->name,0,25)."..."}}
-
-                                        <span>
-                                            {{number_format($oders->products->unit_price) }}$ 
-                                        </span>
-                                        <span style="color: red; margin-right:15px;">
-                                            x{{$oders->quantity }}
-                                        </span>
-                                        <br>
-
-
-                                    </li>
-                                        
+                                        <li>
+                                            {{substr($oders->products->name,0,25)."..."}}
+                                            <span> {{number_format($oders->products->unit_price) }}$ </span>
+                                            <span style="color: red; margin-right:15px;"> x{{$oders->quantity }}</span>
+                                            <br>
+                                        </li>
                                     @endforeach
-
                                 </ul>
-                                <div class="checkout__order__subtotal">Subtotal <span>$0</span></div>
+                                <div class="checkout__order__subtotal">Subtotal<span>$0</span></div>
                                 <div class="checkout__order__total">Total <span>{{number_format($list_oders->sum('total'))}}$</span></div>
-   
                                 <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
                                     ut labore et dolore magna aliqua.</p>
                                 <div class="checkout__input__checkbox">
@@ -116,7 +99,5 @@
             </div>
         </div>
     </section>
-    <!-- Checkout Section End -->
-
     @endsection
 

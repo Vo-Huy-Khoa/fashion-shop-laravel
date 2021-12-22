@@ -30,17 +30,12 @@ class ShippingController extends Controller
         $shippings->city = $request->city;
         $shippings->address = $request->address;
         $shippings->notes = $request->notes;
-
         $shippings->save();
-
-
         $oder_details = new Oder_Detail();
         $oder_details->users_id = $user_id;
         $oder_details->shipping_id = $shippings->id;
         $oder_details->status = '1';
-
         $oder_details->save();
-
         // $list_oders = Oder::where('user_id',$user_id)->get();
         // foreach ($list_oders as $oders) {
         //     $oders->status = '0';
