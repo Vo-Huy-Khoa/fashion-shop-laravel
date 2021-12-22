@@ -81,7 +81,6 @@ class UserController extends Controller
             return redirect('admin/home');
         else
            return redirect()->back()->with('error','Đăng nhập thất bại!');
-        
     }
     public function Admin_logout()
     {
