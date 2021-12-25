@@ -67,7 +67,7 @@
                                         <li><i class="fa fa-comment-o"></i> 5</li>
                                     </ul>
                                     <h5><a href="blog-detail/{{$blogs->id}}">{{$blogs->title}}</a></h5>
-                                    <p>{{substr($blogs->brief,0,500)}}...</p>
+                                    <p style = "text-align: justify">{{substr($blogs->brief,0,500)}}...</p>
                                     <a href="blog-detail/{{$blogs->id}}" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
                             </div>

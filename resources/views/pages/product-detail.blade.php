@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h3>{{ $products->name }}</h3>
+                        <h3 style = "text-align: justify">{{ $products->name }}</h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -60,7 +60,7 @@
                             <span>(18 reviews)</span>
                         </div>
                         <div class="product__details__price">{{ number_format($products->unit_price) }} $</div>
-                        <p>{!! $products->description !!}</p>
+                        <p style = "text-align: justify" >{!! $products->description !!}</p>
                         <form action="AddToCart_Detail/{{ $products->id }}" method="post">
                             @csrf
                             @if ($id_attr)

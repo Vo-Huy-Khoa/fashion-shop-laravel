@@ -71,9 +71,9 @@
                 <div class="col-lg-8 col-md-7 order-md-1 order-1">
                     <div class="blog__details__text">
                         <img src="uploads/blogs/{{$blogs_details->image}}" alt="">
-                         <p>{{$blogs_details->brief}}</p>
-                        <h3>{{$blogs_details->title}}</h3>
-                        <p>{!!$blogs_details->description!!}</p>
+                         <p style = "text-align: justify">{{$blogs_details->brief}}</p>
+                        <h3 >{{$blogs_details->title}}</h3>
+                        <p style = "text-align: justify">{!!$blogs_details->description!!}</p>
                     </div>
                     <div class="blog__details__content">
                         <div class="row">
@@ -133,7 +133,7 @@
                                 <li><i class="fa fa-comment-o"></i> 5</li>
                             </ul>
                             <h5><a href="">{{$blogs->title}}</a></h5>
-                            <p>{{$blogs->brief}}</p>
+                            <p style = "text-align: justify"> {{$blogs->brief}}</p>
                         </div>
                     </div>
                 </div>
