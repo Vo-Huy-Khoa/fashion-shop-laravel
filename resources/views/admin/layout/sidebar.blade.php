@@ -1,3 +1,8 @@
+<?php 
+  use App\Models\Classify;
+  $list_classify = Classify::all();
+?>
+
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
       <div class="sidebar-brand-icon">
@@ -102,34 +107,6 @@
     <div class="sidebar-heading">
         properties
     </div>
-    {{-- <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#brand" aria-expanded="true"
-        aria-controls="brand">
-        <i class="fas fa-fw fa-columns"></i>
-        <span>Brand</span>
-      </a>
-      <div id="brand" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Example Pages</h6>
-          <a class="collapse-item" href="{{route('brands_add')}}">Add</a>
-          <a class="collapse-item" href="{{route('brands_list')}}">List</a>
-        </div>
-      </div>
-    </li> --}}
-    {{-- <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#color" aria-expanded="true"
-        aria-controls="color">
-        <i class="fas fa-fw fa-columns"></i>
-        <span>Color</span>
-      </a>
-      <div id="color" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Example Pages</h6>
-          <a class="collapse-item" href="{{route('colors_add')}}">Add</a>
-          <a class="collapse-item" href="{{route('colors_list')}}">List</a>
-        </div>
-      </div>
-    </li> --}}
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#size" aria-expanded="true"
         aria-controls="size">
@@ -145,10 +122,21 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="charts.html">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Charts</span>
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#list-product" aria-expanded="true"
+        aria-controls="list-product">
+        <i class="fas fa-fw fa-columns"></i>
+        <span>WareHouse</span>
       </a>
+      <div id="list-product" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Example Pages</h6>
+          @foreach ($list_classify as $classify)
+            <a class="collapse-item" href="warehouse/list/{{$classify->id}}">{{$classify->name}}</a>
+          @endforeach
+
+
+        </div>
+      </div>
     </li>
     <hr class="sidebar-divider">
     <div class="version" id="version-ruangadmin"></div>

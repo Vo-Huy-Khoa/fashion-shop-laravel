@@ -54,8 +54,8 @@
                                     <td>{{$blogs->title}}
                                         <img style="width: 100px;height:100px" src="uploads/blogs/{{$blogs->image}}"alt=""> 
                                     </td>
-                                    <td>{{$blogs->brief}}</td>
-                                    <td>{{$blogs->description}}</td>
+                                    <td>{{substr($blogs->brief,0,500)}}</td>
+                                    <td>{!!substr($blogs->description,0,500)!!}</td>
                                     <td><a href="{{route('blogs_add')}}"><i></i>Add</a></td>
                                     <td><a href="admin/blogs/edit/{{$blogs->id}}"><i></i>Edit</a></td>
                                     <td><a href="admin/blogs/delete/{{$blogs->id}}"</a><i></i>Delete</a></td>

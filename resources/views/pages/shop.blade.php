@@ -76,7 +76,7 @@
                                     <label>
                                         <input type="checkbox" name="attribute_id[]" value="{{ $sizes->id }}">
                                         <a href="search-size/{{$sizes->id}}"><span class="swatch"
-                                            style="background-color:#7FAD39;color:white; text-align:center">{{ $sizes->value }}</span>
+                                            style="background-color:#7FAD39;color:black;font-weight:bold;line-height:30px; text-align:center">{{ $sizes->value }}</span>
                                         </a>
                                     </label>
                                 </div>

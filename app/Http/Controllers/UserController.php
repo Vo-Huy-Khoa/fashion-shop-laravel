@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Classify;
 use App\Models\Message;
 use App\Models\Oder;
@@ -36,11 +37,14 @@ class UserController extends Controller
     public function home()
     {
         $list_users = User::all();
+        $list_blogs = Blog::all();
         $list_oder_details = Oder_Detail::all();
         $list_products = Product::all();
         return view('admin.layout.main',['list_users'=>$list_users,
                                         'list_oder_details'=>$list_oder_details,
-                                        'list_products'=>$list_products]);
+                                        'list_products'=>$list_products,
+                                        'list_blogs'=> $list_blogs],
+                                        );
     }
     public function getAdmin_Login()
     {

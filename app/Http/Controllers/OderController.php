@@ -55,7 +55,18 @@ class OderController extends Controller
     {
         $oders = Oder::find($id);
         $oders->delete();
-        return redirect()->back()->with('delete','Hủy đơn hàng thành công! ');
+        return redirect()->back()->with('delete','Xóa sản phẩm thành công! ');
+    }
+
+    public function update(Request $request,$id)
+    {
+        $quantity = $request->quantity;
+        $oders = Oder::find($id);
+        $oders->quantity = $quantity;
+        $oders->save();
+        return redirect()->back()->with('delete','Cập nhật giỏ hàng thành công! ');
+
+
     }
         public function AddToCart($id)
 {           

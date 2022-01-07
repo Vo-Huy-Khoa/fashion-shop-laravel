@@ -29,7 +29,8 @@ class Oder_DetailController extends Controller
         $user_id = Auth::id();
         $out_cart = Oder_Detail::where('users_id',Auth::id())->get();
         return view('admin.oder_details.list',['out_cart'=>$out_cart,
-                                                'list_oder_details'=>$list_oder_details]);
+                                                'list_oder_details'=>$list_oder_details,
+                                            ]);
     }
 
     public function delete($id)
@@ -42,6 +43,7 @@ class Oder_DetailController extends Controller
     }
     public function oder_close($id)
     {
+        $list_products = Product::all();
         $oder_details = Oder_Detail::find($id);
         $oder_details->status = '0';
         $oder_details->save();
@@ -59,17 +61,23 @@ class Oder_DetailController extends Controller
         $quantity = Oder::where('user_id',$user_id)->pluck('quantity')->toArray();
         $total = Oder::where('user_id',$user_id)->pluck('total')->toArray();
         $date = $oder_details->created_at;
-        Mail::send('admin.oder_details.email',compact('name','out_cart','list_oders','product_id','quantity','total','date'), function ($message) use($name, $email) {
+        Mail::send('admin.oder_details.email',
+        compact('name','out_cart','list_oders','product_id','quantity','total','date'), 
+        function ($message) use($name, $email) {
             $message->from('huykhoa630@gmail.com', 'SHOP FASHION');
-            // $message->sender('huykhoa630@gmail.com', 'Admin');
             $message->to($email,$name);
-            // $message->cc('3', '4');
             $message->subject('ĐẶT HÀNG THÀNH CÔNG !');
-            // $message->bcc('john@johndoe.com', 'John Doe');
-            // $message->replyTo('john@johndoe.com', 'John Doe');
-            // $message->priority(3);
-            // $message->attach('pathToFile');
+
         });
+
+
+        $product_id = Oder::where('user_id',$oder_details->oders->user_id)->pluck('product_id')->toArray();
+        foreach ($list_products as $products){
+            if(in_array($products->id,$product_id))
+                $products->status = '0';
+                $products->save();
+        }
+
         return redirect()->back()->with('oder_close','Chốt thành công đơn hàng cho '.$oder_details->shippings->first_name." ".$oder_details->shippings->last_name);
     }
 

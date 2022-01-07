@@ -35,10 +35,10 @@
                                 <input type="text" name="address" placeholder="Apartment, suite, unite ect (optinal)">
                             </div>
    
-                            <div class="checkout__input">
+                            {{-- <div class="checkout__input">
                                 <p>Postcode / ZIP<span>*</span></p>
                                 <input type="text">
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
@@ -67,16 +67,25 @@
                                     @foreach ($list_oders as $oders)
                                         <li>
                                             {{substr($oders->products->name,0,25)."..."}}
-                                            <span> {{number_format($oders->products->unit_price) }}$ </span>
+                                            <span style="color: red"> {{number_format($oders->products->unit_price) }}$ </span>
                                             <span style="color: red; margin-right:15px;"> x{{$oders->quantity }}</span>
                                             <br>
                                         </li>
                                     @endforeach
                                 </ul>
                                 <div class="checkout__order__subtotal">Subtotal<span>$0</span></div>
-                                <div class="checkout__order__total">Total <span>{{number_format($list_oders->sum('total'))}}$</span></div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua.</p>
+                                <div class="checkout__order__total">Total 
+                                    <span>
+                                        <?php $total = 0; ?>
+                                        @foreach ($list_oders as $oders)
+                                        <?php    $total += $oders->quantity * $oders->total; ?>
+                                        @endforeach
+                                        {{number_format($total).'$'}}
+                                    </span>
+                                </div>
+                                <div>
+                                    <br><br><br><br>
+                                </div>
                                 <div class="checkout__input__checkbox">
                                     <label for="payment">
                                         Check Payment

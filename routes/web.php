@@ -111,6 +111,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('list',[MessageController::class,'list']);
     });
     });
+
+    Route::prefix('warehouse')->group(function () {
+        Route::get('list/{id}',[ClassifyController::class,'warehouse']);
+        Route::get('sold/{id}',[ClassifyController::class,'sold']);
+        Route::get('notsold/{id}',[ClassifyController::class,'notsold']);
+        
+
+    });
 });
 // Route User
 Route::get('login',[UserController::class,'getUsers_login'])->name('user-login');
@@ -143,5 +151,7 @@ Route::get('logout',[UserController::class,'users_logout'])->name('user-logout')
     Route::post('comments/{id}',[CommentController::class,'postcomments']);
     Route::post('message',[MessageController::class,'send'])->name('messages');
     Route::get('oder/delete/{id}',[OderController::class,'delete']);
+    Route::get('oder/update/{id}',[OderController::class,'update']);
+
 
 

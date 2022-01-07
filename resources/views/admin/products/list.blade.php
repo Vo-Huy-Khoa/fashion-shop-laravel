@@ -18,6 +18,7 @@
         width: 30px;
         margin: 0 5px 0 0;
         border: 1px solid #d4d4d4;
+        line-height: 30px;
     }
 </style>
 <?php use App\Models\Product_Attribute; ?>
@@ -106,7 +107,7 @@
                                             </div>
                                             @endif
                                         @endforeach
-                                </td>
+                                    </td>
                                     <td>{{number_format($products->unit_price)}}</td> 
                                     <td>{{number_format($products->sale_price)}}</td>
                                     @if($products->status == '0')

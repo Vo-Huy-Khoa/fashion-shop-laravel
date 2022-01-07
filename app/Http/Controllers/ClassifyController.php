@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Attribute;
 use App\Models\Classify;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -80,5 +81,67 @@ class ClassifyController extends Controller
         $classify = Classify::find($id);
         $classify->delete();
         return back()->with('delete','Xóa thành công '.$classify->name);
+    }
+
+    public function warehouse($id)
+    {
+        $list_colors = Attribute::where('name','color')->get();
+        $list_sizes = Attribute::where('name','size')->get();
+
+        $classify = Classify::find($id);
+        $list_products = $classify->product;
+
+        $list_products_sold = $list_products->where('status','0')->take(100);
+        $list_products_notsold = $list_products->where('status','1')->take(100);
+
+        return view('admin.warehouse.list',
+        [
+            'id' => $id,
+            'list_products'=>$list_products,
+            'list_colors'=>$list_colors,
+            'list_sizes'=>$list_sizes,
+            'list_products_sold'=>$list_products_sold,
+            'list_products_notsold'=>$list_products_notsold
+        ]);
+    }
+
+    public function sold($id)
+    {
+        $classify = Classify::find($id);
+        $list_colors = Attribute::where('name','color')->get();
+        $list_sizes = Attribute::where('name','size')->get();
+        $list_products = $classify->product;
+        $list_products_sold = $list_products->where('status','0')->take(100);
+        $list_products_notsold = $list_products->where('status','1')->take(100);
+        return view('admin.warehouse.sold',
+                    [
+                        'id' => $id,
+                        'list_products_sold' => $list_products_sold,
+                        'list_products_notsold' => $list_products_notsold,
+                        'list_colors'=>$list_colors,
+                        'list_sizes'=>$list_sizes,
+
+                    ]);
+    }
+
+    public function notsold($id)
+    
+    {
+        $classify = Classify::find($id);
+        $list_colors = Attribute::where('name','color')->get();
+        $list_sizes = Attribute::where('name','size')->get();
+        $list_products = $classify->product;
+        $list_products_sold = $list_products->where('status','0')->take(100);
+        $list_products_notsold = $list_products->where('status','1')->take(100);
+        return view('admin.warehouse.notsold',
+                    [
+                        'id' => $id,
+                        'list_colors'=>$list_colors,
+                        'list_sizes'=>$list_sizes,
+                        'list_products_sold' => $list_products_sold,
+                        'list_products_notsold' => $list_products_notsold
+                    ]);
+
+        
     }
 }

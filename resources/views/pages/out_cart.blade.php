@@ -38,62 +38,45 @@
                                     <th>Address</th>
                                     <th>Total</th>
                                     <th>Status</th>
-
-
-
-
-
-
                                 </tr>
                             </thead>
                             <tbody>
-                                    @foreach ($out_cart as $out_cart)
-                                <tr>
-                                        
-                                    <td>{{$out_cart->oders->users->first_name." ".$out_cart->oders->users->last_name}}</td>
-                                    <td>
-                                    
-                                    @foreach ($list_products as $products)
-                                            @if(in_array($products->id,$product_id))
-                                                {{$products->name}}<br>
+                                @foreach ($out_cart as $out_cart)
+                                    <tr>
+                                        <td>{{$out_cart->oders->users->first_name." ".$out_cart->oders->users->last_name}}</td>
+                                        <td>
+                                        @foreach ($list_products as $products)
+                                                @if(in_array($products->id,$product_id))
+                                                    {{$products->name}}<br>
+                                                @endif
+                                        @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach ($list_oders as $oders)
+                                            @if(in_array($oders->quantity,$quantity))
+                                                {{"x".$oders->quantity}}<br>
                                             @endif
-                                    @endforeach
-
-
-                                    </td>
-                                    <td>
-                                        @foreach ($list_oders as $oders)
-                                        @if(in_array($oders->quantity,$quantity))
-                                            {{"x".$oders->quantity}}<br>
-                                        @endif
-                                        @endforeach
-                                    </td>
-
-                                    
-                                    <td>
-                                        @foreach ($list_oders as $oders)
-                                        @if(in_array($oders->total,$total))
-                                            {{number_format($oders->total)}}$<br>
-                                        @endif
-                                        @endforeach
-                                    </td>
-                                    <td>{{$out_cart->shippings->address.", ".$out_cart->shippings->city}}</td>
-
-                                    <td style="color: red; font-weight: bold;">{{number_format($list_oders->sum('total')).'$'}}</td>
-                                    <td>
-                                        @if ($out_cart->status == '0')
-                                        <span class="badge badge-success">Đã chốt</span>  
-                                            
-                                        @endif
-                                        @if ($out_cart->status == '1')
-                                        <span class="badge badge-danger">Chưa chốt</span>  
-                                        @endif
-                                    </td>
-
-                                
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach ($list_oders as $oders)
+                                                @if(in_array($oders->total,$total))
+                                                    {{number_format($oders->total)}}$<br>
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                        <td>{{$out_cart->shippings->address.", ".$out_cart->shippings->city}}</td>
+                                        <td style="color: red; font-weight: bold;">{{number_format($list_oders->sum('total')).'$'}}</td>
+                                        <td>
+                                            @if ($out_cart->status == '0')
+                                                <span class="badge badge-success">Đã chốt</span>  
+                                            @endif
+                                            @if ($out_cart->status == '1')
+                                                <span class="badge badge-danger">Chưa chốt</span>  
+                                            @endif
+                                        </td>
                                     </tr>
-
-                                    @endforeach
+                                @endforeach
 
                             </tbody>
                         </table>

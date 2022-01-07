@@ -16,7 +16,7 @@
                     @foreach ($list_categories as $categories)
                     <div class="col-lg-3">
                         <div class="categories__item set-bg" data-setbg="uploads/categories/{{$categories->image}}">
-                            <h5><a href="search/categories/{{$categories->id}}">{{$categories->name}}</a></h5>
+                            <h5><a href="search-categories/{{$categories->id}}">{{$categories->name}}</a></h5>
                         </div>
                     </div>
                     @endforeach
@@ -74,18 +74,19 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="./Front/img/banner/banner-1.jpg" alt="">
+                        <img  height="250px" width="600px" src="./Front\img\featured/banner-1.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="./Front/img/banner/banner-2.jpg" alt="">
+                        <img height="250px" width="600px"  src="./Front/img/featured/banner-2.jpg" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Banner End -->
+
     <!-- Latest Product Section Begin -->
     <section class="latest-product spad">
         <div class="container">

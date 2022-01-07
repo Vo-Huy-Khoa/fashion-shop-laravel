@@ -71,9 +71,9 @@
                                     <div class="form-check form-check-inline">
                                         <div class="colors">
                                             <label>
-                                                <input type="radio" name="size" value="{{ $sizes->value }}">
+                                                <input type="radio" name="size" value="{{ $sizes->id }}">
                                                 <span class="swatch"
-                                                    style="background-color:#28A745; text-align:center">{{ $sizes->value }}</span>
+                                                    style="background-color:#28A745; line-height:30px;font-weight:bold ; text-align:center">{{ $sizes->value }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                                     <div class="form-check form-check-inline">
                                         <div class="colors">
                                             <label>
-                                                <input type="radio" name="color" value="{{ $colors->value }}">
+                                                <input type="radio" name="color" value="{{ $colors->id }}">
                                                 <span class="swatch"
                                                     style="background-color:{{ $colors->value }}"></span>
                                             </label>

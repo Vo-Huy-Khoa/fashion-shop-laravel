@@ -75,7 +75,15 @@ $users = Auth::user();
                         <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
                         <li><a href="{{route('show-cart')}}"><i class="fa fa-shopping-bag"></i> <span>{{count($list_oders)}}</span></a></li>
                     </ul>
-                    <div class="header__cart__price">Total: <span>{{number_format($list_oders->sum('total')).'$'}}</span></div>
+                    <?php $total = 0; ?>
+                    @foreach ($list_oders as $oders)
+                        <?php
+                            $total += $oders->quantity * $oders->total;
+                        ?>
+                    @endforeach
+                    <div class="header__cart__price">Total: 
+                        <span style="color: red">{{number_format($total).'$'}}</span>
+                    </div>
                 </div>
             </div>
         </div>
