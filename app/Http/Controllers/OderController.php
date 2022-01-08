@@ -63,6 +63,7 @@ class OderController extends Controller
         $quantity = $request->quantity;
         $oders = Oder::find($id);
         $oders->quantity = $quantity;
+        $oders->total =  $oders->products->unit_price * $quantity;
         $oders->save();
         return redirect()->back()->with('delete','Cập nhật giỏ hàng thành công! ');
 

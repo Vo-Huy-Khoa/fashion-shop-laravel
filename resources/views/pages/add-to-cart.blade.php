@@ -151,7 +151,7 @@
                                     <span>
                                         <?php $total = 0; ?>
                                         @foreach ($list_oders as $oders)
-                                        <?php    $total += $oders->quantity * $oders->total; ?>
+                                        <?php    $total += $oders->total ; ?>
                                         @endforeach
                                         {{number_format($total).'$'}}
                                     </span>

@@ -1,7 +1,6 @@
 <?php
 use App\Models\Oder;
-$users = Auth::user();
-
+        $users = Auth::user();
         $id = Auth::id();
         $list_oders = Oder::where('user_id',$id)->where('status',1)->get();
 ?>
@@ -40,7 +39,7 @@ $users = Auth::user();
                             </div>
                         @else
                             <div class="header__top__right__auth">
-                                <a href="user/profile-edit/{{$users->id}}"><i class="fa fa-user"></i>{{$users->first_name." ".$users->last_name}}</a>
+                                <a href="profile-edit/{{$users->id}}"><i class="fa fa-user"></i>{{$users->first_name." ".$users->last_name}}</a>
                             </div>
                             <span>&nbsp;&nbsp;</span>
                             <div class="header__top__right__auth">
@@ -77,9 +76,7 @@ $users = Auth::user();
                     </ul>
                     <?php $total = 0; ?>
                     @foreach ($list_oders as $oders)
-                        <?php
-                            $total += $oders->quantity * $oders->total;
-                        ?>
+                        <?php    $total += $oders->total ; ?>
                     @endforeach
                     <div class="header__cart__price">Total: 
                         <span style="color: red">{{number_format($total).'$'}}</span>

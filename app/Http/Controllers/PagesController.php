@@ -118,7 +118,9 @@ class PagesController extends Controller
             $id_shipping = Shipping::where('user_id',$id)->pluck('id');
             $shippings = Shipping::find($id_shipping);
             $list_oders = Oder::where('user_id',$id)->where('status',1)->get();
-            return view('pages.check_out',['list_oders'=>$list_oders,'shippings'=>$shippings]);
+            return view('pages.check_out',[
+                'list_oders'=>$list_oders,
+            'shippings'=>$shippings]);
         }
         else
             return view('pages.login');

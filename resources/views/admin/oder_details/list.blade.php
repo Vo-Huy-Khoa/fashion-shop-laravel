@@ -63,13 +63,13 @@ use App\Models\Oder;
                                             ?>
                                             @foreach ($list_products as $products)
                                                     @if(in_array($products->id,$product_id))
-                                                        {{substr($products->name,0,100)}}<br><br>
+                                                        {{substr($products->name,0,500)}}<br><br>
                                                     @endif
                                             @endforeach
                                         </td>
                                         <td>
                                             <?php
-                                                $list_oders = Oder::where('user_id',$oder_details->oders->user_id)->orWhere('status','1')->get();
+                                                $list_oders = Oder::where('user_id',$oder_details->oders->user_id)->get();
                                             ?>
                                             @foreach ($list_oders as $oders)
                                                     {{$oders->quantity}}<br> <br> <br> <br>
@@ -77,7 +77,7 @@ use App\Models\Oder;
                                         </td>
                                         <td>
                                             <?php
-                                                $list_oders = Oder::where('user_id',$oder_details->oders->user_id)->orWhere('status','1')->get();
+                                                $list_oders = Oder::where('user_id',$oder_details->oders->user_id)->get();
                                             ?>
                                             @foreach ($list_oders as $oders)
                                                     {{number_format($oders->total)}}$<br> <br> <br> <br>
@@ -87,7 +87,7 @@ use App\Models\Oder;
                                         <td style="color: red; font-weight: bold;">
                                             <?php $total = 0; ?>
                                             @foreach ($list_oders as $oders)
-                                            <?php    $total += $oders->quantity * $oders->total; ?>
+                                                <?php    $total += $oders->total ; ?>
                                             @endforeach
                                             {{number_format($total).'$'}}
                                         </td>

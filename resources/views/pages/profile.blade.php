@@ -1,5 +1,5 @@
 @extends('layout.index')
-
+<?php $users = Auth::user(); ?>
 <?php use Illuminate\Support\Facades\Hash; ?>
 @section('title')
     {{$users->first_name." ".$users->last_name}}
@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ URL::asset('Front/css/profile.css') }}">
 @endsection
 @section('content')    
-<?php $users = Auth::user(); ?>
 <div class="container rounded bg-white mt-5 mb-5">
     <form action="user/profile_edit/{{$users->id}}" method="POST" enctype="multipart/form-data">
     @csrf

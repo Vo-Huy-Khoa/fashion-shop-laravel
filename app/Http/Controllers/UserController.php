@@ -286,7 +286,7 @@ class UserController extends Controller
         // }
          $save = $user -> save();
         if ($save)
-            return redirect('user/login')->with('register','Bạn đã tạo thành công tài khoản '.$user->first_name." ".$user->last_name);
+            return redirect()->back()->with('register','Bạn đã tạo thành công tài khoản '.$user->first_name." ".$user->last_name);
         else
             return back()->with('error','Bạn đã tạo thất bại tài khoản'.$user->first_name." ".$user->last_name);
     }

@@ -3,6 +3,7 @@
     Check out
 @endsection
 @section('content')
+
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
@@ -78,7 +79,7 @@
                                     <span>
                                         <?php $total = 0; ?>
                                         @foreach ($list_oders as $oders)
-                                        <?php    $total += $oders->quantity * $oders->total; ?>
+                                        <?php    $total += $oders->total ; ?>
                                         @endforeach
                                         {{number_format($total).'$'}}
                                     </span>
