@@ -97,14 +97,16 @@ use App\Models\Oder;
                                             </a>
                                         </td>
                                         @if($oder_details->status == '0')
-                                            <td><span class="badge badge-success">Đã chốt</span></td>   
+                                            <td><span class="badge badge-success">Sold</span></td>   
                                         @elseif($oder_details->status == '1')
-                                            <td><span class="badge badge-danger">Chưa chốt</span></td>
+                                            <td><span class="badge badge-danger">Not Sold</span></td>
                                         @endif
                                         @if($oder_details->status == '0')
-                                            <td><a href="admin/oder_details/un_oder_close/{{$oder_details->id}}" class="btn btn-sm btn-danger">Hủy</a></td>
+                                            <td>
+                                                <a href="admin/oder_details/un_oder_close/{{$oder_details->id}}" class="btn btn-sm btn-danger">Cancel</a></td>
                                         @elseif($oder_details->status == '1')
-                                            <td><a href="admin/oder_details/oder_close/{{$oder_details->id}}" class="btn btn-sm btn-primary">Chốt đơn</a></td>
+                                            <td>
+                                                <a href="admin/oder_details/oder_close/{{$oder_details->id}}" class="btn btn-sm btn-primary">Closing</a></td>
                                         @endif
                                     </tr>
                                 @endforeach
