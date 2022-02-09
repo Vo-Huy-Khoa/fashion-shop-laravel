@@ -5,7 +5,7 @@
 <br>
 <h5>2. Login</h5>
 <p>Log in with your newly established or existing account..</p>
-<img width="100%" height="400px" src="" alt="">
+<img width="100%" height="400px" src="https://uphinh.vn/image/tJbhMW" alt="">
 <br>
 
 <h5>3. Home</h5>
@@ -15,12 +15,12 @@
 
 <h5>4. Shop</h5>
 <p>Show a list of goods that are on sale, with options to search by color, size, and price..</p>
-<img width="100%" height="400px" src="https://scontent.fdad3-1.fna.fbcdn.net/v/t1.15752-9/264072839_321807256463290_2651819279193906838_n.png?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_ohc=mOOoxx4AJVQAX8ZYQzu&_nc_ht=scontent.fdad3-1.fna&oh=03_AVLCr-awGto36jolvljPMNtsj2CqJRcNUHJRa6Eq91i_Yw&oe=61E8383A" alt="">
+<img width="100%" height="400px" src="https://uphinh.vn/image/tJbk1L" alt="">
 <br>
 
 <h5>5. Product detail</h5>
 <p>Allow purchasing of the product by displaying thorough information about it.</p>
-<img width="100%" height="400px" src="https://scontent.fdad3-1.fna.fbcdn.net/v/t1.15752-9/265225637_1265093307301951_977017257594541798_n.png?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_ohc=CurNA59wNF4AX_jRtLN&_nc_ht=scontent.fdad3-1.fna&oh=03_AVJl-G5GH3e5wpt3scph2JdLlq01XXwOr7SeL51iQpYFSg&oe=61E6AFA8" alt="">
+<img width="100%" height="400px" src="https://uphinh.vn/image/tJbexZ" alt="">
 <br>
 
 <h5>6. Blog</h5>
@@ -40,12 +40,12 @@
 
 <h5>9. Cart</h5>
 <p>Show a list of all the things you've bought and how much of each you've bought.</p>
-<img width="100%" height="400px" src="https://scontent.fdad3-2.fna.fbcdn.net/v/t1.15752-9/267349542_240371688207718_3772524514627690018_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_ohc=cKDMCPn-VvQAX8HzGBy&_nc_ht=scontent.fdad3-2.fna&oh=03_AVIO-dXjwz-OewQpbYVtavskbCBC-yXhlQB-vY9Y_yd84w&oe=61E83D48" alt="">
+<img width="100%" height="400px" src="https://uphinh.vn/image/tJbZAA" alt="">
 <br>
 
 <h5>10. Check out</h5>
 <p>Fill up the client details and inspect the merchandise before placing a purchase.</p>
-<img width="100%" height="400px" src="https://scontent.fdad3-2.fna.fbcdn.net/v/t1.15752-9/265996897_662082621626844_3510013431747418985_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Nq3g8-KecB4AX_gTxsl&tn=TZNpJEnh1_LEGkGZ&_nc_ht=scontent.fdad3-2.fna&oh=03_AVIOre9fwpCKMvcgOPuHQ6bVIZFHJKx5ZjpcB2YCXADzNg&oe=61E62779" alt="">
+<img width="100%" height="400px" src="https://uphinh.vn/image/tJbNQX" alt="">
 
 <h5>11. Login Admin</h5>
 <p>As the system administrator, log in.</p>
