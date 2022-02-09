@@ -1,11 +1,11 @@
 <h1>Shop Fashion</h1>
 <h5>1. Register</h5>
 <p>Make an account for yourself..</p>
-<img width="100%" height="400px" src="https://scontent-xsp1-1.xx.fbcdn.net/v/t1.15752-9/264069990_641894633897046_3244115585782002668_n.png?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_ohc=UFKJu1mBA_oAX-VyGqd&_nc_oc=AQl98gUHqaaaSJL3lmbGUJH7SQ_LiZ4kYCT6CfWi_bahMuGHeDKTlr8wIubf4QYHEw8&_nc_ht=scontent-xsp1-1.xx&oh=03_AVI5gKwH-wheHDpuS-TSSLhrh-zFbUGThLPOxscle5rgQA&oe=61E5758C" alt="">
+<img width="100%" height="400px" src="" alt="">
 <br>
 <h5>2. Login</h5>
 <p>Log in with your newly established or existing account..</p>
-<img width="100%" height="400px" src="https://scontent.fdad1-2.fna.fbcdn.net/v/t1.15752-9/263745965_3027175034202542_134063170119880759_n.png?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_ohc=GGz2puM66boAX8NajPo&_nc_ht=scontent.fdad1-2.fna&oh=245f6fbde2810231440f68d2484286ff&oe=61D43C51" alt="">
+<img width="100%" height="400px" src="" alt="">
 <br>
 
 <h5>3. Home</h5>
