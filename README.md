@@ -1,3 +1,9 @@
+b1: composer update
+b2: đổi file .env.example thành .env
+b3: php artisan key:generate
+b4: php artisan serve
+
+
 
 <h1>Shop Fashion</h1>
 
