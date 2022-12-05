@@ -1,8 +1,9 @@
-b1: composer update
-b2: đổi file .env.example thành .env
-b3: php artisan key:generate
-b4: php artisan serve
+ubuntu: b0: sudo apt install php-xml <br>
 
+b1: composer update<br>
+b2: đổi file .env.example thành .env<br>
+b3: php artisan key:generate<br>
+b4: php artisan serve<br>
 
 
 <h1>Shop Fashion</h1>
