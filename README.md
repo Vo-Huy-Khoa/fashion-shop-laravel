@@ -1,9 +1,118 @@
-ubuntu: b0: sudo apt install php-xml <br>
+How to deploy?  
+- PHP 8.0 
+- Composer
+- Mysql
+- Nginx
 
-b1: composer update<br>
-b2: đổi file .env.example thành .env<br>
-b3: php artisan key:generate<br>
-b4: php artisan serve<br>
+-----------------------Install PHP-----------------------------------
+1. Install PHP 8.0
+sudo apt install php8.0
+
+2. Install PHP Package
+sudo apt install php8.0-common php8.0-mysql php8.0-cgi php8.0-mbstring php8.0-curl php8.0-gd php8.0-xml php8.0-xmlrpc php-pear php8.0-fpm
+
+
+-----------------------Install Composer-------------------------------
+1. Install composer
+https://linuxhint.com/install-and-use-php-composer-ubuntu-22-04/
+
+
+
+-----------------------Install Mysql----------------------------------
+1. Install MySql
+sudo apt update
+sudo apt install mysql-server
+sudo systemctl start mysql.service
+
+2. Set Password For Root
+sudo mysql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
+exit
+
+3. Create Database
+mysql -u root -p
+CREATE DATABASE fashion;
+exit
+
+4. Import File Sql To Database
+mysql -u root -p fashion < shopfashion.sql
+
+
+
+-----------------------Install Nginx-----------------------------------
+CMD Nginx:
+https://phoenixnap.com/kb/how-to-install-nginx-on-ubuntu-20-04
+
+2. Install Nginx
+sudo apt install nginx
+
+3. Start Nginx
+sudo systemctl start nginx
+
+4. Enable Nginx
+sudo systemctl enable nginx
+
+5. Check status Nginx
+sudo systemctl status nginx
+
+6. Check File Config Nginx
+sudo nginx –t
+
+6. Restart Nginx
+sudo systemctl restart nginx
+
+
+
+-----------------------Config Nginx-----------------------------------
+
+2. Permission Folder
+sudo chown -R www-data:www-data /var/www/Fashion_Shop_Laravel
+
+3. To The File Config Nginx
+cd /etc/nginx/sites-available/
+
+4. To The File Default
+vim default
+
+5. Create Value In File Default:
+server {
+    listen 80;
+    listen [::]:80;
+    root /var/www/Fashion_Shop_Laravel/public;
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-Content-Type-Options "nosniff";
+    index index.php;
+    charset utf-8;
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+    error_page 404 /index.php;
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+}
+
+
+
+-----------------------Config Laravel-----------------------------------
+1. Update Composer
+composer update
+
+2. Copy File .env.example To .env
+cp .env.example .env
+
+3. Generate Key
+php artisan key:generate
+
+
+
 
 
 <h1>Shop Fashion</h1>
