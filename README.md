@@ -1,81 +1,81 @@
-How to deploy?  
-- PHP 8.0 
-- Composer
-- Mysql
-- Nginx
+<h1>How to deploy? </h1>
+- PHP 8.0 <br>
+- Composer<br>
+- Mysql<br>
+- Nginx<br>
 
 -----------------------Install PHP-----------------------------------
-1. Install PHP 8.0
-sudo apt install php8.0
+1. Install PHP 8.0<br>
+sudo apt install php8.0<br>
 
-2. Install PHP Package
-sudo apt install php8.0-common php8.0-mysql php8.0-cgi php8.0-mbstring php8.0-curl php8.0-gd php8.0-xml php8.0-xmlrpc php-pear php8.0-fpm
+2. Install PHP Package<br>
+sudo apt install php8.0-common php8.0-mysql php8.0-cgi php8.0-mbstring php8.0-curl php8.0-gd php8.0-xml php8.0-xmlrpc<br>php-pear php8.0-fpm<br>
 
 
------------------------Install Composer-------------------------------
-1. Install composer
+-----------------------Install Composer-----------------------------
+1. Install composer<br>
 https://linuxhint.com/install-and-use-php-composer-ubuntu-22-04/
 
 
 
------------------------Install Mysql----------------------------------
-1. Install MySql
-sudo apt update
-sudo apt install mysql-server
-sudo systemctl start mysql.service
+-----------------------Install Mysql--------------------------------
+1. Install MySql<br>
+sudo apt update<br>
+sudo apt install mysql-server<br>
+sudo systemctl start mysql.service<br>
 
-2. Set Password For Root
-sudo mysql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
-exit
+2. Set Password For Root<br>
+sudo mysql<br>
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';<br>
+exit<br>
 
-3. Create Database
-mysql -u root -p
-CREATE DATABASE fashion;
-exit
+3. Create Database<br>
+mysql -u root -p<br>
+CREATE DATABASE fashion;<br>
+exit<br>
 
-4. Import File Sql To Database
+4. Import File Sql To Database<br>
 mysql -u root -p fashion < shopfashion.sql
 
 
 
------------------------Install Nginx-----------------------------------
-CMD Nginx:
-https://phoenixnap.com/kb/how-to-install-nginx-on-ubuntu-20-04
+-----------------------Install Nginx------------------------------- <br>
+CMD Nginx:<br>
+https://phoenixnap.com/kb/how-to-install-nginx-on-ubuntu-20-04<br>
 
-2. Install Nginx
+1. Install Nginx<br>
 sudo apt install nginx
 
-3. Start Nginx
+2. Start Nginx<br>
 sudo systemctl start nginx
 
-4. Enable Nginx
+3. Enable Nginx<br>
 sudo systemctl enable nginx
 
-5. Check status Nginx
+4. Check status Nginx<br>
 sudo systemctl status nginx
 
-6. Check File Config Nginx
+5. Check File Config Nginx<br>
 sudo nginx –t
 
-6. Restart Nginx
+6. Restart Nginx<br>
 sudo systemctl restart nginx
 
 
 
 -----------------------Config Nginx-----------------------------------
 
-2. Permission Folder
+2. Permission Folder<br>
 sudo chown -R www-data:www-data /var/www/Fashion_Shop_Laravel
 
-3. To The File Config Nginx
+3. To The File Config Nginx<br>
 cd /etc/nginx/sites-available/
 
-4. To The File Default
+4. To The File Default<br>
 vim default
 
-5. Create Value In File Default:
-server {
+5. Create Value In File Default:<br>
+<!-- server {
     listen 80;
     listen [::]:80;
     root /var/www/Fashion_Shop_Laravel/public;
@@ -97,25 +97,25 @@ server {
     location ~ /\.(?!well-known).* {
         deny all;
     }
-}
+} -->
 
 
 
 -----------------------Config Laravel-----------------------------------
-1. Update Composer
+1. Update Composer<br>
 composer update
 
-2. Copy File .env.example To .env
+2. Copy File .env.example To .env<br>
 cp .env.example .env
 
-3. Generate Key
+3. Generate Key<br>
 php artisan key:generate
 
 
 
 
 
-<h1>Shop Fashion</h1>
+<h1>Demo Shop Fashion</h1>
 
 <h5>1. Register</h5>
 <p>Make an account for yourself..</p>
