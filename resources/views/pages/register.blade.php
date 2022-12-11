@@ -5,6 +5,13 @@
 @section('content')
 @if (!Auth::check())
 <style>
+  *{
+    padding: 0;
+    margin: 0;
+  }
+    .header, .hero, .footer{
+        display: none;
+    }
   .gradient-custom-3 {
     /* fallback for old browsers */
     background: #84fab0;
@@ -38,10 +45,6 @@
               <h2 class="text-uppercase text-center mb-5">Đăng ký</h2>
               <form action="{{route('user-register')}}" method="POST">
                 @csrf
-                <div class="form-outline mb-4">
-                  <input type="text" name="name" class="form-control form-control-lg" />
-                  <label class="form-label" for="name">Tên đầy đủ</label>
-                </div>
                 <div class="form-outline ">
                   <input type="text" name="first_name" class="form-control form-control-lg" />
                   <label class="form-label" for="name">Họ</label>
@@ -49,6 +52,10 @@
                 <div class="form-outline">
                   <input type="text" name="last_name" class="form-control form-control-lg" />
                   <label class="form-label" for="name">Tên</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="text" name="name" class="form-control form-control-lg" />
+                  <label class="form-label" for="name">Tên tài khoản</label>
                 </div>
                 <div class="form-outline mb-4">
                   <input type="email" name="email" class="form-control form-control-lg" />

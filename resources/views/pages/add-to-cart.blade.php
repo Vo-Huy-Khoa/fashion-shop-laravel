@@ -18,15 +18,7 @@ $list_sizes = Attribute::where('name', 'size')->get();
         margin-top: 5px;
     }
 
-    .swatch {
-        display: inline-block;
-        vertical-align: middle;
-        height: 30px;
-        width: 30px;
-        margin: 0 5px 0 0;
-        border: 1px solid #d4d4d4;
-        line-height: 30px;
-    }
+  
 </style>
 <!-- Shoping Cart Section Begin -->
 <section class="shoping-cart spad">

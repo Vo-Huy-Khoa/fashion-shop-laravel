@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Admin - Register</title>
+    <title>Admin - Đăng ký</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +26,7 @@
                             <div class="col-lg-12">
                                 <div class="login-form">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Register</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Đăng ký</h1>
                                     </div>
                                     @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -50,35 +50,35 @@
                                     <form action="{{ route('register') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <label>User Name</label>
-                                            <input type="text" class="form-control" name="name" placeholder="Enter Name">
+                                            <label>Tên tài khoản</label>
+                                            <input type="text" class="form-control" name="name" placeholder="Hãy nhập tên tài khoản">
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address">
+                                            <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Hãy nhập email">
                                         </div>
                                         <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" class="form-control" name="password" placeholder="Password">
+                                            <label>Mật khẩu</label>
+                                            <input type="password" class="form-control" name="password" placeholder="Hãy nhập mật khẩu">
                                         </div>
                                         <div class="form-group">
-                                            <label>Repeat Password</label>
-                                            <input type="password" class="form-control" name="repassword" placeholder="Repeat Password">
+                                            <label>Nhập lại mật khẩu</label>
+                                            <input type="password" class="form-control" name="repassword" placeholder="Hãy nhập lại mật khẩu">
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                            <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
                                         </div>
                                         <hr>
                                         <a href="index.html" class="btn btn-google btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Register with Google
+                                            <i class="fab fa-google fa-fw"></i> Đăng ký với Google
                                         </a>
                                         <a href="index.html" class="btn btn-facebook btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                            <i class="fab fa-facebook-f fa-fw"></i> Đăng ký với Facebook
                                         </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="font-weight-bold small" href="{{ route('login') }}">Already have an account?</a>
+                                        <a class="font-weight-bold small" href="{{ route('login') }}">Bạn đã có tài khoản?</a>
                                     </div>
                                     <div class="text-center">
                                     </div>

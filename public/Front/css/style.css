@@ -98,7 +98,7 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
+	color: red;
 }
 
 ul,
@@ -110,6 +110,15 @@ ol {
 /*---------------------
   Helper CSS
 -----------------------*/
+.swatch {
+	display: inline-block;
+	margin: 0 5px 0 0;
+	border: 1px solid #d4d4d4;
+	vertical-align: middle;
+	height: 35px;
+	width: 35px;
+	line-height: 35px;
+}
 
 .section-title {
 	margin-bottom: 50px;
@@ -141,7 +150,7 @@ ol {
 }
 
 .spad {
-	padding-top: 100px;
+	padding-top: 0;
 	padding-bottom: 100px;
 }
 
@@ -647,6 +656,7 @@ ol {
 }
 
 .hero__search__form form .hero__search__categories {
+	display: none;
 	width: 30%;
 	float: left;
 	font-size: 16px;
@@ -675,7 +685,7 @@ ol {
 }
 
 .hero__search__form form input {
-	width: 70%;
+	width: 75%;
 	border: none;
 	height: 48px;
 	font-size: 16px;
@@ -811,7 +821,7 @@ ol {
 -----------------------*/
 
 .featured {
-	padding-top: 80px;
+	padding-top: 0;
 	padding-bottom: 40px;
 }
 
@@ -948,7 +958,7 @@ ol {
 -----------------------*/
 
 .latest-product {
-	padding-top: 80px;
+	padding-top: 0;
 	padding-bottom: 0;
 }
 
@@ -1254,7 +1264,7 @@ ol {
 -----------------------*/
 
 .product {
-	padding-top: 80px;
+	padding-top: 0;
 	padding-bottom: 80px;
 }
 
@@ -1660,7 +1670,7 @@ ol {
 -----------------------*/
 
 .product-details {
-	padding-top: 80px;
+	padding-top: 0;
 }
 
 .product__details__pic__item {
@@ -1877,7 +1887,7 @@ ol {
 -----------------------*/
 
 .shoping-cart {
-	padding-top: 80px;
+	padding-top: 0;
 	padding-bottom: 80px;
 }
 
@@ -2069,7 +2079,7 @@ ol {
 -----------------------*/
 
 .checkout {
-	padding-top: 80px;
+	padding-top: 0;
 	padding-bottom: 60px;
 }
 
@@ -2748,7 +2758,7 @@ ol {
 -----------------------*/
 
 .contact {
-	padding-top: 80px;
+	padding-top: 0;
 	padding-bottom: 50px;
 }
 
@@ -2859,7 +2869,7 @@ ol {
 }
 
 .contact-form {
-	padding-top: 80px;
+	padding-top: 0;
 	padding-bottom: 80px;
 }
 

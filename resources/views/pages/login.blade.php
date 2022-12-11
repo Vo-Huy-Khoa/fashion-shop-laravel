@@ -11,6 +11,10 @@
         --input-padding-y: .75rem
     }
 
+    .header, .hero, .footer{
+        display: none;
+    }
+
     .card-signin {
         border: 0;
         border-radius: 0rem;

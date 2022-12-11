@@ -152,8 +152,8 @@ Cửa hàng
                             <div class="filter__sort">
                                 <span>Sắp xếp</span>
                                 <select>
-                                    <option value="0">Default</option>
-                                    <option value="0">Default</option>
+                                    <option value="0">Mặc định</option>
+                                    <!-- <option value="0">Default</option> -->
                                 </select>
                             </div>
                         </div>

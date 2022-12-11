@@ -44,62 +44,62 @@ use Illuminate\Support\Facades\Hash; ?>
                     </div>
                     @endif
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h6 class="text-right">Edit your profile</h6>
+                        <h6 class="text-right">Chỉnh sửa trang cá nhân</h6>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <label class="labels">First Name</label>
-                            <input type="text" name="first_name" class="form-control" placeholder="First Name" value="{{$users->first_name}}">
+                            <label class="labels">Họ</label>
+                            <input type="text" name="first_name" class="form-control"  value="{{$users->first_name}}">
                         </div>
                         <div class="col-md-6">
-                            <label class="labels">Last Name</label>
-                            <input type="text" name="last_name" class="form-control" value="{{$users->last_name}}" placeholder="Last Name">
+                            <label class="labels">Tên</label>
+                            <input type="text" name="last_name" class="form-control" value="{{$users->last_name}}" >
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
-                            <label class="labels">User Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="User Name" value="{{$users->name}}">
+                            <label class="labels">Tên người dùng</label>
+                            <input type="text" name="name" class="form-control"  value="{{$users->name}}">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Email" value="{{$users->email}}">
+                            <input type="email" name="email" class="form-control"  value="{{$users->email}}">
                         </div>
                         <div class="col-md-12">
-                            <label class="labels">Password</label>
+                            <label class="labels">Mật khẩu</label>
                             <input type="password" name="password" id="password" class="form-control">
                         </div>
                         <div class="col-md-12">
-                            <label class="labels">Confirm Password</label>
+                            <label class="labels">Confirm Mật khẩu</label>
                             <input type="password" name="confirm_password" id="confirm_password" class="form-control">
                             <span id='message'></span>
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Phone</label>
-                            <input type="text" name="phone" class="form-control" placeholder="Phone Number" value="{{$users->phone}}">
+                            <input type="text" name="phone" class="form-control"  value="{{$users->phone}}">
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <label class="labels">City</label>
-                            <input type="text" name="city" class="form-control" placeholder="country" value="{{$users->city}}">
+                            <label class="labels">Thành Phố</label>
+                            <input type="text" name="city" class="form-control"  value="{{$users->city}}">
                         </div>
                         <div class="col-md-6">
                             <label class="labels">State/Region</label>
-                            <input type="text" name="address" class="form-control" value="{{$users->address}}" placeholder="Local Address">
+                            <input type="text" name="address" class="form-control" value="{{$users->address}}" >
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+                        <button class="btn btn-primary profile-button" type="submit">Lưu</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center experience">
-                        <span>Edit Experience</span><span class="border px-3 p-1 add-experience">
+                        <span>Chỉnh sửa kinh nghiệm</span><span class="border px-3 p-1 add-experience">
                             <i class="fa fa-plus"></i>
-                            &nbsp;Experience
+                            &nbsp;Thêm
                         </span>
                     </div>
                     <div class="d-flex flex-row mt-3 exp-container">

@@ -16,14 +16,7 @@
         box-shadow: inset 0 0 0 3px wheat;
     }
 
-    .swatch {
-        display: inline-block;
-        vertical-align: middle;
-        height: 30px;
-        width: 30px;
-        margin: 0 5px 0 0;
-        border: 1px solid #d4d4d4;
-    }
+
 </style>
 <!-- Product Section Begin -->
 <section class="product spad">
@@ -124,8 +117,8 @@
                                 <div class="filter__sort">
                                     <span>Sắp xếp</span>
                                     <select>
-                                        <option value="0">Default</option>
-                                        <option value="0">Default</option>
+                                        <option value="0">Mặc định</option>
+                                        <!-- <option value="0">Default</option> -->
                                     </select>
                                 </div>
                             </div>

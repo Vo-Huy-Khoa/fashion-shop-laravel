@@ -8,7 +8,7 @@
                     </div>
                     <ul>
                         <li>Địa chỉ: Bình Chánh, Thăng Bình, Quảng Nam</li>
-                        <li>Điện thoại: +84 977 425 396</li>
+                        <li>Điện thoại:  0977 425 396</li>
                         <li>Email: huykhoa630@gmail.com</li>
                     </ul>
                 </div>
@@ -35,7 +35,7 @@
             <div class="col-lg-4 col-md-12">
                 <div class="footer__widget">
                     <h6>Liên hệ</h6>
-                    <p>Hãy liên hệ với chúng tôi nếu thắc mắc.</p>
+                    <p>Hãy liên hệ với chúng tôi nếu bạn có gì thắc mắc!</p>
                     <form action="#">
                         <input type="text" placeholder="Nhập email">
                         <button type="submit" class="site-btn">Gửi</button>

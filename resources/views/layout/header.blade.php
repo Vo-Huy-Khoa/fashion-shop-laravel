@@ -19,7 +19,7 @@ $list_oders = Oder::where('user_id', $id)->where('status', 1)->get();
                                     huykhoa630@gmail.com
                                 </a>
                             </li>
-                            <li>Miễn phí vận chuyển cho những đơn từ 200k</li>
+                            <li>Miễn phí vận chuyển cho những đơn từ 200k!</li>
                         </ul>
                     </div>
                 </div>

@@ -16,14 +16,7 @@
         box-shadow: inset 0 0 0 3px wheat;
     }
 
-    .swatch {
-        display: inline-block;
-        vertical-align: middle;
-        height: 30px;
-        width: 30px;
-        margin: 0 5px 0 0;
-        border: 1px solid #d4d4d4;
-    }
+
 </style>
 <!-- Product Details Section Begin -->
 <section class="product-details spad">

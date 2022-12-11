@@ -1,7 +1,6 @@
-body {
-    background: #BA68C8
+.hero, .header, .footer{
+    display: none;
 }
-
 .form-control:focus {
     box-shadow: none;
     border-color: #BA68C8
