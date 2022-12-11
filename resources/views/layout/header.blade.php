@@ -1,8 +1,10 @@
 <?php
+
 use App\Models\Oder;
-        $users = Auth::user();
-        $id = Auth::id();
-        $list_oders = Oder::where('user_id',$id)->where('status',1)->get();
+
+$users = Auth::user();
+$id = Auth::id();
+$list_oders = Oder::where('user_id', $id)->where('status', 1)->get();
 ?>
 <header class="header">
     <div class="header__top">
@@ -13,11 +15,11 @@ use App\Models\Oder;
                         <ul>
                             <li>
                                 <a style="color: black" href="mailto:huykhoa630@gmail.com">
-                                <i class="fa fa-envelope"></i> 
-                                huykhoa630@gmail.com
+                                    <i class="fa fa-envelope"></i>
+                                    huykhoa630@gmail.com
                                 </a>
                             </li>
-                            <li>Free Shipping for all Order of $99</li>
+                            <li>Miễn phí vận chuyển cho những đơn từ 200k</li>
                         </ul>
                     </div>
                 </div>
@@ -30,21 +32,21 @@ use App\Models\Oder;
                             <a href="#"><i class="fa fa-pinterest-p"></i></a>
                         </div>
                         @if(!isset($users))
-                            <div class="header__top__right__auth">
-                                <a href="{{route('user-register')}}"><i class="fa fa-user"></i>Register</a>
-                            </div>
-                            <span>&nbsp;&nbsp;</span>
-                            <div class="header__top__right__auth">
-                                <a href="{{route('user-login')}}"><i class="fa fa-user"></i>Login</a>
-                            </div>
+                        <div class="header__top__right__auth">
+                            <a href="{{route('user-register')}}"><i class="fa fa-user"></i>Đăng ký</a>
+                        </div>
+                        <span>&nbsp;&nbsp;</span>
+                        <div class="header__top__right__auth">
+                            <a href="{{route('user-login')}}"><i class="fa fa-user"></i>Đăng nhập</a>
+                        </div>
                         @else
-                            <div class="header__top__right__auth">
-                                <a href="profile-edit/{{$users->id}}"><i class="fa fa-user"></i>{{$users->first_name." ".$users->last_name}}</a>
-                            </div>
-                            <span>&nbsp;&nbsp;</span>
-                            <div class="header__top__right__auth">
-                                <a href="{{route('user-logout')}}"><i class="fa fa-sign-out"></i>Logout</a>
-                            </div>
+                        <div class="header__top__right__auth">
+                            <a href="profile-edit/{{$users->id}}"><i class="fa fa-user"></i>{{$users->first_name." ".$users->last_name}}</a>
+                        </div>
+                        <span>&nbsp;&nbsp;</span>
+                        <div class="header__top__right__auth">
+                            <a href="{{route('user-logout')}}"><i class="fa fa-sign-out"></i>Đăng xuất</a>
+                        </div>
                         @endif
                     </div>
                 </div>
@@ -61,10 +63,10 @@ use App\Models\Oder;
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="{{route('shop-fashion')}}">Shop</a></li>
-                        <li><a href="{{route('user_blog')}}">Blog</a></li>
-                        <li><a href="{{route('user_contact')}}">Contact</a></li>
+                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="{{route('shop-fashion')}}">Cửa hàng</a></li>
+                        <li><a href="{{route('user_blog')}}">Bài viết</a></li>
+                        <li><a href="{{route('user_contact')}}">Liên hệ</a></li>
                     </ul>
                 </nav>
             </div>
@@ -76,9 +78,9 @@ use App\Models\Oder;
                     </ul>
                     <?php $total = 0; ?>
                     @foreach ($list_oders as $oders)
-                        <?php    $total += $oders->total ; ?>
+                    <?php $total += $oders->total; ?>
                     @endforeach
-                    <div class="header__cart__price">Total: 
+                    <div class="header__cart__price">Tổng:
                         <span style="color: red">{{number_format($total).'$'}}</span>
                     </div>
                 </div>

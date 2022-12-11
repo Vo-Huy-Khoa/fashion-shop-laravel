@@ -11,9 +11,9 @@ class AttributeController extends Controller
 {
     public function list()
     {
-        $list_colors = Attribute::where('name','color')->get();
-        $list_sizes = Attribute::where('name','size')->get();
-        return view('admin.attributes.list',['list_colors'=>$list_colors,'list_sizes'=>$list_sizes]);
+        $list_colors = Attribute::where('name', 'color')->get();
+        $list_sizes = Attribute::where('name', 'size')->get();
+        return view('admin.attributes.list', ['list_colors' => $list_colors, 'list_sizes' => $list_sizes]);
     }
     public function getAdd()
     {
@@ -26,7 +26,7 @@ class AttributeController extends Controller
         $attributes->name = $request->name;
         $attributes->value = $request->value;
         $attributes->save();
-        return back()->with('add','Thêm thành công '.$request->value);
+        return back()->with('add', 'Thêm thành công ' . $request->value);
     }
     public function getEdit()
     {
@@ -42,5 +42,4 @@ class AttributeController extends Controller
     {
         # code...
     }
-
 }

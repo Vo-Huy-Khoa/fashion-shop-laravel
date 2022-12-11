@@ -1,4 +1,3 @@
-
 <span>Xin chào {{$name}},</span>
 <br>
 <span>Đơn hàng của bạn đã được đặt thành công ngày {{$date}}.</span>
@@ -21,7 +20,7 @@
         {{$oders->products->name}}
         <br>
         <span style="color: red">
-            {{number_format($oders->products->unit_price) }}đ 
+            {{number_format($oders->products->unit_price) }}đ
         </span>
         <span style="color: red; margin-left:10px;">
             x {{$oders->quantity }}
@@ -29,13 +28,13 @@
         <br>
         <span>Thành tiền:</span>
         <span style="color: red;">
-             {{number_format($oders->products->unit_price * $oders->quantity)}}đ 
+            {{number_format($oders->products->unit_price * $oders->quantity)}}đ
         </span>
         <br>
         <hr style="width:35%;margin-left:0px">
 
     </li>
-        
+
     @endforeach
 
 </ul>
@@ -51,6 +50,6 @@
     </li>
 </ul>
 
-<span>Lưu ý: Shop sẽ từ chối hỗ trợ các khiếu nại sau khi Người mua nhấn "Đã nhận được hàng" trên ứng dụng và Người bán đã nhận được thanh toán cho đơn hàng.</span> 
- <br>
- <span>Chúc bạn luôn có những trải nghiệm tuyệt vời khi mua sắm tại Shop.</span>
+<span>Lưu ý: Shop sẽ từ chối hỗ trợ các khiếu nại sau khi Người mua nhấn "Đã nhận được hàng" trên ứng dụng và Người bán đã nhận được thanh toán cho đơn hàng.</span>
+<br>
+<span>Chúc bạn luôn có những trải nghiệm tuyệt vời khi mua sắm tại Shop.</span>

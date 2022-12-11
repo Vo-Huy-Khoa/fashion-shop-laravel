@@ -13,7 +13,7 @@ class MessageController extends Controller
     public function __construct()
     {
         $list_message = Message::all();
-        view()->share('list_message',$list_message);
+        view()->share('list_message', $list_message);
     }
     public function list()
     {
@@ -23,19 +23,21 @@ class MessageController extends Controller
     {
 
 
-        Mail::send('pages.email',[
-            $name = $request->name,
-            $email = $request->email,
-            $content = $request->content
-        ]
-        ,
+        Mail::send(
+            'pages.email',
+            [
+                $name = $request->name,
+                $email = $request->email,
+                $content = $request->content
+            ],
             function ($message)
-            use($name, $email) {
+            use ($name, $email) {
                 $message->from($email, $name);
                 $message->subject('PHẢN HỒI TỪ KHÁCH HÀNG');
-        });
+            }
+        );
 
 
-        return back()->with('message','Gửi phản hồi thành công!');
+        return back()->with('message', 'Gửi phản hồi thành công!');
     }
 }

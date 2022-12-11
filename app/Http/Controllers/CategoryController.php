@@ -13,13 +13,13 @@ class CategoryController extends Controller
     public function list()
     {
         $list_categories = Category::all();
-        return view('admin.categories.list',['list_categories'=> $list_categories]);
+        return view('admin.categories.list', ['list_categories' => $list_categories]);
     }
 
     public function add()
     {
         $list_classify = Classify::all();
-        return view('admin.categories.add',['list_classify'=>$list_classify]);
+        return view('admin.categories.add', ['list_classify' => $list_classify]);
     }
 
     public function postAdd(Request $request)
@@ -29,32 +29,31 @@ class CategoryController extends Controller
         $categories->name = $request->name;
         $categories->description = $request->description;
         if ($request->hasFile('img')) {
-            $file = $request->file('img');//get request form add category
+            $file = $request->file('img'); //get request form add category
             $late = $file->getClientOriginalExtension();
-            if ($late !="jpg" && $late != "png" && $late != "jpeg") 
-                return back()->with('error_img','Sai định dạng hình ');
-            $name = $file->getClientOriginalName();//get name image
-            $img = Str::random(4)."_".$name;
-            while (file_exists("uploads/categories/".$img)) {
-                $img = Str::random(4)."_".$name;
+            if ($late != "jpg" && $late != "png" && $late != "jpeg")
+                return back()->with('error_img', 'Sai định dạng hình ');
+            $name = $file->getClientOriginalName(); //get name image
+            $img = Str::random(4) . "_" . $name;
+            while (file_exists("uploads/categories/" . $img)) {
+                $img = Str::random(4) . "_" . $name;
             }
-            $file->move("uploads/categories",$img);//add new image
+            $file->move("uploads/categories", $img); //add new image
             $categories->image = $img;
-        }
+        } else
+            $categories->image = "";
+
+        if ($categories->save())
+            return back()->with('add', 'Bạn đã thêm thành công ' . $categories->name);
         else
-            $categories->image ="";
-        
-        if($categories->save())
-            return back()->with('add','Bạn đã thêm thành công '.$categories->name);
-        else
-            return back()->with('error_add','Bạn đã xóa thất bại '.$categories->name);
+            return back()->with('error_add', 'Bạn đã xóa thất bại ' . $categories->name);
     }
 
     public function edit($id)
     {
         $list_classify =  Classify::all();
         $categories = Category::find($id);
-        return view('admin.categories.edit',['categories'=>$categories,'list_classify'=>$list_classify]);
+        return view('admin.categories.edit', ['categories' => $categories, 'list_classify' => $list_classify]);
     }
 
     public function postEdit(Request $request, $id)
@@ -65,37 +64,34 @@ class CategoryController extends Controller
         $categories->description = $request->description;
         if ($request->hasFile('img')) {
             $file = $request->file('img');
-        
+
             $late = $file->getClientOriginalExtension();
-            if ($late !="jpg" && $late != "png" && $late != "jpeg") {
-                return back()->with('error_img','Sai định dạng hình ');
+            if ($late != "jpg" && $late != "png" && $late != "jpeg") {
+                return back()->with('error_img', 'Sai định dạng hình ');
             }
             $name = $file->getClientOriginalName();
-            $img = Str::random(4)."_".$name;
-        
-            while (file_exists("uploads/categories/".$img)) {
-                $img = Str::random(4)."_".$name;
-            }
-            
-            $file->move("uploads/categories",$img);
-            unlink("uploads/categories/".$categories->image);//delete image old
-            $categories->image = $img;
-            
-        }
-        else
-            $categories->image ="";
+            $img = Str::random(4) . "_" . $name;
 
-        if($categories->save())
-            return back()->with('edit','Bạn đã sửa thành công '.$categories->name);
+            while (file_exists("uploads/categories/" . $img)) {
+                $img = Str::random(4) . "_" . $name;
+            }
+
+            $file->move("uploads/categories", $img);
+            unlink("uploads/categories/" . $categories->image); //delete image old
+            $categories->image = $img;
+        } else
+            $categories->image = "";
+
+        if ($categories->save())
+            return back()->with('edit', 'Bạn đã sửa thành công ' . $categories->name);
         else
-            return back()->with('error_edit','Bạn đã sửa thất bại '.$categories->name);
+            return back()->with('error_edit', 'Bạn đã sửa thất bại ' . $categories->name);
     }
 
     public function delete($id)
     {
         $categories = Category::find($id);
         $categories->delete();
-        return back()->with('delete','bạn đã xóa thành công'.$categories->name);
+        return back()->with('delete', 'bạn đã xóa thành công' . $categories->name);
     }
-
 }

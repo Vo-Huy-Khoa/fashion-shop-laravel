@@ -7,40 +7,38 @@
                         <a href="./index.html"><img src="img/logo.png" alt=""></a>
                     </div>
                     <ul>
-                        <li>Address: Bình Chánh, Thăng Bình, Quảng Nam</li>
-                        <li>Phone: +84 977 425 396</li>
+                        <li>Địa chỉ: Bình Chánh, Thăng Bình, Quảng Nam</li>
+                        <li>Điện thoại: +84 977 425 396</li>
                         <li>Email: huykhoa630@gmail.com</li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
                 <div class="footer__widget">
-                    <h6>Useful Links</h6>
+                    <h6>Giới thiệu</h6>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">About Our Shop</a></li>
-                        <li><a href="#">Secure Shopping</a></li>
-                        <li><a href="#">Delivery infomation</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Our Sitemap</a></li>
+                        <li><a href="#">Về chúng tối</a></li>
+                        <li><a href="#">Về cửa hàng</a></li>
+                        <li><a href="#">Mua sắm an toàn</a></li>
+                        <li><a href="#">Thông tin giao hàng</a></li>
+                        <li><a href="#">Bảo mật</a></li>
                     </ul>
                     <ul>
-                        <li><a href="#">Who We Are</a></li>
-                        <li><a href="#">Our Services</a></li>
-                        <li><a href="#">Projects</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Innovation</a></li>
-                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Chúng tôi là ai</a></li>
+                        <li><a href="#">Thiết bị</a></li>
+                        <li><a href="#">Dự án</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Sự đổi mới</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-4 col-md-12">
                 <div class="footer__widget">
-                    <h6>Join Our Newsletter Now</h6>
-                    <p>Get E-mail updates about our latest shop and special offers.</p>
+                    <h6>Liên hệ</h6>
+                    <p>Hãy liên hệ với chúng tôi nếu thắc mắc.</p>
                     <form action="#">
-                        <input type="text" placeholder="Enter your mail">
-                        <button type="submit" class="site-btn">Subscribe</button>
+                        <input type="text" placeholder="Nhập email">
+                        <button type="submit" class="site-btn">Gửi</button>
                     </form>
                     <div class="footer__widget__social">
                         <a href="#"><i class="fa fa-facebook"></i></a>
@@ -51,15 +49,15 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12">
                 <div class="footer__copyright">
-                    <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <div class="footer__copyright__text"><p>
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+</p></div>
                     <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </footer>

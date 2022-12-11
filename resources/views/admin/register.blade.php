@@ -8,12 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="admin_asset/img/logo/logo.png" rel="icon">
-    <link rel="stylesheet" href="{{ URL::asset('admin_asset/vendor/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('admin_asset/vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('admin_asset/css/ruang-admin.min.css') }}">
+    <link href="admin/img/logo/logo.png" rel="icon">
+    <link rel="stylesheet" href="{{ URL::asset('admin/vendor/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('admin/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('admin/css/ruang-admin.min.css') }}">
     <base href="{{asset('')}}">
 </head>
+
 <body class="bg-gradient-login">
     <!-- Register Content -->
     <div class="container-login">
@@ -28,23 +29,23 @@
                                         <h1 class="h4 text-gray-900 mb-4">Register</h1>
                                     </div>
                                     @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                     @endif
                                     @if (session('register'))
-                                        <div class="alert alert-success">
-                                            {{ session('register') }}
-                                        </div>
+                                    <div class="alert alert-success">
+                                        {{ session('register') }}
+                                    </div>
                                     @endif
                                     @if (session('errorregister'))
-                                        <div class="alert alert-danger">
-                                            {{ session('errorregister') }}
-                                        </div>
+                                    <div class="alert alert-danger">
+                                        {{ session('errorregister') }}
+                                    </div>
                                     @endif
                                     <form action="{{ route('register') }}" method="POST">
                                         @csrf
@@ -89,11 +90,11 @@
             </div>
         </div>
     </div>
-     <!-- Login Content -->
-     <script src="{{ URL::asset('admin_asset/vendor/jquery/jquery.min.js') }}"></script>
-     <script src="{{ URL::asset('admin_asset/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-     <script src="{{ URL::asset('admin_asset/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-     <script src="{{ URL::asset('admin_asset/js/ruang-admin.min.js') }}"></script>
+    <!-- Login Content -->
+    <script src="{{ URL::asset('admin/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ URL::asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ URL::asset('admin/js/ruang-admin.min.js') }}"></script>
 </body>
 
 </html>

@@ -23,8 +23,7 @@
                 <div class="inbox_chat">
                     <div class="chat_list active_chat">
                         <div class="chat_people">
-                            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png"
-                                    alt="sunil"> </div>
+                            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                             <div class="chat_ib">
                                 <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
                                 <p>Test, which is a new approach to have all solutions
@@ -32,27 +31,25 @@
                             </div>
                         </div>
                     </div>
-                @foreach ($list_message as $message)
-                        
-                   
+                    @foreach ($list_message as $message)
+
+
                     <div class="chat_list">
                         <div class="chat_people">
-                            <div class="chat_img"> <img style="border-radius: 50%" src="uploads/users/{{$message->users->image}}"
-                                    alt="sunil"> </div>
+                            <div class="chat_img"> <img style="border-radius: 50%" src="uploads/users/{{$message->users->image}}" alt="sunil"> </div>
                             <div class="chat_ib">
                                 <h5>{{$message->users->first_name." ".$message->users->last_name}}<span class="chat_date">{{$message->created_at}}</span></h5>
                                 <b>{{$message->content}}</b>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    @endforeach
                 </div>
             </div>
             <div class="mesgs">
                 <div class="msg_history">
                     <div class="incoming_msg">
-                        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
-                                alt="sunil"> </div>
+                        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                         <div class="received_msg">
                             <div class="received_withd_msg">
                                 <p>Test which is a new approach to have all
@@ -69,8 +66,7 @@
                         </div>
                     </div>
                     <div class="incoming_msg">
-                        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
-                                alt="sunil"> </div>
+                        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                         <div class="received_msg">
                             <div class="received_withd_msg">
                                 <p>Test, which is a new approach to have</p>
@@ -85,8 +81,7 @@
                         </div>
                     </div>
                     <div class="incoming_msg">
-                        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
-                                alt="sunil"> </div>
+                        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                         <div class="received_msg">
                             <div class="received_withd_msg">
                                 <p>We work directly with our designers and suppliers,
@@ -100,15 +95,14 @@
                 <div class="type_msg">
                     <div class="input_msg_write">
                         <input type="text" class="write_msg" placeholder="Type a message" />
-                        <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"
-                                aria-hidden="true"></i></button>
+                        <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
         </div>
 
 
-    
+
 
     </div>
 </div>

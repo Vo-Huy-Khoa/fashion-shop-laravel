@@ -1,6 +1,6 @@
     <!-- Hero Section Begin -->
     <style>
- 
+
     </style>
     <section class="hero hero-normal">
         <div class="container">
@@ -9,7 +9,7 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>Danh mục</span>
                         </div>
                         <ul>
                             @foreach ($list_classify as $classify)
@@ -26,11 +26,11 @@
                             <form action="search" method="POST">
                                 @csrf
                                 <div class="hero__search__categories">
-                                    All Categories
+                                    <!-- All Categories -->
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" name="value" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" name="value" placeholder="Bạn cần gì?">
+                                <button type="submit" class="site-btn">Tìm kiếm</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -39,7 +39,7 @@
                             </div>
                             <div class="hero__search__phone__text">
                                 <h5>+84 977 425 396</h5>
-                                <span>support 24/7 time</span>
+                                <span>Hỗ trợ 24/7</span>
                             </div>
                         </div>
                     </div>
@@ -58,11 +58,11 @@
                         <h2>Fashion Shop</h2>
                         <div class="breadcrumb__option">
                             <a href="{{route('user_home')}}">Home</a>
-                            <span>Shop</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <span>Shop</span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </section> --}}
     <!-- Breadcrumb Section End -->

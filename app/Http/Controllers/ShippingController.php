@@ -16,7 +16,7 @@ class ShippingController extends Controller
     public function __construct()
     {
         $list_message = Message::all();
-        view()->share('list_message',$list_message);
+        view()->share('list_message', $list_message);
     }
     public function postShipping(Request $request)
     {
@@ -42,6 +42,5 @@ class ShippingController extends Controller
         //     $oders->save();
         // }
         return redirect()->route('out_cart');
-
     }
 }
