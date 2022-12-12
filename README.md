@@ -1,3 +1,5 @@
+<h2>Link Product: <a href="http://13.231.253.78">Fashion Shop</a></h2>
+
 <h1>How to Deploy Laravel Application on AWS EC2?</h1>
 
 1. Create EC2 Instance<br>
