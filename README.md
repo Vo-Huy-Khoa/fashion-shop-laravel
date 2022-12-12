@@ -1,4 +1,9 @@
 <h1>How to Deploy Laravel Application on AWS EC2?</h1>
+
+1. Create EC2 Instance<br>
+https://www.howtoforge.com/how-to-create-an-ec2-instance-on-aws/
+
+2. To host our Laravel app on Amazon EC2 we will be using the following technical stack:
 - PHP 8.0 <br>
 - Composer<br>
 - Mysql<br>
@@ -54,7 +59,7 @@ https://linuxhint.com/install-and-use-php-composer-ubuntu-22-04/
 - sudo systemctl status nginx
 
 5. Check File Config Nginx<br>
-- sudo nginx –t
+- sudo nginx -t
 
 6. Restart Nginx<br>
 - sudo systemctl restart nginx
