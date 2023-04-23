@@ -17,7 +17,7 @@
 
 <body class="bg-gradient-login">
   <!-- Login Content -->
-  <div class="container-login">
+  <div class="container-login flex justify-center items-center">
     <div class="row justify-content-center">
       <div class="col-xl-6 col-lg-12 col-md-9">
         <div class="card shadow-sm my-5">
@@ -60,12 +60,12 @@
                       <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
                     </div>
                     <hr>
-                    <a href="admin/login/google" class="btn btn-google btn-block">
+                    {{-- <a href="admin/login/google" class="btn btn-google btn-block">
                       <i class="fab fa-google fa-fw"></i>Đăng nhập với Google
                     </a>
                     <a href="admin/login/facebook" class="btn btn-facebook btn-block">
                       <i class="fab fa-facebook-f fa-fw"></i> Đăng nhập với Facebook
-                    </a>
+                    </a> --}}
                   </form>
                   <hr>
                   <div class="text-center">

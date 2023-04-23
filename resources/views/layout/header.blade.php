@@ -2,6 +2,7 @@
 
 use App\Models\Oder;
 
+$fullUrl = $currentUrl = url()->current();
 $users = Auth::user();
 $id = Auth::id();
 $list_oders = Oder::where('user_id', $id)->where('status', 1)->get();
@@ -57,16 +58,16 @@ $list_oders = Oder::where('user_id', $id)->where('status', 1)->get();
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="#"><img src="./Front/img/logo.png" alt=""></a>
+                    <a href="/home"><img src="./Front/img/logo.png" alt="fashion"></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li><a href="#">Trang chủ</a></li>
-                        <li><a href="{{route('shop-fashion')}}">Cửa hàng</a></li>
-                        <li><a href="{{route('user_blog')}}">Bài viết</a></li>
-                        <li><a href="{{route('user_contact')}}">Liên hệ</a></li>
+                        <li><a href="/home"class="{{str_contains($fullUrl, 'home') ? "selected" : ""}}">Trang chủ</a></li>
+                        <li><a href="{{route('shop-fashion')}}" class="{{str_contains($fullUrl, 'shop') ? "selected" : ""}}{{str_contains($fullUrl, 'search-classify') ? "selected" : ""}}">Cửa hàng</a></li>
+                        <li><a href="{{route('user_blog')}}" class="{{str_contains($fullUrl, 'blog') ? "selected" : ""}}">Bài viết</a></li>
+                        <li><a href="{{route('user_contact')}}"class="{{str_contains($fullUrl, 'contact') ? "selected" : ""}}" >Liên hệ</a></li>
                     </ul>
                 </nav>
             </div>
@@ -91,3 +92,4 @@ $list_oders = Oder::where('user_id', $id)->where('status', 1)->get();
         </div>
     </div>
 </header>
+

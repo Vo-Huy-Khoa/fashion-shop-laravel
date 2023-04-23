@@ -57,29 +57,6 @@ class UserController extends Controller
     public function postAdmin_Login(Request $request)
     {
         $remember = isset($request->remember);
-        // $validator = Validator::make($request->all(),[
-        //     'name' => 'required|max:25',
-        //     'email' => 'required|email|unique:users',
-        //     'password' => 'required|min:6'
-        // ]);
-
-        // if ($validator->fails()){
-        //      return response()->json([
-        //          'success' => false,
-        //          'errors' => $validator->errors()->toArray()
-        //      ]);
-        // }
-        //    return response()->json([
-        //         'success' => true
-        //       ]);
-
-        // if (Auth::attempt(['email' =>$request->email, 'password' => Hash::make($request->password)],$remember)) {
-        //    return back()->with('login','Đăng nhập thành công!');
-        // }
-        // else{
-        //    return back()->with('error','Đăng nhập thất bại!');
-
-        // }
         $credentials = [
             'email' => $request->email,
             'password' => $request->password,
@@ -102,23 +79,6 @@ class UserController extends Controller
     }
     public function postAdmin_Register(Request $request)
     {
-        // $validator = Validator::make($request->all(),[
-        //     'name' => 'required|max:25',
-        //     'email' => 'required|email|unique:users',
-        //     'password' => 'required|min:6'
-        // ]);
-
-        // if ($validator->fails()){
-        //      return response()->json([
-        //          'success' => false,
-        //          'errors' => $validator->errors()->toArray()
-        //      ]);
-        // }
-        //    return response()->json([
-        //         'success' => true
-        //       ]);
-
-
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -263,28 +223,6 @@ class UserController extends Controller
         $user->type = "2";
         if ($request->password == $request->repassword)
             $user->password = Hash::make($request->password);
-
-        // if ($request->hasFile('img')) {
-        //     $file = $request->file('img');
-
-        //     $late = $file->getClientOriginalExtension();
-        //     if ($late !="jpg" && $late != "png" && $late != "jpeg") {
-        //         return back()->with('error_img','Sai định dạng hình ');
-        // }
-        // $name = $file->getClientOriginalName();
-        // $img = Str::random(4)."_".$name;
-
-        // while (file_exists("uploads/users/".$img)) {
-        //     $img = Str::random(4)."_".$name;
-        // }
-
-        // $file->move("uploads/users",$img);
-        // $user->image = $img;
-
-        // }
-        // else{
-        //     $user->image ="";
-        // }
         $save = $user->save();
         if ($save)
             return redirect()->back()->with('register', 'Bạn đã tạo thành công tài khoản ' . $user->first_name . " " . $user->last_name);

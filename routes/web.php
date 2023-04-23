@@ -32,7 +32,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PagesController::class,'home']);
 
 //Route Login
 Route::get('admin/login',[UserController::class,'getAdmin_Login']);
@@ -48,7 +47,7 @@ Route::get('admin/logout',[UserController::class,'Admin_Logout'])->name('admin_l
 //Route Index
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
-    Route::get('home',[UserController::class,'home'])->name('home');
+    Route::get('/home',[UserController::class,'home'])->name('home');
     Route::prefix('users')->group(function () {
         Route::get('list',[UserController::class,'list'])->name('users_list');
         Route::get('add',[UserController::class,'add'])->name('users_add');
@@ -92,7 +91,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('edit/{id}', [AttributeController::class,'postEdit']);
         Route::get('delete/{id}',[AttributeController::class,'delete']);
     });
-
     Route::prefix('oder_details')->group(function () {
         Route::get('list',[Oder_DetailController::class,'list'])->name('oder_details_list');
         Route::get('delete/{id}',[Oder_DetailController::class,'delete']);
@@ -111,47 +109,45 @@ Route::middleware(['auth'])->group(function () {
         Route::get('list',[MessageController::class,'list']);
     });
     });
-
     Route::prefix('warehouse')->group(function () {
         Route::get('list/{id}',[ClassifyController::class,'warehouse']);
         Route::get('sold/{id}',[ClassifyController::class,'sold']);
         Route::get('notsold/{id}',[ClassifyController::class,'notsold']);
-        
-
     });
 });
-// Route User
+// Route 
+Route::get('/home', [PagesController::class,'home']);
 Route::get('login',[UserController::class,'getUsers_login'])->name('user-login');
 Route::post('login',[UserController::class,'postUsers_login'])->name('user-login');
 Route::get('register',[UserController::class,'getUsers_Register'])->name('user-register');
 Route::post('register',[UserController::class,'postUsers_Register'])->name('user-register');
 Route::get('logout',[UserController::class,'users_logout'])->name('user-logout');
 
-    Route::get('home',[PagesController::class,'home'])->name('user_home');
-    Route::get('shop',[PagesController::class,'shop'])->name('shop-fashion');
-    Route::get('blog',[PagesController::class,'blog'])->name('user_blog');
-    Route::get('blog-detail/{id}',[PagesController::class,'blog_details']);
-    Route::get('contact',[PagesController::class,'contact'])->name('user_contact');
-    Route::get('product-detail/{id}',[PagesController::class,'products_details']);
-    Route::get('show-cart',[PagesController::class,'show_cart'])->name('show-cart');
-    Route::get('check_out',[PagesController::class,'check_out'])->name('check_out');
-    Route::get('profile-edit/{id}',[PagesController::class,'getProfile_Edit']);
-    Route::post('profile-edit/{id}', [PagesController::class,'postProfile_Edit']);
-    Route::post('search',[SearchController::class,'Search']);
-    Route::get('search-categories/{id}',[SearchController::class,'Search_categories']);
-    Route::get('search-color/{id}',[SearchController::class,'Search_color']);
-    Route::get('search-size/{id}',[SearchController::class,'Search_size']);
-    Route::get('search-classify/{id}',[SearchController::class,'Search_classify']);
-    Route::get('search-category-blog/{id}',[SearchController::class,'Search_categories_blogs']);
-    Route::post('search-blog',[SearchController::class,'Search_blogs']);
-    Route::get('add-to-cart/{product_id}',[OderController::class,'AddToCart'])->name('AddToCart');
-    Route::post('AddToCart_Detail/{id}',[OderController::class,'AddToCart_Detail']);
-    Route::get('out_cart',[Oder_DetailController::class,'out_cart'])->name('out_cart');
-    Route::post('shipping',[ShippingController::class,'postShipping'])->name('shipping');
-    Route::post('comments/{id}',[CommentController::class,'postcomments']);
-    Route::post('message',[MessageController::class,'send'])->name('messages');
-    Route::get('oder/delete/{id}',[OderController::class,'delete']);
-    Route::get('oder/update/{id}',[OderController::class,'update']);
+Route::get('home',[PagesController::class,'home'])->name('user_home');
+Route::get('shop',[PagesController::class,'shop'])->name('shop-fashion');
+Route::get('blog',[PagesController::class,'blog'])->name('user_blog');
+Route::get('blog-detail/{id}',[PagesController::class,'blog_details']);
+Route::get('contact',[PagesController::class,'contact'])->name('user_contact');
+Route::get('product-detail/{id}',[PagesController::class,'products_details']);
+Route::get('show-cart',[PagesController::class,'show_cart'])->name('show-cart');
+Route::get('check_out',[PagesController::class,'check_out'])->name('check_out');
+Route::get('profile-edit/{id}',[PagesController::class,'getProfile_Edit']);
+Route::post('profile-edit/{id}', [PagesController::class,'postProfile_Edit']);
+Route::post('search',[SearchController::class,'Search']);
+Route::get('search-categories/{id}',[SearchController::class,'Search_categories']);
+Route::get('search-color/{id}',[SearchController::class,'Search_color']);
+Route::get('search-size/{id}',[SearchController::class,'Search_size']);
+Route::get('search-classify/{id}',[SearchController::class,'Search_classify']);
+Route::get('search-category-blog/{id}',[SearchController::class,'Search_categories_blogs']);
+Route::post('search-blog',[SearchController::class,'Search_blogs']);
+Route::get('add-to-cart/{product_id}',[OderController::class,'AddToCart'])->name('AddToCart');
+Route::post('AddToCart_Detail/{id}',[OderController::class,'AddToCart_Detail']);
+Route::get('out_cart',[Oder_DetailController::class,'out_cart'])->name('out_cart');
+Route::post('shipping',[ShippingController::class,'postShipping'])->name('shipping');
+Route::post('comments/{id}',[CommentController::class,'postcomments']);
+Route::post('message',[MessageController::class,'send'])->name('messages');
+Route::get('oder/delete/{id}',[OderController::class,'delete']);
+Route::get('oder/update/{id}',[OderController::class,'update']);
 
 
 

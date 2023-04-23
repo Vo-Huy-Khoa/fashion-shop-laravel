@@ -36,11 +36,6 @@ class ShippingController extends Controller
         $oder_details->shipping_id = $shippings->id;
         $oder_details->status = '1';
         $oder_details->save();
-        // $list_oders = Oder::where('user_id',$user_id)->get();
-        // foreach ($list_oders as $oders) {
-        //     $oders->status = '0';
-        //     $oders->save();
-        // }
         return redirect()->route('out_cart');
     }
 }

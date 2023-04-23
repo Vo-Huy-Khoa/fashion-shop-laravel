@@ -36,23 +36,6 @@ class OderController extends Controller
         $list_message = Message::all();
         view()->share('list_message', $list_message);
     }
-    // public function edit($id)
-    // {
-    //     $oders = Oder::find($id);
-    //     $list_products = Product::all();
-    //     return view('admin.oders.edit',['oders'=>$oders,'list_products'=>$list_products]);
-    // }
-    // public function postEdit(Request $request, $id)
-    // {
-    //     $oders = Oder::find($id);
-    //     $oders->product_id = $request->product_id;
-    //     $oders->quantity = $request->quantity;
-    //     if ($oders->save()) {
-    //         return back()->with('edit','Sửa thành công '.$oders->name);
-    //     }else{
-    //         return back()->with('error_edit','Sửa thất bại '.$oders->name);
-    //     }
-    // }
     public function delete($id)
     {
         $oders = Oder::find($id);
