@@ -104,7 +104,7 @@ sudo systemctl status nginx
 ```
 5. Check File Config Nginx
 ```bash
-sudo nginx –t
+sudo nginx -t
 ```
 6. Restart Nginx
 ```bash
@@ -125,27 +125,43 @@ sudo vim default
 server {
   listen 80;
   listen [::]:80;
-  root/var/www/fashion-shop-laravel/public;
-  add_headerX-Frame-Options "SAMEORIGIN";
-  add_headerX-Content-Type-Options "nosniff";
+  root /var/www/fashion-shop-laravel/public;
+  add_header X-Frame-Options "SAMEORIGIN";
+  add_header X-Content-Type-Options "nosniff";
   index index.php;
-  charsetutf-8;
+  charset utf-8;
+  
   location / {
     try_files $uri $uri/ /index.php?$query_string;
   }
-  <!-- location = /favicon.ico { access_log off; log_not_found off; }
-  location = /robots.txt  { access_log off; log_not_found off; }
-  error_page 404 /index.php; -->
-  location ~ \.php$ {
-   fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
-   fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-   include fastcgi_params;
+  
+  location = /favicon.ico { 
+    access_log off; 
+    log_not_found off; 
   }
+  
+  location = /robots.txt  { 
+    access_log off; 
+    log_not_found off; 
+  }
+  
+  error_page 404 /index.php;
+  
+  location ~ \.php$ {
+    fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+    include fastcgi_params;
+  }
+  
   location ~ /\.(?!well-known).* {
     deny all;
   }
 }
+
 ```
+6. Check File Config Nginx
+```bash
+sudo nginx -t
 --------------------------------------------------Config Laravel--------------------------------------------------
 1. Update Composer
 ```bash
