@@ -162,6 +162,7 @@ server {
 6. Check File Config Nginx
 ```bash
 sudo nginx -t
+```
 --------------------------------------------------Config Laravel--------------------------------------------------
 1. Update Composer
 ```bash
