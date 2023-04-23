@@ -13,19 +13,38 @@ https://www.howtoforge.com/how-to-create-an-ec2-instance-on-aws/
 
 --------------------------------------------------Install PHP--------------------------------------------------
 
-1. Install PHP 8.0
+1. updating your package list by running the following command:
 ```bash
-sudo apt install php8.0
+sudo apt-get update
 ```
-2. Install PHP Package
+2. Add the ondrej/php PPA using the following commands:
 ```bash
-sudo apt install php8.0-common php8.0-mysql php8.0-cgi php8.0-mbstring php8.0-curl php8.0-gd php8.0-xml php8.0-xmlrpcphp-pear php8.0-fpm
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
 ```
-
+3. Once the PPA is added and your package list is updated, try installing the packages again:
+```bash
+sudo apt-get install php8.0-common php8.0-mysql php8.0-cgi php8.0-mbstring php8.0-curl php8.0-gd php8.0-xml php8.0-xmlrpc php-pear php8.0-fpm
+```
 --------------------------------------------------Install Composer---------------------------------------------
-1. Install composer <br>
-https://linuxhint.com/install-and-use-php-composer-ubuntu-22-04/
+1. Download the installer: <br>
+``` bash
+curl -sS https://getcomposer.org/installer -o composer-setup.php
+```
 
+2. Verify the installer: <br>
+``` bash
+HASH="$(curl -sS https://composer.github.io/installer.sig)"
+echo "$HASH composer-setup.php" | sha384sum -c -
+```
+3. Install Composer: <br>
+``` bash
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+```
+4. Verify the installation: <br>
+``` bash
+composer --version
+```
 
 --------------------------------------------------Install Mysql------------------------------------------------
 
@@ -81,24 +100,24 @@ sudo systemctl restart nginx
 ```
 --------------------------------------------------Config Nginx-------------------------------------------------
 
-1. Permission Folder
+1. Permission Folder:
 ```bash
-sudo chown -R www-data:www-data /var/www/Fashion_Shop_Laravel
+sudo chown -R www-data:www-data /var/www/fashion-shop-laravel
 ```
-2. To The File Config Nginx
+2. To The File Config Nginx:
 ```bash
 cd /etc/nginx/sites-available/
 ```
-3. To The File Default
+3. To the file default:
 ```bash
 vim default
 ```
 4. Create Value In File Default:
 ```bash
 server {
-  listen:80;
-  listen[::]:80;
-  root/var/www/Fashion_Shop_Laravel/public;
+  listen 80;
+  listen [::]:80;
+  root/var/www/fashion-shop-laravel/public;
   add_headerX-Frame-Options "SAMEORIGIN";
   add_headerX-Content-Type-Options "nosniff";
   index index.php;
@@ -124,11 +143,7 @@ server {
 ```bash
 composer update
 ```
-2. Copy File .env.example To .env
-```bash
-cp .env.example .env
-```
-3. Generate Key
+2. Generate Key
 ```bash
 php artisan key:generate
 ```
