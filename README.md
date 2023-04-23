@@ -76,13 +76,18 @@ exit
 
 3. Create Database
 ```bash
-mysql -u root -p
+sudo mysql -u root -p
 CREATE DATABASE fashion;
 exit
 ```
 4. Import File Sql To Database
 ```bash
 mysql -u root -p fashion < shopfashion.sql
+```
+5. When error password root:
+```bash
+mysql -u root -p
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mật_khẩu_mới';
 ```
 --------------------------------------------------Install Nginx------------------------------------------------
 
