@@ -11,6 +11,18 @@ https://www.howtoforge.com/how-to-create-an-ec2-instance-on-aws/
 - Mysql<br>
 - Nginx<br>
 
+
+--------------------------------------------------Setup project--------------------------------------------------
+
+1. Permission Folder:
+```bash
+sudo chown -R www-data:www-data /var/www
+```
+2. Clone project:
+```bash
+cd /var/www
+git clone https://github.com/Vo-Huy-Khoa/fashion-shop-laravel.git
+```
 --------------------------------------------------Install PHP--------------------------------------------------
 
 1. updating your package list by running the following command:
@@ -100,19 +112,15 @@ sudo systemctl restart nginx
 ```
 --------------------------------------------------Config Nginx-------------------------------------------------
 
-1. Permission Folder:
-```bash
-sudo chown -R www-data:www-data /var/www/fashion-shop-laravel
-```
-2. To The File Config Nginx:
+1. To The File Config Nginx:
 ```bash
 cd /etc/nginx/sites-available/
 ```
-3. To the file default:
+2. To the file default:
 ```bash
-vim default
+sudo vim default
 ```
-4. Create Value In File Default:
+3. Create Value In File Default:
 ```bash
 server {
   listen 80;
