@@ -1,6 +1,6 @@
-<h2>Link Product: <a href="http://ec2-54-199-11-6.ap-northeast-1.compute.amazonaws.com/" target="_blank">Fashion Shop</a></h2>
+# Link demo: <a href="http://ec2-13-115-251-129.ap-northeast-1.compute.amazonaws.com" target="_blank">Fashion Shop</a>
 
-<h1>How to Deploy Laravel Application on AWS EC2?</h1>
+# How to Deploy Laravel Application on AWS EC2?
 
 1. Create EC2 Instance<br>
 https://www.howtoforge.com/how-to-create-an-ec2-instance-on-aws/
