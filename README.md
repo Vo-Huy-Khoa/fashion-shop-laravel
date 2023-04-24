@@ -1,4 +1,4 @@
-# Link demo: <a href="http://ec2-13-115-251-129.ap-northeast-1.compute.amazonaws.com" target="_blank">Fashion Shop</a>
+# Link demo: <a href="http://ec2-3-112-31-5.ap-northeast-1.compute.amazonaws.com" target="_blank">Fashion Shop</a>
 
 # How to Deploy Laravel Application on AWS EC2?
 
